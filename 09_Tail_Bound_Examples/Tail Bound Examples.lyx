@@ -1,0 +1,1032 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\mathcal{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathscr{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\I}{\mathscr{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\intercal}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Tail Bound Examples
+\end_layout
+
+\begin_layout Section
+Balls & Bins
+\end_layout
+
+\begin_layout Standard
+Imagine we throw 
+\begin_inset Formula $m$
+\end_inset
+
+ balls i.i.d.
+ uniformly into 
+\begin_inset Formula $n$
+\end_inset
+
+ bins.
+ Let 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ be the number of balls in bin 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Clearly 
+\begin_inset Formula $\E[X_{i}]=m/n$
+\end_inset
+
+ by linearity of expectation.
+\end_layout
+
+\begin_layout Standard
+One interesting statistic is the maximum load 
+\begin_inset Formula $\E[\max_{i}X_{i}]$
+\end_inset
+
+.
+ Note that it does 
+\series bold
+not
+\series default
+ equal 
+\begin_inset Formula $\max_{i}\E[X_{i}]=m/n$
+\end_inset
+
+.
+ In particular for 
+\begin_inset Formula $m=n$
+\end_inset
+
+, it is very unlikely to have exactly one ball in each bin.
+\end_layout
+
+\begin_layout Standard
+We need to find a 
+\begin_inset Formula $z$
+\end_inset
+
+ such that 
+\begin_inset Formula $\Pr[X_{i}>z]$
+\end_inset
+
+ is small for all 
+\begin_inset Formula $i$
+\end_inset
+
+ – so small that we can apply a union bound to bound
+\begin_inset Formula 
+\[
+\bigcup_{i}[X_{i}>z].
+\]
+
+\end_inset
+
+To do so, we reverse engineer a small 
+\begin_inset Formula $z$
+\end_inset
+
+ for which this works.
+ Say we want 
+\begin_inset Formula $\Pr[\exists i:X_{i}>z]<1/n$
+\end_inset
+
+.
+ To apply a union bound, we want
+\begin_inset Formula 
+\[
+\forall i:\Pr[X_{i}>z]<\frac{1}{n^{2}}.
+\]
+
+\end_inset
+
+Let 
+\begin_inset Formula $X_{ij}$
+\end_inset
+
+ be the indicator random variable for whether ball 
+\begin_inset Formula $j$
+\end_inset
+
+ goes to bin 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ We know 
+\begin_inset Formula $X_{i}=\sum_{j=1}^{m}X_{ij}$
+\end_inset
+
+, and the 
+\begin_inset Formula $X_{ij}$
+\end_inset
+
+ are independent Bernoulli, for fixed 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ (For fixed 
+\begin_inset Formula $j$
+\end_inset
+
+, they are of course not independent).
+ So, we can apply Chernoff bounds:
+\begin_inset Formula 
+\[
+\Pr[X_{i}>(1+\delta)\E[X_{i}]]<\bigg(\frac{e^{\delta}}{(1+\delta)^{(1+\delta)}}\bigg)^{\E[X_{i}]}.
+\]
+
+\end_inset
+
+Substituting,
+\begin_inset Formula 
+\[
+\Pr[X_{i}>(1+\delta)\frac{m}{n}]<\bigg(\frac{e^{\delta}}{(1+\delta)^{(1+\delta)}}\bigg)^{\frac{m}{n}}.
+\]
+
+\end_inset
+
+How large do we have to make 
+\begin_inset Formula $\delta$
+\end_inset
+
+ such that the right-hand-side is less than 
+\begin_inset Formula $1/n^{2}$
+\end_inset
+
+? This will give us 
+\begin_inset Formula $z=(1+\delta)\cdot m/n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Two example ranges:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $m=8n\log n$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $m/n=8\log n$
+\end_inset
+
+, so
+\begin_inset Formula 
+\[
+\bigg(\frac{e^{\delta}}{(1+\delta)^{(1+\delta)}}\bigg)^{\frac{m}{n}}=\bigg(\frac{e^{\delta}}{(1+\delta)^{(1+\delta)}}\bigg)^{8\log n}.
+\]
+
+\end_inset
+
+Choose 
+\begin_inset Formula $\delta=1$
+\end_inset
+
+.
+ Then
+\begin_inset Formula 
+\[
+\frac{e^{\delta}}{(1+\delta)^{(1+\delta)}}=\frac{e}{4}.
+\]
+
+\end_inset
+
+So,
+\begin_inset Formula 
+\begin{align*}
+\bigg(\frac{e^{\delta}}{(1+\delta)^{(1+\delta)}}\bigg)^{8\log n} & =\big(\frac{e}{4}\big)^{8\log n}\\
+ & =\big((\frac{e}{4})^{8}\big)^{\log n}\\
+ & <\big(\frac{1}{e^{2}}\big)^{\log n}\\
+ & =\frac{1}{n^{2}}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $m=n$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $m/n=1$
+\end_inset
+
+, so
+\begin_inset Formula 
+\[
+\bigg(\frac{e^{\delta}}{(1+\delta)^{(1+\delta)}}\bigg)^{\frac{m}{n}}=\frac{e^{\delta}}{(1+\delta)^{(1+\delta)}}.
+\]
+
+\end_inset
+
+We have
+\begin_inset Formula 
+\begin{align*}
+\frac{e^{\delta}}{(1+\delta)^{(1+\delta)}} & =\frac{e^{1+\delta}}{(1+\delta)^{(1+\delta)}}\\
+ & <\frac{e}{n^{2}}.
+\end{align*}
+
+\end_inset
+
+More generally, we want to solve
+\begin_inset Formula 
+\[
+\frac{e^{x}}{x^{x}}=\frac{1}{y}
+\]
+
+\end_inset
+
+Here 
+\begin_inset Formula $y=n^{2}/e$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Lemma
+Let 
+\begin_inset Formula $x$
+\end_inset
+
+ solve 
+\begin_inset Formula $x^{x}/e^{x}=y$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $x=\Theta(\log y/\log\log y)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Take logs to obtain
+\begin_inset Formula 
+\begin{align*}
+\log y & =x\log x-x\\
+ & =x(\log x-1).
+\end{align*}
+
+\end_inset
+
+Dropping the 
+\begin_inset Formula $-1$
+\end_inset
+
+ and taking logs again,
+\begin_inset Formula 
+\[
+\log\log y=\log x+\log\log x.
+\]
+
+\end_inset
+
+For large enough 
+\begin_inset Formula $y$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+2\log x & \geq\log x+\log\log x\\
+ & \geq\log\log y\\
+ & \geq\log x.
+\end{align*}
+
+\end_inset
+
+Thus,
+\begin_inset Formula 
+\begin{align*}
+\log y & \leq x\log x\\
+ & \leq x\log\log y.
+\end{align*}
+
+\end_inset
+
+So, 
+\begin_inset Formula 
+\[
+x\geq\frac{\log y}{\log\log y}.
+\]
+
+\end_inset
+
+In the other direction,
+\begin_inset Formula 
+\begin{align*}
+x & =\frac{\log y}{\log x-1}\\
+ & \leq\frac{\log y}{\frac{1}{2}\log\log y-1}\\
+ & \leq\frac{4\log y}{\log\log y}.
+\end{align*}
+
+\end_inset
+
+Therefore 
+\begin_inset Formula $x=\Theta(\log y/\log\log y).$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Conclusion.
+
+\series default
+ In the range 
+\begin_inset Formula $m\geq8n\log n$
+\end_inset
+
+, 
+\begin_inset Formula $\delta=1$
+\end_inset
+
+ is enough, so with high probability no bin contains more than 
+\begin_inset Formula $16\log n$
+\end_inset
+
+ balls.
+ Generally, when 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is large enough, it is unlikely that any bin exceeds its expectation by
+ more than a constant factor.
+ In the range 
+\begin_inset Formula $m=n$
+\end_inset
+
+, we can still guarantee that the load of each bin is at most 
+\begin_inset Formula $\Theta(\log n/\log\log n)$
+\end_inset
+
+ with high probability.
+ The most common cases in applying Chernoff bounds are 
+\begin_inset Formula $\E[X_{i}]=\Omega(\log n)$
+\end_inset
+
+ and 
+\begin_inset Formula $\E[X_{i}]=\Theta(1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Set Balancing
+\end_layout
+
+\begin_layout Standard
+Given a matrix 
+\begin_inset Formula ${\bf A}\in\{0,1\}^{n\times n}$
+\end_inset
+
+, our goal is to pick a vector 
+\begin_inset Formula $\boldsymbol{b}\in\{-1,1\}^{n}$
+\end_inset
+
+ to minimize the maximum absolute entry in 
+\begin_inset Formula ${\bf A}\boldsymbol{b}$
+\end_inset
+
+, 
+\emph on
+i.e.,
+\emph default
+ minimize 
+\begin_inset Formula $\max_{i}|({\bf A}\boldsymbol{b})_{i}|.$
+\end_inset
+
+ This is a basic problem in a subfield called discrepancy theory.
+\end_layout
+
+\begin_layout Standard
+The motivation is that each row represents a skill, and each column represents
+ a player.
+ 
+\begin_inset Formula $\boldsymbol{b}$
+\end_inset
+
+ says which team player 
+\begin_inset Formula $i$
+\end_inset
+
+ belongs to.
+ We want the teams to be as even as possible for all 
+\begin_inset Formula $n$
+\end_inset
+
+ skills.
+\end_layout
+
+\begin_layout Example*
+Let
+\begin_inset Formula 
+\[
+{\bf A}=\left[\begin{array}{ccc}
+1 & 1 & 0\\
+1 & 0 & 1\\
+0 & 1 & 1
+\end{array}\right].
+\]
+
+\end_inset
+
+Then
+\begin_inset Formula 
+\[
+\boldsymbol{b}=\left[\begin{array}{c}
+-1\\
+-1\\
+-1
+\end{array}\right]\implies\left[\begin{array}{c}
+-2\\
+-2\\
+-2
+\end{array}\right]\implies2.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example*
+\begin_inset Formula 
+\[
+\boldsymbol{b}=\left[\begin{array}{c}
+1\\
+-1\\
+1
+\end{array}\right]\implies\left[\begin{array}{c}
+0\\
+2\\
+0
+\end{array}\right]\implies2.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\boldsymbol{b}=\left[\begin{array}{c}
+-1\\
+1\\
+1
+\end{array}\right]\implies\left[\begin{array}{c}
+0\\
+0\\
+2
+\end{array}\right]\implies2.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For each 
+\begin_inset Formula $i$
+\end_inset
+
+, let 
+\begin_inset Formula $b_{i}=\pm1$
+\end_inset
+
+ i.i.d uniformly.
+ We are interested in 
+\begin_inset Formula $X_{j}$
+\end_inset
+
+, the differential in team strengths for skill 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ Our goal is to bound 
+\begin_inset Formula $\max_{j}|X_{j}|$
+\end_inset
+
+.
+ We have
+\begin_inset Formula 
+\[
+X_{j}=\sum_{i}b_{i}a_{ji}.
+\]
+
+\end_inset
+
+And
+\begin_inset Formula 
+\begin{align*}
+\E[X_{j}] & =\sum_{i}\E[b_{i}]a_{ji}\\
+ & =0
+\end{align*}
+
+\end_inset
+
+To apply Chernoff bounds, we would need to shift values to make 
+\begin_inset Formula $\mu>0$
+\end_inset
+
+.
+ Instead we'll just use Hoeffding bounds.
+ Because 
+\begin_inset Formula $\mu=0$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+\Pr[|X_{j}-\E[X_{j}]|>\Delta] & =\Pr[|X_{j}|>\Delta]\\
+ & <2\exp\bigg(-\frac{2\Delta^{2}}{\sum_{j}2^{2}}\bigg)\\
+ & =2\exp\big(-\frac{2\Delta^{2}}{4n}\big)
+\end{align*}
+
+\end_inset
+
+We'd like this to be 
+\begin_inset Formula $\leq2/n^{2}$
+\end_inset
+
+, so we reverse engineer 
+\begin_inset Formula $\Delta$
+\end_inset
+
+.
+ That is,
+\begin_inset Formula 
+\[
+\exp\big(-\frac{\Delta^{2}}{2n}\big)\leq\frac{1}{n^{2}}.
+\]
+
+\end_inset
+
+Thus
+\begin_inset Formula 
+\[
+\frac{\Delta^{2}}{2n}\geq\log(n^{2})=2\log n.
+\]
+
+\end_inset
+
+So
+\begin_inset Formula 
+\[
+\Delta=\sqrt{4n\log n}=2\sqrt{n\log n}.
+\]
+
+\end_inset
+
+This gives 
+\begin_inset Formula $|X_{j}|\leq2\sqrt{n\log n}$
+\end_inset
+
+ with probability at least 
+\begin_inset Formula $1-2/n^{2}$
+\end_inset
+
+, so by a union bound we have that all 
+\begin_inset Formula $|X_{j}|\leq2\sqrt{n\log n}$
+\end_inset
+
+ with probability 
+\begin_inset Formula $1-2/n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Connecting Terminals to Minimize Congestion (Raghavan-Thompson)
+\end_layout
+
+\begin_layout Standard
+Given a graph 
+\begin_inset Formula $G$
+\end_inset
+
+ (directed or undirected) and 
+\begin_inset Formula $k$
+\end_inset
+
+ terminal pairs 
+\begin_inset Formula $(s_{i},t_{i})$
+\end_inset
+
+.
+ The goal is to find a (possibly directed) path 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ from 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+ to 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ for each 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ The 
+\series bold
+congestion
+\series default
+ of edge 
+\begin_inset Formula $e$
+\end_inset
+
+ is the number of paths 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ that include edge 
+\begin_inset Formula $e$
+\end_inset
+
+.
+ We'd like to minimize the maximum congestion over all edges.
+\end_layout
+
+\begin_layout Standard
+One special case would ask if there is a possible assignment with congestion
+ 1.
+ This is called the edge-disjoint paths problem (EDP).
+ It is 
+\begin_inset Formula $\mathcal{NP}$
+\end_inset
+
+-hard for directed graphs, even for 
+\begin_inset Formula $k=2$
+\end_inset
+
+.
+ It is 
+\begin_inset Formula $\mathcal{NP}$
+\end_inset
+
+-hard for undirected graphs when 
+\begin_inset Formula $k$
+\end_inset
+
+ is part of the input.
+ For any constant 
+\begin_inset Formula $k$
+\end_inset
+
+, there is a polynomial time algorithm for the edge-disjoint paths.
+ The dependence on 
+\begin_inset Formula $k$
+\end_inset
+
+ is horrendous! This uses the graph minors framework of Robertson and Seymour.
+\end_layout
+
+\begin_layout Standard
+For approximating congestion:
+\end_layout
+
+\begin_layout Theorem
+[Chuzhoy/Naur].
+ For directed graphs, max-congestion is 
+\begin_inset Formula $\mathcal{NP}$
+\end_inset
+
+-hard to approximate to within 
+\begin_inset Formula $\O(\log\log n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+[Andrews/Zhang].
+ For undirected graphs, max-congestion is 
+\begin_inset Formula $\mathcal{NP}$
+\end_inset
+
+-hard to approximate to within 
+\begin_inset Formula $\O((\log\log n)^{1-\epsilon})$
+\end_inset
+
+ for any 
+\begin_inset Formula $\epsilon>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The distinction from the easy EDP problem is that in the easy version, any
+ 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+ can be connected to any 
+\begin_inset Formula $t_{j}$
+\end_inset
+
+, but here each 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+ must be connected to a specific 
+\begin_inset Formula $t_{j}$
+\end_inset
+
+.
+ In the easy version, we had a multi-flow problem where one unit of flow
+ entered at each of the sources, one unit of flow exited at each of the
+ sinks, and each edge had capacity one.
+ It was essential that there was an optimal integral flow so we could do
+ a path decomposition.
+\end_layout
+
+\begin_layout Standard
+Our approach is to set up a flow problem via an LP and obtain a fractional
+ flow.
+ Somehow we will need to round this flow intelligently.
+\end_layout
+
+\begin_layout Standard
+Our flow problem has one unit of flow entering at 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+ which must be routed to 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $f_{i}(e)$
+\end_inset
+
+ be the flow through edge 
+\begin_inset Formula $e$
+\end_inset
+
+ originating from 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $c$
+\end_inset
+
+ be the overall congestion.
+ We have the LP:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\min\text{ }  & c\\
+\text{s.t. } & \sum_{e\text{ out of }s_{i}}f_{i}(e)=1 & \forall i\\
+ & \sum_{e\text{ into }v}f_{i}(e)=\sum_{e\text{ out of }v}f_{i}(e) & \forall i\text{ and }\forall v\notin\{s_{i},t_{i}\}\\
+ & f_{i}(e)\geq0 & \forall i\text{ and }\forall e\\
+ & c\geq\sum_{i}f_{i}(e) & \forall e
+\end{align*}
+
+\end_inset
+
+For an integrality gap, imagine we have two nodes 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ with 
+\begin_inset Formula $m$
+\end_inset
+
+ edges.
+ Then the LP splits flow evenly for a congestion of 
+\begin_inset Formula $1/n$
+\end_inset
+
+, while the actual congestion is 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ Then the integrality gap is 
+\begin_inset Formula $m$
+\end_inset
+
+ – pretty bad!
+\end_layout
+
+\begin_layout Standard
+But, the actual lower bound on the congestion is 1, so if we encode that
+ as a constraint, we will get rid of the bad integrality gap.
+\begin_inset Formula 
+\begin{align*}
+\min\text{ }  & c\\
+\text{s.t. } & \sum_{e\text{ out of }s_{i}}f_{i}(e)=1 & \forall i\\
+ & \sum_{e\text{ into }v}f_{i}(e)=\sum_{e\text{ out of }v}f_{i}(e) & \forall i\text{ and }\forall v\notin\{s_{i},t_{i}\}\\
+ & f_{i}(e)\geq0 & \forall i\text{ and }\forall e\\
+ & c\geq1\\
+ & c\geq\sum_{i}f_{i}(e) & \forall e
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

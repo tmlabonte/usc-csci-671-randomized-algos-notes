@@ -1,0 +1,940 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\mathcal{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathscr{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\I}{\mathscr{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\intercal}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eps}{\epsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ph}{\varphi}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Congestion and Minors
+\end_layout
+
+\begin_layout Section
+Connecting Terminals to Minimize Congestion
+\end_layout
+
+\begin_layout Subsection
+Setup
+\end_layout
+
+\begin_layout Standard
+Recall from last time that we came up with the following LP:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\min\text{ } & c\\
+\text{s.t. } & \sum_{e\text{ out of }s_{i}}f_{i}(e)=1 & \forall i\\
+ & \sum_{e\text{ into }v}f_{i}(e)=\sum_{e\text{ out of }v}f_{i}(e) & \forall i\text{ and }\forall v\notin\{s_{i},t_{i}\}\\
+ & f_{i}(e)\geq0 & \forall i\text{ and }\forall e\\
+ & c\geq1\\
+ & c\geq\sum_{i}f_{i}(e) & \forall e
+\end{align*}
+
+\end_inset
+
+Recall that the path decomposition of a flow 
+\begin_inset Formula $f$
+\end_inset
+
+ from 
+\begin_inset Formula $s$
+\end_inset
+
+ to 
+\begin_inset Formula $t$
+\end_inset
+
+ is paths 
+\begin_inset Formula $P_{1},P_{2},\dots,P_{\ell}$
+\end_inset
+
+ from 
+\begin_inset Formula $s$
+\end_inset
+
+ to 
+\begin_inset Formula $t$
+\end_inset
+
+ with flow amounts 
+\begin_inset Formula $\alpha_{1},\alpha_{2},\dots,\alpha_{\ell}\geq0$
+\end_inset
+
+ such that for each edge 
+\begin_inset Formula $e$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\sum_{i:e\in P_{i}}\alpha_{i}=f_{e}.
+\]
+
+\end_inset
+
+That is, a flow is equivalent to a distribution over paths.
+ There always exists a decomposition into at most 
+\begin_inset Formula $m$
+\end_inset
+
+ paths, and it can be found efficiently – in other words, 
+\begin_inset Formula $\ell\le m$
+\end_inset
+
+ is enough.
+\end_layout
+
+\begin_layout Standard
+Specifically for our LP, focusing on one flow 
+\begin_inset Formula $f_{i}$
+\end_inset
+
+, we have 
+\begin_inset Formula $P_{i1},P_{i2},\dots,P_{i\ell_{i}}$
+\end_inset
+
+ with 
+\begin_inset Formula $\alpha_{i1},\alpha_{i2},\dots,\alpha_{i\ell_{i}}\geq0$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\[
+\sum_{j=1}^{\ell_{i}}\alpha_{ij}=1.
+\]
+
+\end_inset
+
+Now we can interpret the 
+\begin_inset Formula $\alpha_{ij}$
+\end_inset
+
+ as probabilities.
+ For each terminal pair 
+\begin_inset Formula $i$
+\end_inset
+
+, pick path 
+\begin_inset Formula $P_{ij}$
+\end_inset
+
+ with probability 
+\begin_inset Formula $\alpha_{ij}$
+\end_inset
+
+.
+ Make the choices for different 
+\begin_inset Formula $i$
+\end_inset
+
+ independently.
+\end_layout
+
+\begin_layout Subsection
+Analysis
+\end_layout
+
+\begin_layout Standard
+We want to bound the maximum congestion for any edge.
+ First, focus on the congestion 
+\begin_inset Formula $C_{e}$
+\end_inset
+
+ of edge 
+\begin_inset Formula $e$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $X_{ei}$
+\end_inset
+
+ be an indicator variable representing whether 
+\begin_inset Formula $(s_{i},t_{i})$
+\end_inset
+
+ uses 
+\begin_inset Formula $e$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+C_{e} & =\text{\# of paths using }e\\
+ & =\sum_{i}X_{ei},\\
+\E[C_{e}] & =\sum_{i}\Pr[(s_{i},t_{i})\text{ uses }e]\\
+ & =\sum_{i}\sum_{j:e\in P_{ij}}\alpha_{ij}\\
+ & =\sum_{i}f_{i}(e).
+\end{align*}
+
+\end_inset
+
+We really care about 
+\begin_inset Formula $C=\max_{e}C_{e}$
+\end_inset
+
+.
+ To get a handle on 
+\begin_inset Formula $C$
+\end_inset
+
+, we use tail bounds to get high-probability guarantees for all 
+\begin_inset Formula $e$
+\end_inset
+
+.
+ Using Chernoff bounds,
+\begin_inset Formula 
+\[
+\Pr\big[C_{e}\geq(1+\delta)\E[C_{e}]\big]\leq\bigg(\frac{e^{\delta}}{(1+\delta)^{(1+\delta)}}\bigg)^{\E[C_{e}]}.
+\]
+
+\end_inset
+
+We'd like this to be 
+\begin_inset Formula $\leq1/n^{3}$
+\end_inset
+
+ to do a union bound.
+ Essentially, 
+\begin_inset Formula $\delta$
+\end_inset
+
+ will be our approximation guarantee, so we'd like to make 
+\begin_inset Formula $\delta$
+\end_inset
+
+ small.
+ Which range of 
+\begin_inset Formula $\E[C_{e}]$
+\end_inset
+
+ is most problematic? Since what's in the parentheses is always less than
+ 1, large 
+\begin_inset Formula $\E[C_{e}]$
+\end_inset
+
+ are good and small 
+\begin_inset Formula $\E[C_{e}]$
+\end_inset
+
+ make it harder.
+\end_layout
+
+\begin_layout Standard
+For now, focus on 
+\begin_inset Formula $\E[C_{e}]\geq1$
+\end_inset
+
+.
+ Then the worst-case is 
+\begin_inset Formula $\E[C_{e}]=1$
+\end_inset
+
+ by our LP constraint.
+\begin_inset Formula 
+\[
+\Pr\big[C_{e}\geq(1+\delta)\big]\leq\frac{e^{\delta}}{(1+\delta)^{(1+\delta)}}.
+\]
+
+\end_inset
+
+Using 
+\begin_inset Formula $\delta=\Theta(\log n/\log\log n)$
+\end_inset
+
+, we obtain 
+\begin_inset Formula $1/n^{3}$
+\end_inset
+
+ as desired (by balls-in-bins analysis).
+\end_layout
+
+\begin_layout Standard
+What about when 
+\begin_inset Formula $\E[C_{e}]<1$
+\end_inset
+
+? Then, since 
+\begin_inset Formula $c\geq1$
+\end_inset
+
+, we have slack on the LHS: we want
+\begin_inset Formula 
+\[
+\Pr\big[C_{e}\geq(1+\delta)\cdot1\big]
+\]
+
+\end_inset
+
+to be small.
+ So, we want a Chernoff bound expressed in terms of an upper bound on 
+\begin_inset Formula $\E[C_{e}]$
+\end_inset
+
+.
+ A useful upper-bound form of the Chernoff bound for 
+\begin_inset Formula $\E[X]\leq\hat{\mu}$
+\end_inset
+
+ is:
+\begin_inset Formula 
+\[
+\Pr\big[X>z\big]\leq\big(\frac{e\hat{\mu}}{z}\big)^{z}.
+\]
+
+\end_inset
+
+This follows because
+\begin_inset Formula 
+\begin{align*}
+\Pr[X>z] & =\Pr\big[X>\big(1+(\frac{z}{\mu}-1)\big)\mu\big]\\
+ & <\bigg(\frac{e^{\frac{z}{\mu}-1}}{(\frac{z}{\mu})^{z/\mu}}\bigg)^{\mu}\\
+ & =\frac{e^{z-\mu}\mu^{z}}{z^{z}}\\
+ & \leq\big(\frac{e\mu}{z}\big)^{z}\\
+ & \leq\big(\frac{e\hat{\mu}}{z}\big)^{z}.
+\end{align*}
+
+\end_inset
+
+This form is useful when you want to apply Chernoff bounds, but only have
+ an upper bound on 
+\begin_inset Formula $\E[X]$
+\end_inset
+
+.
+ Applying this to our case with 
+\begin_inset Formula $\mu\leq1$
+\end_inset
+
+ and 
+\begin_inset Formula $c\geq1$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+\Pr\big[C_{e}>\delta\big] & \leq(\frac{e}{\delta})^{\delta}\\
+ & =\frac{e^{\delta}}{\delta^{\delta}}\\
+ & \approx\frac{e^{\delta}}{(1+\delta)^{(1+\delta)}}
+\end{align*}
+
+\end_inset
+
+because 
+\begin_inset Formula $\delta>>1$
+\end_inset
+
+.
+ So 
+\begin_inset Formula $\delta=\O(\log n/\log\log n)$
+\end_inset
+
+ still gives a bound of 
+\begin_inset Formula $1/n^{3}$
+\end_inset
+
+ of one specific 
+\begin_inset Formula $e$
+\end_inset
+
+ being overcongested.
+ By the union bound over all edges, the congestion is at most 
+\begin_inset Formula $\O(\log n/\log\log n)$
+\end_inset
+
+ with probability at least 
+\begin_inset Formula $1-1/n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Tightness
+\end_layout
+
+\begin_layout Standard
+How tight is the analysis? Does the algorithm actually do better than 
+\begin_inset Formula $\Theta(\log n/\log\log n)$
+\end_inset
+
+? Consider the case where we have 
+\begin_inset Formula $m$
+\end_inset
+
+ different sources in the same node, and 
+\begin_inset Formula $m$
+\end_inset
+
+ different sinks in the same node, with 
+\begin_inset Formula $m$
+\end_inset
+
+ edges to choose from.
+ The solution is to pick a different edge for every terminal pair, but if
+ the LP splits each flow uniformly over the 
+\begin_inset Formula $m$
+\end_inset
+
+ edges, randomized rounding becomes balls-in-bins.
+ That is, with high probability, at least one bin has 
+\begin_inset Formula $\Omega(\log m/\log\log m)$
+\end_inset
+
+ balls.
+\end_layout
+
+\begin_layout Section
+A Brief Overview of Graph Minors and the Robertson-Seymour Theorems
+\end_layout
+
+\begin_layout Standard
+These theorems were built up by Robertson and Seymour over 20+ papers and
+ a 600 page proof.
+ They are useful for proving the existence of a polynomial time algorithm.
+ Define the 
+\series bold
+contraction
+\series default
+ of an edge 
+\begin_inset Formula $e=(u,v)$
+\end_inset
+
+ in an undirected graph as the removal of 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+, replacing them with a new vertex 
+\begin_inset Formula $w$
+\end_inset
+
+ that inherits all their edges (but no self-loop).
+\end_layout
+
+\begin_layout Standard
+Graph 
+\begin_inset Formula $H$
+\end_inset
+
+ is a 
+\series bold
+minor
+\series default
+ of graph 
+\begin_inset Formula $G$
+\end_inset
+
+ iff 
+\begin_inset Formula $H$
+\end_inset
+
+ can be obtained from 
+\begin_inset Formula $G$
+\end_inset
+
+ via edge or vertex deletions and edge contractions.
+ 
+\begin_inset Formula $H$
+\end_inset
+
+ is a 
+\series bold
+topological minor
+\series default
+ of 
+\begin_inset Formula $G$
+\end_inset
+
+ if there is a bijective mapping 
+\begin_inset Formula $\varphi:V(H)\rightarrow V(G)$
+\end_inset
+
+ such that for each 
+\begin_inset Formula $e=(u,v)\in E(H)$
+\end_inset
+
+, we have a path 
+\begin_inset Formula $P_{e}$
+\end_inset
+
+ in 
+\begin_inset Formula $G$
+\end_inset
+
+ from 
+\begin_inset Formula $\ph(u)$
+\end_inset
+
+ to 
+\begin_inset Formula $\ph(v)$
+\end_inset
+
+ and the 
+\begin_inset Formula $P_{e}$
+\end_inset
+
+ are edge-disjoint.
+ That is, edges in 
+\begin_inset Formula $H$
+\end_inset
+
+ correspond to edge-disjoint paths in 
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+[Robertson and Seymour].
+ Given a graph 
+\begin_inset Formula $H$
+\end_inset
+
+ of size 
+\begin_inset Formula $k$
+\end_inset
+
+ and 
+\begin_inset Formula $G$
+\end_inset
+
+ of size 
+\begin_inset Formula $n$
+\end_inset
+
+, it can be tested in time 
+\begin_inset Formula $\O(f(k)\cdot n^{3})$
+\end_inset
+
+ if 
+\begin_inset Formula $H$
+\end_inset
+
+ is a minor (or topological minor) of 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ Note: the growth of 
+\begin_inset Formula $f(k)$
+\end_inset
+
+ is horrendous, but if 
+\begin_inset Formula $k$
+\end_inset
+
+ is fixed, then this is a polynomial time algorithm.
+\end_layout
+
+\begin_layout Standard
+A
+\series bold
+ graph property
+\series default
+ is just something that is true or false for each undirected graph.
+ For example: planarity, connectedness, colorability, etc.
+ A graph property 
+\begin_inset Formula $P$
+\end_inset
+
+ is 
+\bar under
+closed under minors
+\bar default
+ if whenever 
+\begin_inset Formula $G$
+\end_inset
+
+ has property 
+\begin_inset Formula $P$
+\end_inset
+
+ and 
+\begin_inset Formula $H$
+\end_inset
+
+ is a minor of 
+\begin_inset Formula $G$
+\end_inset
+
+, 
+\begin_inset Formula $H$
+\end_inset
+
+ also has 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ (It does not apply in the other direction).
+ For example: planarity (and embeddability more generally), 
+\emph on
+dis
+\emph default
+connectedness, and having EDP between 
+\begin_inset Formula $k$
+\end_inset
+
+ terminal pairs (with 
+\begin_inset Formula $k$
+\end_inset
+
+ and the terminals fixed).
+\end_layout
+
+\begin_layout Theorem
+[Robertson and Seymour].
+ If 
+\begin_inset Formula $P$
+\end_inset
+
+ is closed under taking minors, then there exists a finite set 
+\begin_inset Formula $S_{P}=\{H_{1},H_{2},\dots,H_{m(P)}\}$
+\end_inset
+
+ of graphs such that any graph 
+\begin_inset Formula $G$
+\end_inset
+
+ has property 
+\begin_inset Formula $P$
+\end_inset
+
+ iff 
+\begin_inset Formula $G$
+\end_inset
+
+ contains none of the 
+\begin_inset Formula $H_{j}$
+\end_inset
+
+ as minors.
+\end_layout
+
+\begin_layout Example
+For planarity, we have 
+\begin_inset Formula $S_{P}=\{K_{5},K_{3,3}\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Corollary
+If 
+\begin_inset Formula $P$
+\end_inset
+
+ is closed under taking minors, then there is an 
+\begin_inset Formula $\O(n^{3})$
+\end_inset
+
+ algorithm to decide if 
+\begin_inset Formula $G$
+\end_inset
+
+ has property 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Of course, 
+\begin_inset Formula $m(P)$
+\end_inset
+
+ can be extremely large, the graphs in 
+\begin_inset Formula $S_{P}$
+\end_inset
+
+ can be large, and 
+\begin_inset Formula $f(|H_{i}|)$
+\end_inset
+
+ grows fast.
+\end_layout
+
+\begin_layout Section
+Permutation Routing on a Hypercube
+\end_layout
+
+\begin_layout Standard
+We have a 
+\begin_inset Formula $d$
+\end_inset
+
+-dimensional hypercube with 
+\begin_inset Formula $n=2^{d}$
+\end_inset
+
+ nodes.
+ Each node 
+\begin_inset Formula $u$
+\end_inset
+
+ wants to send a packet to some node 
+\begin_inset Formula $\sigma(u)$
+\end_inset
+
+.
+ The 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ form a permutation.
+ The edges of the hypercube are used for routing, and can have queues for
+ storing packets if more than one packet is ready to cross an edge at the
+ same time.
+ In each timestep, at most one packet can cross each edge.
+\end_layout
+
+\begin_layout Standard
+An algorithm is 
+\series bold
+oblivious
+\series default
+ if the route of a packet 
+\begin_inset Formula $i$
+\end_inset
+
+ depends only on 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma(i)$
+\end_inset
+
+, but not 
+\begin_inset Formula $\sigma(j)$
+\end_inset
+
+ for any 
+\begin_inset Formula $j\neq i$
+\end_inset
+
+.
+ This is similar to a parallel computer in that each processor makes its
+ own decisions independent of the other processors.
+\end_layout
+
+\begin_layout Standard
+A simple algorithm is to consider 
+\begin_inset Formula $i\otimes\sigma(i)$
+\end_inset
+
+ and use hypercube edges to 
+\begin_inset Quotes eld
+\end_inset
+
+fix
+\begin_inset Quotes erd
+\end_inset
+
+ bits from 
+\begin_inset Formula $i$
+\end_inset
+
+ to 
+\begin_inset Formula $\sigma(i)$
+\end_inset
+
+ one at a time, in some fixed order (
+\emph on
+e.g.,
+\emph default
+ left to right).
+ Each edge has a FIFO queue.
+\end_layout
+
+\begin_layout Standard
+Next time, we'll see that this algorithm can create (under some permutation
+ 
+\begin_inset Formula $\sigma$
+\end_inset
+
+) a lot of congestion at some edges, and hence a lot of delay.
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,1055 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\mathcal{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathscr{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\I}{\mathscr{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\intercal}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eps}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ph}{\varphi}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\F}{\mathbb{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\N}{\mathbb{N}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Applications of Martingales
+\end_layout
+
+\begin_layout Section
+Recovery of the Hoeffding Bound
+\end_layout
+
+\begin_layout Standard
+Let the 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ be independent random variables with 
+\begin_inset Formula $a_{i}\leq X_{i}\leq b_{i}$
+\end_inset
+
+ always.
+ We are interested in 
+\begin_inset Formula $X=f(X_{1},\dots,X_{n})=\sum_{i=1}^{n}X_{i}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $Y_{i}=\E[X\mid X_{1},\dots,X_{i}]$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $Y_{i}$
+\end_inset
+
+ is a Doob martingale we know 
+\begin_inset Formula $Y_{0}=\E[X]$
+\end_inset
+
+ and 
+\begin_inset Formula $Y_{n}=X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We'd like to study 
+\begin_inset Formula $\Pr[|X-\E[X]|>\Delta]$
+\end_inset
+
+.
+ We'd like to use the corollary form of Azuma's Inequality from last time,
+ so we need to show a Lipschitz condition.
+ Notice that if we change 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+, then 
+\begin_inset Formula $f(x_{1},\dots,x_{n})$
+\end_inset
+
+ changes by exactly the amount of change in 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+ This is upper-bounded by 
+\begin_inset Formula $c_{i}=b_{i}-a_{i}$
+\end_inset
+
+.
+ So, 
+\begin_inset Formula $f$
+\end_inset
+
+ satisfies a Lipschitz condition with 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+ in the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ argument.
+\end_layout
+
+\begin_layout Standard
+Thus,
+\begin_inset Formula 
+\[
+\Pr[|X-\E[X]|>\Delta]\leq2\exp\big(\frac{-\Delta^{2}}{2\sum_{i=1}^{n}c_{i}^{2}}\big).
+\]
+
+\end_inset
+
+This is exactly a Hoeffding bound.
+\end_layout
+
+\begin_layout Section
+Largest Clique Size in a Random Graph
+\end_layout
+
+\begin_layout Standard
+Recall that a random graph 
+\begin_inset Formula $G$
+\end_inset
+
+ has each edge 
+\begin_inset Formula $(u,v)$
+\end_inset
+
+ is present independently with probability 
+\begin_inset Formula $p_{u,v}$
+\end_inset
+
+.
+ Define indicator random variables 
+\begin_inset Formula $X_{u,v}$
+\end_inset
+
+ for whether 
+\begin_inset Formula $(u,v)\in G$
+\end_inset
+
+.
+ Then, let 
+\begin_inset Formula $f((X_{u,v})_{u,v})$
+\end_inset
+
+ be the size of the largest clique in the graph defined by the 
+\begin_inset Formula $X_{u,v}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Notice that 
+\begin_inset Formula $f$
+\end_inset
+
+ satisfies a Lipschitz condition in the sense that adding or removing an
+ edge can change the size of the largest clique by at most one.
+\end_layout
+
+\begin_layout Standard
+Recall the edge exposure martingale which reveals edges one at a time.
+ Then we have
+\begin_inset Formula 
+\begin{align*}
+\Pr[|\text{clique size}-\E[\text{clique size}]|>\Delta] & \leq2\exp\big(\frac{-\Delta^{2}}{2\sum_{u,v}1}\big)\\
+ & =2\exp\big(\frac{-\Delta^{2}}{n(n-1)}\big).
+\end{align*}
+
+\end_inset
+
+How small can we make 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ so this is still small? We need 
+\begin_inset Formula $\Delta\geq n$
+\end_inset
+
+ for any nontrivial bound.
+ 
+\begin_inset Formula $\Delta\approx n$
+\end_inset
+
+ is trivial because the clique size is always in 
+\begin_inset Formula $[n]$
+\end_inset
+
+.
+ But that is the best we can do with this bound.
+\end_layout
+
+\begin_layout Standard
+We can try the vertex exposure martingale instead, which reveals nodes one
+ at a time.
+ Revealing node 
+\begin_inset Formula $i$
+\end_inset
+
+ reveals the presence or absence of all edges between 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ and the 
+\begin_inset Formula $v_{j}$
+\end_inset
+
+ for 
+\begin_inset Formula $j<i$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $Y_{i}$
+\end_inset
+
+ be a 0-1 vector of length 
+\begin_inset Formula $i-1$
+\end_inset
+
+ capturing all edges between 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $v_{j}$
+\end_inset
+
+ for 
+\begin_inset Formula $j<i$
+\end_inset
+
+.
+ Then, let 
+\begin_inset Formula $g(\boldsymbol{y}_{1},\dots,\boldsymbol{y}_{n})$
+\end_inset
+
+ be the size of the largest clique in the graph defined by the 
+\begin_inset Formula $\boldsymbol{y}_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Notice that 
+\begin_inset Formula $g$
+\end_inset
+
+ still satisfies a Lipschitz condition in the same sense as 
+\begin_inset Formula $f$
+\end_inset
+
+, because adding or removing a node can change the size of the largest clique
+ by at most one.
+ Thus
+\begin_inset Formula 
+\begin{align*}
+\Pr[|\text{clique size}-\E[\text{clique size}]|>\Delta] & \leq2\exp\big(\frac{-\Delta^{2}}{\sum_{i=1}^{n}1}\big)\\
+ & =2\exp\big(\frac{-\Delta^{2}}{2n}\big).
+\end{align*}
+
+\end_inset
+
+Thus with probability at least 
+\begin_inset Formula $1-n^{-c}$
+\end_inset
+
+, the largest clique size is concentrated to within 
+\begin_inset Formula $\O(\sqrt{n\log n})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Notice that something similar happens when studying the chromatic number
+ of a random graph.
+ We have a Lipschitz condition with 1 in each coordinate for both martingales,
+ since we at worst have to add a new color.
+ This results in exactly the same concentration bounds as largest clique.
+\end_layout
+
+\begin_layout Section
+Connected Components in a Random Graph
+\end_layout
+
+\begin_layout Standard
+In the vertex exposure martingale, if 
+\begin_inset Formula $v_{j},j<i$
+\end_inset
+
+ have no edges and 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ connects them all, then we could decrease the number of components by 
+\begin_inset Formula $i-1$
+\end_inset
+
+.
+ So the best Lipschitz condition we can get is 
+\begin_inset Formula $c_{i}=i-1$
+\end_inset
+
+.
+ Thus
+\begin_inset Formula 
+\begin{align*}
+\Pr[|\text{\#components}-\E[\text{\#components}]|>\Delta] & \leq2\exp\big(\frac{-\Delta^{2}}{2\sum_{i=1}^{n}(i-1)^{2}}\big)\\
+ & =2\exp\big(\frac{-\Delta^{2}}{\Theta(n^{3})}\big).
+\end{align*}
+
+\end_inset
+
+So the best we could get is 
+\begin_inset Formula $\Delta\approx\Theta(n^{3/2})$
+\end_inset
+
+.
+ Since there can be at most 
+\begin_inset Formula $n$
+\end_inset
+
+ connected components, this is useless!
+\end_layout
+
+\begin_layout Standard
+Let's consider the edge exposure martingale instead.
+ Since any edge can at most merge two components, and otherwise creates
+ a new component, we have a Lipschitz condition with 
+\begin_inset Formula $c_{i}=1$
+\end_inset
+
+.
+ Thus
+\begin_inset Formula 
+\begin{align*}
+\Pr[|\text{\#components}-\E[\text{\#components}]|>\Delta] & \leq2\exp\big(\frac{-\Delta^{2}}{2{n \choose 2}}\big)\\
+ & =2\exp\big(\frac{-\Delta^{2}}{n(n-1)}\big).
+\end{align*}
+
+\end_inset
+
+So the best bound would be 
+\begin_inset Formula $\Delta\approx\Theta(n)$
+\end_inset
+
+, which is still useless! Connected components seem to fluctuate too much
+ to get any use out of this technique.
+\end_layout
+
+\begin_layout Section
+Azuma's Inequality for Degree Distributions
+\end_layout
+
+\begin_layout Standard
+The following is from N.
+ Wormald: Models of Random Regular Graphs.
+ We are interested in random graph models that produce a particular degree
+ distribution.
+ Typically, a degree distribution 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+ says what fraction of nodes have degree 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Equivalently, we can prescribe the degree 
+\begin_inset Formula $d_{v}$
+\end_inset
+
+ of each node.
+ There are generative models based on particular random processes that,
+ with high probability, produce graphs with certain distributions (not the
+ focus here, see CSCI 673).
+ Instead, we want to draw uniformly from the set of all graphs in which
+ each node 
+\begin_inset Formula $v$
+\end_inset
+
+ has a prescribed degree 
+\begin_inset Formula $d_{v}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+To make our lives easier, we allow self-loops and parallel edges (and count
+ them towards the degree).
+ Consider the following generative model, called the configuration model:
+ assume 
+\begin_inset Formula $\sum d_{v}$
+\end_inset
+
+ is even (otherwise it's impossible), then for each node 
+\begin_inset Formula $v$
+\end_inset
+
+, generate 
+\begin_inset Formula $d_{v}$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+stubs
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Find a uniformly random perfect matching of the 
+\begin_inset Formula $\sum d_{v}=2m$
+\end_inset
+
+ stubs, and 
+\begin_inset Quotes eld
+\end_inset
+
+compress
+\begin_inset Quotes erd
+\end_inset
+
+ the stubs back into the nodes, keeping the edges of the matching.
+\end_layout
+
+\begin_layout Standard
+How do we find a uniformly random perfect matching of the stubs? One way
+ is to generate a uniformly random order, then match 
+\begin_inset Formula $2i-1$
+\end_inset
+
+ with 
+\begin_inset Formula $2i$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Another is to put the stubs in an arbitrary order, go through the stubs
+ in this order, and always look at the first unmatched stub 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Match it with a uniformly random unmatched stub (which necessarily has
+ 
+\begin_inset Formula $j>i$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+We'd like similar concentration bounds to those for independent edge generation.
+ The problem is, the presence or absence of edges is not independent, and
+ it is not clear whether there is some other representation of randomness
+ as 
+\begin_inset Formula $X_{1},\dots,X_{k}$
+\end_inset
+
+ such that we can consider the graph determined by 
+\begin_inset Formula $X_{1},\dots,X_{k}$
+\end_inset
+
+ independent and obtain useful Lipschitz conditions.
+\end_layout
+
+\begin_layout Standard
+Instead, define a different approach.
+ We say that 
+\begin_inset Formula $G,G\p$
+\end_inset
+
+ differ in a 
+\begin_inset Quotes eld
+\end_inset
+
+simple switching
+\begin_inset Quotes erd
+\end_inset
+
+ if there exists 
+\begin_inset Formula $u,v,u\p,v\p$
+\end_inset
+
+ such that: (i) 
+\begin_inset Formula $(u,v)\in G,(u\p,v\p)\in G$
+\end_inset
+
+, (ii) 
+\begin_inset Formula $(u,v\p)\in G\p,(u\p,v)\in G\p$
+\end_inset
+
+, (iii) 
+\begin_inset Formula $G\p=G\setminus\{(u,v),(u\p,v\p)\cup\{(u,v\p),(u\p,v)\}$
+\end_inset
+
+.
+ Basically, everything else in the graph is the same except two edges swap
+ destinations.
+ When there is a simple switching between 
+\begin_inset Formula $G$
+\end_inset
+
+ and 
+\begin_inset Formula $G\p$
+\end_inset
+
+, we write 
+\begin_inset Formula $G\sim G\p$
+\end_inset
+
+.
+ In some sense this is the minimal change you can make to move between two
+ graphs with the same degree distribution.
+\end_layout
+
+\begin_layout Theorem
+[Wormald 2.19].
+ Let 
+\begin_inset Formula $X_{n}$
+\end_inset
+
+ be a random variable defined over random multigraphs with a given degree
+ sequence 
+\begin_inset Formula $(d_{v})$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\[
+|X(G)-X(G\p)|<c
+\]
+
+\end_inset
+
+whenever 
+\begin_inset Formula $G\sim G\p$
+\end_inset
+
+.
+ Then
+\begin_inset Formula 
+\begin{align*}
+\Pr[|X-\E[X]|\geq\Delta] & \leq2\exp\big(\frac{-\Delta^{2}}{c^{2}\sum_{v}d_{v}}\big)\\
+ & =2\exp\big(\frac{-\Delta^{2}}{2c^{2}m}\big).
+\end{align*}
+
+\end_inset
+
+This is exactly what we would get out of an edge exposure martingale with
+ 
+\begin_inset Formula $m$
+\end_inset
+
+ steps and a bounded difference of 
+\begin_inset Formula $c$
+\end_inset
+
+ for each step.
+\end_layout
+
+\begin_layout Proof
+Define a Doob martingale with edges exposed in the order defined above:
+ stubs are numbered arbitrarily 
+\begin_inset Formula $1,\dots,2m$
+\end_inset
+
+ and we always match the lowest-numbered free stub with a uniformly random
+ free stub.
+ Define the random graph 
+\begin_inset Formula $G(k)$
+\end_inset
+
+ to be the set of edges revealed after 
+\begin_inset Formula $k$
+\end_inset
+
+ iterations.
+ Thus 
+\begin_inset Formula $Y_{k}\coloneqq\E[X\mid G(k)]$
+\end_inset
+
+ is a Doob martingale for 
+\begin_inset Formula $X$
+\end_inset
+
+ – that is, 
+\begin_inset Formula $Y_{0}=\E[X]$
+\end_inset
+
+ and 
+\begin_inset Formula $Y_{m}=X$
+\end_inset
+
+.
+ Note that 
+\begin_inset Formula $m=\frac{1}{2}\sum_{v}d_{v}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Our goal is to apply Azuma's Inequality, so we need to establish bounded
+ differences: 
+\begin_inset Formula $|Y_{k+1}-Y_{k}|\leq c$
+\end_inset
+
+ for all 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ Then, the result follows immediately.
+ We will compare
+\begin_inset Formula 
+\[
+\E[X\mid G(k+1)=g(k+1)]\text{ vs. }\E[X\mid G(k)=g(k)].
+\]
+
+\end_inset
+
+We will consider a graph 
+\begin_inset Formula $g(k)$
+\end_inset
+
+ and an edge 
+\begin_inset Formula $(i,j)=g(k+1)\setminus g(k)$
+\end_inset
+
+.
+ (Note that 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ are stubs, not nodes.
+ We have
+\begin_inset Formula 
+\begin{align*}
+\E[X\mid G(k+1)=g(k+1)] & =\sum_{x}x\cdot\Pr[X=x\mid G(k+1)\mid g(k+1)]\\
+ & =\sum_{h\sim\text{all graphs w/correct degrees}}X(h)\cdot\Pr[\text{draw }h\mid G(k+1)=g(k+1)]\\
+ & =\sum_{h\supseteq g(k+1)}X(h)\cdot\Pr[\text{draw }h\mid G(k+1)=g(k+1)].
+\end{align*}
+
+\end_inset
+
+Similarly, we know
+\begin_inset Formula 
+\[
+\E[X\mid G(k)=g(k)]=\sum_{g\supseteq g(k)}X(j)\cdot\Pr[\text{draw }h\mid G(k)=g(k)].
+\]
+
+\end_inset
+
+In the end, we want
+\begin_inset Formula 
+\begin{align*}
+|Y_{k+1}-Y_{k}| & =|\sum_{h\subseteq g(k+1)}X(h)\cdot\Pr[h\mid G(k+1)=g(k+1)]\\
+ & -\sum_{g\supseteq g(k)}X(g)\cdot\Pr[g\mid G(k)=g(k)]|.
+\end{align*}
+
+\end_inset
+
+So we want to somehow relate these two sums with a charging argument.
+ For now, fix any 
+\begin_inset Formula $g\supseteq g(k)$
+\end_inset
+
+ (where 
+\begin_inset Formula $g$
+\end_inset
+
+ is a completed graph with 
+\begin_inset Formula $m$
+\end_inset
+
+ edges) and recall 
+\begin_inset Formula $g(k+1)=g(k)\cup\{i,j\}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $j\p$
+\end_inset
+
+ be the match of 
+\begin_inset Formula $i$
+\end_inset
+
+ in 
+\begin_inset Formula $g$
+\end_inset
+
+ and 
+\begin_inset Formula $\ell$
+\end_inset
+
+ be the match of 
+\begin_inset Formula $j$
+\end_inset
+
+ in 
+\begin_inset Formula $g$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Define 
+\begin_inset Formula $\sigma(g)=g\setminus\{(i,j\p),(j,\ell)\}\cup\{(i,j),(j\p,\ell)\}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $i$
+\end_inset
+
+ is matched with 
+\begin_inset Formula $j$
+\end_inset
+
+ in 
+\begin_inset Formula $g$
+\end_inset
+
+, then 
+\begin_inset Formula $\sigma(g)=g$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula $\sigma(g)\supseteq g(k+1)$
+\end_inset
+
+ because we 
+\begin_inset Quotes eld
+\end_inset
+
+fixed
+\begin_inset Quotes erd
+\end_inset
+
+ the one edge they disagreed on.
+ Since matchings are drawn uniformly at random,
+\begin_inset Formula 
+\[
+\Pr[\text{draw }\sigma(g)\mid G(k)=g(k)=\Pr[\text{draw }g\mid G(k)=g(k)].
+\]
+
+\end_inset
+
+How many different 
+\begin_inset Formula $g$
+\end_inset
+
+ have the same 
+\begin_inset Formula $\sigma(g)$
+\end_inset
+
+? There are 
+\begin_inset Formula $2m-2k-1$
+\end_inset
+
+ possible choices for 
+\begin_inset Formula $j\p$
+\end_inset
+
+.
+ But 
+\begin_inset Formula $i,j,j\p$
+\end_inset
+
+ determines 
+\begin_inset Formula $\ell$
+\end_inset
+
+, so 
+\begin_inset Formula $j\p$
+\end_inset
+
+ fully determines 
+\begin_inset Formula $\sigma(g)$
+\end_inset
+
+.
+ So there are 
+\begin_inset Formula $2m-2k-1$
+\end_inset
+
+ choices of 
+\begin_inset Formula $g$
+\end_inset
+
+ with 
+\begin_inset Formula $\sigma(g)=h$
+\end_inset
+
+ total for every 
+\begin_inset Formula $h\supseteq g(k+1)$
+\end_inset
+
+.
+ We can now rewrite 
+\begin_inset Formula $|Y_{k+1}-Y_{k}|$
+\end_inset
+
+ as
+\begin_inset Formula 
+\begin{align*}
+|\sum_{h\supseteq g(k+1)}X(h)\cdot\Pr[h\mid G(k)=g(k)]\cdot(2m-2k-1)\\
+-\sum_{g\supseteq g(k)}X(g)\cdot\Pr[\sigma(g)\mid G(k)=g(k)]|.
+\end{align*}
+
+\end_inset
+
+By the triangle inequality this is at most
+\begin_inset Formula 
+\[
+\sum_{h\supseteq g(k+1)}\Pr[h\mid G(k)=g(k)]\cdot|(2m-2k-1)\cdot X(h)-\sum_{g:\sigma(g)=h}X(g)|.
+\]
+
+\end_inset
+
+Because the second sum contains exactly 
+\begin_inset Formula $2m-2k-1$
+\end_inset
+
+ terms, we use the triangle inequality once more to obtain
+\begin_inset Formula 
+\[
+\sum_{h\supseteq g(k+1)}\Pr[h\mid G(k)=g(k)]\cdot\sum_{g:\sigma(g)=h}|X(h)-X(g)|.
+\]
+
+\end_inset
+
+Since 
+\begin_inset Formula $\sigma(g)$
+\end_inset
+
+ and 
+\begin_inset Formula $g$
+\end_inset
+
+ differ by a simple swap, this is at most
+\begin_inset Formula 
+\[
+c\sum_{h\supseteq g(k+1)}\Pr[h\mid G(k)=g(k)]\cdot(2m-2k-1),
+\]
+
+\end_inset
+
+which is exactly equal to 
+\begin_inset Formula $c$
+\end_inset
+
+ because the inner sum is
+\begin_inset Formula 
+\[
+\Pr[h\mid G(k+1)=g(k+1)].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

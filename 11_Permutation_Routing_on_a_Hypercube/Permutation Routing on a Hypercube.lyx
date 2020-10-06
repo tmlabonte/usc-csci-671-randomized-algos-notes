@@ -1,0 +1,1162 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\mathcal{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathscr{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\I}{\mathscr{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\intercal}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eps}{\epsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ph}{\varphi}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Permutation Routing on a Hypercube
+\end_layout
+
+\begin_layout Section
+Deterministic Method Fails
+\end_layout
+
+\begin_layout Standard
+We will show that the oblivious algorithm which considers 
+\begin_inset Formula $i\otimes\sigma(i)$
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+fixes
+\begin_inset Quotes erd
+\end_inset
+
+ bits one at a time can create a lot of congestion, and hence a lot of delay.
+ In particular, consider the transposition permutation – route from 
+\begin_inset Formula $ab$
+\end_inset
+
+ to 
+\begin_inset Formula $ba$
+\end_inset
+
+ (each of 
+\begin_inset Formula $a,b$
+\end_inset
+
+ are 
+\begin_inset Formula $d/2$
+\end_inset
+
+ bits long).
+ In other words, we swap the first and second halves of the bitstring.
+\end_layout
+
+\begin_layout Standard
+Consider all sources 
+\begin_inset Formula $u=1a\p000\dots0$
+\end_inset
+
+ with 
+\begin_inset Formula $|a\p|=d/2-1$
+\end_inset
+
+ and 
+\begin_inset Formula $d/2$
+\end_inset
+
+ zeros.
+ They go to 
+\begin_inset Formula $000\dots01a\p$
+\end_inset
+
+.
+ All of these go to 
+\begin_inset Formula $000\dots0$
+\end_inset
+
+ and from there to 
+\begin_inset Formula $000\dots010\dots0$
+\end_inset
+
+.
+ As a result, 
+\begin_inset Formula $2^{d/2-1}=\sqrt{n}/2$
+\end_inset
+
+ packets use the edge from 
+\begin_inset Formula $000\dots0$
+\end_inset
+
+ to 
+\begin_inset Formula $000\dots010\dots0$
+\end_inset
+
+.
+ So the congestion is at least 
+\begin_inset Formula $\sqrt{n}/2$
+\end_inset
+
+, and the delay is at least 
+\begin_inset Formula $\sqrt{n}/2$
+\end_inset
+
+ – pretty bad! More generally, for any graph 
+\begin_inset Formula $G$
+\end_inset
+
+ with maximum degree 
+\begin_inset Formula $d$
+\end_inset
+
+ and any deterministic algorithm (oblivious or not), there is a lower bound
+ of 
+\begin_inset Formula $\Omega(\sqrt{n/d})$
+\end_inset
+
+ on the maximum delay.
+\end_layout
+
+\begin_layout Standard
+The problem is that we can carefully construct bottlenecks that cause a
+ lot of delay.
+ To avoid this, for each source 
+\begin_inset Formula $i$
+\end_inset
+
+ we will route it to a uniformly random intermediate destination 
+\begin_inset Formula $\sigma\p(i)$
+\end_inset
+
+ and from there to the actual destination 
+\begin_inset Formula $\sigma(i)$
+\end_inset
+
+.
+ We will continue to use the left-to-right fixing algorithm and FIFO queues
+ at each node in each stage.
+ The only randomness is in 
+\begin_inset Formula $\sigma\p(i)$
+\end_inset
+
+.
+ Note that multiple 
+\begin_inset Formula $i$
+\end_inset
+
+ can have the same 
+\begin_inset Formula $\sigma\p(i)$
+\end_inset
+
+, but the algorithm is oblivious.
+\end_layout
+
+\begin_layout Standard
+The two phases are symmetric, so we only analyze the first phase and double
+ it.
+ Rename 
+\begin_inset Formula $\sigma\p(i)$
+\end_inset
+
+ to 
+\begin_inset Formula $\sigma(i)$
+\end_inset
+
+.
+ Packet 
+\begin_inset Formula $i$
+\end_inset
+
+ travels from 
+\begin_inset Formula $i$
+\end_inset
+
+ to 
+\begin_inset Formula $\sigma(i)$
+\end_inset
+
+ along a path 
+\begin_inset Formula $P_{i}=(e_{i,1},\dots,e_{i,k_{i}})$
+\end_inset
+
+ – usually we will write 
+\begin_inset Formula $(e_{1},\dots,e_{k})$
+\end_inset
+
+ when 
+\begin_inset Formula $i$
+\end_inset
+
+ is clear.
+ Since 
+\begin_inset Formula $k\leq d=\log_{2}n$
+\end_inset
+
+, this would take 
+\begin_inset Formula $\log_{2}n$
+\end_inset
+
+ steps if it weren't for delays.
+\end_layout
+
+\begin_layout Section
+Delay Analysis
+\end_layout
+
+\begin_layout Standard
+Delays are caused when 
+\begin_inset Formula $i$
+\end_inset
+
+ wants to cross 
+\begin_inset Formula $e_{j}$
+\end_inset
+
+, but has to wait for other packets to cross 
+\begin_inset Formula $e_{j}$
+\end_inset
+
+ first.
+ Our goal is to precisely relate the resulting delay of 
+\begin_inset Formula $i$
+\end_inset
+
+ to the number of packets sharing an edge with 
+\begin_inset Formula $i$
+\end_inset
+
+, then use randomness in 
+\begin_inset Formula $\sigma(i)$
+\end_inset
+
+ to bound this quantity.
+ The high-level idea is to develop a charging scheme, which charges each
+ unit of delay to a specific packet.
+\end_layout
+
+\begin_layout Lemma
+Consider packets 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ Suppose that their paths separate afer crossing some edge 
+\begin_inset Formula $e$
+\end_inset
+
+.
+ Then their paths will never rejoin.
+\end_layout
+
+\begin_layout Proof
+Say that after crossing, 
+\begin_inset Formula $i$
+\end_inset
+
+ fixes an earlier bit than 
+\begin_inset Formula $j$
+\end_inset
+
+ next.
+ Then by the left-to-right ordering, 
+\begin_inset Formula $j$
+\end_inset
+
+'s path can never fix that bit, so 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ will never visit the same vertex again.
+\end_layout
+
+\begin_layout Lemma
+If 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ both cross 
+\begin_inset Formula $e$
+\end_inset
+
+ and 
+\begin_inset Formula $e\p$
+\end_inset
+
+, and 
+\begin_inset Formula $i$
+\end_inset
+
+ crosses 
+\begin_inset Formula $e$
+\end_inset
+
+ before 
+\begin_inset Formula $j$
+\end_inset
+
+, then 
+\begin_inset Formula $i$
+\end_inset
+
+ also crosses 
+\begin_inset Formula $e\p$
+\end_inset
+
+ before 
+\begin_inset Formula $j$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+By Lemma 1, 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ follow the same path between 
+\begin_inset Formula $e$
+\end_inset
+
+ and 
+\begin_inset Formula $e\p$
+\end_inset
+
+.
+ The result then follows from FIFO queues and induction on the path.
+\end_layout
+
+\begin_layout Standard
+Fix packet 
+\begin_inset Formula $i$
+\end_inset
+
+ with path 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+ be the set of all packets that cross one or more edges of 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ (this includes 
+\begin_inset Formula $i$
+\end_inset
+
+ itself).
+\end_layout
+
+\begin_layout Lemma
+The delay of 
+\begin_inset Formula $i$
+\end_inset
+
+ is at most 
+\begin_inset Formula $|S_{i}|$
+\end_inset
+
+.
+ (The delay is the difference between the arrival time and 
+\begin_inset Formula $|P_{i}|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The interesting thing here is that 
+\begin_inset Formula $i$
+\end_inset
+
+ may repeatedly wait in queues behind the same packet 
+\begin_inset Formula $j$
+\end_inset
+
+, so on the surface it looks like an upper bound might only be 
+\begin_inset Formula $|S_{i}|\cdot|P_{i}|$
+\end_inset
+
+.
+ We will show that even if 
+\begin_inset Formula $i$
+\end_inset
+
+ waits behind 
+\begin_inset Formula $j$
+\end_inset
+
+ multiple times, each of these waits can be charged to a different packet
+ in 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Fix packet 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ For any packet 
+\begin_inset Formula $i\p\in S_{i}$
+\end_inset
+
+, define the lag of 
+\begin_inset Formula $i\p$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+ as 
+\begin_inset Formula $t-j$
+\end_inset
+
+ if 
+\begin_inset Formula $i\p$
+\end_inset
+
+ is ready to cross edge 
+\begin_inset Formula $e_{j}$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Recall that 
+\begin_inset Formula $P_{i}=(e_{1},\dots,e_{k})$
+\end_inset
+
+ and 
+\begin_inset Formula $e_{j}$
+\end_inset
+
+ is defined with respect to 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+, not 
+\begin_inset Formula $P_{i\p}$
+\end_inset
+
+.
+ The final lag of 
+\begin_inset Formula $i$
+\end_inset
+
+ (when it crosses 
+\begin_inset Formula $e_{k}$
+\end_inset
+
+) is exactly the delay of 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Clearly, lags never decrease.
+ The lag of 
+\begin_inset Formula $i\p$
+\end_inset
+
+ increases if and only if 
+\begin_inset Formula $i\p$
+\end_inset
+
+ is waiting in a queue at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Consider the minimum lag
+\begin_inset Formula 
+\[
+\ell(t)=\min\{\text{lag of }i\p\text{ at time }t:i\p\text{ is still on }P_{i}\}.
+\]
+
+\end_inset
+
+Consider a timestep 
+\begin_inset Formula $t$
+\end_inset
+
+ when 
+\begin_inset Formula $\ell(t)$
+\end_inset
+
+ increases, 
+\emph on
+i.e.,
+\emph default
+ 
+\begin_inset Formula $\ell(t+1)=\ell(t)+1$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $i\p$
+\end_inset
+
+ be a packet that attains 
+\begin_inset Formula $\ell(t)$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $i\p$
+\end_inset
+
+ must have been delayed at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Otherwise, it would still have lag 
+\begin_inset Formula $\ell(t)$
+\end_inset
+
+ at time 
+\begin_inset Formula $t+1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Say 
+\begin_inset Formula $i\p$
+\end_inset
+
+ was ready to cross 
+\begin_inset Formula $e_{j}$
+\end_inset
+
+, so 
+\begin_inset Formula $\ell(t)=t-j$
+\end_inset
+
+.
+ Instead, some 
+\begin_inset Formula $\hat{i}$
+\end_inset
+
+ crossed 
+\begin_inset Formula $e_{j}$
+\end_inset
+
+.
+ We know 
+\begin_inset Formula $\hat{i}\in S_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{i}$
+\end_inset
+
+ is on 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Because 
+\begin_inset Formula $\hat{i}$
+\end_inset
+
+ was ready to cross 
+\begin_inset Formula $e_{j}$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+, it too had lag 
+\begin_inset Formula $\ell(t)=t-j$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\hat{i}$
+\end_inset
+
+ did not diverge from 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ next, it would have to next cross 
+\begin_inset Formula $e_{j+1}$
+\end_inset
+
+.
+ But then its lag at time 
+\begin_inset Formula $t+1$
+\end_inset
+
+ is 
+\begin_inset Formula $(t+1)-(j+1)=t-j=\ell(t)$
+\end_inset
+
+, and we chose 
+\begin_inset Formula $t$
+\end_inset
+
+ such that 
+\begin_inset Formula $\ell(t+1)>\ell(t)$
+\end_inset
+
+.
+ But 
+\begin_inset Formula $\hat{i}$
+\end_inset
+
+ would ensure 
+\begin_inset Formula $\ell(t+1)=\ell(t)$
+\end_inset
+
+.
+ So 
+\begin_inset Formula $\hat{i}$
+\end_inset
+
+ must diverge, and by Lemma 1 will never rejoin 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+We charge the lag increase to 
+\begin_inset Formula $\hat{i}$
+\end_inset
+
+, and every packet 
+\begin_inset Formula $\hat{i}\in S_{i}$
+\end_inset
+
+ is charged at most once.
+ So, 
+\begin_inset Formula $\ell(t)\leq|S_{i}|$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Finally, at the step 
+\begin_inset Formula $t$
+\end_inset
+
+ when 
+\begin_inset Formula $i$
+\end_inset
+
+ crosses 
+\begin_inset Formula $e_{k}$
+\end_inset
+
+, it has minimum lag (because it is furthest ahead on 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+) so it has lag 
+\begin_inset Formula $\ell(t)\leq|S_{i}|$
+\end_inset
+
+, and its lag equals its delay.
+\end_layout
+
+\begin_layout Section
+Tail Bound Application
+\end_layout
+
+\begin_layout Standard
+The remaining step is to use the random destination 
+\begin_inset Formula $\sigma(i)$
+\end_inset
+
+ to bound the size of 
+\begin_inset Formula $|S_{i}|$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $H_{ij}$
+\end_inset
+
+ be an indicator variable representing whether 
+\begin_inset Formula $P_{i}\cap P_{j}\neq\emptyset$
+\end_inset
+
+.
+ Then
+\begin_inset Formula 
+\begin{align*}
+|S_{i}| & =\sum_{j}H_{ij},\\
+\E[|S_{i}|] & =\sum_{j}\Pr[P_{i}\cap P_{j}\neq0]
+\end{align*}
+
+\end_inset
+
+We are interested in the maximum delay of any packet, which is upper-bounded
+ by 
+\begin_inset Formula $\max_{i}|S_{i}|$
+\end_inset
+
+.
+ For fixed 
+\begin_inset Formula $i$
+\end_inset
+
+, the 
+\begin_inset Formula $H_{ij}$
+\end_inset
+
+ as we vary 
+\begin_inset Formula $j$
+\end_inset
+
+ are mutually independent, so we will apply Chernoff bounds, then take a
+ union bound.
+\end_layout
+
+\begin_layout Standard
+Calculating 
+\begin_inset Formula $\Pr[P_{i}\cap P_{j}\neq0]$
+\end_inset
+
+ is not obvious, so we will upper-bound it by 
+\begin_inset Formula $H_{ij}\leq|P_{i}\cap P_{j}|$
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula 
+\begin{align*}
+\E[|S_{i}|\mid P_{i}] & \leq\sum_{j}\E[|P_{i}\cap P_{j}|]\\
+ & =\sum_{e\in P_{i}}\E[\#j:e\in P_{j}]
+\end{align*}
+
+\end_inset
+
+Focus on one edge 
+\begin_inset Formula $e=(u,v)$
+\end_inset
+
+ and calculate 
+\begin_inset Formula $\E[\#j:e\in P_{j}]$
+\end_inset
+
+.
+ Without loss of generality, 
+\begin_inset Formula $u=a0b$
+\end_inset
+
+, 
+\begin_inset Formula $v=a1b$
+\end_inset
+
+ because 
+\begin_inset Formula $e$
+\end_inset
+
+ just flips one bit.
+ Because 
+\begin_inset Formula $e$
+\end_inset
+
+ is on the path 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+, we know 
+\begin_inset Formula $i=a\p0b$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma(i)=a1b\p$
+\end_inset
+
+ for some 
+\begin_inset Formula $a\p,b\p$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $e$
+\end_inset
+
+ is on the path 
+\begin_inset Formula $P_{j}$
+\end_inset
+
+, then 
+\begin_inset Formula $j=a\p\p0b$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma(j)=a1b\p\p$
+\end_inset
+
+ for some 
+\begin_inset Formula $a\p\p,b\p\p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+How many candidate nodes 
+\begin_inset Formula $j$
+\end_inset
+
+ are there? If the sequence 
+\begin_inset Formula $a$
+\end_inset
+
+ has length 
+\begin_inset Formula $k$
+\end_inset
+
+, then there are 
+\begin_inset Formula $2^{k}$
+\end_inset
+
+ such nodes – one for each bitstring 
+\begin_inset Formula $a\p\p$
+\end_inset
+
+.
+ For any such node, the probability of choosing 
+\begin_inset Formula $\sigma(j)$
+\end_inset
+
+ that will route through 
+\begin_inset Formula $e$
+\end_inset
+
+ is
+\begin_inset Formula 
+\[
+\frac{2^{|b|}}{2^{d}}=2^{-(k+1)}
+\]
+
+\end_inset
+
+So, 
+\begin_inset Formula 
+\[
+\E[\#j:e\in P_{j}]=2^{k}\cdot2^{-(k+1)}=\frac{1}{2}.
+\]
+
+\end_inset
+
+Thus 
+\begin_inset Formula 
+\[
+\E[|S_{i}|\mid P_{i}]\leq\frac{|P_{i}|}{2}\leq\frac{d}{2}.
+\]
+
+\end_inset
+
+So 
+\begin_inset Formula $\E[|S_{i}|]\leq d/2$
+\end_inset
+
+ and 
+\begin_inset Formula $|S_{i}|$
+\end_inset
+
+ is a sum of independent Bernoullis, so we apply Chernoff bounds (upper
+ bound on expectation version):
+\begin_inset Formula 
+\[
+\Pr[X\geq\Delta]\leq\big(\frac{e\mu}{\Delta}\big)^{\Delta}
+\]
+
+\end_inset
+
+if 
+\begin_inset Formula $\mu\geq\E[X]$
+\end_inset
+
+.
+ With 
+\begin_inset Formula $\mu=d/2$
+\end_inset
+
+, choose 
+\begin_inset Formula $\Delta=3d$
+\end_inset
+
+, so 
+\begin_inset Formula 
+\begin{align*}
+\Pr[X\geq3d] & \leq\big(\frac{ed}{6}\big)^{3d}\\
+ & \leq2^{-3d}
+\end{align*}
+
+\end_inset
+
+and since 
+\begin_inset Formula $d=\log_{2}n$
+\end_inset
+
+, this is 
+\begin_inset Formula $n^{-3}$
+\end_inset
+
+.
+ Finally, a union bound over 
+\begin_inset Formula $n$
+\end_inset
+
+ nodes and two routing phases implies that with probability at least 
+\begin_inset Formula $1-2/n^{2}$
+\end_inset
+
+, all delays in each phase are at most 
+\begin_inset Formula $3d$
+\end_inset
+
+.
+ Add to this at most 
+\begin_inset Formula $d+d=2d$
+\end_inset
+
+ routing steps along edges of 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Therefore with probability at least 
+\begin_inset Formula $1-2/n^{2}$
+\end_inset
+
+, all packets reach their destinations in at most 
+\begin_inset Formula $8d$
+\end_inset
+
+ steps.
+ Note that 
+\begin_inset Formula $8d=\O(\log n)$
+\end_inset
+
+ is exponentially faster 
+\begin_inset Formula $\Omega(\sqrt{n})$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

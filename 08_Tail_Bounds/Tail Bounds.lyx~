@@ -1,0 +1,1095 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\mathcal{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathscr{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\I}{\mathscr{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\intercal}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Tail Bounds
+\end_layout
+
+\begin_layout Section
+Markov/Chebyshev Bounds
+\end_layout
+
+\begin_layout Subsection
+Markov's Inequality
+\end_layout
+
+\begin_layout Standard
+Recall Markov's Inequality: if 
+\begin_inset Formula $X$
+\end_inset
+
+ is a non-negative random variable, then 
+\begin_inset Formula 
+\[
+\Pr[X\geq t]\leq\frac{\E[X]}{t}.
+\]
+
+\end_inset
+
+We'll use this to prove Adelman's Theorem (again).
+ Choose as before the randomness vectors i.i.d.
+ uniformly.
+ Define the random variable 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ as the number of inputs in whose row we have not yet picked a 1 after 
+\begin_inset Formula $i$
+\end_inset
+
+ randomness strings have been chosen.
+ Then 
+\begin_inset Formula $X_{0}\leq2^{n}$
+\end_inset
+
+ (all rows).
+ Since the new string 
+\begin_inset Formula $\boldsymbol{r}_{i+1}$
+\end_inset
+
+ has, for each remaining row, probability 
+\begin_inset Formula $\geq1/2$
+\end_inset
+
+ of hitting that row,
+\begin_inset Formula 
+\[
+\E[X_{i+1}\mid X_{i}]\leq\frac{1}{2}X_{i}.
+\]
+
+\end_inset
+
+Then by the law of total expectation,
+\begin_inset Formula 
+\begin{align*}
+\E[X_{i}] & =\E[\E[X_{i}\mid X_{i-1}]]\\
+ & =\dots\\
+ & \leq2^{-i}X_{0}\\
+ & \leq2^{n-i}.
+\end{align*}
+
+\end_inset
+
+For 
+\begin_inset Formula $i\geq n+1$
+\end_inset
+
+, 
+\begin_inset Formula $\E[X_{i}\leq1/2]$
+\end_inset
+
+.
+ Applying Markov's Inequality,
+\begin_inset Formula 
+\begin{align*}
+\Pr[\text{all rows have been hit}] & =1-\Pr[\text{at least one row remains}]\\
+ & =1-\Pr[X_{i}\geq1]\\
+ & \geq1-\frac{\E[X_{i}]}{1}\\
+ & \geq1-2^{n-i}
+\end{align*}
+
+\end_inset
+
+This value decreases exponentially, and 
+\begin_inset Formula $i=n+1$
+\end_inset
+
+ gives probability 
+\begin_inset Formula $\geq1/2$
+\end_inset
+
+, which by the Probabilistic Method shows that there is a set of 
+\begin_inset Formula $n+1$
+\end_inset
+
+ randomness strings that cover all inputs.
+\end_layout
+
+\begin_layout Subsection
+Chebyshev's Inequality
+\end_layout
+
+\begin_layout Standard
+Stronger tail bounds can be obtained if we know more about our random variable
+ behavior.
+ For a random variable 
+\begin_inset Formula $X$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+Var[X] & =\E[(X-\E[X])^{2}]\\
+ & =\E[X^{2}]-(\E[X])^{2}\\
+\sigma_{X} & =\sqrt{Var[X]}.
+\end{align*}
+
+\end_inset
+
+Then Chebyshev's Inequality is as follows: for every random variable 
+\begin_inset Formula $X$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\Pr[|X-\E[X]|\geq t]\leq\frac{Var[X]}{t^{2}}.
+\]
+
+\end_inset
+
+This is often useful if 
+\begin_inset Formula $X$
+\end_inset
+
+ is the sum of pairwise independent random variables, or if 
+\begin_inset Formula $Var[X]$
+\end_inset
+
+ is easy enough to analyze (and not too large).
+\end_layout
+
+\begin_layout Proof
+Clearly
+\begin_inset Formula 
+\begin{align*}
+\Pr[|X-\E[X]| & \geq t]=\Pr[(X-\E[X])^{2}\geq t^{2}]
+\end{align*}
+
+\end_inset
+
+Let 
+\begin_inset Formula $Y=(X-\E[X])^{2}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $Y\geq0$
+\end_inset
+
+.
+ So by Markov's Inequality,
+\begin_inset Formula 
+\begin{align*}
+\Pr[Y\geq t^{2}] & \leq\frac{\E[Y]}{t^{2}}\\
+ & =\frac{\E[X-\E[X])^{2}]}{t^{2}}\\
+ & =\frac{Var[X]}{t^{2}}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Finding a Median
+\end_layout
+
+\begin_layout Subsection
+Randomized Algorithm
+\end_layout
+
+\begin_layout Standard
+Given a set 
+\begin_inset Formula $S$
+\end_inset
+
+, represented as an unsorted array, find a median 
+\begin_inset Formula $x$
+\end_inset
+
+ such that exactly half of the elements are 
+\begin_inset Formula $\leq x$
+\end_inset
+
+.
+ The standard algorithm uses a divide-and-conquer approach with a randomly
+ chosen pivot to run in linear time.
+ Here, we will use a very different sampling-based algorithm which illustrates
+ that random samples are representative, and uses a typical tail bound-style
+ analysis.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Algorithm (num)
+* Sample 
+\begin_inset Formula $n^{3/4}$
+\end_inset
+
+ elements from 
+\begin_inset Formula $S$
+\end_inset
+
+, pairwise independently and uniformly at random with replacement.
+ Call this set 
+\begin_inset Formula $R$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Algorithm (num)
+* Sort 
+\begin_inset Formula $R$
+\end_inset
+
+ in time 
+\begin_inset Formula $\O(n^{3/4}\log n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Algorithm (num)
+* Let 
+\begin_inset Formula $\ell=n^{3/4}/2-\sqrt{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $h=n^{3/4}/2+\sqrt{n}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $a=R_{(\ell)}$
+\end_inset
+
+ and 
+\begin_inset Formula $b=R_{(h)}$
+\end_inset
+
+ in sorted order of 
+\begin_inset Formula $R$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Algorithm (num)
+* Compare all elements of 
+\begin_inset Formula $S$
+\end_inset
+
+ to 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+ to determine
+\begin_inset Formula 
+\[
+P=\text{\{}x\in S:a\leq x\leq b\text{\}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm (num)
+* Use this comparison to find the positions of 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+ in the sorted set 
+\begin_inset Formula $S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Algorithm (num)
+if 
+\begin_inset Formula $n/2$
+\end_inset
+
+ is not between those positions, or 
+\begin_inset Formula $|P|>4n^{3/4}+2$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm (num)
+* Start over.
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm (num)
+else
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm (num)
+* Sort 
+\begin_inset Formula $P$
+\end_inset
+
+ and determine the median from sorted 
+\begin_inset Formula $P$
+\end_inset
+
+ and the rank of 
+\begin_inset Formula $a$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm (num)
+endif
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Median-Finding Algorithm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+This algorithm tries to ensure that the median is in 
+\begin_inset Formula $P$
+\end_inset
+
+, and 
+\begin_inset Formula $P$
+\end_inset
+
+ is not too large.
+ Note that the algorithm is always correct, but the runtime varies, so it
+ is a Las Vegas algorithm.
+\end_layout
+
+\begin_layout Subsection
+Runtime Analysis
+\end_layout
+
+\begin_layout Standard
+Lines 1, 2, and 9 run in time 
+\begin_inset Formula $\O(n^{3/4}\log n)=o(n)$
+\end_inset
+
+.
+ Lines 3 and 7 take time 
+\begin_inset Formula $\O(1)$
+\end_inset
+
+.
+ Line 4 makes 
+\begin_inset Formula $2n$
+\end_inset
+
+ comparisons.
+ So the total runtime is
+\begin_inset Formula 
+\[
+(2n+o(n))\cdot\text{\# of restarts}.
+\]
+
+\end_inset
+
+The # of restarts is a geometric random variable, so the expected number
+ of restarts is the inverse of the success probability.
+\end_layout
+
+\begin_layout Standard
+What could go wrong in one iteration of the algorithm?
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $a>\text{median}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $b<\text{median}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P$
+\end_inset
+
+ is too large (
+\begin_inset Formula $a$
+\end_inset
+
+ too small and/or 
+\begin_inset Formula $b$
+\end_inset
+
+ too large).
+\end_layout
+
+\begin_layout Standard
+Cases 1 and 2 are symmetric, so we will analyze cases 1 and 3.
+\end_layout
+
+\begin_layout Subsubsection
+Case 1
+\end_layout
+
+\begin_layout Standard
+Case 1 occurs when we undersample to the left of the median – that is, we
+ had fewer than 
+\begin_inset Formula $n^{3/4}/2-\sqrt{n}$
+\end_inset
+
+ samples to the left of the median.
+ The expected number of samples to the left of the median is 
+\begin_inset Formula $|R|/2=n^{3/4}/2$
+\end_inset
+
+.
+ This means the number of samples deviated by at least 
+\begin_inset Formula $\sqrt{n}$
+\end_inset
+
+ from its expectation.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be the number of samples in 
+\begin_inset Formula $R$
+\end_inset
+
+ that are 
+\begin_inset Formula $\leq\text{median}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ be the indicator random variable representing whether sample 
+\begin_inset Formula $i$
+\end_inset
+
+ is 
+\begin_inset Formula $\leq\text{median}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $X=\sum_{i}X_{i}$
+\end_inset
+
+, and 
+\begin_inset Formula 
+\[
+\E[X_{i}]=\Pr[X_{i}=1]=1/2,
+\]
+
+\end_inset
+
+so
+\begin_inset Formula 
+\[
+\E[X]=|R|/2=n^{3/4}/2.
+\]
+
+\end_inset
+
+Our goal is to bound 
+\begin_inset Formula $\Pr[|X-n^{3/4}/2|<\sqrt{n}]$
+\end_inset
+
+.
+ We'd like to apply Chebyshev, but we need the variance.
+ Here,
+\begin_inset Formula 
+\[
+Var[X]=\sum_{i}Var[X_{i}]+\sum_{i<j}Cov[X_{i},X_{j}].
+\]
+
+\end_inset
+
+But all the covariance terms are 0 because of pairwise independence.
+ Because the 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ are Bernoulli random variables,
+\begin_inset Formula 
+\begin{align*}
+Var[X] & =\sum_{i}Var[X_{i}]\\
+ & =\sum_{i}\Pr[X_{i}=1]\cdot\Pr[X_{i}=0]\\
+ & =\sum_{i}\frac{1}{4}\\
+ & =n^{3/4}/4.
+\end{align*}
+
+\end_inset
+
+Now we can apply Chebyshev:
+\begin_inset Formula 
+\begin{align*}
+\Pr[|X-n^{3/4}/2|<\sqrt{n}] & \leq\frac{n^{3/4}/4}{\sqrt{n}^{2}}\\
+ & =n^{-1/4}/4.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Case 3
+\end_layout
+
+\begin_layout Standard
+We'd like to analyze the case when 
+\begin_inset Formula $|P|\geq4n^{3/4}$
+\end_inset
+
+, which occurs when 
+\begin_inset Formula $a$
+\end_inset
+
+ is too small and/or 
+\begin_inset Formula $b$
+\end_inset
+
+ is too large.
+ For this to happen, we must have oversampled left of 
+\begin_inset Formula $n/2-2n^{3/4}$
+\end_inset
+
+ and/or oversampled right of 
+\begin_inset Formula $n/2+2n^{3/4}$
+\end_inset
+
+.
+ We'll analyze the first case in detail.
+\end_layout
+
+\begin_layout Standard
+Assume we randomly picked more than 
+\begin_inset Formula $n^{3/4}/2-\sqrt{n}$
+\end_inset
+
+ elements left of 
+\begin_inset Formula $n/2-2n^{3/4}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be the number of samples in 
+\begin_inset Formula $R$
+\end_inset
+
+ that are 
+\begin_inset Formula $\leq n/2-2n^{3/4}$
+\end_inset
+
+.
+ Then
+\begin_inset Formula 
+\begin{align*}
+\E[X] & =n^{3/4}\cdot(1/2-2n^{-1/4})\\
+ & =n^{3/4}/2-2\sqrt{n}.
+\end{align*}
+
+\end_inset
+
+Note that 
+\begin_inset Formula $\E[X]$
+\end_inset
+
+ is lesser than our assumption by 
+\begin_inset Formula $\sqrt{n}$
+\end_inset
+
+.
+ Also,
+\begin_inset Formula 
+\begin{align*}
+Var[X] & =n^{3/4}\cdot(1/2-2n^{-1/4})(1/2+2n^{-1/4})\\
+ & \leq n^{3/4}/4.
+\end{align*}
+
+\end_inset
+
+Applying Chebyshev,
+\begin_inset Formula 
+\begin{align*}
+\Pr[a\text{ too small}] & \leq\Pr[|X-\E[X]|\geq\sqrt{n}]\\
+ & \leq\frac{n^{3/4}/4}{\sqrt{n}^{2}}\\
+ & =n^{-1/4}/4.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Summary
+\end_layout
+
+\begin_layout Standard
+We showed that the failure probabilities for all four cases are 
+\begin_inset Formula $n^{-1/4}/4$
+\end_inset
+
+.
+ Using the union bound, the overall failure probability is at most 
+\begin_inset Formula $n^{-1/4}$
+\end_inset
+
+.
+ So the success probability of any one iteration is at most 
+\begin_inset Formula $1-n^{-1/4}$
+\end_inset
+
+.
+ Thus, the expected number of restarts is at most
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{1-n^{-1/4}} & \leq1+2n^{-1/4}\\
+ & =1+o(1).
+\end{align*}
+
+\end_inset
+
+Putting it all together, the total amount of work in expectation is
+\begin_inset Formula 
+\[
+2(1+o(1))n+o(n)=2n+o(n).
+\]
+
+\end_inset
+
+The best known deterministic algorithm takes 
+\begin_inset Formula $3n$
+\end_inset
+
+ comparisons, with a lower bound of 
+\begin_inset Formula $2n$
+\end_inset
+
+ for all deterministic algorithms.
+\end_layout
+
+\begin_layout Section
+Chernoff/Hoeffding Bounds
+\end_layout
+
+\begin_layout Standard
+These are tail bounds that give stronger guarantees on random variables
+ 
+\begin_inset Formula $X$
+\end_inset
+
+ that can be written as 
+\begin_inset Formula $\sum_{i}X_{i}$
+\end_inset
+
+ where each 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ is bounded, and all the 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ are mutually independent.
+ This applies frequently in computer science-related scenarios.
+ They are similar to a quantitative version of the 
+\begin_inset Quotes eld
+\end_inset
+
+Law of Large Numbers
+\begin_inset Quotes erd
+\end_inset
+
+: that the mean of enough i.i.d.
+ samples converges to the population mean.
+\end_layout
+
+\begin_layout Standard
+For Chernoff Bounds, assume we have 
+\begin_inset Formula $X=\sum_{i}X_{i}$
+\end_inset
+
+ with 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ Bernoulli and 
+\begin_inset Formula $\Pr[X_{i}=1]=p_{i}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\mu=\E[X]=\sum_{i}p_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+[Chernoff].
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+For any 
+\begin_inset Formula $\delta>0$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\Pr[X>(1+\delta)\mu]<\bigg(\frac{e^{\delta}}{(1+\delta)^{(1+\delta)}}\bigg)^{\mu}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+For any 
+\begin_inset Formula $0<\delta<1$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\Pr[X<(1-\delta)\mu]<(e^{-\delta^{2}/2})^{\mu}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Theorem
+A special case is when 
+\begin_inset Formula $p_{i}=p$
+\end_inset
+
+, so 
+\begin_inset Formula $X$
+\end_inset
+
+ is a sum of i.i.d random variables.
+ Then 
+\begin_inset Formula $\mu=np$
+\end_inset
+
+, so the bounds decrease exponentially in 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For Hoeffding Bounds, assume we have 
+\begin_inset Formula $X=\sum_{i}X_{i}$
+\end_inset
+
+ with 
+\begin_inset Formula $a_{i}\leq X_{i}\leq b_{i}$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+ deterministically.
+\end_layout
+
+\begin_layout Theorem
+[Hoeffding].
+ From survey on concentration inequalities by Mcdiarmid.
+ For all 
+\begin_inset Formula $\Delta\geq0$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\Pr[|X-\E[X]|\geq\Delta]\leq2\exp\big(\frac{-2\Delta^{2}}{\sum_{i}(b_{i}-a_{i})^{2}}\big).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The standard tail bounds are for independent random variables.
+ Most have counterparts if the 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ are 
+\bar under
+negatively
+\bar default
+ correlated.
+ The proof idea is that
+\begin_inset Formula 
+\[
+\exp(\alpha\sum_{i}X_{i})=\prod\exp(\alpha X_{i}),
+\]
+
+\end_inset
+
+and since the 
+\begin_inset Formula $\exp(\alpha X_{i})$
+\end_inset
+
+ are independent, the expectation is the product of expectations, so we
+ can apply Markov's Inequality.
+\end_layout
+
+\begin_layout Standard
+The main workflow using these bounds is as follows:
+\end_layout
+
+\begin_layout Enumerate
+Decompose random variable into sum of independent Bernoulli's.
+\end_layout
+
+\begin_layout Enumerate
+Use linearity of expectation to find the mean.
+\end_layout
+
+\begin_layout Enumerate
+Use Chernoff bounds to find concentration.
+\end_layout
+
+\begin_layout Enumerate
+Take a union bound over failure cases.
+\end_layout
+
+\begin_layout Enumerate
+Choose 
+\begin_inset Formula $\delta$
+\end_inset
+
+ big enough based on the result of the union bound.
+\end_layout
+
+\begin_layout Standard
+Next class, we will see examples of this method.
+\end_layout
+
+\end_body
+\end_document

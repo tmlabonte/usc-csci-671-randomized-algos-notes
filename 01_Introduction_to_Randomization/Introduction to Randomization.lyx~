@@ -1,0 +1,841 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\mathcal{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Introduction to Randomization
+\end_layout
+
+\begin_layout Section
+Randomized Algorithms
+\end_layout
+
+\begin_layout Standard
+There are two types of randomized algorithms:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Las Vegas Algorithms:
+\series default
+ Algorithms which always give the correct answer but with nondeterministic
+ running time.
+ Problems solvable by Las Vegas algorithms are in the complexity class 
+\begin_inset Formula $ZPP$
+\end_inset
+
+, which stands for zero-probability polynomial time.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Monte Carlo Algorithms:
+\series default
+ Algorithms which always run in polynomial time but with nondeterministic
+ output.
+ In particular, they always get 
+\begin_inset Quotes eld
+\end_inset
+
+No
+\begin_inset Quotes erd
+\end_inset
+
+ instances correct and get 
+\begin_inset Quotes eld
+\end_inset
+
+Yes
+\begin_inset Quotes erd
+\end_inset
+
+ instances correct with probability 
+\begin_inset Formula $\geq p$
+\end_inset
+
+.
+ Problems solvable by Monte Carlo algorithms are in the complexity class
+ 
+\begin_inset Formula $RP$
+\end_inset
+
+, which stands for randomized polynomial time.
+\end_layout
+
+\begin_layout Standard
+It is known that 
+\begin_inset Formula $ZPP\subset RP$
+\end_inset
+
+, but it is open if 
+\begin_inset Formula $ZPP=RP$
+\end_inset
+
+ or even 
+\begin_inset Formula $P=RP$
+\end_inset
+
+.
+ It is trivial that 
+\begin_inset Formula $P\subset RP$
+\end_inset
+
+, because every deterministic algorithm is randomized with zero bits of
+ randomness, and 
+\begin_inset Formula $RP\subset NP$
+\end_inset
+
+ because a string of random bits forms a certifier for a deterministic algorithm.
+\end_layout
+
+\begin_layout Standard
+There are two key paradigms in randomized algorithm design:
+\end_layout
+
+\begin_layout Enumerate
+Circumventing pathological cases, 
+\emph on
+i.e., 
+\emph default
+inputs specifically constructed to be bad.
+\end_layout
+
+\begin_layout Enumerate
+Using random samples as a representative of a larger space.
+\end_layout
+
+\begin_layout Section
+Combinatorial Probability
+\end_layout
+
+\begin_layout Subsection
+Definitions
+\end_layout
+
+\begin_layout Definition
+A discrete 
+\series bold
+sample space 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ 
+\series default
+is often the set 
+\begin_inset Formula $\{0,1\}^{n}$
+\end_inset
+
+ and can be thought of as a supply of coin flips.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+An 
+\series bold
+event 
+\begin_inset Formula $\e\subseteq\Omega$
+\end_inset
+
+ 
+\series default
+is a certain bitstring representing a sequence of coin flips.
+
+\series bold
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+A 
+\series bold
+probability measure
+\series default
+ is a function 
+\begin_inset Formula $\Pr:\Omega\rightarrow[0,1]$
+\end_inset
+
+ with 
+\begin_inset Formula $\Pr[\e]=\sum_{\omega\in\e}\Pr[\omega]$
+\end_inset
+
+ and 
+\begin_inset Formula $\Pr[\Omega]=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+A 
+\series bold
+random variable
+\series default
+ is a function 
+\begin_inset Formula $X:\Omega\rightarrow\Z$
+\end_inset
+
+; it assigns an integer label to each possible sequence of coin flips.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+The 
+\series bold
+expectation 
+\series default
+of a random variable is a function 
+\begin_inset Formula $\E[X]=\sum_{j\in\Z}j\cdot\Pr[X=j]$
+\end_inset
+
+.
+ Note that 
+\begin_inset Formula $X=j$
+\end_inset
+
+ is an event 
+\begin_inset Formula $\e$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Consider events 
+\begin_inset Formula $\e_{1},\dots,\e_{n}$
+\end_inset
+
+.
+ They are 
+\series bold
+pairwise independent
+\series default
+ if
+\end_layout
+
+\begin_layout Definition
+\begin_inset Formula 
+\[
+\Pr[\e_{i}\cap\e_{j}]=\Pr[\e_{i}]\Pr[\e_{j}]\text{ }\forall i,j\in[n].
+\]
+
+\end_inset
+
+They are 
+\series bold
+mutually independent
+\series default
+ if
+\begin_inset Formula 
+\[
+\Pr\big[\bigcap_{i\in S}\e_{i}\big]=\prod_{i\in S}\Pr[\e_{i}]\text{ }\forall S\neq\emptyset.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Notice that pairwise independence does not imply mutual independence.
+ To see this, consider three independent coin flips 
+\begin_inset Formula $X_{1},X_{2},X_{3}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\e_{12}=[X_{1}=X_{2}]$
+\end_inset
+
+, 
+\begin_inset Formula $\e_{13}=[X_{1}=X_{3}]$
+\end_inset
+
+, and 
+\begin_inset Formula $\e_{23}=[X_{2}=X_{3}]$
+\end_inset
+
+.
+ Clearly the probability of each event is 
+\begin_inset Formula $1/2$
+\end_inset
+
+.
+ Then, we have
+\begin_inset Formula 
+\[
+\prod_{i,j}\Pr[\e_{ij}]=1/8,
+\]
+
+\end_inset
+
+but
+\begin_inset Formula 
+\[
+\Pr\big[\bigcap_{i,j}\e_{i}\big]=1/4.
+\]
+
+\end_inset
+
+Thus the events are not mutually independent; however, it is easy to check
+ that they are pairwise independent.
+\end_layout
+
+\begin_layout Subsection
+Useful Facts
+\end_layout
+
+\begin_layout Fact
+The most useful inequality in this class is:
+\begin_inset Formula 
+\[
+1+x\le e^{x}\text{ }\forall x\in\R.
+\]
+
+\end_inset
+
+In particular, this inequality comes in handy when 
+\begin_inset Formula $x$
+\end_inset
+
+ is negative and close to 0 – which is often the case when evaluating probabilit
+y complements.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Fact
+Another useful fact allows us to analyze the intersection of events 
+\begin_inset Formula $\e_{1},\dots,\e_{n}$
+\end_inset
+
+ which are not mutually independent:
+\begin_inset Formula 
+\[
+\Pr\big[\bigcap_{i=1}^{n}\e_{i}\big]=\prod_{i=1}^{n}\Pr\big[\e_{i}\mid\bigcap_{j=1}^{i-1}\e_{j}\big].
+\]
+
+\end_inset
+
+Intuitively, this is because an intersection of 
+\begin_inset Formula $n$
+\end_inset
+
+ events can be analyzed in sequence, and every event needs to occur.
+ We will see an application of this fact to the 
+\begin_inset Formula $\textsc{Minimum Cut}$
+\end_inset
+
+ problem.
+\end_layout
+
+\begin_layout Section
+Minimum Cut
+\end_layout
+
+\begin_layout Standard
+In the 
+\begin_inset Formula $\textsc{Minimum Cut}$
+\end_inset
+
+ problem, we are given an unweighted, undirected graph 
+\begin_inset Formula $\G=(V,E)$
+\end_inset
+
+, and we must find 
+\begin_inset Formula $S\subseteq V$
+\end_inset
+
+, 
+\begin_inset Formula $S\neq\emptyset$
+\end_inset
+
+ minimizing
+\begin_inset Formula 
+\[
+\big|e(S,\bar{S})\big|=\big|\{u,v\}:u\in S,v\in\bar{S}\big|.
+\]
+
+\end_inset
+
+A simple polynomial time solution is to run a minimum 
+\begin_inset Formula $s-t$
+\end_inset
+
+ cut algorithm for every pair 
+\begin_inset Formula $(s,t)$
+\end_inset
+
+ of nodes, then keep the best cut found.
+ We can improve this by keeping 
+\begin_inset Formula $s$
+\end_inset
+
+ fixed; however, this is not very efficient as it requires 
+\begin_inset Formula $\O(n)$
+\end_inset
+
+ invocations of the Ford-Fulkerson algorithm.
+ We will analyze a self-contained algorithm which uses randomization.
+\end_layout
+
+\begin_layout Definition
+An 
+\series bold
+edge contraction
+\series default
+ on 
+\begin_inset Formula $e=(u,v)$
+\end_inset
+
+ turns 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+ into a single super-node which inherits all previous edges.
+ Contractions include parallel edges but not self-loops.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Algorithm (num)
+while 
+\begin_inset Formula $|V|>2$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm (num)
+* Let 
+\begin_inset Formula $e\sim U(V)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Algorithm (num)
+* Perform an edge contraction on 
+\begin_inset Formula $e$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm (num)
+endwhile
+\end_layout
+
+\begin_layout Algorithm (num)
+* Return the cut given by the remaining two nodes.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Randomized Algorithm for 
+\begin_inset Formula $\textsc{Minimum Cut}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+This algorithm clearly outputs a cut after 
+\begin_inset Formula $\O(n)$
+\end_inset
+
+ contractions.
+ It is not always a minimum cut, so this is a Monte Carlo algorithm.
+ So what is the probability of success? We fix a particular minimum cut
+ 
+\begin_inset Formula $(S,\bar{S})$
+\end_inset
+
+ and analyze the probability of finding it.
+\end_layout
+
+\begin_layout Definition
+Define the event 
+\begin_inset Formula $\e_{i}$
+\end_inset
+
+ as the algorithm 
+\emph on
+not
+\emph default
+ contracting an edge crossing 
+\begin_inset Formula $(S,\bar{S})$
+\end_inset
+
+ in iteration 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Using Fact 8, we have
+\begin_inset Formula 
+\[
+\Pr\big[\bigcap_{i=1}^{n-2}\e_{i}\big]=\prod_{i=1}^{n-2}\Pr\big[\e_{i}\mid\bigcap_{j=1}^{i-1}\e_{j}\big].
+\]
+
+\end_inset
+
+We will now calculate the right hand side of the equation.
+ Let 
+\begin_inset Formula $k$
+\end_inset
+
+ be the number of edges crossing 
+\begin_inset Formula $(S,\bar{S})$
+\end_inset
+
+ at the beginning of the algorithm.
+ Due to the conditional probability, we know that in iteration 
+\begin_inset Formula $i$
+\end_inset
+
+, all those 
+\begin_inset Formula $k$
+\end_inset
+
+ edges are still there.
+ Furthermore, no new edges could have appeared because contractions so far
+ could have only happened inside 
+\begin_inset Formula $S$
+\end_inset
+
+ or 
+\begin_inset Formula $\bar{S}$
+\end_inset
+
+.
+ Thus, exactly 
+\begin_inset Formula $k$
+\end_inset
+
+ edges still cross 
+\begin_inset Formula $(S,\bar{S})$
+\end_inset
+
+ in iteration 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+If some other cut still survives, the number of edges across it has also
+ not changed.
+ The only changes to the minimum cut happen when candidate cuts are removed,
+ which means the minimum cut can never become sparser.
+ Thus, 
+\begin_inset Formula $(S,\bar{S})$
+\end_inset
+
+ is still a minimum cut at iteration 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $n_{i}$
+\end_inset
+
+ denote the number of nodes at iteration 
+\begin_inset Formula $i$
+\end_inset
+
+, and 
+\begin_inset Formula $m_{i}$
+\end_inset
+
+ likewise for edges.
+ To show that we are unlikely to contract across our cut, we must show that
+ the ratio 
+\begin_inset Formula $k/m_{i}$
+\end_inset
+
+ is small – in other words, that 
+\begin_inset Formula $m_{i}$
+\end_inset
+
+ is large.
+\end_layout
+
+\begin_layout Definition
+To lowerbound 
+\begin_inset Formula $m_{i}$
+\end_inset
+
+, we can lowerbound the degrees of each node.
+ Since 
+\begin_inset Formula $(S,\bar{S})$
+\end_inset
+
+ is a minimum cut, 
+\begin_inset Formula $k$
+\end_inset
+
+ is a lower bound on the degree of any node in the graph.
+ Thus, 
+\begin_inset Formula 
+\begin{align*}
+m_{i} & \geq kn_{i}\\
+ & =\frac{k(n+1-i)}{2}.
+\end{align*}
+
+\end_inset
+
+Thus we have event failure probability
+\begin_inset Formula 
+\begin{align*}
+\Pr\big[\bar{\e_{i}} & \mid\bigcap_{j=1}^{i-1}\e_{j}\big]\leq\frac{2k}{k(n+1-i)}\\
+ & =\frac{2}{n+1-i}.
+\end{align*}
+
+\end_inset
+
+And success probability
+\begin_inset Formula 
+\begin{align*}
+\Pr\big[\e_{i} & \mid\bigcap_{j=1}^{i-1}\e_{j}\big]\geq1-\frac{2}{n+1-i}\\
+ & =\frac{n-1-i}{n+1-i}.
+\end{align*}
+
+\end_inset
+
+So,
+\backslash
+
+\begin_inset Formula 
+\begin{align*}
+\Pr\big[\bigcap_{i=1}^{n-2}\e_{i}\big] & \geq\prod_{i=1}^{n-2}\frac{n-1-i}{n+1-i}\\
+ & =\frac{1-2}{n(n-1)}\\
+ & =\frac{1}{{n \choose 2}},
+\end{align*}
+
+\end_inset
+
+where the product follows from a telescoping argument.
+ Running this algorithm with independent coin flips 
+\begin_inset Formula $\Theta(n^{2}\log n)$
+\end_inset
+
+ times improves success probability to 
+\begin_inset Formula $1-\frac{1}{poly(n)}$
+\end_inset
+
+ as desired.
+\end_layout
+
+\end_body
+\end_document

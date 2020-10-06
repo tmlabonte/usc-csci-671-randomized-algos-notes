@@ -1,0 +1,799 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\mathcal{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathscr{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\I}{\mathscr{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\intercal}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Game Theory
+\end_layout
+
+\begin_layout Section
+Game Tree Evaluation
+\end_layout
+
+\begin_layout Subsection
+AND/OR Trees
+\end_layout
+
+\begin_layout Standard
+Consider a tree with nodes labeled min or max on alternating levels.
+ Each leaf has a real value, and each internal node has value equal to the
+ min or max of its children.
+\end_layout
+
+\begin_layout Standard
+The intuition is that two players take turns and play perfectly; one wants
+ to maximize the outcome, and the other wants to minimize it.
+ The leaf values state who won the game (or by how much).
+ We assume this is a zero-sum game: one player's gain is the other's loss.
+\end_layout
+
+\begin_layout Standard
+More generally, consider game trees of height 
+\begin_inset Formula $2k$
+\end_inset
+
+, and let all leaves have values either 0 or 1.
+ Then, min levels correspond to an OR operation, and max levels correspond
+ to an AND operation.
+ This is called an AND/OR tree.
+ We will also assume that the tree is binary and complete (it contains 
+\begin_inset Formula $2^{2k}$
+\end_inset
+
+ leaves).
+ Our goal is to evaluate the tree while querying only few leaves.
+\end_layout
+
+\begin_layout Standard
+Observe that every deterministic algorithm can be forced to query all leaves.
+ Because the algorithm is deterministic, the adversary can predict what
+ queries the algorithm makes next – we can treat the adversary as responding
+ to the algorithm's queries online.
+ The proof is then by induction on the height of subtrees, and we can show
+ that the adversary can force the algorithm to query all leaves in a subtree
+ to learn its value.
+\end_layout
+
+\begin_layout Standard
+Concretely, the adversary just makes the first revealed subtree of an OR
+ a 0, and the first revealed subtree of an AND a 1.
+ Then, the deterministic algorithm has to query every leaf.
+\end_layout
+
+\begin_layout Subsection
+Snir's Algorithm
+\end_layout
+
+\begin_layout Standard
+If the algorithm is instead randomized, this will restrict what the adversary
+ can do, because the adversary must commit to values of all leaves – it
+ cannot act in an online manner.
+\end_layout
+
+\begin_layout Standard
+Key observation: if an OR node evaluates to 1 or an AND node evaluates to
+ 0, there is at least one subtree which by itself determines the value of
+ the node.
+ If the algorithm evaluates that subtree first, it does not need to evaluate
+ the other subtree.
+ A deterministic algorithm cannot achieve this, but a randomized algorithm
+ can flip a coin and evaluate the 
+\begin_inset Quotes eld
+\end_inset
+
+helpful
+\begin_inset Quotes erd
+\end_inset
+
+ subtree first with probability at least 
+\begin_inset Formula $1/2$
+\end_inset
+
+ (more if both subtrees are helpful).
+ Note that this does not work is an OR node evaluates to 0 or an AND node
+ evaluates to 1 – in that case, both subtrees must be evaluated.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Algorithm (num)
+* Let 
+\begin_inset Formula $T$
+\end_inset
+
+ be the tree to be evaluated with subtrees 
+\begin_inset Formula $T_{1},T_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Algorithm (num)
+* Choose uniformly randomly either 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+ or 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Algorithm (num)
+* Evaluate it recursively.
+\end_layout
+
+\begin_layout Algorithm (num)
+* If this does not determine the value of 
+\begin_inset Formula $T$
+\end_inset
+
+, evaluate the other tree recursively.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Snir's Algorithm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Snir's Algorithm is a Las Vegas algorithm, as the runtime is never more
+ than 
+\begin_inset Formula $\O(2^{2k})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Runtime Analysis
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $X_{k}$
+\end_inset
+
+ be the expected number of queries of Snir's Algorithm on trees of height
+ 
+\begin_inset Formula $2k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+\begin_inset Formula $X_{k}\leq3^{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+The key idea is that if the root AND node evaluates to 1, then both OR child
+ nodes evaluate to 1, so for each OR node there is at least one good choice
+ of a subtree to evaluate first.
+ It is chosen first with probability 
+\begin_inset Formula $1/2$
+\end_inset
+
+.
+ If the root AND node evaluates to 0, then one OR child node evaluates to
+ 0.
+ It is chosen first with probability 
+\begin_inset Formula $\geq1/2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Formally, let 
+\begin_inset Formula $E_{OR/AND}^{0/1}$
+\end_inset
+
+ be the expected number of queries to evaluate these OR or AND nodes when
+ the outcome is 0 or 1.
+\begin_inset Formula 
+\begin{align*}
+E_{OR}^{0} & =\E[X_{k}+X_{k}] & \text{must evaluate both subtrees}\\
+ & \leq2\cdot3^{k}\\
+E_{OR}^{1} & \leq X_{k}+\frac{1}{2}X_{k} & \text{evaluate one tree, then possibly another}\\
+ & =\frac{3}{2}\cdot3^{k}\\
+E_{AND}^{0} & =\max(E_{OR}^{0},E_{OR}^{0}+\frac{1}{2}E_{OR}^{1}) & \text{max of both 0, or one 0 and one 1}\\
+ & =E_{OR}^{0}+\frac{1}{2}E_{OR}^{1}\\
+ & \leq2\cdot3^{k}+\frac{3}{4}3^{k}\\
+ & \leq3^{k+1}\\
+E_{AND}^{1} & =2E_{OR}^{1}\\
+ & \leq3^{k+1} & \text{must evaluate both subtrees}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus,
+\begin_inset Formula 
+\begin{align*}
+\E[X_{k+1}] & \leq\max(E_{AND}^{0},E_{AND}^{1})\\
+ & \leq3^{k+1}.
+\end{align*}
+
+\end_inset
+
+Because 
+\begin_inset Formula $k=\log_{4}n$
+\end_inset
+
+, the number of evaluations is 
+\begin_inset Formula 
+\begin{align*}
+\O(3^{\log_{4}n}) & =\O(n^{\log_{4}3})\\
+ & =\O(n^{0.793}).
+\end{align*}
+
+\end_inset
+
+So a sublinear number of leaves must be evaluated.
+ This tells us that for every variable assignment, there is a 
+\begin_inset Quotes eld
+\end_inset
+
+witness
+\begin_inset Quotes erd
+\end_inset
+
+ of size 
+\begin_inset Formula $\O(n^{0.793})$
+\end_inset
+
+ for the value of the tree.
+\end_layout
+
+\begin_layout Subsection
+Followup Questions
+\end_layout
+
+\begin_layout Standard
+What can we say about the optimality of Snir's Algorithm? Is there a more
+ clever and more efficient randomized algorithm?
+\end_layout
+
+\begin_layout Standard
+One lower bound is information theoretic – in general, there is no witness
+ of size 
+\begin_inset Formula $o(\text{\ensuremath{\sqrt{n})}}$
+\end_inset
+
+, so each algorithm must query 
+\begin_inset Formula $\Omega(\sqrt{n})$
+\end_inset
+
+ leaves just to prove the value.
+ [Aside: there always is a witness of size 
+\begin_inset Formula $\O(\sqrt{n})$
+\end_inset
+
+].
+\end_layout
+
+\begin_layout Standard
+Can we prove a stronger lower bound on what an 
+\bar under
+algorithm
+\bar default
+ can achieve? More generally, given how unpredictable randomized algorithms
+ can be, how do we prove lower bounds for them? This will be answered by
+ Yao's Minimax Theorem, which guarantees that you can prove lower bounds
+ on randomized algorithms by proving lower bounds on deterministic algorithms
+ against random inputs.
+ We derive this with a detour into some game theory.
+\end_layout
+
+\begin_layout Section
+Game Theory
+\end_layout
+
+\begin_layout Standard
+One analogy is that a game is played between an algorithm designer and an
+ input designer.
+ The algorithm designer chooses an algorithm 
+\begin_inset Formula $\mathscr{A}$
+\end_inset
+
+ and the input designer chooses an input 
+\begin_inset Formula $\mathscr{I}$
+\end_inset
+
+.
+ Together, they result in a 
+\begin_inset Quotes eld
+\end_inset
+
+cost
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $T(\mathscr{A},\mathscr{I})$
+\end_inset
+
+ – think runtime, memory, approximation guarantee, etc.
+ The algorithm designer wants to minimize 
+\begin_inset Formula $T(\A,\I)$
+\end_inset
+
+, while the input designer wants to maximize it.
+ Thus, this is a zero-sum game.
+\end_layout
+
+\begin_layout Standard
+An important consideration is turn order.
+ As in rock-paper-scissors and other zero-sum games, the first player is
+ at a disadvantage in general.
+ To improve chances, the first player should randomize.
+ In the context of the algorithm-input game, this means that if the algorithm
+ player goes first, they should choose a distribution over algorithms (a
+ randomized algorithm); if the input player goes first, they should choose
+ a distribution over inputs (a randomized input).
+\end_layout
+
+\begin_layout Standard
+The general setup for zero-sum 2-player games is that we are given a (visible)
+ payoff matrix 
+\begin_inset Formula ${\bf A}\in\R^{m\times n}$
+\end_inset
+
+ from which the row player chooses a row 
+\begin_inset Formula $r$
+\end_inset
+
+ and the column player picks a column 
+\begin_inset Formula $c$
+\end_inset
+
+; the outcome is 
+\begin_inset Formula $a_{r,c}$
+\end_inset
+
+.
+ The row player wants to maximize the outcome, while the column player wants
+ to minimize it.
+ We assume both play perfectly.
+\end_layout
+
+\begin_layout Standard
+If the row player goes first, he chooses 
+\begin_inset Formula $r$
+\end_inset
+
+ anticipating a response 
+\begin_inset Formula $c$
+\end_inset
+
+ that is best for the column player.
+ The outcome is 
+\begin_inset Formula $\max_{r}\min_{c}a_{r,c}$
+\end_inset
+
+.
+ If the column player goes first, he chooses 
+\begin_inset Formula $c$
+\end_inset
+
+ anticipating a response 
+\begin_inset Formula $r$
+\end_inset
+
+ that is best for the row player.
+ The outcome is 
+\begin_inset Formula $\min_{c}\max_{r}a_{r,c}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+The first player has no advantage.
+ That is, 
+\begin_inset Formula $\max_{r}\min_{c}a_{r,c}\leq\min_{c}\max_{r}a_{r,c}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $c_{o}$
+\end_inset
+
+ minimize 
+\begin_inset Formula $\max_{r}a_{r,c}$
+\end_inset
+
+.
+ Then
+\begin_inset Formula 
+\[
+\max_{r}\min_{c}a_{r,c}\leq\max_{r}a_{r,c_{o}}=\min_{c}\max_{r}a_{r,c}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If allowed, players typically prefer to randomize.
+ A randomized (also called mixed) strategy is a distribution over rows or
+ columns.
+ Write 
+\begin_inset Formula $\boldsymbol{p}\in\R^{m}$
+\end_inset
+
+ for a distribution over the 
+\begin_inset Formula $m$
+\end_inset
+
+ rows, and 
+\begin_inset Formula $\boldsymbol{q}\in\R^{n}$
+\end_inset
+
+ for a distribution over the 
+\begin_inset Formula $n$
+\end_inset
+
+ columns.
+ So, 
+\begin_inset Formula $\sum_{i=1}^{m}p_{i}=1$
+\end_inset
+
+ with 
+\begin_inset Formula $p_{i}\geq0$
+\end_inset
+
+, and 
+\begin_inset Formula $\sum_{j=1}^{n}q_{i}=1$
+\end_inset
+
+ with 
+\begin_inset Formula $q_{i}\geq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The expected value of the game when the row player plays 
+\begin_inset Formula $\boldsymbol{p}$
+\end_inset
+
+, the column player plays 
+\begin_inset Formula $\boldsymbol{q}$
+\end_inset
+
+, and the two players randomize independently is the weighted sum:
+\begin_inset Formula 
+\begin{align*}
+\sum_{r,c}a_{r,c}\cdot\Pr[(r,c)\text{ chosen}] & =\sum_{r,c}a_{r,c}p_{r}q_{c}\\
+ & =\boldsymbol{p}^{\intercal}{\bf A}\boldsymbol{q}.
+\end{align*}
+
+\end_inset
+
+If the row player commits to a (randomized) strategy 
+\begin_inset Formula $\boldsymbol{p}$
+\end_inset
+
+ first, and the column player responds optimally with 
+\begin_inset Formula $\boldsymbol{q}$
+\end_inset
+
+, the outcome is
+\begin_inset Formula 
+\[
+\max_{\boldsymbol{p}}\min_{\boldsymbol{q}}\boldsymbol{p}\T{\bf A}\boldsymbol{q}.
+\]
+
+\end_inset
+
+If the column player commits first, the outcome is
+\begin_inset Formula 
+\[
+\min_{\boldsymbol{q}}\max_{\boldsymbol{p}}\boldsymbol{p}\T{\bf A}\boldsymbol{q}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+(von Neumann Minimax Theorem):
+\begin_inset Formula 
+\[
+\max_{\boldsymbol{p}}\min_{\boldsymbol{q}}\boldsymbol{p}\T{\bf A}\boldsymbol{q}=\min_{\boldsymbol{q}}\max_{\boldsymbol{p}}\boldsymbol{p}\T{\bf A}\boldsymbol{q}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+LP duality.
+\end_layout
+
+\begin_layout Standard
+The implication is that if the players can randomize, the order of play
+ does not matter.
+ An observation is that if the other player has committed to a (randomized)
+ strategy, there is always a deterministic best response.
+ Let 
+\begin_inset Formula $\boldsymbol{e_{i}}$
+\end_inset
+
+ be the vector with 1 in component 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $0$
+\end_inset
+
+ in all others.
+\end_layout
+
+\begin_layout Theorem
+(Loomis):
+\begin_inset Formula 
+\[
+\max_{\boldsymbol{p}}\min_{i}\boldsymbol{p}\T{\bf A}\boldsymbol{e_{i}}=\min_{\boldsymbol{q}}\max_{j}\boldsymbol{e_{j}}\T{\bf A}\boldsymbol{q}.
+\]
+
+\end_inset
+
+That is, the second player can always choose an optimal deterministic strategy.
+\end_layout
+
+\begin_layout Proof
+Pick the row/column with best expectation under the other player's distribution.
+\end_layout
+
+\begin_layout Corollary
+If 
+\begin_inset Formula $\hat{\boldsymbol{p}},\hat{\boldsymbol{q}}$
+\end_inset
+
+ are any randomized strategies (not necessarily optimal), then
+\begin_inset Formula 
+\begin{align*}
+\min_{i}\hat{\boldsymbol{p}}\T{\bf A}\boldsymbol{e_{i}} & \leq\max_{\boldsymbol{p}}\min_{i}\boldsymbol{p}\T{\bf A}\boldsymbol{e_{i}}\\
+ & =\min_{\boldsymbol{q}}\max_{j}\boldsymbol{e_{j}}{\bf A}\boldsymbol{q}\\
+ & \leq\max_{j}\boldsymbol{e_{j}}\T{\bf A}\hat{\boldsymbol{q}}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The idea is to apply this to algorithm design (as rows) and input design
+ (as columns).
+ A randomized algorithm is just a distribution over deterministic algorithms.
+ Crucially, we need that the number of algorithms and number of inputs are
+ both finite.
+ This applies, for instance, if we look at a fixed input size 
+\begin_inset Formula $n$
+\end_inset
+
+, and the algorithm's runtime is deterministically bounded (
+\emph on
+e.g.,
+\emph default
+ as a function of 
+\begin_inset Formula $n$
+\end_inset
+
+).
+ This could be problematic for some Las Vegas algorithms whose runtime may
+ grow unboundedly with small probability (
+\emph on
+e.g., 
+\emph default
+coupon collector).
+\end_layout
+
+\end_body
+\end_document

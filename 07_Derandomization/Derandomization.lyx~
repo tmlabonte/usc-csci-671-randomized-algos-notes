@@ -1,0 +1,715 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\mathcal{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathscr{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\I}{\mathscr{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\intercal}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Derandomization
+\end_layout
+
+\begin_layout Section
+Derandomizing Polynomial Circuits
+\end_layout
+
+\begin_layout Subsection
+Adleman's Proof
+\end_layout
+
+\begin_layout Standard
+We continue the proof of Adleman's Theorem.
+ Recall we were studying the matrix 
+\begin_inset Formula ${\bf A}\in\{0,1\}^{2n\times2m}$
+\end_inset
+
+ which lists out the function value 
+\begin_inset Formula $f(\boldsymbol{x},\boldsymbol{r})$
+\end_inset
+
+ according to the input bitstring 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+ and randomness bitstring
+\series bold
+ 
+\begin_inset Formula $\boldsymbol{r}$
+\end_inset
+
+
+\series default
+.
+ Also recall that by the definition of 
+\begin_inset Formula $\boldsymbol{RP}$
+\end_inset
+
+, the matrix entry is correct whenever 
+\begin_inset Formula $f(\boldsymbol{x})=0$
+\end_inset
+
+ and is correct when 
+\begin_inset Formula $f(\boldsymbol{x})=1$
+\end_inset
+
+ with probability at least 
+\begin_inset Formula $1/2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Consider the submatrix of 
+\begin_inset Formula ${\bf A}$
+\end_inset
+
+ where 
+\begin_inset Formula $f(\boldsymbol{x})=1$
+\end_inset
+
+.
+ Then each row (representing input strings) has at least half 1s, so the
+ whole submatrix is at least half 1s.
+ Call this property 
+\begin_inset Formula $(*)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Our goal is to select a polynomial-sized set of columns (representing randomness
+ strings) such that, in each row, we have at least one 1 in a selected column.
+ Then by taking a big OR over all our chosen columns, we would obtain a
+ correct circuit for any input string.
+\end_layout
+
+\begin_layout Standard
+Note that this is a set cover problem.
+ A good column choosing heuristic is to select columns with many 1s – in
+ particular, many 
+\begin_inset Quotes eld
+\end_inset
+
+useful
+\begin_inset Quotes erd
+\end_inset
+
+ 1s that are not covered by other selected columns.
+ For our first column, we select column 
+\begin_inset Formula $\boldsymbol{r}$
+\end_inset
+
+ that has the largest number of 1s.
+ This takes care of at least half of all rows by 
+\begin_inset Formula $(*)$
+\end_inset
+
+.
+ Then, we remove the covered rows and the selection column from consideration
+ and repeat.
+ From all remaining rows, a 0 was removed, so they are still at least half
+ 1s; thus 
+\begin_inset Formula $(*)$
+\end_inset
+
+ still holds.
+\end_layout
+
+\begin_layout Standard
+After at most 
+\begin_inset Formula $\log_{2}(2^{n})=n$
+\end_inset
+
+ rounds, all rows are covered.
+ So we have a polynomial-sized derandomized circuit.
+ Note that this is an existential proof; it would take exponential time
+ to construct the matrix 
+\begin_inset Formula ${\bf A}$
+\end_inset
+
+ and a derandomized circuit.
+ Also, this does not prove 
+\begin_inset Formula $\boldsymbol{RP}\subset\boldsymbol{P}$
+\end_inset
+
+ because we are running a completely different algorithm for every 
+\begin_inset Formula $n$
+\end_inset
+
+ – we would need an infinite case distinction over all possible values of
+ 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ A 
+\begin_inset Quotes eld
+\end_inset
+
+solution
+\begin_inset Quotes erd
+\end_inset
+
+ is if each input of size 
+\begin_inset Formula $n$
+\end_inset
+
+ comes with a polynomial-sized 
+\begin_inset Quotes eld
+\end_inset
+
+advice sheet
+\begin_inset Quotes erd
+\end_inset
+
+ (which depends on the input size, but not the actual input) for the algorithm
+ to use.
+ In our case the 
+\begin_inset Quotes eld
+\end_inset
+
+advice sheet
+\begin_inset Quotes erd
+\end_inset
+
+ could be a description of the deterministic circuit.
+ These complexity classes are called 
+\begin_inset Formula $\boldsymbol{RP/poly}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{P/poly}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+[Adleman].
+ This derandomization theorem implies 
+\begin_inset Formula $\boldsymbol{RP/poly}\subseteq\boldsymbol{P/poly}$
+\end_inset
+
+.
+ It is a corollary that 
+\begin_inset Formula $\boldsymbol{RP}\subseteq\boldsymbol{RP/poly}$
+\end_inset
+
+, but it is still open if 
+\begin_inset Formula $\boldsymbol{P}\subseteq\boldsymbol{P/poly}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Probabilistic Method Proof
+\end_layout
+
+\begin_layout Standard
+Choose 
+\begin_inset Formula $k=n+1$
+\end_inset
+
+ columns i.i.d.
+ uniformly.
+ Then,
+\begin_inset Formula 
+\[
+\Pr[\text{row }i\text{ not covered}]\leq2^{-k}
+\]
+
+\end_inset
+
+By Union Bound,
+\begin_inset Formula 
+\begin{align*}
+\Pr[\text{exists an uncovered row}] & \leq2^{n}\cdot2^{-k}\\
+ & =\frac{1}{2}.
+\end{align*}
+
+\end_inset
+
+By Probabilitic Method, there exists a set of 
+\begin_inset Formula $n+1$
+\end_inset
+
+ columns that cover all rows (because there is a nonzero probability of
+ finding it).
+\end_layout
+
+\begin_layout Section
+Method of Conditional Expectations
+\end_layout
+
+\begin_layout Subsection
+Framework
+\end_layout
+
+\begin_layout Standard
+This method can often be applied for 
+\begin_inset Quotes eld
+\end_inset
+
+practical
+\begin_inset Quotes erd
+\end_inset
+
+ algorithms that minimize/maximize some quantity 
+\begin_inset Formula $C$
+\end_inset
+
+ (
+\emph on
+e.g.,
+\emph default
+ an approximation guarantee).
+ Suppose that the algorithm 
+\begin_inset Formula $\A$
+\end_inset
+
+ ran up to some point, having flipped 
+\begin_inset Formula $i-1$
+\end_inset
+
+ random bits, and is about to flip random bit 
+\begin_inset Formula $i$
+\end_inset
+
+ out of 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ We compare the possible future outcomes (or expectations thereof) for each
+ of the outcomes of this coin flip.
+ The conditional expectation of 
+\begin_inset Formula $C$
+\end_inset
+
+, conditioned on the past bits, over the future bits is
+\begin_inset Formula 
+\begin{align*}
+\E_{r_{i},\dots,r_{m}}[C\mid r_{1},\dots,r_{i-1}] & =\Pr[r_{i}=1]\cdot\E_{r_{i+1},\dots,r_{m}}[C\mid r_{1},\dots,r_{i-1};r_{i}=1]\text{ }(*)\\
+ & +\Pr[r_{i}=0]\cdot\E_{r_{i+1},\dots,r_{m}}[C\mid r_{1},\dots,r_{i-1};r_{i}=0]\text{ }(\dagger)\\
+ & \leq\max(*,\dagger)\\
+ & \geq\min(*,\dagger).
+\end{align*}
+
+\end_inset
+
+So if we want to minimize/maximize 
+\begin_inset Formula $C$
+\end_inset
+
+, we pick the coin flip that gives us the smaller/larger conditional expectation.
+ We can do this starting from bit 
+\begin_inset Formula $i=1$
+\end_inset
+
+ iteratively.
+ Note that in order to apply this technique, we must be able to evaluate
+ the conditional expectations.
+ This fully derandomizes the algorithm while preserving the guarantees.
+\end_layout
+
+\begin_layout Subsection
+Application to Maximum Cut
+\end_layout
+
+\begin_layout Standard
+Given an undirected graph 
+\begin_inset Formula $G=(V,E)$
+\end_inset
+
+, we'd like to partition 
+\begin_inset Formula $V=S\cup\bar{S}$
+\end_inset
+
+ to (approximately) maximize the number of edges between 
+\begin_inset Formula $S$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{S}$
+\end_inset
+
+.
+ The best approximation algorithm for this problem is the Goemans-Williamson
+ 0.878-approximation, but here we will choose a 
+\begin_inset Formula $1/2$
+\end_inset
+
+ approximation and derandomize it.
+\end_layout
+
+\begin_layout Standard
+Johnson's Algorithm: for each node 
+\begin_inset Formula $v$
+\end_inset
+
+ independently, put it in 
+\begin_inset Formula $S$
+\end_inset
+
+ with probability 
+\begin_inset Formula $1/2$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{S}$
+\end_inset
+
+ otherwise.
+\end_layout
+
+\begin_layout Standard
+Our goal is to maximize 
+\begin_inset Formula $\E[\text{cut edges}]$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be the random variable representing the number of edges cut and 
+\begin_inset Formula $X_{e}$
+\end_inset
+
+ be an indicator random variable representing whether 
+\begin_inset Formula $e\in E$
+\end_inset
+
+ crosses the cut.
+ Thus
+\begin_inset Formula 
+\begin{align*}
+X & =\sum_{e}X_{e},\\
+\E[X] & =\sum_{e}\E[X_{e}]\\
+ & =\sum_{e}\Pr[e\text{ is cut}]\\
+ & =\sum_{e}\frac{1}{2}\\
+ & =\frac{m}{2}
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $OPT\leq m$
+\end_inset
+
+, we have a 
+\begin_inset Formula $1/2$
+\end_inset
+
+-approximation.
+ Let's now derandomize using conditional expectations.
+ The 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ bit of the algorithm determines if 
+\begin_inset Formula $v_{i}\in S$
+\end_inset
+
+ or 
+\begin_inset Formula $v_{i}\in\bar{S}$
+\end_inset
+
+.
+ Consider iteration 
+\begin_inset Formula $i$
+\end_inset
+
+ and vertex 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $V_{i-i}=\{v_{1},\dots,v_{i-1}\}$
+\end_inset
+
+ and 
+\begin_inset Formula $S_{i}=\{v_{j}:j\leq i\text{ placed in }S\}$
+\end_inset
+
+.
+ Also, 
+\begin_inset Formula $e(S_{1},S_{2})$
+\end_inset
+
+ is the number of edges between 
+\begin_inset Formula $S_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $S_{2}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\E[C\mid S_{i-1},v_{i}\in S_{i}] & =\frac{1}{2}e(\bar{V_{i}},V)+e(S_{i-1},V_{i-1}\setminus S_{i-1})+e(v_{i},V_{i-1}\setminus S_{i-1})\\
+\E[C\mid S_{i-1},v_{i}\notin S_{i}] & =\frac{1}{2}e(\bar{V_{i}},V)+e(S_{i-1},V_{i-1}\setminus S_{i-1})+e(v_{i},S_{i-1})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To apply the method of conditional expectation, we want to choose the larger
+ of 
+\begin_inset Formula $\E[C\mid S_{i-1},v_{i}\in S_{i}]$
+\end_inset
+
+ and 
+\begin_inset Formula $\E[C\mid S_{i-1},v_{i}\notin S_{i}]$
+\end_inset
+
+.
+ Canceling common terms, we only need to compare 
+\begin_inset Formula $e(v_{i},V_{i-1}\setminus S_{i-1})$
+\end_inset
+
+ and 
+\begin_inset Formula $e(v_{i},S_{i-1})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Greedy algorithm: Place the first node arbitrarily, then always place the
+ next node to maximize the number of cut edges to previously processed nodes.
+\end_layout
+
+\begin_layout Section
+Tail Bounds
+\end_layout
+
+\begin_layout Standard
+So far, we studied expectation and basic probability calculations.
+ With 
+\bar under
+tail bounds
+\bar default
+, we'd like to show that a random variable is close to its expectation with
+ 
+\begin_inset Quotes eld
+\end_inset
+
+high enough
+\begin_inset Quotes erd
+\end_inset
+
+ probability.
+ Some key applications of this idea include:
+\end_layout
+
+\begin_layout Enumerate
+Show that an algorithm works 
+\begin_inset Quotes eld
+\end_inset
+
+well
+\begin_inset Quotes erd
+\end_inset
+
+ (
+\emph on
+e.g.,
+\emph default
+ runtime, approximation guarantee) not just in expectation but with high
+ probability
+\end_layout
+
+\begin_layout Enumerate
+Further 
+\begin_inset Quotes eld
+\end_inset
+
+process
+\begin_inset Quotes erd
+\end_inset
+
+ random variables (
+\emph on
+e.g., 
+\emph default
+analyze a minimum/maximum of random variables).
+ The typical approach is to show that each random variable is small/large
+ with high probability, then take a union bound to show that the minimum/maximum
+ cannot be too small/large.
+\end_layout
+
+\end_body
+\end_document

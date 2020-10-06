@@ -1,0 +1,800 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\mathcal{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathscr{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\I}{\mathscr{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\intercal}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Game Theory II
+\end_layout
+
+\begin_layout Section
+Yao's Minimax Theorem
+\end_layout
+
+\begin_layout Subsection
+Theorem Statement
+\end_layout
+
+\begin_layout Theorem
+[Yao's Minimax Theorem].
+ Fix an input size 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\I$
+\end_inset
+
+ denote the set of all inputs of size 
+\begin_inset Formula $n$
+\end_inset
+
+ (finite).
+ Let 
+\begin_inset Formula $\A$
+\end_inset
+
+ be a finite set of algorithms, each of which correctly solves some given
+ problem.
+ Let 
+\begin_inset Formula $C(A,I)$
+\end_inset
+
+ be a cost measure for algorithm 
+\begin_inset Formula $A\in\A$
+\end_inset
+
+ on input 
+\begin_inset Formula $I\in\I$
+\end_inset
+
+ (e.g., running time).
+ Let 
+\begin_inset Formula $\hat{\boldsymbol{p}}$
+\end_inset
+
+ be any distribution over 
+\begin_inset Formula $\A$
+\end_inset
+
+ (i.e., a randomized algorithm), and let 
+\begin_inset Formula $\hat{\boldsymbol{q}}$
+\end_inset
+
+ be any distribution over inputs 
+\begin_inset Formula $\I$
+\end_inset
+
+ (i.e., a randomized input).
+ Then,
+\begin_inset Formula 
+\[
+\min_{A\in\A}\E_{I\sim\hat{\boldsymbol{q}}}[C(A,I)]\leq\max_{I\in\I}\E_{A\sim\hat{\boldsymbol{p}}}[C(A,I)].
+\]
+
+\end_inset
+
+This is a restatement of the corollary from last time.
+\end_layout
+
+\begin_layout Standard
+Note that the finiteness required makes application to algorithms with possibly
+ unbounded runtime problematic (
+\emph on
+e.g., 
+\emph default
+coupon collector).
+\end_layout
+
+\begin_layout Standard
+So, we can establish lower bounds on randomized algorithms by arguing which
+ algorithm does best on a certain distribution of inputs – even a single
+ input! By choosing a clever input, we can get a good lower bounds; if we
+ choose badly, the lower bound will be weak.
+ If 
+\begin_inset Formula $\hat{\boldsymbol{p}}$
+\end_inset
+
+ is a point distribution, then 
+\begin_inset Formula $A$
+\end_inset
+
+ can be 
+\begin_inset Quotes eld
+\end_inset
+
+return 0
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+return 1
+\begin_inset Quotes erd
+\end_inset
+
+, which runs in constant time.
+\end_layout
+
+\begin_layout Subsection
+Game Tree Evaluation
+\end_layout
+
+\begin_layout Standard
+A good first idea is a uniform distribution over all inputs.
+ In this case, each of the leaves is independently 0 or 1 with probability
+ 
+\begin_inset Formula $1/2$
+\end_inset
+
+.
+ We would like different levels of the tree to have the same probability
+ of being true (could be useful for analysis).
+ In particular, under the uniform distribution, each AND node would have
+ a different probability of being true.
+ For example, if every leave had probability 
+\begin_inset Formula $1/2$
+\end_inset
+
+, then the parent OR nodes would have a 
+\begin_inset Formula $3/4$
+\end_inset
+
+ probability of being true, and their parent AND node would have a 
+\begin_inset Formula $9/16$
+\end_inset
+
+ probability of being true.
+\end_layout
+
+\begin_layout Standard
+Note that an AND/OR tree is exactly the same as a NOR tree.
+ So what distribution on the leaves would give us equal probability on every
+ NOR node? Let's solve for one level being the same.
+ Let 
+\begin_inset Formula $p$
+\end_inset
+
+ be the probability that a leaf is set to 1.
+ Then,
+\begin_inset Formula 
+\begin{align*}
+p & =(1-p)^{2}\\
+ & \implies p=\frac{3-\sqrt{5}}{2}.
+\end{align*}
+
+\end_inset
+
+To summarize, our input distribution is to set each leaf to 1 independently
+ with probability 
+\begin_inset Formula $p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Without loss of generality, the best deterministic algorithm starts with
+ the leftmost leaf (because all leaves look the same initially).
+ Subsequently, it is always better to continue in a partially evaluated
+ subtree.
+ This is, in a sense, monotonicity: if 
+\begin_inset Formula $T$
+\end_inset
+
+ is isomorphic to a subtree of 
+\begin_inset Formula $T\p$
+\end_inset
+
+, then evaluating 
+\begin_inset Formula $T$
+\end_inset
+
+ takes at most as many queries in expectation as evaluating 
+\begin_inset Formula $T\p$
+\end_inset
+
+.
+ This property is specific to the independent input distribution, and it
+ can be proved via induction.
+ Thus, the optimal algorithm queries the leaves left to right, but skip
+ any whose value is not needed
+\end_layout
+
+\begin_layout Standard
+Now, we'll calculate the expected number of queries this takes.
+ Let 
+\begin_inset Formula $X(h)$
+\end_inset
+
+ be the expected number of queries to learn the value of a tree of height
+ 
+\begin_inset Formula $h$
+\end_inset
+
+.
+ We always evaluate the left subtree, and we evaluate the right subtree
+ only if the left subtree returned 0.
+ Thus,
+\begin_inset Formula 
+\begin{align*}
+X(h+1) & =X(h)+(1-p)X(h)\\
+ & =(2-p)X(h).
+\end{align*}
+
+\end_inset
+
+So,
+\begin_inset Formula 
+\[
+X(h)=(2-p)^{h}.
+\]
+
+\end_inset
+
+Since 
+\begin_inset Formula $h=\log_{2}n$
+\end_inset
+
+ for the entire tree,
+\begin_inset Formula 
+\begin{align*}
+X(h) & =(2-p)^{\log_{2}n}\\
+ & =n^{\log_{2}(2-p)}\\
+ & =n^{\log_{2}\frac{\sqrt{5}+1}{2}}\\
+ & =n^{\log_{2}(\sqrt{5}+1)-1}\\
+ & \approx n^{0.694}.
+\end{align*}
+
+\end_inset
+
+So every randomized algorithm must query at least 
+\begin_inset Formula $n^{0.694}$
+\end_inset
+
+ leaves in expectation, by Yao's Minimax Theorem.
+ This is a better bound than the information-theoretic 
+\begin_inset Formula $\sqrt{n}$
+\end_inset
+
+ lower bound, but it is less than the 
+\begin_inset Formula $\O(n^{0.793})$
+\end_inset
+
+ upper bound of Snir's Algorithm.
+ At least one of the upper and lower bounds is not tight.
+\end_layout
+
+\begin_layout Subsection
+Improving the Bounds
+\end_layout
+
+\begin_layout Standard
+The analysis of Snir's Algorithm got a 
+\begin_inset Formula $3/2$
+\end_inset
+
+ probability at each internal node because we used a bound assuming that
+ whenever the algorithm flipped a coin, there was a 
+\begin_inset Quotes eld
+\end_inset
+
+bad
+\begin_inset Quotes erd
+\end_inset
+
+ outcome (both subtrees must be evaluated) and a 
+\begin_inset Quotes eld
+\end_inset
+
+good
+\begin_inset Quotes erd
+\end_inset
+
+ outcome (only one subtree must be evaluated).
+ The independent leaves create instances where, at many internal nodes,
+ there are no 
+\begin_inset Quotes eld
+\end_inset
+
+bad
+\begin_inset Quotes erd
+\end_inset
+
+ outcomes.
+ This implies an easier instance of the problem.
+\end_layout
+
+\begin_layout Standard
+A better input distribution would generate inputs such that, at each internal
+ node, there exists a 
+\begin_inset Quotes eld
+\end_inset
+
+bad
+\begin_inset Quotes erd
+\end_inset
+
+ choice.
+\end_layout
+
+\begin_layout Standard
+The distribution is defined from the root down.
+ Make the root have value 1 with probability 
+\begin_inset Formula $q$
+\end_inset
+
+.
+ If a node has value 1, then recursively choose values below it such that
+ both subtrees have value 0.
+ If a node has value 0, flip a coin.
+ Based on the outcome, recursively make one subtree have value 1 and the
+ other have value 0.
+\end_layout
+
+\begin_layout Standard
+The distribution was inspired by Snir's Algorithm, but we use it to prove
+ lower bounds for every randomized algorithm.
+ To do so, we must derive & prove the optimal deterministic algorithm against
+ this distribution, then apply Yao's Minimax Theorem.
+\end_layout
+
+\begin_layout Standard
+We won't derive an algorithm here, but this distribution does give a lower
+ bound of 
+\begin_inset Formula $n^{0.793}$
+\end_inset
+
+, proving that Snir's Algorithm is optimal.
+\end_layout
+
+\begin_layout Section
+Derandomization
+\end_layout
+
+\begin_layout Standard
+The goal of derandomization is frequently to reduce or remove randomness,
+ both for practical reasons and out of complexity interest (
+\emph on
+e.g.,
+\emph default
+ ultimately proving 
+\begin_inset Formula $\boldsymbol{P=RP}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Here, we will cover two concepts: first, we will see how to derandomize
+ polynomial circuits; then, we will study the method of conditional expectations.
+\end_layout
+
+\begin_layout Subsection
+Derandomizing Polynomial Circuits
+\end_layout
+
+\begin_layout Standard
+The input is a string in 
+\begin_inset Formula $\{0,1\}^{n}$
+\end_inset
+
+ with 
+\begin_inset Formula $n$
+\end_inset
+
+ fixed for now.
+ The algorithm uses 
+\begin_inset Formula $m$
+\end_inset
+
+ bits of randomness: 
+\begin_inset Formula $\{0,1\}^{m}$
+\end_inset
+
+.
+ We can think of the algorithm as having two inputs: the input bitstring
+ and the randomness bitstring.
+ If the algorithm runs in polynomial time, then 
+\begin_inset Formula $m=poly(n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Recall that the definition of an 
+\begin_inset Formula $\boldsymbol{RP}$
+\end_inset
+
+ algorithm is as follows: if the correct output is 
+\begin_inset Quotes eld
+\end_inset
+
+false
+\begin_inset Quotes erd
+\end_inset
+
+, then the algorithm always answers 
+\begin_inset Quotes eld
+\end_inset
+
+false
+\begin_inset Quotes erd
+\end_inset
+
+, and if the correct output is 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+, then for at least 
+\begin_inset Formula $1/2$
+\end_inset
+
+ of the randomness strings, the algorithm answers 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We will assume that the algorithm is represented by a poly-sized circuit
+ by AND, OR, and NOT gates with no feedback (
+\emph on
+i.e., 
+\emph default
+the graph of connections is a DAG).
+ The input 
+\begin_inset Quotes eld
+\end_inset
+
+wires
+\begin_inset Quotes erd
+\end_inset
+
+ are 
+\begin_inset Formula $n$
+\end_inset
+
+ bits for the input and 
+\begin_inset Formula $m$
+\end_inset
+
+ bits for the randomness; we have one output 
+\begin_inset Quotes eld
+\end_inset
+
+wire
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For a function 
+\begin_inset Formula $f$
+\end_inset
+
+, a 
+\series bold
+circuit family
+\series default
+ 
+\begin_inset Formula $C_{1},C_{2},\dots$
+\end_inset
+
+ contains a correct circuit 
+\begin_inset Formula $C_{n}$
+\end_inset
+
+ for each 
+\begin_inset Formula $n$
+\end_inset
+
+, and 
+\begin_inset Formula $|C_{n}|=\O(n^{k})$
+\end_inset
+
+ for some constant 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+[Adelman].
+ If a function has a randomized poly-sized circuit family, then it has a
+ non-randomized poly-sized circuit family.
+\end_layout
+
+\begin_layout Proof
+Fix an input size 
+\begin_inset Formula $n$
+\end_inset
+
+ and corresponding circuit 
+\begin_inset Formula $C_{n}$
+\end_inset
+
+.
+ Write 
+\begin_inset Formula $a(\boldsymbol{x},\boldsymbol{r})$
+\end_inset
+
+ for the output of 
+\begin_inset Formula $C_{n}$
+\end_inset
+
+ on input bitstring 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+ with randomness bitstring 
+\begin_inset Formula $\boldsymbol{r}$
+\end_inset
+
+.
+ Correctness of 
+\begin_inset Formula $C_{n}$
+\end_inset
+
+ implies that if 
+\begin_inset Formula $f(\boldsymbol{x})=0$
+\end_inset
+
+, then 
+\begin_inset Formula $a(\boldsymbol{x},\boldsymbol{r})=0$
+\end_inset
+
+ for all 
+\begin_inset Formula $\boldsymbol{r}\in\{0,1\}^{m}$
+\end_inset
+
+, while if 
+\begin_inset Formula $f(\boldsymbol{x})=1$
+\end_inset
+
+, then 
+\begin_inset Formula $a(\boldsymbol{x},\boldsymbol{r})=1$
+\end_inset
+
+ for at least 
+\begin_inset Formula $1/2$
+\end_inset
+
+ of the strings 
+\begin_inset Formula $\boldsymbol{r}\in\{0,1\}^{m}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+The key insight is to look at the matrix 
+\begin_inset Formula ${\bf A}\in\{0,1\}^{2^{n}\times2^{m}}$
+\end_inset
+
+ of all these entries.
+ More specifically, we look at the sub-matrix of only the rows 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+ where 
+\begin_inset Formula $f(\boldsymbol{x})=1$
+\end_inset
+
+.
+ Our goal is to construct polynomially many copies of 
+\begin_inset Formula $C_{n}$
+\end_inset
+
+ in which the randomness is hard-wired, then take a big OR of all of them.
+\end_layout
+
+\begin_layout Proof
+Note that if we allowed 
+\begin_inset Formula $2^{m}$
+\end_inset
+
+ copies, we could take an OR of 
+\begin_inset Formula $C_{n}$
+\end_inset
+
+ with all randomness strings hard-wired.
+ This computes 
+\begin_inset Formula $f(\boldsymbol{x})$
+\end_inset
+
+ even for 
+\begin_inset Formula $\boldsymbol{NP}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+[To be continued next lecture.]
+\end_layout
+
+\end_body
+\end_document

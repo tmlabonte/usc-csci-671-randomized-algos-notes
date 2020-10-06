@@ -1,0 +1,826 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\mathcal{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+LP Rounding and Randomized Quicksort
+\end_layout
+
+\begin_layout Section
+LP Rounding Algorithm for Max-SAT
+\end_layout
+
+\begin_layout Subsection
+LP Rounding
+\end_layout
+
+\begin_layout Standard
+Assume we are given an arbitrary CNF formula with different clause lengths
+ and weights 
+\begin_inset Formula $w_{j}$
+\end_inset
+
+ on the clauses.
+ Then we'd like to reformulate the maximization problem as an integer linear
+ program, relax it to a fractional version, and round the fractional version.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $y_{j}$
+\end_inset
+
+ be an LP variable for each clause 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+, with value 1 if 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+ is true and 0 otherwise.
+ Also, let 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ be an LP variable for each variable 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+, with value 1 if 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ is true and 0 if not.
+ Then we have the LP:
+\begin_inset Formula 
+\begin{align*}
+\max\text{ } & \sum_{j}w_{j}y_{j}\\
+\text{s.t. } & y_{j}\leq\sum_{x_{i}\in C_{j}}z_{i}+\sum_{\bar{x_{i}}\in C_{j}}1-z_{i} & \forall j\\
+ & 0\leq y_{j}\leq1 & \forall j\\
+ & 0\leq z_{i}\leq1 & \forall i
+\end{align*}
+
+\end_inset
+
+This LP can be solved in polynomial time.
+ Note that 
+\begin_inset Formula $OPT_{ILP}\leq OPT_{LP}$
+\end_inset
+
+ because each legal solution to the integer linear program is also a legal
+ solution to the fractional LP.
+\end_layout
+
+\begin_layout Standard
+For our rounding scheme, we will independently set each variable 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ to true with probability 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+.
+ Let
+\begin_inset Formula 
+\[
+Y_{j}=\begin{cases}
+1 & \text{if \ensuremath{C_{j}} is true}\\
+0 & \text{otherwise}
+\end{cases}.
+\]
+
+\end_inset
+
+Thus 
+\begin_inset Formula $Y=\sum_{j}w_{j}Y_{j}$
+\end_inset
+
+.
+ So,
+\begin_inset Formula 
+\begin{align*}
+\E[Y] & =\sum_{j}w_{j}\E[Y_{j}]\\
+ & =\sum_{j}w_{j}\Pr[C_{j}\text{ true}].
+\end{align*}
+
+\end_inset
+
+By independence,
+\begin_inset Formula 
+\begin{align*}
+\Pr[C_{j}\text{ true}] & =1-\Pr[C_{j}\text{ false}]\\
+ & =1-\prod_{x_{i}\in C_{j}}(1-z_{i})\cdot\prod_{\bar{x_{i}}\in C_{j}}z_{i}.
+\end{align*}
+
+\end_inset
+
+For analysis of just one clause, we can assume for simplicity (by renaming
+ 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ to 
+\begin_inset Formula $\bar{x_{i}}$
+\end_inset
+
+ for some 
+\begin_inset Formula $i$
+\end_inset
+
+) that all literals are un-negated.
+ So,
+\begin_inset Formula 
+\[
+\Pr[C_{j}\text{ true}]=1-\prod_{x_{i}\in C_{j}}(1-z_{i}).
+\]
+
+\end_inset
+
+The LP solution satisfies 
+\begin_inset Formula $y_{j}\leq\sum_{x_{i}\in C_{j}}z_{i}$
+\end_inset
+
+ for all 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\sum_{x_{i}\in C_{j}}z_{i}$
+\end_inset
+
+, that increases our probability of satisfying 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+ without helping the LP.
+ So the worst case is 
+\begin_inset Formula $\sum_{x_{i}\in C_{j}}z_{i}=y_{j}$
+\end_inset
+
+.
+ Subject to this equality, the best way to set the 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ is as unequal as possible, and the worst would be to set them all equal
+ (by convexity).
+ 
+\end_layout
+
+\begin_layout Standard
+Write 
+\begin_inset Formula $k=|C_{j}|$
+\end_inset
+
+.
+ Then in the worst case, 
+\begin_inset Formula $z_{i}=Y_{j}/k$
+\end_inset
+
+.
+ So,
+\begin_inset Formula 
+\[
+\Pr[C_{j}\text{ true}]\geq1-\big(1-\frac{Y_{j}}{k}\big)^{k}
+\]
+
+\end_inset
+
+We want to lower bound this by 
+\begin_inset Formula $\alpha Y_{j}$
+\end_inset
+
+ for some large constant 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ To do so, we will prove the function is concave over 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+ and then lower bound at the endpoints 
+\begin_inset Formula $y_{j}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{j}=1$
+\end_inset
+
+.
+ This will result in a lower bound for the entire range.
+\end_layout
+
+\begin_layout Standard
+The first derivative is
+\begin_inset Formula 
+\[
+k\big(1-\frac{Y_{j}}{k}\big)^{k-1}\geq0,
+\]
+
+\end_inset
+
+and the second derivative is 
+\begin_inset Formula 
+\[
+\frac{-(k-1)}{k}\big(1-\frac{Y_{j}}{k}\big)^{k-2}\leq0,
+\]
+
+\end_inset
+
+proving monotonicity and concavity.
+ At 
+\begin_inset Formula $y_{j}=0$
+\end_inset
+
+, the function is equal to 0, and at 
+\begin_inset Formula $y_{j}=1$
+\end_inset
+
+, the function is equal to 
+\begin_inset Formula $1-(1-1/k)^{k}\geq1-1/e$
+\end_inset
+
+.
+ Then,
+\begin_inset Formula 
+\[
+\Pr[C_{j}\text{ true}]\geq\big(1-\frac{1}{e}\big)y_{j}.
+\]
+
+\end_inset
+
+Thus we have shown that the expected weighted number of clauses satisfied
+ is at least
+\begin_inset Formula 
+\begin{align*}
+\sum_{j}w_{j}\Pr[C_{j}\text{ satisfied}] & \geq\sum_{j}w_{j}(1-1/e)y_{j}\\
+ & =(1-1/e)OPT_{LP}\\
+ & \geq(1-1/e)OPT_{ILP}.
+\end{align*}
+
+\end_inset
+
+So this is a 
+\begin_inset Formula $(1-1/e)$
+\end_inset
+
+ approximation.
+ Johnson's algorithm does better for 
+\begin_inset Formula $k\geq2$
+\end_inset
+
+, so our LP rounding algorithm only helps if we are guaranteed to have singleton
+ clauses.
+\end_layout
+
+\begin_layout Subsection
+A Hybrid Algorithm
+\end_layout
+
+\begin_layout Standard
+A better algorithm then either alone is to run both algorithms and keep
+ the better output; for our analysis we will flip a fair coin to decide
+ which algorithm to run.
+ Note that this strategy can only do worse than keeping the better.
+ Then, the expected weight of satisfied clauses is
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2}\big(\E[\text{Johnson}]+\E[\text{LP}]\big) & =\frac{1}{2}\sum_{j}w_{j}\big(\Pr[\text{Johnson satisfies \ensuremath{C_{j}]}}+\Pr[\text{LP-rounding satisfies }C_{j}]\big)\\
+ & \geq\frac{1}{2}\sum_{j}w_{j}\big((1-2^{-|C_{j}|})+(1-(1-\frac{1}{|C_{j}|})^{|C_{j}|}y_{j})\big).
+\end{align*}
+
+\end_inset
+
+If 
+\begin_inset Formula $|C_{j}|=1$
+\end_inset
+
+, then this is 
+\begin_inset Formula $\geq1/2+y_{j}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $|C_{j}|=2$
+\end_inset
+
+ then this is 
+\begin_inset Formula $\geq3/4+3/4y_{j}$
+\end_inset
+
+.
+ Finally for 
+\begin_inset Formula $|C_{j}|\geq3$
+\end_inset
+
+ this is 
+\begin_inset Formula $\geq7/8+(1-1/e)y_{j}$
+\end_inset
+
+.
+ Note that a lower bound for all these cases is 
+\begin_inset Formula $3/2\cdot y_{j}$
+\end_inset
+
+.
+ Thus we obtain
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2}\big(\E[\text{Johnson}]+\E[\text{LP}]\big) & \geq\frac{1}{2}\sum_{j}\frac{3}{2}w_{j}\cdot y_{j}\\
+ & =\frac{3}{4}OPT_{LP}.
+\end{align*}
+
+\end_inset
+
+So this is a 
+\begin_inset Formula $3/4$
+\end_inset
+
+ approximation.
+\end_layout
+
+\begin_layout Section
+Randomized Quicksort
+\end_layout
+
+\begin_layout Standard
+Recall that Quicksort
+\begin_inset Formula $(S)$
+\end_inset
+
+ works as follows:
+\end_layout
+
+\begin_layout Enumerate
+Pick a pivot 
+\begin_inset Formula $x\in S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Divide 
+\begin_inset Formula $S$
+\end_inset
+
+ into 
+\begin_inset Formula $S_{1}=\{y\in S:y\leq x\}$
+\end_inset
+
+ and 
+\begin_inset Formula $S_{2}=\{y\in S:y>x\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Quicksort
+\begin_inset Formula $(S_{1})$
+\end_inset
+
+; Quicksort
+\begin_inset Formula $(S_{2})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Output sorted 
+\begin_inset Formula $S_{1}$
+\end_inset
+
+ followed by sorted 
+\begin_inset Formula $S_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The runtime recurrence is
+\begin_inset Formula 
+\[
+T(|S|)\leq T(|S_{1}|)+T(|S_{2}|)+O(|S|),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $O(|S|)$
+\end_inset
+
+ is the runtime of the partition step.
+ This has solution
+\begin_inset Formula 
+\[
+T(|S|)\leq O(|S|\cdot\log|S|)
+\]
+
+\end_inset
+
+if the partition is always (most of the time) such that 
+\begin_inset Formula $|S_{1}|,|S_{2}|\leq\alpha\cdot|S|$
+\end_inset
+
+ for some constant 
+\begin_inset Formula $\alpha<1$
+\end_inset
+
+.
+ In particular, this works well if 
+\begin_inset Formula $x$
+\end_inset
+
+ is the median, and then we obtain 
+\begin_inset Formula $\alpha=1/2$
+\end_inset
+
+.
+ If the pivot is always chosen poorly (e.g., 
+\begin_inset Formula $|S_{2}|=1$
+\end_inset
+
+), then runtime is 
+\begin_inset Formula $\Omega(|S|^{2})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For Randomized Quicksort, we just pick 
+\begin_inset Formula $x\in S$
+\end_inset
+
+ uniformly at random.
+ Conceptually, this works because a 
+\begin_inset Quotes eld
+\end_inset
+
+good pivot
+\begin_inset Quotes erd
+\end_inset
+
+ is somewhere between the first and third quantiles of the sorted array,
+ and if we pick such a pivot then we get 
+\begin_inset Formula $\alpha\leq3/4$
+\end_inset
+
+.
+ We have a 
+\begin_inset Formula $1/2$
+\end_inset
+
+ chance to pick a 
+\begin_inset Quotes eld
+\end_inset
+
+good pivot
+\begin_inset Quotes erd
+\end_inset
+
+, so we make enough progress 
+\begin_inset Formula $1/2$
+\end_inset
+
+ the time, and that is enough.
+ This can be turned into a formal proof, but we'll focus on comparisons
+ only.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $Y$
+\end_inset
+
+ be the number of total comparisons.
+ We want to bound 
+\begin_inset Formula $\E[Y]$
+\end_inset
+
+.
+ Let
+\begin_inset Formula 
+\[
+Y_{ij}=\begin{cases}
+1 & \text{if }i,j\text{ are ever compared}\\
+0 & \text{otherwise}
+\end{cases}.
+\]
+
+\end_inset
+
+Then, 
+\begin_inset Formula $Y=\sum_{i<j}Y_{ij}$
+\end_inset
+
+.
+ So,
+\begin_inset Formula 
+\begin{align*}
+\E[Y] & =\sum_{i<j}\E[Y_{ij}]\\
+ & =\sum_{i<j}\Pr[i,j\text{ compared}].
+\end{align*}
+
+\end_inset
+
+So we just need to calculate 
+\begin_inset Formula $\Pr[i,j\text{ compared}]$
+\end_inset
+
+.
+ Let's number the elements in sorted order.
+ Then 
+\begin_inset Formula $i,j$
+\end_inset
+
+ can only be compared if/when one if a pivot at a time when both 
+\begin_inset Formula $i,j\in S$
+\end_inset
+
+.
+ Note that if an element 
+\begin_inset Formula $x$
+\end_inset
+
+ between 
+\begin_inset Formula $i,j$
+\end_inset
+
+ is ever chosen as a pivot before 
+\begin_inset Formula $i$
+\end_inset
+
+ or 
+\begin_inset Formula $j$
+\end_inset
+
+, then 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ are separated forever and will never be compared.
+ Thus, we want to calculate the probability that such an 
+\begin_inset Formula $x$
+\end_inset
+
+ is chosen before 
+\begin_inset Formula $i$
+\end_inset
+
+ or 
+\begin_inset Formula $j$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The moment the first element from 
+\begin_inset Formula $\{i,\dots,j\}$
+\end_inset
+
+ is chosen as a pivot is when 
+\begin_inset Formula $Y_{ij}$
+\end_inset
+
+ is decided.
+ If 
+\begin_inset Formula $i$
+\end_inset
+
+ or 
+\begin_inset Formula $j$
+\end_inset
+
+ is chosen, then 
+\begin_inset Formula $Y_{ij}=1$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $x\notin\{i,j\}$
+\end_inset
+
+, then 
+\begin_inset Formula $Y_{ij}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We have that 
+\begin_inset Formula $\Pr[Y_{ij}=1]=2/(j+1-i)$
+\end_inset
+
+ because there are 
+\begin_inset Formula $j+1-i$
+\end_inset
+
+ elements in the range, or which 2 cause a comparison.
+ Conditioned on picking the first element from 
+\begin_inset Formula $\{i,\dots,j\}$
+\end_inset
+
+, the choice is uniformly random.
+ So,
+\begin_inset Formula 
+\[
+\E[Y]=\sum_{i}\sum_{j>i}\frac{2}{j+1-i}
+\]
+
+\end_inset
+
+Let 
+\begin_inset Formula $k=j+1-i$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $j=k+i-1$
+\end_inset
+
+, and
+\begin_inset Formula 
+\begin{align*}
+\E[Y] & =\sum_{i}\sum_{k=2}^{n+1-i}\frac{2}{k}\\
+ & \leq2\sum_{i}\sum_{k=1}^{n}\frac{1}{k}\\
+ & =2nH(n)\\
+ & =\Theta(n\log n)
+\end{align*}
+
+\end_inset
+
+This is a Monte Carlo algorithm with expected runtime 
+\begin_inset Formula $\O(n\log n)$
+\end_inset
+
+.
+ One can also prove high-probability bounds.
+\end_layout
+
+\end_body
+\end_document

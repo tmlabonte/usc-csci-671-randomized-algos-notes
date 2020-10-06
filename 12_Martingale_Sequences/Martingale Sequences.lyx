@@ -1,0 +1,936 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\mathcal{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathscr{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\I}{\mathscr{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\intercal}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eps}{\epsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ph}{\varphi}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\F}{\mathbb{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\N}{\mathbb{N}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Martingale Sequences
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+The conditional expectation is
+\begin_inset Formula 
+\[
+\E[X\mid Y_{1}=y_{1},\dots,Y_{k}=y_{k}]=\sum_{x}X\cdot\Pr[X=x\mid Y_{1}=y_{1},\dots,Y_{k}=y_{k}].
+\]
+
+\end_inset
+
+With only one conditional variable,
+\begin_inset Formula 
+\[
+\E[X\mid Y=y]=\frac{1}{\Pr[Y=y]}\cdot\sum_{x}\Pr[X=x\land Y=y].
+\]
+
+\end_inset
+
+Note that 
+\begin_inset Formula $\E[X\mid Y=y]$
+\end_inset
+
+ is a random variable, mapping values 
+\begin_inset Formula $y$
+\end_inset
+
+ to 
+\begin_inset Formula $f(y)\coloneqq\E[X\mid Y=y]$
+\end_inset
+
+.
+ We consistently use uppercase for random variables and lowercase for values
+ they take on.
+\end_layout
+
+\begin_layout Standard
+Recall that a random variable 
+\begin_inset Formula $X:\Omega\rightarrow\R$
+\end_inset
+
+ is a function from points of the sample space to numerical labels.
+ The conditional expectation is therefore a random variable (the expectation
+ is just one numerical value, as is 
+\begin_inset Formula $\E[X\mid Y=y]$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Definition
+A (simple) martingale is a sequence 
+\begin_inset Formula $X_{0},X_{1},\dots$
+\end_inset
+
+ of random variables such that for all 
+\begin_inset Formula $i$
+\end_inset
+
+ we have 
+\begin_inset Formula $\E[X_{i+1}\mid X_{0},\dots,X_{i}]=X_{i}$
+\end_inset
+
+.
+ For a martingale, in expectation, the next value 
+\begin_inset Formula $X_{i+1}$
+\end_inset
+
+ is equal to 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The initial motivation was to analyze sequences of bets with possibly complicate
+d strategies, but each bet in isolation is fair.
+ Intuitively, the betting history should not matter.
+ If 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ is money after 
+\begin_inset Formula $i$
+\end_inset
+
+ bets, then 
+\begin_inset Formula $\E[X_{i+1}\mid X_{i}]=X_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We would like to capture even revealed randomness that is not immediately
+ reflected in the 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+A filter 
+\begin_inset Formula $\F$
+\end_inset
+
+ is a finite sequence of 
+\begin_inset Formula $\F_{i}\subseteq2^{\Omega}$
+\end_inset
+
+ (
+\emph on
+i.e.,
+\emph default
+ power set of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+) such that:
+\end_layout
+
+\begin_layout Enumerate
+Each 
+\begin_inset Formula $\F_{i}$
+\end_inset
+
+ is closed under union and complement.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\F_{0}=\{\emptyset,\Omega\}\subseteq\F_{1}\subseteq\dots\subseteq\F_{n}=2^{\Omega}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Intuitively, a filter gradually partitions the sample space more and more
+ finely starting from the trivial partition and ending with the finest possible.
+ This corresponds to gradually revealing the randomness in 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ until it has all been revealed.
+ An event 
+\begin_inset Formula $\mathcal{E}\subseteq\Omega$
+\end_inset
+
+, so 
+\begin_inset Formula $\mathcal{E}\in2^{\Omega}$
+\end_inset
+
+.
+ Some events cannot be expressed with respect to some 
+\begin_inset Formula $\F_{i}$
+\end_inset
+
+, namely when 
+\begin_inset Formula $\mathcal{E}\in\F_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+Say we flip 2 coins and roll a 6-sided die.
+ Then 
+\begin_inset Formula 
+\[
+\Omega=\{0,1\}\times\{0,1\}\times\{1,2,3,4,5,6\}.
+\]
+
+\end_inset
+
+If the die roll is revealed, then we can talk about any event that is only
+ determined by the die roll, but we cannot express other events.
+ In this case, the filter would be 
+\begin_inset Formula 
+\[
+\big\{\{0,1\}\times\{0,1\}\times\{i\}\mid i=1,\dots,6\big\}
+\]
+
+\end_inset
+
+and its closure under union and complement.
+\end_layout
+
+\begin_layout Definition
+The conditional expectation 
+\begin_inset Formula $\E[X\mid\F_{i}]$
+\end_inset
+
+ is equal to 
+\begin_inset Formula $\E[X\mid Y]$
+\end_inset
+
+ for any random variable 
+\begin_inset Formula $Y$
+\end_inset
+
+ that takes distinct values on the elements of 
+\begin_inset Formula $\F_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Here, 
+\begin_inset Formula $Y$
+\end_inset
+
+ is just used as an indicator for the partitions in 
+\begin_inset Formula $\F_{i}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\E[X\mid\F_{i}]$
+\end_inset
+
+ assigns each partition as value the conditional expectation of 
+\begin_inset Formula $X$
+\end_inset
+
+ given that the outcome of the randomness is known to be in 
+\begin_inset Formula $\F_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+For a filter 
+\begin_inset Formula $\F_{0},\F_{1},\dots$
+\end_inset
+
+, a sequence 
+\begin_inset Formula $X_{0},X_{1},\dots$
+\end_inset
+
+ is a martingale sequence if for all 
+\begin_inset Formula $i$
+\end_inset
+
+ we have 
+\begin_inset Formula $\E[X_{i+1}\mid\F_{i}]=X_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The most frequent use of martingales in computer science is the Doob martingale:
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be a random variable, and 
+\begin_inset Formula $\F_{0},\F_{1},\dots,\F_{n}$
+\end_inset
+
+ a filter.
+ Define 
+\begin_inset Formula $X_{i}\coloneqq\E[X\mid\F_{i}]$
+\end_inset
+
+.
+ This is a Doob martingale.
+ (We skip the proof that it actually is a martingale).
+\end_layout
+
+\begin_layout Standard
+Note that 
+\begin_inset Formula 
+\[
+X_{0}=\E[X\mid\F_{0}]=\E[X\mid\text{no info revealed}]=\E[X].
+\]
+
+\end_inset
+
+Also,
+\begin_inset Formula 
+\[
+X_{n}=\E[X\mid2^{\Omega}]=\{\omega\mapsto X(\omega)\}=X.
+\]
+
+\end_inset
+
+The sequence 
+\begin_inset Formula $(X_{i})$
+\end_inset
+
+ gradually reveals more and more information about 
+\begin_inset Formula $X$
+\end_inset
+
+, starting with just the expectation, and finishing with the actual value.
+\end_layout
+
+\begin_layout Example
+Consider a sum of independent random variables 
+\begin_inset Formula $Y_{1},\dots,Y_{n}$
+\end_inset
+
+.
+ We care about 
+\begin_inset Formula $Y=\sum_{i=1}^{n}Y_{i}.$
+\end_inset
+
+ Define 
+\begin_inset Formula $X_{i}=\E[Y\mid Y_{1},\dots,Y_{i}]$
+\end_inset
+
+.
+ The corresponding filter is
+\begin_inset Formula 
+\[
+\F_{i}=2^{\times_{j\leq i}\{y:y\text{ is a possible outcome for }Y_{j}\}}
+\]
+
+\end_inset
+
+which reveals the 
+\begin_inset Formula $Y_{i}$
+\end_inset
+
+ one by one.
+ Thus
+\begin_inset Formula 
+\begin{align*}
+X_{0} & =\E[Y]=\sum_{i}\E[Y_{i}]\\
+X_{n} & =Y=\sum_{i}Y_{i}.
+\end{align*}
+
+\end_inset
+
+Let's briefly confirm that this is a martingale.
+ We have 
+\begin_inset Formula 
+\begin{align*}
+\E[X_{i+1}\mid\F_{i}] & =\E\big[\E[Y\mid Y_{1},\dots,Y_{i+1}]\mid\F_{i}\big]\\
+ & =\E\big[\E[Y_{1}+\dots+Y_{i+1}+\dots+Y_{n}\mid Y_{1},\dots,Y_{i+1}]\mid\F_{i}\big]\\
+ & =\E\big[Y_{1}+\dots+Y_{i+1}+\sum_{j>i+1}\E[Y_{j}]\mid\F_{i}\big]\\
+ & =\E\big[Y_{1}+\dots+Y_{i}+\sum_{j\geq i+1}\E[Y_{j}]\mid\F_{i}\big]\\
+ & =\E\big[Y\mid Y_{1},\dots,Y_{i}]\\
+ & =X_{i}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+[Edge Exposure Martingale].
+ Suppose we generate a random graph 
+\begin_inset Formula $G$
+\end_inset
+
+ by including each edge 
+\begin_inset Formula $(u,v)$
+\end_inset
+
+ independently with probability 
+\begin_inset Formula $p_{(u,v)}$
+\end_inset
+
+.
+ The well-known special case that 
+\begin_inset Formula $p_{(u,v)}=p$
+\end_inset
+
+ for all 
+\begin_inset Formula $(u,v)$
+\end_inset
+
+ is called the Erdos-Renyi random graph 
+\begin_inset Formula $G(n,p)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+Let 
+\begin_inset Formula $F(G)$
+\end_inset
+
+ be some quantity we are interested in, such as largest clique size, chromatic
+ number, number of components, etc.
+ Consider any ordering of the 
+\begin_inset Formula ${n \choose 2}$
+\end_inset
+
+ candidate edges and define 
+\begin_inset Formula $I_{j}$
+\end_inset
+
+ to be the indicator for whether edge 
+\begin_inset Formula $j$
+\end_inset
+
+ is present.
+\end_layout
+
+\begin_layout Example
+Define 
+\begin_inset Formula $X_{i}=\E[F(G)\mid I_{1},\dots,I_{i}]$
+\end_inset
+
+ to be the expected value of 
+\begin_inset Formula $F(G)$
+\end_inset
+
+ given that the first 
+\begin_inset Formula $i$
+\end_inset
+
+ edge candidates are known.
+ This is a Doob martingale.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+[Vertex Exposure Martingale].
+ Reveal edges not one at a time, but one vertex at a time.
+ We consider the vertices in some order 
+\begin_inset Formula $v_{1},v_{2},\dots,v_{n}$
+\end_inset
+
+ and at step 
+\begin_inset Formula $i$
+\end_inset
+
+ reveal all edges between 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $\{v_{j}:j<i\}$
+\end_inset
+
+.
+ Define 
+\begin_inset Formula $Y_{i}=\E[F(G)\mid\text{edges revealed on }\{v_{1},\dots,v_{i}\}]$
+\end_inset
+
+.
+ By ordering the edges appropriately (if 
+\begin_inset Formula $e=(v_{i},v_{j})$
+\end_inset
+
+ with 
+\begin_inset Formula $i<j$
+\end_inset
+
+, sort by increasing 
+\begin_inset Formula $j$
+\end_inset
+
+) this forms a subsequence of the edge exposure martingale.
+ By the following theorem, the vertex exposure martingale is a martingale.
+\end_layout
+
+\begin_layout Theorem
+If 
+\begin_inset Formula $X_{0},X_{1},\dots$
+\end_inset
+
+ is a martingale, and 
+\begin_inset Formula $\ph:\N\rightarrow\N$
+\end_inset
+
+ is any strictly increasing function, then 
+\begin_inset Formula $X_{0},X_{\ph(1)},X_{\ph(2)},\dots$
+\end_inset
+
+ is also a martingale.
+ In other words, any subsequence of a martingale is a martingale.
+\end_layout
+
+\begin_layout Standard
+The method of bounded differences says that martingale sequences that don't
+ fluctuate too much from step to step have sharp tail bounds.
+\end_layout
+
+\begin_layout Theorem
+[Azuma's Inequality].
+ Let 
+\begin_inset Formula $X_{0},X_{1},\dots,X_{n}$
+\end_inset
+
+ be a finite martingale sequence with 
+\begin_inset Formula $|X_{i}-X_{i+1}|\leq c_{i}$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Then for any 
+\begin_inset Formula $\Delta>0$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\Pr[|X_{n}-X_{0}|\geq\Delta]\leq2\exp\big(\frac{-\Delta^{2}}{2\sum_{i}c_{i}^{2}}\big).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Corollary
+If all 
+\begin_inset Formula $c_{i}=c$
+\end_inset
+
+, then
+\begin_inset Formula 
+\[
+\Pr[|X_{n}-X_{0}|\geq\delta c\sqrt{n}]\leq2\exp(-\delta^{2}/2).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Consider repeated gambling by betting on coin flips where you win $1 if
+ you guess right and lose $1 if you guess wrong.
+ The total money is a martingale.
+ Then 
+\begin_inset Formula $X_{0}=0$
+\end_inset
+
+, 
+\begin_inset Formula $c=1$
+\end_inset
+
+.
+ So,
+\begin_inset Formula 
+\[
+\Pr[|X_{n}|\geq\delta\sqrt{n}]\leq2\exp(-\delta^{2}/2).
+\]
+
+\end_inset
+
+With 
+\begin_inset Formula $\delta=2\sqrt{\ln n}$
+\end_inset
+
+, we get 
+\begin_inset Formula 
+\begin{align*}
+\Pr[|X_{n}|\geq2\sqrt{n\ln n}] & \leq2\exp(-2\ln n)\\
+ & =\frac{2}{n^{2}}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The most convenient way to apply Azuma's Inequality is to prove a Lipschitz
+ condition.
+\end_layout
+
+\begin_layout Definition
+A function 
+\begin_inset Formula $f:D_{1}\times\dots\times D_{n}\rightarrow\R$
+\end_inset
+
+ satisfies a Lipschitz condition with 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+ in its 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ argument if for all 
+\begin_inset Formula $x_{1},\dots x_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{i}\p$
+\end_inset
+
+ we have
+\begin_inset Formula 
+\[
+|f(x_{1},\dots,x_{n})-f(x_{1},\dots,x_{i-1},x_{i}\p,x_{i+1},\dots,x_{n})|\leq c_{i}.
+\]
+
+\end_inset
+
+Intuitively, changing one argument of 
+\begin_inset Formula $f$
+\end_inset
+
+ can change 
+\begin_inset Formula $f$
+\end_inset
+
+ by at most 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+.
+ (Notice that the 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+ have the trivial metric, so we can't phrase the Lipschitz condition in
+ the usual way).
+\end_layout
+
+\begin_layout Corollary
+[of Azuma's Inequality].
+ Let 
+\begin_inset Formula $f$
+\end_inset
+
+ be a function that satisfies a Lipschitz condition with 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+ in its 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ argument for each 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $X_{1},\dots,X_{n}$
+\end_inset
+
+ be 
+\series bold
+independent
+\series default
+ random variables.
+ Let 
+\begin_inset Formula $Y_{i}=\E[f(X_{1},\dots,X_{n})\mid X_{1},\dots,X_{i}]$
+\end_inset
+
+ be the Doob martingale of 
+\begin_inset Formula $f$
+\end_inset
+
+ for 
+\begin_inset Formula $X_{1},\dots,X_{n}$
+\end_inset
+
+.
+ Then
+\begin_inset Formula 
+\[
+\Pr[|Y_{n}-Y_{0}|\geq\Delta]\leq2\exp\big(\frac{-\Delta^{2}}{2\sum_{i}c_{i}^{2}}\big).
+\]
+
+\end_inset
+
+This is a strong generalization of Hoeffding bounds as it generalizes to
+ any such 
+\begin_inset Formula $f$
+\end_inset
+
+, not just the sum of independent variables as in Hoeffding.
+\end_layout
+
+\begin_layout Proof
+We need to show that the Lipschitz condition implies the necessary condition
+ for Azuma's Inequality.
+ That is, for all 
+\begin_inset Formula $i$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+|Y_{i}-Y_{i-1}|\leq c_{i}.
+\]
+
+\end_inset
+
+Then we have a Doob martingale with bounded differences.
+\begin_inset Formula 
+\begin{align*}
+|Y_{i}-Y_{i-1}| & =|\E[f(X_{1},\dots,X_{n})\mid X_{1},\dots,X_{i}]-\E[f(X_{1},\dots,X_{n})\mid X_{1},\dots,X_{i-1}]|\\
+ & =|\sum_{X_{1},\dots,X_{n}}f(X_{1},\dots,X_{i},x_{i+1},\dots,x_{n})\Pr[X_{i+1}=x_{i+1},\dots,X_{n}=x_{n}\mid X_{1},\dots,X_{i}]\\
+ & -\sum_{X_{i},\dots,X_{n}}f(X_{1},\dots,X_{i-1},x_{i},\dots,x_{n})\Pr[X_{i}=x_{i},\dots,X_{n}=x_{n}\mid X_{1},\dots,X_{i+1}]|\\
+ & =|\sum_{X_{1},\dots,X_{n}}f(X_{1},\dots,X_{i},x_{i+1},\dots,x_{n})\Pr[X_{i+1}=x_{i+1},\dots,X_{n}=x_{n}]\\
+ & -\sum_{X_{i},\dots,X_{n}}f(X_{1},\dots,X_{i-1},x_{i},\dots,X_{n})\Pr[X_{i+1}=x_{i+1},\dots,X_{n}=x_{n}]|\\
+ & \leq\sum_{X_{1},\dots,X_{n}}\Pr[X_{i+1}=x_{i+1},\dots,X_{n}=x_{n}]\\
+ & \cdot|f(X_{1},\dots,X_{i},x_{i+1},\dots,x_{n})\Pr[X_{i}=x_{i}]f(X_{1},\dots,X_{i},x_{i+1},\dots,x_{n})|\\
+ & =\sum_{X_{i},\dots,X_{n}}\Pr[X_{i+1}=x_{i+1},\dots,X_{n}=x_{n}]\\
+ & \cdot|\Pr[X_{i}=x_{i}f(X_{1},\dots,X_{i},x_{i+1},\dots,x_{n})-\Pr[X_{i}=x_{i}]f(X_{1},\dots,X_{i-1},x_{i},\dots,x_{n})|\\
+ & \leq\sum_{X_{i},\dots,X_{n}}\Pr[X_{i}=x_{i},\dots,X_{n}=x_{n}]\cdot|f(X_{1},\dots,X_{i},x_{i+1},\dots,x_{n})-f(X_{1},\dots,X_{i-1},x_{i},\dots,x_{n})|\\
+ & \leq\sum_{X_{i},\dots,X_{n}}\Pr[X_{i}=x_{i},\dots,X_{n}=x_{n}]\cdot c_{i}\\
+ & =c_{i}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

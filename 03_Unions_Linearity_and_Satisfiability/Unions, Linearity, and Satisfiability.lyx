@@ -1,0 +1,748 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\mathcal{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Unions, Linearity, and Satisfiability
+\end_layout
+
+\begin_layout Section
+Unions of Events
+\end_layout
+
+\begin_layout Subsection
+Union Lemmas
+\end_layout
+
+\begin_layout Lemma
+Union Bound: For any events 
+\begin_inset Formula $\e_{1},\dots\e_{n}$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\Pr\big[\bigcup_{i}\e_{i}\big]\leq\sum_{i}\Pr[\e_{i}].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+Inclusion-Exclusion Principle: For any events 
+\begin_inset Formula $\e_{1},\dots,\e_{n}$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\Pr\big[\bigcup_{i}\e_{i}\big]=\sum_{i}\Pr[\e_{i}]-\sum_{i<j}\Pr[\e_{i}\cap\e_{j}]+\sum_{i<j<k}\Pr[\e_{i}\cap\e_{j}\cap\e_{k}]-\dots
+\]
+
+\end_inset
+
+If the 
+\begin_inset Formula $\e_{i}$
+\end_inset
+
+ are independent,
+\begin_inset Formula 
+\begin{align*}
+\Pr\big[\bigcup_{i}\e_{i}\big] & =1-\Pr[\bigcap_{i}\bar{\e_{i}\big]}\\
+ & =1-\prod_{i}\Pr[\bar{\e_{i}}]\\
+ & =1-\prod_{i}(1-\Pr[\e_{i}]).
+\end{align*}
+
+\end_inset
+
+Of course, if the 
+\begin_inset Formula $\e_{i}$
+\end_inset
+
+ are disjoint,
+\begin_inset Formula 
+\[
+\Pr\big[\bigcup_{i}\e_{i}\big]=\sum_{i}\Pr[\e_{i}].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Team Pairs Problem
+\end_layout
+
+\begin_layout Standard
+Let's say we have 
+\begin_inset Formula $n$
+\end_inset
+
+ players and we form two teams by independently flipping a coin for each
+ player.
+ We do this 
+\begin_inset Formula $k$
+\end_inset
+
+ times.
+ What is the probability that there are two players who are always on the
+ same team (all 
+\begin_inset Formula $k$
+\end_inset
+
+ times)?
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\e$
+\end_inset
+
+ be the event that such a pair exists.
+ Let 
+\begin_inset Formula $\e_{ij}$
+\end_inset
+
+ be the event that players 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ are always on the same team.
+ Then 
+\begin_inset Formula $\e=\bigcup_{i,j}\e_{ij}$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\Pr[\e_{ij}]=2^{-k}$
+\end_inset
+
+, by the union bound we have
+\begin_inset Formula 
+\[
+\Pr[\e]\leq{n \choose 2}2^{-k}.
+\]
+
+\end_inset
+
+Then by the inclusion-exclusion principle,
+\begin_inset Formula 
+\begin{align*}
+\Pr[\e] & \geq\sum_{i,j}\Pr[\e_{ij}]-\sum_{(i,j)\neq(i\p,j\p)}\Pr[\e_{ij}\cap\e_{i\p j\p}]\\
+ & ={n \choose 2}2^{-k}-{{n \choose 2} \choose 2}2^{-2k}\\
+ & \geq\frac{n^{2}}{2}2^{-k}-\frac{n^{4}}{8}2^{-2k}
+\end{align*}
+
+\end_inset
+
+Where the last line follows from 
+\begin_inset Formula ${n \choose 2}\leq\frac{n^{2}}{2}$
+\end_inset
+
+.
+ Let's check a few examples to see how tight our bounds are.
+\begin_inset Formula 
+\begin{align*}
+k=3\log n & :\frac{1}{2n}-\frac{1}{8n^{2}}\leq\Pr[\e]\leq\frac{1}{2n}\\
+k=2\log n & :\frac{1}{2}-\frac{1}{8}\leq\Pr[\e]\leq\frac{1}{2}\\
+k=\log n & :\frac{n}{2}-\frac{n^{2}}{8}\leq\Pr[\e]\leq\frac{n}{2}
+\end{align*}
+
+\end_inset
+
+Note the last bound is trivial! It only tells us our probability is between
+ 0 and 1.
+ So our bound is really only useful when 
+\begin_inset Formula $k\geq2\log n$
+\end_inset
+
+.
+ In fact, when 
+\begin_inset Formula $k<\log n$
+\end_inset
+
+, there is always such a pair (by a counting argument).
+\end_layout
+
+\begin_layout Section
+Linearity of Expectations
+\end_layout
+
+\begin_layout Subsection
+Definitions
+\end_layout
+
+\begin_layout Standard
+For any random variables 
+\begin_inset Formula $X_{1},\dots,X_{n}$
+\end_inset
+
+ and any 
+\begin_inset Formula $\alpha_{1},\dots,\alpha_{n}\in\R$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\E\big[\sum_{i}\alpha_{i}X_{i}\big]=\sum_{i}\alpha_{i}\E[X_{i}].
+\]
+
+\end_inset
+
+Special cases: all 
+\begin_inset Formula $\alpha_{i}=1$
+\end_inset
+
+ or all 
+\begin_inset Formula $X_{i}\in\{0,1\}\text{ implies }\E[X_{i}]=\Pr[X_{i}=1]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+By definition,
+\begin_inset Formula 
+\begin{align*}
+\E[X] & =\sum_{j}j\cdot\Pr[X=j]\\
+ & =\sum_{\omega\in\Omega}X(\omega)\cdot\Pr[\omega]
+\end{align*}
+
+\end_inset
+
+So,
+\begin_inset Formula 
+\begin{align*}
+\sum_{i}\alpha_{i}X_{i} & =\sum_{\omega\in\Omega}\big(\sum_{i}\alpha_{i}X_{i}(\omega)\big)\Pr[\omega]\\
+ & =\sum_{i}\alpha_{i}\sum_{\omega\in\Omega}X_{i}(\omega)\Pr[\omega]\\
+ & =\sum_{i}\alpha_{i}\E[X_{i}].
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Coat Check Problem
+\end_layout
+
+\begin_layout Standard
+We have 
+\begin_inset Formula $n$
+\end_inset
+
+ people who each check a coat.
+ At the end of the evening, each coat is returned to a random person.
+ Each person gets one coat.
+ What is the expected number of people who get their own coat back?
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be the number of people who get their own coat back.
+ Then,
+\begin_inset Formula 
+\[
+X_{i}=\begin{cases}
+1 & \text{if coat \ensuremath{i} goes to its owner}\\
+0 & \text{otherwise}
+\end{cases}.
+\]
+
+\end_inset
+
+Note that 
+\begin_inset Formula $X=\sum_{i}X_{i}$
+\end_inset
+
+.
+ Now,
+\begin_inset Formula 
+\begin{align*}
+\E[X] & =\sum_{i}\E[X_{i}]\\
+ & =\sum_{i}\Pr[X_{i}=1]\\
+ & =n\cdot\Pr[X_{i}=1]\\
+ & =n\cdot\frac{1}{n}\\
+ & =1.
+\end{align*}
+
+\end_inset
+
+So in expectation, one person gets their own coat back.
+\end_layout
+
+\begin_layout Subsection
+Coupon Collector Problem
+\end_layout
+
+\begin_layout Standard
+There are 
+\begin_inset Formula $n$
+\end_inset
+
+ types of coupons, and in each round you draw an independently uniformly
+ random coupon.
+ How many rounds until you have at least one copy of each type?
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be the number of rounds until all coupons have been collected.
+ As a first attempt, let 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ be the number of rounds until coupon 
+\begin_inset Formula $i$
+\end_inset
+
+ is collected for the first time.
+ However, this does not work because 
+\begin_inset Formula $X\neq\sum_{i}X_{i}$
+\end_inset
+
+.
+ Instead, let 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ be the number of steps between seeing the 
+\begin_inset Formula $i-1^{st}$
+\end_inset
+
+ distinct coupon and the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ distinct coupon.
+ Then 
+\begin_inset Formula $X=\sum_{i}X_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $\E[X]=\sum_{i}\E[X_{i}]$
+\end_inset
+
+ as desired.
+\end_layout
+
+\begin_layout Standard
+Note that 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ is a geometric random variable.
+ In each round we succeed (get a new coupon) with probability 
+\begin_inset Formula $p_{i}=(n+1-i)/n$
+\end_inset
+
+.
+ So,
+\begin_inset Formula 
+\begin{align*}
+\E[X_{i}] & =\frac{1}{p_{i}}\\
+ & =\frac{n}{n+1-i}.
+\end{align*}
+
+\end_inset
+
+And,
+\begin_inset Formula 
+\begin{align*}
+\E[X] & =\sum_{i=1}^{n}\frac{n}{n+1-i}\\
+ & =n\sum_{i=1}^{n}\frac{1}{i}\\
+ & =n\cdot H_{n}.
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $H_{n}=\Theta(\log n)$
+\end_inset
+
+, collecting 
+\begin_inset Formula $n$
+\end_inset
+
+ coupons takes 
+\begin_inset Formula $\Theta(n\log n)$
+\end_inset
+
+ rounds in expectation.
+ However, the majority of the time is spent collecting the last few coupons.
+ Suppose we only need any 
+\begin_inset Formula $90\%$
+\end_inset
+
+ of coupons.
+ Then,
+\begin_inset Formula 
+\begin{align*}
+\E[x] & =\sum_{i=1}^{0.9n}\frac{n}{n+1-i}\\
+ & =n\sum_{i=0.1n}^{n}\frac{1}{i}\\
+ & =\Theta(n\cdot(\log n-\log0.1n))\\
+ & =\Theta(n\cdot\log\frac{n}{0.1n})\\
+ & =\Theta(n).
+\end{align*}
+
+\end_inset
+
+Thus, we should design codes such that we can decode with any 90% (constant
+ fraction) instead of needing all the 
+\begin_inset Quotes eld
+\end_inset
+
+coupons
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Satisfiability
+\end_layout
+
+\begin_layout Subsection
+Johnson's Algorithm
+\end_layout
+
+\begin_layout Standard
+In SAT we are given a CNF formula 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ with clauses 
+\begin_inset Formula $C_{1},\dots,C_{m}$
+\end_inset
+
+.
+ Each 
+\begin_inset Formula $C_{j}=\bigvee_{i=1}^{k_{j}}\ell_{j,i}$
+\end_inset
+
+.
+ Each 
+\begin_inset Formula $\ell_{j,i}$
+\end_inset
+
+ is a literal, either 
+\begin_inset Formula $x_{k}$
+\end_inset
+
+ or 
+\begin_inset Formula $\bar{x_{k}}$
+\end_inset
+
+ for some 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ Clause 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+ is satisfied if and only if at least one of its 
+\begin_inset Formula $\ell_{j,i}$
+\end_inset
+
+ is true.
+ It is 
+\series bold
+\emph on
+NP
+\series default
+\emph default
+-hard to decide if there is an assignment to the 
+\begin_inset Formula $x_{k}$
+\end_inset
+
+ that satisfies all of the 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In the approximation version called Max-SAT, we want to find an assignment
+ approximately satisfying as many clauses as possible.
+ A simple algorithm is called Johnson's Algorithm, in which for each variable
+ 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ independently, we make true with probability 
+\begin_inset Formula $1/2$
+\end_inset
+
+ and false otherwise.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $Y$
+\end_inset
+
+ be the number of satisfied clauses.
+ Then 
+\begin_inset Formula $Y=\sum_{j}Y_{j}$
+\end_inset
+
+, where
+\begin_inset Formula 
+\[
+Y_{j}=\begin{cases}
+1 & \text{if clause }C_{j}\text{ is satisfied}\\
+0 & \text{otherwise}
+\end{cases}.
+\]
+
+\end_inset
+
+Then,
+\begin_inset Formula 
+\begin{align*}
+\E[Y] & =\sum_{j}\E[Y_{j}]\\
+ & =\sum_{j}\Pr[C_{j}\text{ satisfied}]\\
+ & =\sum_{j}(1-\Pr[\text{all }\ell_{j,i}\text{ false}])\\
+ & =\sum_{j}1-2^{-|C_{j}|}.
+\end{align*}
+
+\end_inset
+
+In the special case where 
+\begin_inset Formula $|C_{j}|=k$
+\end_inset
+
+, we have 
+\begin_inset Formula $\E[Y]=m(1-2^{-k})$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $OPT\leq m$
+\end_inset
+
+, we have a 
+\begin_inset Formula $1-2^{-k}$
+\end_inset
+
+ approximation.
+ For 3-SAT, this is a 
+\begin_inset Formula $7/8$
+\end_inset
+
+-approximation.
+\end_layout
+
+\begin_layout Theorem
+(Hastad, 1997): For any 
+\begin_inset Formula $k\geq3$
+\end_inset
+
+, unless 
+\series bold
+P=NP
+\series default
+, Max-
+\begin_inset Formula $k$
+\end_inset
+
+-SAT cannot be approximated in polynomial time to within 
+\begin_inset Formula $1-2^{-k}+\epsilon$
+\end_inset
+
+ for any 
+\begin_inset Formula $\epsilon>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+When clauses have different sizes, Johnson's Algorithm isn't as good.
+ In particular, if we have some singleton clauses, then we only get a bound
+ of 
+\begin_inset Formula $1/2$
+\end_inset
+
+.
+ Next time, we'll try an LP rounding algorithm that gives a better guarantee.
+\end_layout
+
+\end_body
+\end_document
