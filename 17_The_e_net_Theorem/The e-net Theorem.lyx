@@ -1,0 +1,974 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathcal{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathscr{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\I}{\mathscr{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\intercal}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eps}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\d}{\delta}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ph}{\varphi}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\F}{\mathcal{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\N}{\mathbb{N}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+The 
+\begin_inset Formula $\e$
+\end_inset
+
+-net Theorem
+\end_layout
+
+\begin_layout Section
+Hitting Set Wrap-Up
+\end_layout
+
+\begin_layout Standard
+Recall that using the multiplicative weights update algorithm, we were able
+ to find a weight vector 
+\begin_inset Formula $\boldsymbol{w}^{*}$
+\end_inset
+
+ that gives us a hitting set when we know 
+\begin_inset Formula $OPT$
+\end_inset
+
+.
+ However, this is not too much of a problem: since 
+\begin_inset Formula $OPT\leq n$
+\end_inset
+
+, we can use a doubling search where we check 
+\begin_inset Formula $OPT=1,2,4,\dots$
+\end_inset
+
+.
+ Once it is too large, we can use binary search to find a tighter bound.
+ To diagnose whether 
+\begin_inset Formula $OPT$
+\end_inset
+
+ is too small, we can observe whether multiplicative weights update (with
+ 
+\begin_inset Formula $\e=OPT/2$
+\end_inset
+
+) terminates in 
+\begin_inset Formula $4n$
+\end_inset
+
+ rounds.
+ If not, then 
+\begin_inset Formula $\e$
+\end_inset
+
+ was too large, which means 
+\begin_inset Formula $OPT$
+\end_inset
+
+ was too small.
+ If so, our guess of 
+\begin_inset Formula $OPT$
+\end_inset
+
+ is within a factor 2 of the actual 
+\begin_inset Formula $OPT$
+\end_inset
+
+, so we can binary search (or just use that guess).
+ Either way, we obtain an 
+\begin_inset Formula $\Theta(OPT\cdot\log OPT)$
+\end_inset
+
+ approximation.
+\end_layout
+
+\begin_layout Standard
+If the set system 
+\begin_inset Formula $(X,\mathcal{C})$
+\end_inset
+
+ has the property that an 
+\begin_inset Formula $\e$
+\end_inset
+
+-net of smaller size than 
+\begin_inset Formula $\O(\frac{d}{\e}\log\frac{d}{\e})$
+\end_inset
+
+ can be found efficiently – for instance, 
+\begin_inset Formula $\O(\frac{d}{\e})$
+\end_inset
+
+ – then the algorithm's performance improves to a constant-factor approximation.
+\end_layout
+
+\begin_layout Section
+The 
+\begin_inset Formula $\e$
+\end_inset
+
+-net Theorem
+\end_layout
+
+\begin_layout Theorem*
+Let 
+\begin_inset Formula $(\Omega,R)$
+\end_inset
+
+ be a set system with 
+\begin_inset Formula $n=|\Omega|$
+\end_inset
+
+ and VC-dimension 
+\begin_inset Formula $d$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $N\subseteq\Omega$
+\end_inset
+
+ be an i.i.d.
+ random sample of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ of size
+\begin_inset Formula 
+\[
+m=|N|=\frac{8d}{\e}\log\frac{8d}{\e}+\frac{4}{\e}\log\frac{2}{\d}.
+\]
+
+\end_inset
+
+Then, 
+\begin_inset Formula $N$
+\end_inset
+
+ is an 
+\begin_inset Formula $\e$
+\end_inset
+
+-net with probability at least 
+\begin_inset Formula $1-\d$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+We will show the proof only for the uniform distribution over 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ Define 
+\begin_inset Formula 
+\[
+g(d,n)\coloneqq\sum_{k=0}^{d}{n \choose k}.
+\]
+
+\end_inset
+
+We will use the following lemmas:
+\end_layout
+
+\begin_deeper
+\begin_layout Lemma
+[Sauer-Shelah].
+ If 
+\begin_inset Formula $(\Omega,R)$
+\end_inset
+
+ has VC-dimension 
+\begin_inset Formula $d$
+\end_inset
+
+, then 
+\begin_inset Formula $|R|\leq g(d,n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Nontrivial by induction on 
+\begin_inset Formula $n$
+\end_inset
+
+ using the effect of removing one 
+\begin_inset Formula $x$
+\end_inset
+
+ from 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Formula $g(d,n)\leq n^{d}$
+\end_inset
+
+ for all 
+\begin_inset Formula $n$
+\end_inset
+
+ and 
+\begin_inset Formula $d$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Induction and simple bounds on binomial coefficients.
+\end_layout
+
+\begin_layout Standard
+Recall also that for any set system 
+\begin_inset Formula $(\Omega,R)$
+\end_inset
+
+ with 
+\begin_inset Formula $X\subseteq R$
+\end_inset
+
+, the projection of 
+\begin_inset Formula $(\Omega,R)$
+\end_inset
+
+ onto 
+\begin_inset Formula $X$
+\end_inset
+
+ is defined as
+\begin_inset Formula 
+\[
+R|_{X}=\{S\cap X:S\in R\}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+The VC-dimension of (
+\begin_inset Formula $X,R|_{X})$
+\end_inset
+
+ is at most the VC-dimension of 
+\begin_inset Formula $(\Omega,R)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Obvious.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+We want to bound (by 
+\begin_inset Formula $\d$
+\end_inset
+
+) the probability of the event that we do not obtain an 
+\begin_inset Formula $\e$
+\end_inset
+
+-net because some large set is not hit:
+\begin_inset Formula 
+\[
+\mathcal{E}\coloneqq[\exists A\in R:|A|\geq\e n,A\cap N=\emptyset].
+\]
+
+\end_inset
+
+Consider sampling a second i.i.d.
+ set 
+\begin_inset Formula $T$
+\end_inset
+
+ of the same size as 
+\begin_inset Formula $N$
+\end_inset
+
+ (both are multisets, so we keep duplicates).
+ Define the event that there is a large set that 
+\begin_inset Formula $N$
+\end_inset
+
+ does not hit, but 
+\begin_inset Formula $T$
+\end_inset
+
+ samples well:
+\begin_inset Formula 
+\[
+\F\coloneqq[\exists A\in R:|A|\geq\e n,A\cap N=\emptyset,\text{ and }|A\cap T|\geq\frac{\e m}{2}].
+\]
+
+\end_inset
+
+Since the expected 
+\begin_inset Formula $|A\cap T|$
+\end_inset
+
+ is 
+\begin_inset Formula $\e m$
+\end_inset
+
+, this should be pretty likely.
+\end_layout
+
+\begin_layout Proof
+Even though 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ looks more difficult, it is actually easier to analyze, so we will bound
+ 
+\begin_inset Formula $\Pr[\F]$
+\end_inset
+
+ instead of 
+\begin_inset Formula $\Pr[\mathcal{E}]$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Lemma
+\begin_inset Formula $\Pr[\F]\geq\frac{1}{2}\Pr[\mathcal{E}]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Because 
+\begin_inset Formula $\F\subseteq\mathcal{E}$
+\end_inset
+
+, we have 
+\begin_inset Formula $\Pr[\F]\leq\Pr[\mathcal{E}]$
+\end_inset
+
+ and 
+\begin_inset Formula $\Pr[\F\mid\mathcal{E}]=\Pr[\F]/\Pr[\mathcal{E}]$
+\end_inset
+
+.
+ So 
+\begin_inset Formula $\Pr[\F]=\Pr[\E]\cdot\Pr[\F|\E].$
+\end_inset
+
+ We will show that 
+\begin_inset Formula $\Pr[\F|\E]\geq1/2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Because we conditioned on 
+\begin_inset Formula $\E$
+\end_inset
+
+, there exists an 
+\begin_inset Formula $A$
+\end_inset
+
+ with 
+\begin_inset Formula $|A|=\e n$
+\end_inset
+
+ and 
+\begin_inset Formula $N\cap A=\emptyset$
+\end_inset
+
+.
+ Fix one such 
+\begin_inset Formula $A$
+\end_inset
+
+ and show that with probability at least 
+\begin_inset Formula $1/2$
+\end_inset
+
+ we have 
+\begin_inset Formula 
+\[
+|A\cap T|\geq\frac{\e m}{2}.
+\]
+
+\end_inset
+
+We will use tail bounds to show this.
+ Write
+\begin_inset Formula 
+\[
+|A\cap T|=\sum_{i=1}^{m}z_{i}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ is the indicator random variable for whether 
+\begin_inset Formula $i\in A$
+\end_inset
+
+.
+ We have
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}[|A\cap T|] & =\sum_{i=1}^{m}\Pr[i\in A]\\
+ & =m\Pr[A]\\
+ & =\e m.
+\end{align*}
+
+\end_inset
+
+We will use Chebyshev, so we need to get the variance of 
+\begin_inset Formula $|A\cap T|$
+\end_inset
+
+.
+ Because we have pairwise independence and we assume 
+\begin_inset Formula $\e\leq1/2$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+Var[|A\cap T|] & =\sum_{i=1}^{m}m\Pr[A](1-\Pr[A])\\
+ & =m\e(1-\e).
+\end{align*}
+
+\end_inset
+
+So by Chebyshev,
+\begin_inset Formula 
+\begin{align*}
+\Pr[|A\cap T|]<\frac{\e m}{2}] & \leq\Pr[||A\cap T|-\mathbb{E}[|A\cap T|]|>\frac{\e m}{2}]\\
+ & \le\frac{Var[|A\cap T|]}{(\frac{\e m}{2})^{2}}\\
+ & =\frac{4m\e(1-\e)}{\e^{2}m^{2}}\\
+ & =\frac{4(1-\e)}{\e m}\\
+ & \leq\frac{4(1-\e)}{\e\frac{8d}{\e}}\\
+ & =\frac{1}{2d}\\
+ & \leq\frac{1}{2}.
+\end{align*}
+
+\end_inset
+
+Thus, 
+\begin_inset Formula $\Pr[\F\mid\E]\geq1/2$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+We will now bound the probability of 
+\begin_inset Formula $\F$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula $\Pr[\E]\leq2\Pr[\F]$
+\end_inset
+
+.
+ Recall that 
+\begin_inset Formula $\F$
+\end_inset
+
+ is the event that there is a set 
+\begin_inset Formula $A$
+\end_inset
+
+ completely missed by the first 
+\begin_inset Formula $m$
+\end_inset
+
+ random samples 
+\begin_inset Formula $N$
+\end_inset
+
+, but well-sampled by the second 
+\begin_inset Formula $m$
+\end_inset
+
+ random samples 
+\begin_inset Formula $T$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+The idea is to first sample 
+\begin_inset Formula $Z\coloneqq N\cup T$
+\end_inset
+
+ (a set of 
+\begin_inset Formula $2m$
+\end_inset
+
+ elements), then partition them uniformly randomly into 
+\begin_inset Formula $N$
+\end_inset
+
+ and 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ We are only partitioning constantly many elements, so we can apply Sauer-Shelah
+ and the union bound.
+\end_layout
+
+\begin_layout Proof
+For every set 
+\begin_inset Formula $A\in R$
+\end_inset
+
+ with 
+\begin_inset Formula $|A|\geq\e n$
+\end_inset
+
+, define the event that 
+\begin_inset Formula $A$
+\end_inset
+
+ is a witness:
+\begin_inset Formula 
+\[
+\F_{A}=[A\cap N=\emptyset\text{ and }|A\cap T|\geq\frac{\e m}{2}].
+\]
+
+\end_inset
+
+Thus 
+\begin_inset Formula 
+\[
+\F=\bigcup_{A:|A|\geq\e n}\F_{A}.
+\]
+
+\end_inset
+
+We want to take a union bound to bound 
+\begin_inset Formula $\Pr[\F]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+If 
+\begin_inset Formula $|A\cap Z|<\frac{\e m}{2}$
+\end_inset
+
+, then 
+\begin_inset Formula $\F_{A}$
+\end_inset
+
+ cannot happen because then 
+\begin_inset Formula $|A\cap T|<\frac{\e m}{2}$
+\end_inset
+
+.
+ So we only need to focus on sets 
+\begin_inset Formula $A$
+\end_inset
+
+ with 
+\begin_inset Formula $|A\cap Z|\geq\frac{\e m}{2}$
+\end_inset
+
+.
+ These are sets that are large with respect to the new ground set 
+\begin_inset Formula $Z$
+\end_inset
+
+.
+ For any such 
+\begin_inset Formula $A$
+\end_inset
+
+, the event 
+\begin_inset Formula $\F_{A}$
+\end_inset
+
+ requires us to put all elements from 
+\begin_inset Formula $A\cap Z$
+\end_inset
+
+ into 
+\begin_inset Formula $T$
+\end_inset
+
+ and none into 
+\begin_inset Formula $N$
+\end_inset
+
+.
+ Thus,
+\begin_inset Formula 
+\begin{align*}
+\Pr[\F_{A}] & \leq\frac{{2m-\frac{\e m}{2} \choose m}}{{2m \choose m}}\\
+ & =\frac{\frac{(2m-\frac{\e m}{2})!}{m!(m-\frac{\e m}{2})!}}{\frac{(2m)!}{m!\cdot m!}}\\
+ & =\frac{(2m-\frac{\e m}{2})\dots(m+1)(m)\dots(m-\frac{\e m}{2}+1)}{2m(2m-1)\dots(2m-\frac{\e m}{2}+1)(2m-\frac{\e m}{2})\dots(m+1)}\\
+ & =\frac{m(m-1)\dots(m-\frac{\e m}{2}+1)}{2m(2m-1)\dots(2m-\frac{\e m}{2}+1)}\\
+ & \leq2^{-\frac{\e m}{2}}.
+\end{align*}
+
+\end_inset
+
+Consider 
+\begin_inset Formula $A,A\p$
+\end_inset
+
+ with 
+\begin_inset Formula $|A|,|A\p|\geq\e n$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $A\cap Z=A\p\cap Z$
+\end_inset
+
+, then conditioned on 
+\begin_inset Formula $Z$
+\end_inset
+
+ we have 
+\begin_inset Formula $\F_{A}=F_{A\p}.$
+\end_inset
+
+ So, our union bound only needs to go over all distinct sets 
+\begin_inset Formula $A\cap Z$
+\end_inset
+
+ (not all 
+\begin_inset Formula $A$
+\end_inset
+
+).
+ In other words, over at most 
+\begin_inset Formula $|R|_{Z}|$
+\end_inset
+
+ sets.
+\end_layout
+
+\begin_layout Proof
+By the earlier lemmas, 
+\begin_inset Formula $(Z,R|_{Z})$
+\end_inset
+
+ has VC-dimension at most 
+\begin_inset Formula $d$
+\end_inset
+
+, so by Sauer-Shelah,
+\begin_inset Formula 
+\begin{align*}
+|R|_{Z}| & \leq g(d,2m)\\
+ & \leq(2m)^{d}.
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $\Pr[\F]\leq(2m)^{d}\cdot2^{-\frac{\e m}{2}}$
+\end_inset
+
+.
+ It remains to show that 
+\begin_inset Formula $(2m)^{d}\cdot2^{-\frac{\e m}{2}}\leq\d/2$
+\end_inset
+
+ (because 
+\begin_inset Formula $\Pr[\mathcal{E}]\leq2\Pr[\F]).$
+\end_inset
+
+ Taking logs,
+\begin_inset Formula 
+\[
+\frac{\e m}{2}\geq\log\frac{2}{\d}+d\log(2m).
+\]
+
+\end_inset
+
+Recall 
+\begin_inset Formula 
+\begin{align*}
+m & =\frac{8d}{\e}\log\frac{8d}{\e}+\frac{4}{\e}\log\frac{2}{\d}\\
+ & \geq\frac{4}{\e}\log\frac{2}{\d},
+\end{align*}
+
+\end_inset
+
+so
+\begin_inset Formula 
+\[
+\frac{\e m}{4}\geq\log\frac{2}{\d}.
+\]
+
+\end_inset
+
+Then we need to show
+\begin_inset Formula 
+\[
+\frac{\e m}{4}\geq d\log(2m).
+\]
+
+\end_inset
+
+Since the left-hand side grows faster than the right-hand side with respect
+ to 
+\begin_inset Formula $m$
+\end_inset
+
+, we just need to find some 
+\begin_inset Formula $m_{0}$
+\end_inset
+
+ where this holds.
+ With
+\begin_inset Formula 
+\[
+m_{0}=\frac{8d}{\e}\log\frac{8d}{\e},
+\]
+
+\end_inset
+
+we get
+\begin_inset Formula 
+\[
+\frac{\e m_{0}}{4}=2d\log\frac{8d}{\e}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\begin{align*}
+d\log(2m_{0}) & =d\log(\frac{16d}{\e}\log\frac{8d}{\e})\\
+ & =d(1+\log\frac{8d}{\e}+\log\log\frac{8d}{\e}).
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $1+\log\log\frac{8d}{\e}\leq\log\frac{8d}{\e}$
+\end_inset
+
+, the inequality holds.
+ Thus, we have shown
+\begin_inset Formula 
+\[
+\Pr[\F]\le\frac{\d}{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

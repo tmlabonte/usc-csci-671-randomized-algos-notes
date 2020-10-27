@@ -1,0 +1,1123 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathcal{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathscr{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\I}{\mathscr{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\intercal}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eps}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\d}{\delta}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ph}{\varphi}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\F}{\mathbb{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\N}{\mathbb{N}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\nequiv}{\not\equiv}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\perm}{\text{perm}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Fingerprinting
+\end_layout
+
+\begin_layout Section
+Deciding if a Polynomial is Equivalent to Zero
+\end_layout
+
+\begin_layout Standard
+Basic version: Given a polynomial 
+\begin_inset Formula $Q(x)$
+\end_inset
+
+, is 
+\begin_inset Formula $Q\equiv0$
+\end_inset
+
+ (
+\emph on
+i.e., 
+\emph default
+does 
+\begin_inset Formula $Q(x)=0$
+\end_inset
+
+ for all 
+\begin_inset Formula $x$
+\end_inset
+
+)? This also lets us answer if 
+\begin_inset Formula $P\equiv Q$
+\end_inset
+
+ (
+\emph on
+i.e., 
+\emph default
+if 
+\begin_inset Formula $P-Q\equiv0$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $Q(x)$
+\end_inset
+
+ is given explicitly as 
+\begin_inset Formula 
+\[
+Q(x)=\sum_{i=0}^{k}a_{i}x^{i},
+\]
+
+\end_inset
+
+then 
+\begin_inset Formula $Q\equiv0$
+\end_inset
+
+ iff all 
+\begin_inset Formula $a_{i}=0$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $Q(x)$
+\end_inset
+
+ is given as
+\begin_inset Formula 
+\[
+Q(x)=\prod_{i=1}^{k}(x-b_{i}),
+\]
+
+\end_inset
+
+then 
+\begin_inset Formula $Q\not\equiv0$
+\end_inset
+
+.
+ Thus, if 
+\begin_inset Formula $Q$
+\end_inset
+
+ is given explicitly as a sum or product, this problem is uninteresting.
+ We will instead look at the case where 
+\begin_inset Formula $Q$
+\end_inset
+
+ can be evaluated efficiently on any input, but we have no explicit form
+ (
+\emph on
+i.e., 
+\emph default
+we have an oracle for 
+\begin_inset Formula $Q$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+The idea is to try 
+\begin_inset Formula $Q(x)$
+\end_inset
+
+ on a bunch of random inputs 
+\begin_inset Formula $x$
+\end_inset
+
+; output zero iff it is zero everywhere.
+ This may of course be wrong because we cannot query infinitely many points.
+ In general, this will work for polynomials over any field 
+\begin_inset Formula $\mathbb{F}$
+\end_inset
+
+, but we will use it only for 
+\begin_inset Formula $\mathbb{F}=\mathbb{Q}$
+\end_inset
+
+ here.
+\end_layout
+
+\begin_layout Lemma
+If 
+\begin_inset Formula $Q:\mathbb{F}\rightarrow\mathbb{F}$
+\end_inset
+
+ has degree 
+\begin_inset Formula $d$
+\end_inset
+
+, and we choose a random input 
+\begin_inset Formula $x$
+\end_inset
+
+ uniformly from any set 
+\begin_inset Formula $S\subseteq\mathbb{F}$
+\end_inset
+
+ of size 
+\begin_inset Formula $s=|S|$
+\end_inset
+
+, then
+\begin_inset Formula 
+\[
+\Pr[Q(x)=0\mid Q\nequiv0]\leq\frac{d}{s}.
+\]
+
+\end_inset
+
+Of course, if 
+\begin_inset Formula $Q\equiv0$
+\end_inset
+
+, we always answer correctly.
+\end_layout
+
+\begin_layout Proof
+Any polynomial of degree 
+\begin_inset Formula $d$
+\end_inset
+
+ that is not all zero has at most 
+\begin_inset Formula $d$
+\end_inset
+
+ zeros.
+\end_layout
+
+\begin_layout Standard
+A more interesting question is a generalization to multivariate polynomials.
+\end_layout
+
+\begin_layout Theorem
+[Schwartz-Zippel] Let 
+\begin_inset Formula $Q(x_{1},\dots,x_{n})$
+\end_inset
+
+ be a polynomial in 
+\begin_inset Formula $n$
+\end_inset
+
+ variables over 
+\begin_inset Formula $\mathbb{F}$
+\end_inset
+
+ with degree 
+\begin_inset Formula $d$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $x_{1},\dots,x_{n}$
+\end_inset
+
+ are chosen independently and uniformly from 
+\begin_inset Formula $S\subseteq\mathbb{F}$
+\end_inset
+
+ of size 
+\begin_inset Formula $s=|S|$
+\end_inset
+
+, then
+\begin_inset Formula 
+\[
+\Pr[Q(x_{1},\dots,x_{n})=0\mid Q\nequiv0]\leq\frac{d}{s}.
+\]
+
+\end_inset
+
+Here, the degree is the largest sum of exponents of any term.
+\end_layout
+
+\begin_layout Proof
+By induction on 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ The base case 
+\begin_inset Formula $n=1$
+\end_inset
+
+ is our earlier lemma.
+ For the induction step, let 
+\begin_inset Formula $k\geq0$
+\end_inset
+
+ be the largest exponent of 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ in any term.
+ Write
+\begin_inset Formula 
+\[
+Q(x_{1},\dots,x_{n})=\sum_{i=0}^{k}x_{1}^{i}Q_{i}(x_{2},\dots,x_{n}).
+\]
+
+\end_inset
+
+Note 
+\begin_inset Formula $Q_{k}(x_{2},\dots,x_{n})$
+\end_inset
+
+ has degree at most 
+\begin_inset Formula $d-k$
+\end_inset
+
+.
+ And, 
+\begin_inset Formula $Q_{k}(x_{2},\dots,x_{n})\nequiv0$
+\end_inset
+
+ because the term 
+\begin_inset Formula $x_{1}^{k}$
+\end_inset
+
+ actually occurred in 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+ By the induction hypothesis, the probability that 
+\begin_inset Formula $Q_{k}(x_{2},\dots,x_{n})=0$
+\end_inset
+
+ (evaluates to 0 at the random points we sample) is at most 
+\begin_inset Formula ${\displaystyle \frac{d-k}{s}}$
+\end_inset
+
+.
+ Now, condition on 
+\begin_inset Formula $Q_{k}(x_{2},\dots,x_{n})\neq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Define
+\begin_inset Formula 
+\[
+p(y)\coloneqq\sum_{i=0}^{k}y^{i}Q_{i}(x_{2},\dots,x_{n}).
+\]
+
+\end_inset
+
+Here, all of the 
+\begin_inset Formula $Q_{i}(x_{2},\dots,x_{n})$
+\end_inset
+
+ are constants (we have sampled 
+\begin_inset Formula $x_{2},\dots,x_{n}$
+\end_inset
+
+).
+ Therefore 
+\begin_inset Formula $p$
+\end_inset
+
+ is a univariate degree 
+\begin_inset Formula $k$
+\end_inset
+
+ polynomial, and 
+\begin_inset Formula $p\neq0$
+\end_inset
+
+ because 
+\begin_inset Formula $Q_{k}(x_{2},\dots,x_{n})\ne0$
+\end_inset
+
+.
+ By the base case, we get that
+\begin_inset Formula 
+\[
+\Pr[p(y)=0]\leq\frac{k}{s}.
+\]
+
+\end_inset
+
+By a union bound,
+\begin_inset Formula 
+\[
+\Pr[Q(x_{1},\dots,x_{n})=0]\leq\frac{d-k}{s}+\frac{k}{s}=\frac{d}{s}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can of course amplify the probability by drawing multiple independent
+ samples.
+\end_layout
+
+\begin_layout Section
+Deciding if a Bipartite Graph has a Perfect Matching
+\end_layout
+
+\begin_layout Subsection
+Matching as Permutation
+\end_layout
+
+\begin_layout Standard
+We are given a graph with 
+\begin_inset Formula $V=X\cup Y$
+\end_inset
+
+, 
+\begin_inset Formula $|X|=|Y|=n$
+\end_inset
+
+, and 
+\begin_inset Formula $E\subseteq X\times Y$
+\end_inset
+
+.
+ A matching 
+\begin_inset Formula $M$
+\end_inset
+
+ is a set of edges such that each vertex is the endpoint of at most one
+ edge in 
+\begin_inset Formula $M$
+\end_inset
+
+.
+ A perfect matching is when each vertex is the endpoint of exactly one edge
+ in 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We represent the graph by its adjacency matrix 
+\begin_inset Formula $A$
+\end_inset
+
+ with
+\begin_inset Formula 
+\[
+a_{ij}=\begin{cases}
+1 & \text{if }(x_{i},y_{j})\in G\\
+0 & \text{o.w.}
+\end{cases}
+\]
+
+\end_inset
+
+We can think of 
+\begin_inset Formula $M$
+\end_inset
+
+ as a bijection/permutation 
+\begin_inset Formula 
+\[
+\sigma:\{1,\dots,n\}\rightarrow\{1,\dots,n\}.
+\]
+
+\end_inset
+
+So 
+\begin_inset Formula $\sigma(i)\neq\sigma(i\p)$
+\end_inset
+
+ for 
+\begin_inset Formula $i\neq i\p$
+\end_inset
+
+, and 
+\begin_inset Formula $a_{i,\sigma(i)}=1$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Given any permutation, it encodes a perfect matching iff 
+\begin_inset Formula $a_{i,\sigma(i)}=1$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+ (
+\emph on
+i.e., 
+\emph default
+if the edges exist).
+ In other words, iff
+\begin_inset Formula 
+\[
+\prod_{i=1}^{n}a_{i,\sigma(i)}=1.
+\]
+
+\end_inset
+
+To count all perfect matchings of 
+\begin_inset Formula $G$
+\end_inset
+
+, we write
+\begin_inset Formula 
+\[
+\perm(A)=\sum_{\sigma}\prod_{i=1}^{n}a_{i,\sigma(i)}.
+\]
+
+\end_inset
+
+The determinant of 
+\begin_inset Formula $A$
+\end_inset
+
+ is
+\begin_inset Formula 
+\[
+\det(A)=\sum_{\sigma}(-1)^{\text{sgn}(\sigma)}\prod_{i=1}^{n}a_{i,\sigma(i)}.
+\]
+
+\end_inset
+
+As a reminder, 
+\begin_inset Formula $\text{sgn}(\sigma)$
+\end_inset
+
+ is the number of inversions in 
+\begin_inset Formula $\sigma$
+\end_inset
+
+.
+ The determinant can be computed by writing 
+\begin_inset Formula $A=LU$
+\end_inset
+
+ where 
+\begin_inset Formula $L$
+\end_inset
+
+ is lower triangular and 
+\begin_inset Formula $U$
+\end_inset
+
+ is upper triangular.
+ (This can be done by solving a linear system).
+ Then, 
+\begin_inset Formula $\det(A)$
+\end_inset
+
+ is the product of all diagonal entries of 
+\begin_inset Formula $L$
+\end_inset
+
+ and 
+\begin_inset Formula $U$
+\end_inset
+
+.
+ But, computing 
+\begin_inset Formula $\perm(A)$
+\end_inset
+
+ is 
+\begin_inset Formula $\#P$
+\end_inset
+
+-complete.
+ We will see approximation algorithms for adjacency matrices of bipartite
+ graphs in a few weeks.
+\end_layout
+
+\begin_layout Subsection
+Matching and Polynomials
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\perm(A)=0$
+\end_inset
+
+ then 
+\begin_inset Formula $\det(A)=0$
+\end_inset
+
+, but not vice-versa.
+ We will use our polynomial technique to help with this.
+\end_layout
+
+\begin_layout Standard
+Define the matrix 
+\begin_inset Formula $B$
+\end_inset
+
+ via
+\begin_inset Formula 
+\[
+b_{ij}=\begin{cases}
+x_{ij} & \text{if }a_{ij}=1\\
+0 & \text{if }a_{ij}=0
+\end{cases}
+\]
+
+\end_inset
+
+That is, we introduce a new variable for each edge.
+ Let 
+\begin_inset Formula $Q_{B}$
+\end_inset
+
+ be the multivariate polynomial
+\begin_inset Formula 
+\[
+Q_{B}\coloneqq\det(B).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+[Edmonds].
+ 
+\begin_inset Formula $G$
+\end_inset
+
+ has a perfect matching iff 
+\begin_inset Formula $Q_{B}\nequiv0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+If 
+\begin_inset Formula $G$
+\end_inset
+
+ has a perfect matching 
+\begin_inset Formula $\hat{\sigma}$
+\end_inset
+
+, we set 
+\begin_inset Formula $x_{i,\hat{\sigma}(i)}=1$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{i,j}=0$
+\end_inset
+
+ for all 
+\begin_inset Formula $j\neq\hat{\sigma}(i)$
+\end_inset
+
+.
+ Then each product
+\begin_inset Formula 
+\[
+\prod_{i=1}^{n}a_{i,\pi(i)}
+\]
+
+\end_inset
+
+has at least one zero term in it, so
+\begin_inset Formula 
+\begin{align*}
+\sum_{\sigma}(-1)^{\text{sgn}(\sigma)}\prod_{i=1}^{n}a_{i,\sigma(i)} & =(-1)^{\text{sgn}(\hat{\sigma})}\prod_{i=1}^{n}a_{i,\hat{\sigma}(i)}\\
+ & =(-1)^{\text{sgn}(\hat{\sigma})}\\
+ & \neq0.
+\end{align*}
+
+\end_inset
+
+In particular, 
+\begin_inset Formula $Q_{B}\nequiv0$
+\end_inset
+
+.
+ Conversely, if 
+\begin_inset Formula $G$
+\end_inset
+
+ has no perfect matching, then 
+\begin_inset Formula $\perm(A)=0$
+\end_inset
+
+ so 
+\begin_inset Formula $\det(A)=0$
+\end_inset
+
+, which implies 
+\begin_inset Formula $Q_{B}\equiv0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The resulting algorithm is:
+\end_layout
+
+\begin_layout Enumerate
+Compute 
+\begin_inset Formula $B$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Pick values 
+\begin_inset Formula $x_{ij}$
+\end_inset
+
+ i.i.d.
+ uniformly from 
+\begin_inset Formula $S=\{1,\dots,2n\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Evaluate 
+\begin_inset Formula $Q_{B}$
+\end_inset
+
+ for those 
+\begin_inset Formula $x_{ij}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+If the answer is zero, output 
+\begin_inset Quotes eld
+\end_inset
+
+no perfect matching
+\begin_inset Quotes erd
+\end_inset
+
+; otherwise, we output 
+\begin_inset Quotes eld
+\end_inset
+
+perfect matching
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because the determinant has degree at most 
+\begin_inset Formula $n$
+\end_inset
+
+, by Schwartz-Zippel, with probability at least 
+\begin_inset Formula $1/2$
+\end_inset
+
+, if 
+\begin_inset Formula $Q_{B}\nequiv0$
+\end_inset
+
+ we output 
+\begin_inset Quotes eld
+\end_inset
+
+matching
+\begin_inset Quotes erd
+\end_inset
+
+, and if 
+\begin_inset Formula $Q_{B}\equiv0$
+\end_inset
+
+ we always give the right answer.
+ This gives a Monte Carlo algorithm with success probability at least 
+\begin_inset Formula $1/2$
+\end_inset
+
+, and we can repeat 
+\begin_inset Formula $k$
+\end_inset
+
+ times independently to boost the success probability to 
+\begin_inset Formula $1-2^{-k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We cannot compute 
+\begin_inset Formula $Q_{B}=\det(B)$
+\end_inset
+
+ generically (with variables), but we can compute it efficiently once we
+ assign values.
+ Thus, we have an oracle for 
+\begin_inset Formula $Q_{B}$
+\end_inset
+
+, but an explicit representation could have exponentially many terms.
+\end_layout
+
+\begin_layout Section
+Extension to Non-Bipartite Matching
+\end_layout
+
+\begin_layout Standard
+If we want to find a perfect matching in a non-bipartite graph, we start
+ from the adjacency matrix 
+\begin_inset Formula $A$
+\end_inset
+
+ of 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ In a bipartite graph, 
+\begin_inset Formula $a_{ij}$
+\end_inset
+
+ referred to the edge 
+\begin_inset Formula $(x_{i},y_{j})$
+\end_inset
+
+ while 
+\begin_inset Formula $a_{ji}$
+\end_inset
+
+ referred to 
+\begin_inset Formula $(x_{j},y_{i})$
+\end_inset
+
+ – these are different edges.
+ In a general undirected graph, 
+\begin_inset Formula $a_{ij}=a_{ji}$
+\end_inset
+
+ refers to the edge 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+, so we should use the same variable on both.
+\end_layout
+
+\begin_layout Standard
+We are worried about odd cycles, and we want them to cancel out.
+ Define the Tutte matrix 
+\begin_inset Formula $T$
+\end_inset
+
+ as follows: for each edge 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ define a variable 
+\begin_inset Formula $x_{ij}$
+\end_inset
+
+.
+ Set
+\begin_inset Formula 
+\[
+t_{ij}=\begin{cases}
+x_{ij} & \text{if }a_{ij}=1\text{ and }i<j\\
+-x_{ij} & \text{if }a_{ij}=1\text{ and }i>j\\
+0 & \text{o.w.}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+[Tutte].
+ The multivariate polynomial 
+\begin_inset Formula $\det(T)\nequiv0$
+\end_inset
+
+ iff 
+\begin_inset Formula $G$
+\end_inset
+
+ has a perfect matching.
+ 
+\end_layout
+
+\begin_layout Standard
+We again identify perfect matchings with permutations 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ such that (1) 
+\begin_inset Formula $a_{i,\sigma(i)}=1$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+ and (2) 
+\begin_inset Formula $\sigma^{2}=Id$
+\end_inset
+
+ (to prevent cycles).
+\end_layout
+
+\begin_layout Proof
+We begin with the converse.
+ Assume 
+\begin_inset Formula $G$
+\end_inset
+
+ has a perfect matching 
+\begin_inset Formula $\sigma$
+\end_inset
+
+.
+ For all 
+\begin_inset Formula $i<j$
+\end_inset
+
+, set 
+\begin_inset Formula $x_{ij}=1$
+\end_inset
+
+ iff 
+\begin_inset Formula $\sigma(i)=j$
+\end_inset
+
+ and zero otherwise.
+ By the same proof as for Edmonds, all other terms of 
+\begin_inset Formula $\det(T)$
+\end_inset
+
+ are zero, so 
+\begin_inset Formula $\det(T)\in\{-1,1\}$
+\end_inset
+
+.
+ Therefore 
+\begin_inset Formula $\det(T)\nequiv0$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,1287 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathscr{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\I}{\mathscr{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\intercal}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eps}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\d}{\delta}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ph}{\varphi}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\F}{\mathbb{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\N}{\mathbb{N}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+VC-Dimension and Set Cover
+\end_layout
+
+\begin_layout Section
+Network Failure Detection
+\end_layout
+
+\begin_layout Standard
+Recall that we call a set 
+\begin_inset Formula $S\subseteq V$
+\end_inset
+
+ 
+\bar under
+separable
+\bar default
+ by 
+\begin_inset Formula $k$
+\end_inset
+
+ edges iff there exists a set 
+\begin_inset Formula $F\subseteq E$
+\end_inset
+
+ with 
+\begin_inset Formula $|F|\le k$
+\end_inset
+
+ of edges such that 
+\begin_inset Formula $S$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{S}$
+\end_inset
+
+ are not connected in 
+\begin_inset Formula $(V,E\setminus F)$
+\end_inset
+
+.
+ In other words, the adversary could disconnect 
+\begin_inset Formula $S$
+\end_inset
+
+ from 
+\begin_inset Formula $\bar{S}$
+\end_inset
+
+ by deleting at most 
+\begin_inset Formula $k$
+\end_inset
+
+ edges.
+ Let 
+\begin_inset Formula $\mathcal{S}_{k}$
+\end_inset
+
+ be the set system of all 
+\begin_inset Formula $S\subseteq V$
+\end_inset
+
+ that are separable by 
+\begin_inset Formula $k$
+\end_inset
+
+ edges.
+ We still need to show the following lemma:
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Formula $(V,\mathcal{S}_{k})$
+\end_inset
+
+ has VC-dimension at most 
+\begin_inset Formula $2k+1$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+Because we are getting an upper bound, we need to show that no set 
+\begin_inset Formula $A\subseteq V$
+\end_inset
+
+ with 
+\begin_inset Formula $|A|\geq2k+2$
+\end_inset
+
+ is shattered by 
+\begin_inset Formula $(V,\S_{k})$
+\end_inset
+
+.
+ That is, for every such 
+\begin_inset Formula $A$
+\end_inset
+
+, there exists 
+\begin_inset Formula $A\p\subseteq A$
+\end_inset
+
+ such that 
+\begin_inset Formula $A\p\neq A\cap S$
+\end_inset
+
+ for all 
+\begin_inset Formula $S\in\S_{k}$
+\end_inset
+
+ (
+\emph on
+i.e.,
+\emph default
+ there exists an 
+\begin_inset Formula $A\p\subseteq A$
+\end_inset
+
+ such that 
+\begin_inset Formula $|e_{G}(A,A\setminus A\p)|\geq k+1$
+\end_inset
+
+).
+\end_layout
+
+\begin_deeper
+\begin_layout Lemma
+Let 
+\begin_inset Formula $G$
+\end_inset
+
+ be an undirected, connected graph and 
+\begin_inset Formula $A\subseteq V$
+\end_inset
+
+ a node set of size 
+\begin_inset Formula $|A|=2k$
+\end_inset
+
+.
+ Then we can write 
+\begin_inset Formula $A=\{v_{1},v_{2},\dots,v_{2k-1},v_{2k}\}$
+\end_inset
+
+ such that for each 
+\begin_inset Formula $i$
+\end_inset
+
+, there is a path 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ in 
+\begin_inset Formula $G$
+\end_inset
+
+ from 
+\begin_inset Formula $v_{2i-1}$
+\end_inset
+
+ to 
+\begin_inset Formula $v_{2i}$
+\end_inset
+
+, and the 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ are edge-disjoint.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+By Lemma 2, we can pair up the 
+\begin_inset Formula $2k+2$
+\end_inset
+
+ nodes in 
+\begin_inset Formula $A$
+\end_inset
+
+ and get edge-disjoint paths between the pairs.
+ Define 
+\begin_inset Formula $A\p$
+\end_inset
+
+ to be exactly one node from each pair (
+\emph on
+e.g.,
+\emph default
+ all the even-indexed nodes).
+ To separate each pair, we must cut at least one edge from each path 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+.
+ Because the 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ are edge-disjoint, we need to cut at least 
+\begin_inset Formula $k+1$
+\end_inset
+
+ edges.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+We now prove Lemma 2:
+\end_layout
+
+\begin_layout Proof
+Because more edges help us, we prove the hard case of a spanning tree of
+ 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ Then, we repeatedly delete all leaves that are not in 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ If there is a pair 
+\begin_inset Formula $u,v\in A$
+\end_inset
+
+ such that the unique 
+\begin_inset Formula $u-v$
+\end_inset
+
+ path does not contain any degree 3 (or higher) node, pair up 
+\begin_inset Formula $u,v$
+\end_inset
+
+ and remove them.
+ Otherwise, pair up leaves 
+\begin_inset Formula $u,v$
+\end_inset
+
+ such that the unique 
+\begin_inset Formula $u-v$
+\end_inset
+
+ path has only one node of degree 3 (or higher) and delete them.
+ We can show that such a pair always exists, and this produces edge-disjoint
+ paths.
+\end_layout
+
+\begin_layout Section
+Set Cover/Hitting Set
+\end_layout
+
+\begin_layout Subsection
+Definitions
+\end_layout
+
+\begin_layout Standard
+In the set cover problem, we are given a ground set 
+\begin_inset Formula $X$
+\end_inset
+
+ and a collection 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+ of subsets 
+\begin_inset Formula $S_{i}\subseteq X$
+\end_inset
+
+.
+ The goal is to find a (small) subcollection 
+\begin_inset Formula $\mathcal{D}\subseteq\mathcal{C}$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\[
+\bigcup_{S\in\mathcal{D}}S=X.
+\]
+
+\end_inset
+
+In the hitting set problem, we are given a ground set 
+\begin_inset Formula $X$
+\end_inset
+
+ and a collection 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+ of subsets 
+\begin_inset Formula $S_{i}\subseteq X$
+\end_inset
+
+.
+ The goal is to find a (small) set 
+\begin_inset Formula $H\subseteq X$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\[
+H\cap S\neq\emptyset\text{ for all }S\in\mathcal{C}.
+\]
+
+\end_inset
+
+A reduction from set cover to hitting set is to define 
+\begin_inset Formula $X\p\coloneqq\mathcal{C}$
+\end_inset
+
+, 
+\begin_inset Formula $T_{i}\coloneqq\{S\in\mathcal{C}:i\in S\}$
+\end_inset
+
+, and 
+\begin_inset Formula $\mathcal{C}\p\coloneqq\{T_{i}:i\in X\}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $x\p$
+\end_inset
+
+ hits a set 
+\begin_inset Formula $T_{i}\in\mathcal{C}\p$
+\end_inset
+
+ iff 
+\begin_inset Formula $x\p\in T_{i}$
+\end_inset
+
+ iff 
+\begin_inset Formula $i\in S$
+\end_inset
+
+ iff 
+\begin_inset Formula $S$
+\end_inset
+
+ covers 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ So hitting all of 
+\begin_inset Formula $\mathcal{C}\p$
+\end_inset
+
+ is equivalent to covering all of 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For set cover, the greedy algorithm is an 
+\begin_inset Formula $\O(\log n)$
+\end_inset
+
+ approximation and this is optimal unless 
+\begin_inset Formula $\boldsymbol{P=NP}$
+\end_inset
+
+.
+ But maybe we get a better approximation for instances that are 
+\begin_inset Quotes eld
+\end_inset
+
+less complex
+\begin_inset Quotes erd
+\end_inset
+
+.
+ In particular, if 
+\begin_inset Formula $(X,\mathcal{C})$
+\end_inset
+
+ has low VC-dimension.
+\end_layout
+
+\begin_layout Standard
+Here, we will focus on constant VC-dimension (independent of 
+\begin_inset Formula $n$
+\end_inset
+
+) and get an algorithm that finds a solution of cost at most 
+\begin_inset Formula $\O(OPT\cdot\log OPT)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Set Cover is still NP-hard
+\end_layout
+
+\begin_layout Standard
+Could set cover be polytime solvable for constant VC-dimension? We will
+ show that even for VC-dimension 2, set cover is still 
+\begin_inset Formula $\boldsymbol{NP}$
+\end_inset
+
+-hard because vertex cover instances also have VC-dimension 2.
+\end_layout
+
+\begin_layout Standard
+In the vertex cover problem, we are given an undirected graph 
+\begin_inset Formula $G=(V,E)$
+\end_inset
+
+.
+ The goal is to find a (small) set 
+\begin_inset Formula $S\subseteq V$
+\end_inset
+
+ such that each 
+\begin_inset Formula $e\in E$
+\end_inset
+
+ has at least one endpoint in 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ To prove VC-dimension, let 
+\begin_inset Formula $X=E$
+\end_inset
+
+ and 
+\begin_inset Formula $T_{v}$
+\end_inset
+
+ be the set of edges incident of 
+\begin_inset Formula $v$
+\end_inset
+
+.
+ Then our range space is 
+\begin_inset Formula $R=\{T_{v}:v\in V\}$
+\end_inset
+
+.
+ To show that this set system has VC-dimension at most 2, we need to show
+ that no 3-edge set 
+\begin_inset Formula $E\p\coloneqq\{e_{1},e_{2},e_{3}\}$
+\end_inset
+
+ is shattered by 
+\begin_inset Formula $R$
+\end_inset
+
+.
+ We need to find 
+\begin_inset Formula $E^{\prime\prime}\subseteq E\p$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $v$
+\end_inset
+
+, 
+\begin_inset Formula $E^{\prime\prime}\neq E\p\cap T_{v}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+If the edges in 
+\begin_inset Formula $E\p$
+\end_inset
+
+ don't all have a vertex in common, then there is no 
+\begin_inset Formula $v$
+\end_inset
+
+ with 
+\begin_inset Formula $E\p=E\p\cap T_{v}$
+\end_inset
+
+.
+ In other words, we cannot obtain all of 
+\begin_inset Formula $E\p$
+\end_inset
+
+ as an intersection.
+ If all edges in 
+\begin_inset Formula $E\p$
+\end_inset
+
+ share a vertex 
+\begin_inset Formula $v$
+\end_inset
+
+, then any set 
+\begin_inset Formula $E^{\prime\prime}$
+\end_inset
+
+ with 
+\begin_inset Formula $|E^{\prime\prime}|=2$
+\end_inset
+
+ cannot be obtained, as 
+\begin_inset Formula $E^{\prime\prime}=E\p\cap T_{u}$
+\end_inset
+
+ because the other endpoint of the edges in 
+\begin_inset Formula $E^{\prime\prime}$
+\end_inset
+
+ (besides 
+\begin_inset Formula $v$
+\end_inset
+
+) is different.
+\end_layout
+
+\begin_layout Lemma
+If a set cover instance 
+\begin_inset Formula $(X,\mathcal{C})$
+\end_inset
+
+ has VC-dimension 
+\begin_inset Formula $d$
+\end_inset
+
+, the corresponding hitting set instance 
+\begin_inset Formula $(X\p,\mathcal{C}\p)$
+\end_inset
+
+ has VC-dimension at most 
+\begin_inset Formula $2^{d+1}-1$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $d$
+\end_inset
+
+ is a constant, then this is still a constant.
+\end_layout
+
+\begin_layout Proof
+Later.
+\end_layout
+
+\begin_layout Subsection
+Generalized 
+\begin_inset Formula $\e$
+\end_inset
+
+-nets
+\end_layout
+
+\begin_layout Standard
+Recall that an 
+\begin_inset Formula $\e$
+\end_inset
+
+-net is a set 
+\begin_inset Formula $N$
+\end_inset
+
+ that hits all 
+\begin_inset Quotes eld
+\end_inset
+
+large
+\begin_inset Quotes erd
+\end_inset
+
+ sets (
+\emph on
+i.e., 
+\emph default
+those with probability mass at least 
+\begin_inset Formula $\e$
+\end_inset
+
+).
+ And, a hitting set is a set 
+\begin_inset Formula $S$
+\end_inset
+
+ that hits 
+\bar under
+all
+\bar default
+ sets.
+ If we adjusted 
+\begin_inset Formula $\e$
+\end_inset
+
+ or the probabilities so that all sets are large, then an 
+\begin_inset Formula $\e$
+\end_inset
+
+-net is exactly a hitting set.
+\end_layout
+
+\begin_layout Definition
+To avoid some renormalization, we will slightly generalize the notion of
+ an 
+\begin_inset Formula $\e$
+\end_inset
+
+-net.
+ Consider non-negative weights 
+\begin_inset Formula $w$
+\end_inset
+
+ on 
+\begin_inset Formula $\Omega=X$
+\end_inset
+
+.
+ We remove the assumption that 
+\begin_inset Formula $\sum_{x}w(x)=1$
+\end_inset
+
+ (so this is no longer a probability distribution).
+ Then, 
+\begin_inset Formula $N$
+\end_inset
+
+ is a weighted 
+\begin_inset Formula $\e$
+\end_inset
+
+-net 
+\emph on
+w.r.t.
+
+\emph default
+ 
+\begin_inset Formula $w$
+\end_inset
+
+ if
+\begin_inset Formula 
+\[
+N\cap S\neq\emptyset\text{ }\forall S:w(S)\geq\e w(X).
+\]
+
+\end_inset
+
+Notice that if we renormalized and divided everything by 
+\begin_inset Formula $w(X)$
+\end_inset
+
+, we would obtain the previous definition.
+\end_layout
+
+\begin_layout Subsection
+Initial Approach
+\end_layout
+
+\begin_layout Standard
+To leverage the 
+\begin_inset Formula $\e$
+\end_inset
+
+-net/hitting set insight, we assume that we know the size 
+\begin_inset Formula $OPT$
+\end_inset
+
+ of the smallest hitting set and also the actual hitting set 
+\begin_inset Formula $H^{*}$
+\end_inset
+
+.
+ Now, define the following weights: 
+\begin_inset Formula 
+\[
+w^{*}(x)=\begin{cases}
+1 & x\in H^{*}\\
+0 & o.w.
+\end{cases}.
+\]
+
+\end_inset
+
+Also, let 
+\begin_inset Formula $\e=1/OPT$
+\end_inset
+
+.
+ Then, the total weight 
+\begin_inset Formula $w^{*}(X)=OPT$
+\end_inset
+
+ and for any set 
+\begin_inset Formula $S\in\mathcal{C}$
+\end_inset
+
+, we have 
+\begin_inset Formula $w^{*}(S)=|S\cap H^{*}|$
+\end_inset
+
+ and this is at least 1 because 
+\begin_inset Formula $H^{*}$
+\end_inset
+
+ is a hitting set.
+ So, 
+\begin_inset Formula 
+\[
+w^{*}(S)\geq1=\frac{1}{OPT}\cdot OPT=\e w^{*}(X).
+\]
+
+\end_inset
+
+Therefore any weighted 
+\begin_inset Formula $\e$
+\end_inset
+
+-net 
+\emph on
+w.r.t.
+
+\emph default
+ 
+\begin_inset Formula $w^{*}$
+\end_inset
+
+ is a hitting set.
+\end_layout
+
+\begin_layout Standard
+So, if we knew 
+\begin_inset Formula $w^{*}$
+\end_inset
+
+ we could use the 
+\begin_inset Formula $\e$
+\end_inset
+
+-net theorem to sample an 
+\begin_inset Formula $\e$
+\end_inset
+
+-net of size
+\begin_inset Formula 
+\[
+\Theta\big(\frac{d}{\e}\log\frac{d}{\e}+\frac{1}{\e}\log\frac{1}{\d}\big)=\Theta(OPT\cdot\log OPT).
+\]
+
+\end_inset
+
+The sample would succeed with probability of at least 
+\begin_inset Formula $1-\d$
+\end_inset
+
+.
+ Therefore we have an 
+\begin_inset Formula $\O(\log OPT)$
+\end_inset
+
+ approximation.
+\end_layout
+
+\begin_layout Subsection
+Multiplicative Weights Update
+\end_layout
+
+\begin_layout Standard
+Obviously we don't know 
+\begin_inset Formula $w^{*}$
+\end_inset
+
+ or 
+\begin_inset Formula $OPT$
+\end_inset
+
+.
+ For now, continue to assume we know 
+\begin_inset Formula $OPT$
+\end_inset
+
+, and we will try to 
+\begin_inset Quotes eld
+\end_inset
+
+learn
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $w^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Algorithm (num)
+* Set 
+\begin_inset Formula $w(x)=1$
+\end_inset
+
+ for all 
+\begin_inset Formula $x\in X$
+\end_inset
+
+, and set 
+\begin_inset Formula $\e=OPT/2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Algorithm (num)
+* Find a weighted 
+\begin_inset Formula $\e$
+\end_inset
+
+-net 
+\begin_inset Formula $H$
+\end_inset
+
+ for 
+\begin_inset Formula $(X,\mathcal{C},w)$
+\end_inset
+
+ using random sampling.
+ We can check that it is an 
+\begin_inset Formula $\e$
+\end_inset
+
+-net and repeat until we get one.
+\end_layout
+
+\begin_layout Algorithm (num)
+if 
+\begin_inset Formula $H$
+\end_inset
+
+ is a hitting set
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm (num)
+* Return 
+\begin_inset Formula $H$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm (num)
+else 
+\begin_inset Formula $\phantom{}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm (num)
+* Let 
+\begin_inset Formula $S$
+\end_inset
+
+ be an arbitrary set in 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+ not hit by 
+\begin_inset Formula $H$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Algorithm (num)
+* Double the weights of all 
+\begin_inset Formula $x\in S$
+\end_inset
+
+ and repeat.
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm (num)
+endif
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Las Vegas Multiplicative Weights Update
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+Algorithm 1 terminates in 
+\begin_inset Formula $\O(n)$
+\end_inset
+
+ iterations and returns a hitting set of size 
+\begin_inset Formula $\O(OPT\cdot\log OPT)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+If the algorithm terminates, it returns a hitting set of size
+\begin_inset Formula 
+\[
+\Theta\big(\frac{d}{\e}\log\frac{d}{\e}+\frac{1}{\e}\log\frac{1}{\d}\big)=\Theta(OPT\cdot\log OPT).
+\]
+
+\end_inset
+
+The runtime analysis is similar to other multiplicative weights analyses.
+ We keep track of (1) the total weight on 
+\begin_inset Formula $X$
+\end_inset
+
+, and (2) the weight on 
+\begin_inset Formula $H^{*}$
+\end_inset
+
+.
+ We show that (2) grows faster than (1).
+ Thus, if the algorithm runs too long, (2) will exceed (1) which is a contradict
+ion.
+\end_layout
+
+\begin_layout Proof
+(1) The total weight on 
+\begin_inset Formula $X$
+\end_inset
+
+ starts at 
+\begin_inset Formula $w(X)=|X|=n$
+\end_inset
+
+.
+ In each iteration, we double the weights on a subset 
+\begin_inset Formula $S$
+\end_inset
+
+ of 
+\begin_inset Formula $X$
+\end_inset
+
+ where 
+\begin_inset Formula $S\in\mathcal{C}$
+\end_inset
+
+.
+ This increases 
+\begin_inset Formula $w(X)$
+\end_inset
+
+ by 
+\begin_inset Formula $w(S)$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $H$
+\end_inset
+
+ is an 
+\begin_inset Formula $\e$
+\end_inset
+
+-net and 
+\begin_inset Formula $S$
+\end_inset
+
+ was not hit, we know 
+\begin_inset Formula $w(S)<\e w(X)$
+\end_inset
+
+.
+ After 
+\begin_inset Formula $k$
+\end_inset
+
+ iterations, 
+\begin_inset Formula $w(X)\leq n(1+\e)^{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+(2) The weight on 
+\begin_inset Formula $H^{*}$
+\end_inset
+
+ starts at 
+\begin_inset Formula $w(H^{*})=|H^{*}|=OPT$
+\end_inset
+
+.
+ In each iteration, 
+\begin_inset Formula $H^{*}\cap S$
+\end_inset
+
+ is nonempty because 
+\begin_inset Formula $H^{*}$
+\end_inset
+
+ is a hitting set.
+ So at least one element of 
+\begin_inset Formula $H^{*}$
+\end_inset
+
+ has its weight doubled.
+ To lower-bound the weight of 
+\begin_inset Formula $H^{*}$
+\end_inset
+
+, notice that by convexity of 
+\begin_inset Formula $x\mapsto2^{x}$
+\end_inset
+
+, the weight is smallest if the lowest weight is always doubled.
+ After 
+\begin_inset Formula $k$
+\end_inset
+
+ iterations, 
+\begin_inset Formula $w(H^{*})\geq2^{k/OPT}\cdot OPT$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Clearly, after each iteration, 
+\begin_inset Formula $w(X)\geq w(H^{*})$
+\end_inset
+
+, so
+\begin_inset Formula 
+\[
+(1+\e)^{k}\cdot n\geq2^{k/OPT}\cdot OPT.
+\]
+
+\end_inset
+
+Taking logs and solving for 
+\begin_inset Formula $k$
+\end_inset
+
+ we find 
+\begin_inset Formula 
+\[
+k\leq4OPT\log\frac{n}{OPT}=\O(n).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

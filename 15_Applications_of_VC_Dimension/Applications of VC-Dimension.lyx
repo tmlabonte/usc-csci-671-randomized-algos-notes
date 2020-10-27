@@ -1,0 +1,1132 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathscr{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\I}{\mathscr{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\intercal}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eps}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\d}{\delta}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ph}{\varphi}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\F}{\mathbb{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\N}{\mathbb{N}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Applications of VC-Dimension
+\end_layout
+
+\begin_layout Section
+Polytope Preprocessing
+\end_layout
+
+\begin_layout Standard
+Given a polytope 
+\begin_inset Formula $P\subseteq\R^{d}$
+\end_inset
+
+, we want to preprocess it to efficiently answer the following type of queries:
+ given a hyperplane characterized by an inequality 
+\begin_inset Formula $\boldsymbol{c}\T\boldsymbol{x}\leq\gamma$
+\end_inset
+
+, decide if the inequality holds for all 
+\begin_inset Formula $\boldsymbol{x}\in P$
+\end_inset
+
+ or is violated.
+ This is important for linear programming: the constraints are given ahead
+ of time, and we get different objective functions characterized by 
+\begin_inset Formula $\boldsymbol{c}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We'd like to either correctly state that 
+\begin_inset Formula $\boldsymbol{c}\T\boldsymbol{x}\leq\gamma$
+\end_inset
+
+ for all 
+\begin_inset Formula $\boldsymbol{x}\in P$
+\end_inset
+
+ or return a witness 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+ with 
+\begin_inset Formula $\boldsymbol{c}\T\boldsymbol{x}>\gamma$
+\end_inset
+
+.
+ An approximately correct answer would guarantee that 
+\begin_inset Formula $\boldsymbol{c}\T\boldsymbol{x}\leq\gamma$
+\end_inset
+
+ holds for a 
+\begin_inset Formula $(1-\eps)$
+\end_inset
+
+ fraction of 
+\begin_inset Formula $P$
+\end_inset
+
+, or return a witness.
+\end_layout
+
+\begin_layout Standard
+Our preprocessing algorithm will compute an 
+\begin_inset Formula $\e$
+\end_inset
+
+-net 
+\begin_inset Formula $N$
+\end_inset
+
+ for 
+\begin_inset Formula $P$
+\end_inset
+
+ by random sampling.
+ When a query 
+\begin_inset Formula $(\boldsymbol{c},\gamma)$
+\end_inset
+
+ arrives, we check the inequality for all 
+\begin_inset Formula $\boldsymbol{x}\in\N$
+\end_inset
+
+.
+ If one such 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+ fails (
+\emph on
+i.e.,
+\emph default
+ 
+\begin_inset Formula $\boldsymbol{c}\T\boldsymbol{x}>\gamma$
+\end_inset
+
+) return it as a witness; otherwise, return that most of 
+\begin_inset Formula $P$
+\end_inset
+
+ is on the correct side of the hyperplane.
+ This works because, by definition, for each 
+\begin_inset Formula $S\subseteq P$
+\end_inset
+
+ that is separated from 
+\begin_inset Formula $P\setminus S$
+\end_inset
+
+ by a hyperplane such that 
+\begin_inset Formula $vol(S)\geq\eps\cdot vol(P)$
+\end_inset
+
+, we have 
+\begin_inset Formula $N\cap S\neq\emptyset$
+\end_inset
+
+.
+ In particular, this would have to hold for 
+\begin_inset Formula $S$
+\end_inset
+
+ defined by 
+\begin_inset Formula $(\boldsymbol{c},\gamma)$
+\end_inset
+
+.
+ So if 
+\begin_inset Formula $(\boldsymbol{c},\gamma)$
+\end_inset
+
+ does not produce a witness, then the volume of its subset of 
+\begin_inset Formula $P$
+\end_inset
+
+ is at most 
+\begin_inset Formula $\eps\cdot vol(P)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We have that 
+\begin_inset Formula 
+\[
+|N|=\Theta\big(\frac{d}{\e}\log\frac{d}{\e}+\frac{1}{\e}\log\frac{1}{\d}\big)
+\]
+
+\end_inset
+
+is enough by the 
+\begin_inset Formula $\e$
+\end_inset
+
+-net theorem, and 
+\begin_inset Formula $N$
+\end_inset
+
+ can be found by i.i.d.
+ sampling from 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ This finds an 
+\begin_inset Formula $\e$
+\end_inset
+
+-net with probability at least 
+\begin_inset Formula $1-\d$
+\end_inset
+
+.
+ In particular, if 
+\begin_inset Formula $d$
+\end_inset
+
+, 
+\begin_inset Formula $\e$
+\end_inset
+
+, and 
+\begin_inset Formula $\d$
+\end_inset
+
+ are constant, then 
+\begin_inset Formula $\O(1)$
+\end_inset
+
+ samples is enough regardless of how complex the polytope is.
+\end_layout
+
+\begin_layout Standard
+The fact that 
+\begin_inset Formula $P$
+\end_inset
+
+ is a polytope matters only in that it allows us to efficiently sample (nearly)
+ uniformly.
+ Note that we draw 
+\begin_inset Formula $N$
+\end_inset
+
+ once and then reuse it, even for adversarially chosen 
+\begin_inset Formula $(\boldsymbol{c},\gamma)$
+\end_inset
+
+.
+ It's trivial to get the same guarantee if we choose 
+\begin_inset Formula $N$
+\end_inset
+
+ for any particular 
+\begin_inset Formula $(\boldsymbol{c},\gamma)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Approximate Centerpoints
+\end_layout
+
+\begin_layout Standard
+A centerpoint is one natural generalization of the median to higher dimensions.
+ Let 
+\begin_inset Formula $P$
+\end_inset
+
+ be a point set in 
+\begin_inset Formula $\R^{d}$
+\end_inset
+
+.
+ We want a point 
+\begin_inset Formula $\boldsymbol{x}\in\R^{d}$
+\end_inset
+
+ such that each hyperplane through 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+ splits 
+\begin_inset Formula $P$
+\end_inset
+
+ in half.
+ However, such a point may not exist.
+ So we relax the definition to require a 
+\begin_inset Formula $\frac{1}{d+1}$
+\end_inset
+
+ fraction of points on each side.
+ This is tight on the 
+\begin_inset Formula $d$
+\end_inset
+
+-dimensional simplex.
+\end_layout
+
+\begin_layout Standard
+We will prove existence using the following theorem:
+\end_layout
+
+\begin_layout Theorem
+[Helly].
+ Let 
+\begin_inset Formula $X_{1},X_{2},\dots,X_{m}\subseteq\R^{d}$
+\end_inset
+
+ be convex sets such that any 
+\begin_inset Formula $d+1$
+\end_inset
+
+ of them have nonempty intersection.
+ Then the intersection of all of them is also nonempty.
+\end_layout
+
+\begin_layout Standard
+Now consider each set 
+\begin_inset Formula $P\p\subseteq P$
+\end_inset
+
+ with 
+\begin_inset Formula $|P\p|<\frac{1}{d+1}|P|$
+\end_inset
+
+ such that 
+\begin_inset Formula $P\p$
+\end_inset
+
+ can be separated from 
+\begin_inset Formula $P\setminus P\p$
+\end_inset
+
+ by a hyperplane.
+ For any such 
+\begin_inset Formula $P\p$
+\end_inset
+
+, let 
+\begin_inset Formula $X_{P\p}$
+\end_inset
+
+ be the set of all points 
+\begin_inset Formula $\boldsymbol{v}$
+\end_inset
+
+ such that no hyperplane through 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+ separates 
+\begin_inset Formula $P\p$
+\end_inset
+
+ from 
+\begin_inset Formula $P\setminus P\p$
+\end_inset
+
+.
+ Each 
+\begin_inset Formula $X_{P\p}$
+\end_inset
+
+ is a convex set.
+\end_layout
+
+\begin_layout Standard
+For any point 
+\begin_inset Formula $\boldsymbol{x}\in P\setminus P\p$
+\end_inset
+
+, consider a hyperplane 
+\begin_inset Formula $(\boldsymbol{c},\gamma)$
+\end_inset
+
+ such that 
+\begin_inset Formula $\boldsymbol{c}\T\boldsymbol{y}\geq\gamma$
+\end_inset
+
+ for all 
+\begin_inset Formula $\boldsymbol{y}\in P\p$
+\end_inset
+
+.
+ Then because the hyperplane goes through 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+ we have 
+\begin_inset Formula $\boldsymbol{c}\T\boldsymbol{x}\geq\gamma$
+\end_inset
+
+, so 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+ is on the same side as 
+\begin_inset Formula $P\p$
+\end_inset
+
+.
+ Thus, there is no hyperplane through 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+ separating 
+\begin_inset Formula $P\p$
+\end_inset
+
+ from 
+\begin_inset Formula $P\setminus P\p$
+\end_inset
+
+.
+ This implies 
+\begin_inset Formula $X_{P\p}\supseteq P\setminus P\p$
+\end_inset
+
+.
+ Therefore,
+\begin_inset Formula 
+\[
+|X_{P\p}|>(1-\frac{1}{d+1})|P|.
+\]
+
+\end_inset
+
+By a union bound, the intersection of the 
+\begin_inset Formula $X_{P_{i}\p}$
+\end_inset
+
+ is nonempty for any subset 
+\begin_inset Formula $S$
+\end_inset
+
+ of sets 
+\begin_inset Formula $P_{i}\p$
+\end_inset
+
+ when 
+\begin_inset Formula $|S|\leq d+1$
+\end_inset
+
+.
+ And, by Helly's Theorem, the intersection of 
+\emph on
+all
+\emph default
+ the 
+\begin_inset Formula $X_{P_{i}\p}$
+\end_inset
+
+ is nonempty, and any point in the intersection is a centerpoint.
+\end_layout
+
+\begin_layout Standard
+Now we know that the centerpoint actually exists.
+ So we define the 
+\begin_inset Formula $\eps$
+\end_inset
+
+-approximate centerpoint as a point 
+\begin_inset Formula $\boldsymbol{x}\in\R^{d}$
+\end_inset
+
+ such that no hyperplane through 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+ separates 
+\begin_inset Formula $P\p$
+\end_inset
+
+ from 
+\begin_inset Formula $P\setminus P\p$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\[
+|P\p|<(\frac{1}{d+1}-\e)|P|.
+\]
+
+\end_inset
+
+We care about approximate centerpoints because the best-known algorithm
+ for computing a centerpoint in 
+\begin_inset Formula $d$
+\end_inset
+
+ dimensions takes time 
+\begin_inset Formula $\O(n^{d-1})$
+\end_inset
+
+, which is exponential in 
+\begin_inset Formula $d$
+\end_inset
+
+.
+ A simple algorithm for finding an 
+\begin_inset Formula $\e$
+\end_inset
+
+-approximate centerpoint is to sample 
+\begin_inset Quotes eld
+\end_inset
+
+enough
+\begin_inset Quotes erd
+\end_inset
+
+ points from 
+\begin_inset Formula $P$
+\end_inset
+
+ i.i.d.
+ uniformly at random; call this sample 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ Then, use 
+\begin_inset Quotes eld
+\end_inset
+
+brute force
+\begin_inset Quotes erd
+\end_inset
+
+ to compute a centerpoint 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+ of 
+\begin_inset Formula $S.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will want
+\begin_inset Formula 
+\[
+\Theta\big(\frac{d^{2}}{\e^{2}}\log\frac{d}{\e}+\frac{1}{\e^{2}}\log\frac{1}{\d}\big)
+\]
+
+\end_inset
+
+points.
+ That is, we will need an 
+\begin_inset Formula $\e$
+\end_inset
+
+-sample.
+ For the 
+\begin_inset Quotes eld
+\end_inset
+
+brute force
+\begin_inset Quotes erd
+\end_inset
+
+ algorithm, we will write an LP for 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+ with a constraint for each subset 
+\begin_inset Formula $S\p\subseteq S$
+\end_inset
+
+ with 
+\begin_inset Formula $|S\p|<\frac{1}{d+1}|S|$
+\end_inset
+
+.
+ This will be 
+\begin_inset Formula $\Theta(|S|^{d})$
+\end_inset
+
+ constraints, but this is independent of 
+\begin_inset Formula $n$
+\end_inset
+
+ with constants 
+\begin_inset Formula $d$
+\end_inset
+
+, 
+\begin_inset Formula $\e$
+\end_inset
+
+, and 
+\begin_inset Formula $\d$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Why is a centerpoint of 
+\begin_inset Formula $S$
+\end_inset
+
+ an 
+\begin_inset Formula $\e$
+\end_inset
+
+-approximate centerpoint of 
+\begin_inset Formula $P$
+\end_inset
+
+? Assume that 
+\begin_inset Formula $S$
+\end_inset
+
+ is an 
+\begin_inset Formula $\e$
+\end_inset
+
+-sample of 
+\begin_inset Formula $P$
+\end_inset
+
+ 
+\emph on
+w.r.t.
+ 
+\emph default
+hyperplanes.
+ By the 
+\begin_inset Formula $\e$
+\end_inset
+
+-sample theorem, this happens with probability at least 
+\begin_inset Formula $1-\d$
+\end_inset
+
+.
+ Assume for a contradiction that there exists 
+\begin_inset Formula $P\p\subseteq P$
+\end_inset
+
+ with 
+\begin_inset Formula $|P\p|<(\frac{1}{d+1}-\e)|P|$
+\end_inset
+
+ and a hyperplane through 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+ that separates 
+\begin_inset Formula $P\p$
+\end_inset
+
+ from 
+\begin_inset Formula $P\setminus P\p$
+\end_inset
+
+.
+ That is,
+\begin_inset Formula 
+\[
+\frac{|P\p|}{|P|}<(\frac{1}{d+1}-\e)
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula $P\p$
+\end_inset
+
+ is obtained from a hyperplane.
+ Because 
+\begin_inset Formula $S$
+\end_inset
+
+ is an 
+\begin_inset Formula $\e$
+\end_inset
+
+-sample, 
+\begin_inset Formula 
+\[
+|\frac{|P\p\cap S|}{|S|}-\frac{|P\p|}{|P|}|\leq\e,
+\]
+
+\end_inset
+
+which implies
+\begin_inset Formula 
+\[
+\frac{|P\p\cap S|}{|S|}\leq\frac{|P\p|}{|P|}+\e<\frac{1}{d+1}.
+\]
+
+\end_inset
+
+Therefore, we have a set 
+\begin_inset Formula $P\p\cap S$
+\end_inset
+
+ of size less than 
+\begin_inset Formula $\frac{1}{d+1}|S|$
+\end_inset
+
+ that is obtained by a hyperplane through 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+.
+ But then 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+ is not a centerpoint for 
+\begin_inset Formula $S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Moral.
+
+\series default
+ Drawing a constant-sized sample and computing on it can result in approximately
+ correct answers.
+\end_layout
+
+\begin_layout Section
+Network Failure Detection
+\end_layout
+
+\begin_layout Standard
+We are given an undirected, connected network 
+\begin_inset Formula $G=(V,E)$
+\end_inset
+
+.
+ We'd like to place monitors on a set 
+\begin_inset Formula $D$
+\end_inset
+
+ of nodes so as to detect 
+\begin_inset Quotes eld
+\end_inset
+
+bad
+\begin_inset Quotes erd
+\end_inset
+
+ network failures from the fact that at least one par of monitors became
+ disconnected.
+\end_layout
+
+\begin_layout Standard
+A 
+\begin_inset Quotes eld
+\end_inset
+
+bad
+\begin_inset Quotes erd
+\end_inset
+
+ network failure means that there is a set 
+\begin_inset Formula $S$
+\end_inset
+
+ with 
+\begin_inset Formula $|S|,|\bar{S}|\geq\e n$
+\end_inset
+
+ such that 
+\begin_inset Formula $S$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{S}$
+\end_inset
+
+ have been disconnected.
+ A network failure means up to 
+\begin_inset Formula $k$
+\end_inset
+
+ edges are removed.
+\end_layout
+
+\begin_layout Standard
+The goal is to report all 
+\begin_inset Quotes eld
+\end_inset
+
+bad
+\begin_inset Quotes erd
+\end_inset
+
+ network failures (and optionally more).
+ Subject to meeting this goal, we'd like to minimize the size of 
+\begin_inset Formula $D$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We will make 
+\begin_inset Formula $D$
+\end_inset
+
+ a set of
+\begin_inset Formula 
+\[
+\Theta(\frac{k}{\e}\log\frac{k}{\e}+\frac{1}{\e}\log\frac{1}{\d})
+\]
+
+\end_inset
+
+nodes sampled i.i.d.
+ (The size of 
+\begin_inset Formula $D$
+\end_inset
+
+ is independent of 
+\begin_inset Formula $n$
+\end_inset
+
+).
+ Then with probability at least 
+\begin_inset Formula $1-\d$
+\end_inset
+
+, we detect every 
+\begin_inset Quotes eld
+\end_inset
+
+bad
+\begin_inset Quotes erd
+\end_inset
+
+ network failure.
+\end_layout
+
+\begin_layout Proof
+Define a set system.
+ We call a set 
+\begin_inset Formula $S\subseteq V$
+\end_inset
+
+ 
+\bar under
+separable
+\bar default
+ by 
+\begin_inset Formula $k$
+\end_inset
+
+ edges iff there exists a set 
+\begin_inset Formula $F\subseteq E$
+\end_inset
+
+ with 
+\begin_inset Formula $|F|\le k$
+\end_inset
+
+ of edges such that 
+\begin_inset Formula $S$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{S}$
+\end_inset
+
+ are not connected in 
+\begin_inset Formula $(V,E\setminus F)$
+\end_inset
+
+.
+ In other words, the adversary could disconnect 
+\begin_inset Formula $S$
+\end_inset
+
+ from 
+\begin_inset Formula $\bar{S}$
+\end_inset
+
+ by deleting at most 
+\begin_inset Formula $k$
+\end_inset
+
+ edges.
+ Let 
+\begin_inset Formula $\mathcal{S}_{k}$
+\end_inset
+
+ be the set system of all 
+\begin_inset Formula $S\subseteq V$
+\end_inset
+
+ that are separable by 
+\begin_inset Formula $k$
+\end_inset
+
+ edges.
+\end_layout
+
+\begin_deeper
+\begin_layout Lemma
+\begin_inset Formula $(V,\mathcal{S}_{k})$
+\end_inset
+
+ has VC-dimension at most 
+\begin_inset Formula $2k+1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Next class.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+Using the lemma, 
+\begin_inset Formula $D$
+\end_inset
+
+ is an 
+\begin_inset Formula $\e$
+\end_inset
+
+-net for 
+\begin_inset Formula $(V,\mathcal{S}_{k})$
+\end_inset
+
+ with probability at least 
+\begin_inset Formula $1-\d$
+\end_inset
+
+.
+ By definition, 
+\begin_inset Formula $D\cap S$
+\end_inset
+
+ is nonempty for all 
+\begin_inset Formula $S\in\mathcal{S}_{k}$
+\end_inset
+
+ with 
+\begin_inset Formula $|S|\geq\e n$
+\end_inset
+
+.
+ Thus, all 
+\begin_inset Quotes eld
+\end_inset
+
+bad
+\begin_inset Quotes erd
+\end_inset
+
+ network failures are detected.
+ 
+\end_layout
+
+\end_body
+\end_document

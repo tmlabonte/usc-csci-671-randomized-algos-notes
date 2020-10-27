@@ -1,0 +1,1053 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathscr{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\I}{\mathscr{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\intercal}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eps}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\d}{\delta}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ph}{\varphi}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\F}{\mathbb{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\N}{\mathbb{N}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+VC-Dimension and Sampling
+\end_layout
+
+\begin_layout Section
+Sampling
+\end_layout
+
+\begin_layout Standard
+VC-dimension and sampling are combinatorial properties of set systems that
+ can let us do better than a union bound.
+ Recall that an event 
+\begin_inset Formula $X\subseteq\Omega$
+\end_inset
+
+ is a subset of the sample space 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ If an event 
+\begin_inset Formula $X$
+\end_inset
+
+ is sufficiently likely and we draw enough samples, we are likely to hit
+ the event.
+\end_layout
+
+\begin_layout Proposition
+(Simple sampling).
+ Let 
+\begin_inset Formula $X\subseteq\Omega$
+\end_inset
+
+ with 
+\begin_inset Formula $\Pr[X]\geq\eps$
+\end_inset
+
+, and let 
+\begin_inset Formula $S$
+\end_inset
+
+ be obtained by drawing a set of 
+\begin_inset Formula $\eps^{-1}\ln\delta^{-1}$
+\end_inset
+
+ samples from 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ independently.
+ Then
+\begin_inset Formula 
+\[
+\Pr[S\cap X]\geq1-\delta.
+\]
+
+\end_inset
+
+In other words, repeating the experiment enough times boosts the probability
+ of it succeeding at least once.
+\end_layout
+
+\begin_layout Proof
+The probability of never hitting 
+\begin_inset Formula $X$
+\end_inset
+
+ is at most 
+\begin_inset Formula $(1-\eps)^{\eps^{-1}\ln\delta^{-1}}\leq e^{-\ln\delta}=\delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Is it true that all high probability events are likely to happen? Draw a
+ set 
+\begin_inset Formula $S$
+\end_inset
+
+ of some number of points (small-ish, like 
+\begin_inset Formula $\eps^{-1}\ln\delta^{-1}$
+\end_inset
+
+).
+ Is it true that with some good probability (
+\emph on
+e.g.,
+\emph default
+ 
+\begin_inset Formula $1-\delta$
+\end_inset
+
+), for every set 
+\begin_inset Formula $X$
+\end_inset
+
+ with 
+\begin_inset Formula $\Pr[X]\geq\eps$
+\end_inset
+
+, we have 
+\begin_inset Formula $S\cap X\neq\emptyset$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Standard
+This is actually false! Given 
+\begin_inset Formula $S$
+\end_inset
+
+, define 
+\begin_inset Formula $X=\bar{S}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $X\cap S=\emptyset$
+\end_inset
+
+, but 
+\begin_inset Formula $\Pr[X]\geq\eps$
+\end_inset
+
+ unless we drew more than a 
+\begin_inset Formula $1-\eps$
+\end_inset
+
+ fraction of the sample space.
+\end_layout
+
+\begin_layout Standard
+Typically, we go from sampling to the universal statement we wanted via
+ a union bound.
+ If we care about too many events, we only get trivial bounds; if we only
+ care about a small set 
+\begin_inset Formula $R$
+\end_inset
+
+ of events, then an additive term of 
+\begin_inset Formula $\sim\eps^{-1}\ln R$
+\end_inset
+
+ in the number of samples we draw is enough to enable a union bound.
+\end_layout
+
+\begin_layout Standard
+Our goal is now to side-step the crude union bound by exploiting some structure
+ in 
+\begin_inset Formula $R$
+\end_inset
+
+.
+ Throughout, 
+\begin_inset Formula $R\subseteq\P(\Omega)$
+\end_inset
+
+ is a collection of events 
+\begin_inset Formula $A\subseteq\Omega$
+\end_inset
+
+ (
+\emph on
+i.e.,
+\emph default
+ a set system).
+\end_layout
+
+\begin_layout Section
+Shattering and VC-Dimension
+\end_layout
+
+\begin_layout Definition
+A set 
+\begin_inset Formula $X\subseteq\Omega$
+\end_inset
+
+ is shattered by 
+\begin_inset Formula $R$
+\end_inset
+
+ iff for every set 
+\begin_inset Formula $Y\subseteq X$
+\end_inset
+
+, there exists an 
+\begin_inset Formula $A\in R$
+\end_inset
+
+ with 
+\begin_inset Formula $Y=X\cap A$
+\end_inset
+
+.
+ That is, every subset of 
+\begin_inset Formula $X$
+\end_inset
+
+ can be obtained by using a set in 
+\begin_inset Formula $R$
+\end_inset
+
+ to 
+\begin_inset Quotes eld
+\end_inset
+
+clip off
+\begin_inset Quotes erd
+\end_inset
+
+ a part of 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+Let 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ be the unit square 
+\begin_inset Formula $[0,1]^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $R$
+\end_inset
+
+ the set of all closed halfspaces.
+ (i) The set of three points is shattered because every subset of points
+ can be separated from its complement by a line.
+ (ii) The set of four points in a square is not shattered because there
+ is no line that can separate the diagonals.
+ (iii) The set of four points in a star is not shattered because there is
+ no line that can separate the middle point.
+\end_layout
+
+\begin_layout Definition
+The VC (Vapnik-Chervonenkis) dimension of 
+\begin_inset Formula $R$
+\end_inset
+
+ is the maximum size of any set 
+\begin_inset Formula $X$
+\end_inset
+
+ that is shattered by 
+\begin_inset Formula $R$
+\end_inset
+
+.
+ This is a natural measure of the complexity of 
+\begin_inset Formula $R$
+\end_inset
+
+).
+ The VC-dimension could be unbounded if the underlying set 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ is infinite.
+ To show VC-dimension equals 
+\begin_inset Formula $k$
+\end_inset
+
+, we have to show at least one shatterable subset of size 
+\begin_inset Formula $k$
+\end_inset
+
+, then show that no subset of size 
+\begin_inset Formula $k+1$
+\end_inset
+
+ is shattereable.
+\end_layout
+
+\begin_layout Example
+Let 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ be the unit square 
+\begin_inset Formula $[0,1]^{d}$
+\end_inset
+
+ and 
+\begin_inset Formula $R$
+\end_inset
+
+ the set of all closed halfspaces.
+ (i) 
+\begin_inset Formula $d=1$
+\end_inset
+
+: we can shatter 2 points but not 3, so the VC-dimension is 2.
+ (ii) 
+\begin_inset Formula $d=2$
+\end_inset
+
+: we showed we can shatter 3 points but not 4, so the VC-dimension is 3.
+ (iii) any 
+\begin_inset Formula $d$
+\end_inset
+
+: we can easily construct hyperplanes to shatter a set of 
+\begin_inset Formula $d+1$
+\end_inset
+
+ points in general position.
+ To show we cannot shatter 
+\begin_inset Formula $d+2$
+\end_inset
+
+ points, we need the following:
+\end_layout
+
+\begin_layout Theorem
+[Radon].
+ Let 
+\begin_inset Formula $S=\{\boldsymbol{x}_{1},\dots,\boldsymbol{x}_{d+2}\}$
+\end_inset
+
+ in 
+\begin_inset Formula $\R^{d}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $S$
+\end_inset
+
+ can be partitioned as 
+\begin_inset Formula $S=X\cup Y$
+\end_inset
+
+ with 
+\begin_inset Formula $X\cap Y=\emptyset$
+\end_inset
+
+ such that 
+\begin_inset Formula $conv(X)\cap conv(Y)\neq\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+From this theorem we see that no hyperplane can separate 
+\begin_inset Formula $X$
+\end_inset
+
+ from 
+\begin_inset Formula $Y$
+\end_inset
+
+, because with 
+\begin_inset Formula $X$
+\end_inset
+
+ it would contain 
+\begin_inset Formula $conv(X)$
+\end_inset
+
+, but the intersection is nonempty so it must also contain some point in
+ 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+ So halfspaces in 
+\begin_inset Formula $\R^{d}$
+\end_inset
+
+ have a VC-dimension of 
+\begin_inset Formula $d+1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+The restriction of 
+\begin_inset Formula $R$
+\end_inset
+
+ to 
+\begin_inset Formula $\Omega\p\subseteq\Omega$
+\end_inset
+
+ is
+\begin_inset Formula 
+\[
+R\mid_{\Omega\p}=\{A\cap\Omega\p:A\in R\}.
+\]
+
+\end_inset
+
+It is obvious that the VC-dimension of 
+\begin_inset Formula $(\Omega\p,R\mid_{\Omega\p})$
+\end_inset
+
+ is at most 
+\begin_inset Formula $(\Omega,R).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset Formula $\eps$
+\end_inset
+
+-nets and 
+\begin_inset Formula $\eps$
+\end_inset
+
+-samples
+\end_layout
+
+\begin_layout Definition
+For a set system 
+\begin_inset Formula $(\Omega,R)$
+\end_inset
+
+, a set 
+\begin_inset Formula $N\subseteq\Omega$
+\end_inset
+
+ is called an 
+\begin_inset Formula $\eps$
+\end_inset
+
+-net iff 
+\begin_inset Formula $N\cap A\neq\emptyset$
+\end_inset
+
+ for all 
+\begin_inset Formula $A\in R$
+\end_inset
+
+ with 
+\begin_inset Formula $\Pr[A]\geq\eps$
+\end_inset
+
+.
+ In other words, an 
+\begin_inset Formula $\eps$
+\end_inset
+
+-net hits all sufficiently large (
+\emph on
+w.r.t.
+ 
+\emph default
+
+\begin_inset Formula $\Pr$
+\end_inset
+
+) sets.
+ Note: there are other definitions of 
+\begin_inset Formula $\eps$
+\end_inset
+
+-nets, 
+\emph on
+e.g.
+
+\emph default
+ containing a point close to every input point.
+\end_layout
+
+\begin_layout Standard
+So, an 
+\begin_inset Formula $\eps$
+\end_inset
+
+-net would be a good set of samples in the sense that it hits all high-probabili
+ty events 
+\begin_inset Formula $A$
+\end_inset
+
+ that we care about.
+\end_layout
+
+\begin_layout Theorem
+[
+\begin_inset Formula $\eps$
+\end_inset
+
+-net theorem].
+ Let 
+\begin_inset Formula $R$
+\end_inset
+
+ be a set system over 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ with VC-dimension 
+\begin_inset Formula $d$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $S$
+\end_inset
+
+ be obtained by drawing
+\begin_inset Formula 
+\[
+\Theta\big(\frac{d}{\eps}\log\frac{d}{\eps}+\frac{1}{\eps}\log\frac{1}{\delta}\big)
+\]
+
+\end_inset
+
+samples from 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ i.i.d.
+ according to 
+\begin_inset Formula $\Pr$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $S$
+\end_inset
+
+ is an 
+\begin_inset Formula $\eps$
+\end_inset
+
+-net for 
+\begin_inset Formula $(\Omega,R)$
+\end_inset
+
+ with probability at least 
+\begin_inset Formula $1-\delta$
+\end_inset
+
+.
+ Notice that this bound is very good when we restrict both 
+\begin_inset Formula $d$
+\end_inset
+
+ and 
+\begin_inset Formula $\eps$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+Consider 
+\begin_inset Formula $n$
+\end_inset
+
+ points in the plane.
+ We are interested in hitting all halfspaces that contain at least 
+\begin_inset Formula $\eps n$
+\end_inset
+
+ points.
+ That is, we want to color a small number of points red such that, with
+ high probability, every halfspace containing enough points also contains
+ at least one red point.
+ How many red points are needed? Because 
+\begin_inset Formula $d=3$
+\end_inset
+
+, if we think of 
+\begin_inset Formula $\eps,\delta$
+\end_inset
+
+ as constants, 
+\begin_inset Formula $\O(1)$
+\end_inset
+
+ red points is enough, regardless of 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ By drawing 
+\begin_inset Formula $\O(1)$
+\end_inset
+
+ points, with probability 
+\begin_inset Formula $\geq90\%$
+\end_inset
+
+, we hit every set separable by a line that contains at least 
+\begin_inset Formula $20\%$
+\end_inset
+
+ of the points – pretty remarkable!
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Consider 
+\begin_inset Formula $R=\P(\Omega)$
+\end_inset
+
+ with 
+\begin_inset Formula $|\Omega|=n$
+\end_inset
+
+.
+ How small is the smallest 
+\begin_inset Formula $\eps$
+\end_inset
+
+-net for 
+\begin_inset Formula $(\Omega,R)$
+\end_inset
+
+? We need to intersect all sets of size at least 
+\begin_inset Formula $\eps n$
+\end_inset
+
+.
+ Well, any 
+\begin_inset Formula $\eps$
+\end_inset
+
+-net must have 
+\begin_inset Formula $|N|>1-\eps n$
+\end_inset
+
+, otherwise 
+\begin_inset Formula $\bar{N}$
+\end_inset
+
+ would be a set of size greater than 
+\begin_inset Formula $\eps n$
+\end_inset
+
+ and would not intersect 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ We get nothing useful because the VC-dimension of 
+\begin_inset Formula $R$
+\end_inset
+
+ is 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The other key notion besides an 
+\begin_inset Formula $\eps$
+\end_inset
+
+-net is an 
+\begin_inset Formula $\eps$
+\end_inset
+
+-sample.
+\end_layout
+
+\begin_layout Definition
+A set 
+\begin_inset Formula $S\subseteq\Omega$
+\end_inset
+
+ is an 
+\begin_inset Formula $\eps$
+\end_inset
+
+-sample for 
+\begin_inset Formula $(\Omega,R)$
+\end_inset
+
+ iff
+\begin_inset Formula 
+\[
+|\Pr[A]-\frac{\Pr[S\cap A]}{\Pr[S]}|<\eps
+\]
+
+\end_inset
+
+for all 
+\begin_inset Formula $A\in R$
+\end_inset
+
+.
+ Intuitively, an 
+\begin_inset Formula $\eps$
+\end_inset
+
+-sample contains, for each 
+\begin_inset Formula $A\in R$
+\end_inset
+
+, up to additive error 
+\begin_inset Formula $\eps$
+\end_inset
+
+, the right fraction of samples compared to the actual fraction of probability
+ mass in 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ In other words, the sample is representative.
+\end_layout
+
+\begin_layout Proposition
+If 
+\begin_inset Formula $S$
+\end_inset
+
+ is an 
+\begin_inset Formula $\eps$
+\end_inset
+
+-sample for 
+\begin_inset Formula $(\Omega,R)$
+\end_inset
+
+ then 
+\begin_inset Formula $S$
+\end_inset
+
+ is an 
+\begin_inset Formula $\eps$
+\end_inset
+
+-net for 
+\begin_inset Formula $(\Omega,R)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $A\in R$
+\end_inset
+
+ be 
+\begin_inset Quotes eld
+\end_inset
+
+large
+\begin_inset Quotes erd
+\end_inset
+
+, with 
+\begin_inset Formula $\Pr[A]\geq\eps$
+\end_inset
+
+.
+ We need to show 
+\begin_inset Formula $A\cap S\neq\emptyset$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $S\cap A=\emptyset$
+\end_inset
+
+, then 
+\begin_inset Formula $\Pr[S\cap A]=0$
+\end_inset
+
+, so
+\begin_inset Formula 
+\[
+|\Pr[A]-\frac{\Pr[S\cap A]}{\Pr[S]}|=\Pr[A]\geq\eps
+\]
+
+\end_inset
+
+so 
+\begin_inset Formula $S$
+\end_inset
+
+ would not be an 
+\begin_inset Formula $\eps$
+\end_inset
+
+-sample.
+\end_layout
+
+\begin_layout Theorem
+[
+\begin_inset Formula $\eps$
+\end_inset
+
+-sample theorem].
+ Let 
+\begin_inset Formula $(\Omega,R)$
+\end_inset
+
+ be a set system of VC dimension 
+\begin_inset Formula $d$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $S$
+\end_inset
+
+ be a set of
+\begin_inset Formula 
+\[
+\Omega\big(\frac{d^{2}}{\eps^{2}}\log\frac{d}{\eps}+\frac{1}{\eps^{2}}\log\frac{1}{\delta}\big)
+\]
+
+\end_inset
+
+points drawn i.i.d.
+ from 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ according to 
+\begin_inset Formula $\Pr$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $S$
+\end_inset
+
+ is an 
+\begin_inset Formula $\eps$
+\end_inset
+
+-sample with probability at least 
+\begin_inset Formula $1-\delta$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

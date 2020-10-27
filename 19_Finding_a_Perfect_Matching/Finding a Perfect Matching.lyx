@@ -1,0 +1,900 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathcal{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathscr{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\I}{\mathscr{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\intercal}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eps}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\d}{\delta}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ph}{\varphi}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\F}{\mathbb{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\N}{\mathbb{N}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\nequiv}{\not\equiv}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\perm}{\text{perm}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Finding Perfect Matchings
+\end_layout
+
+\begin_layout Section
+Perfect Matchings in Non-Bipartite Graphs
+\end_layout
+
+\begin_layout Standard
+We continue the proof from last time.
+ We will show that 
+\begin_inset Formula $\det(T)\nequiv0$
+\end_inset
+
+ implies 
+\begin_inset Formula $G$
+\end_inset
+
+ has a perfect matching.
+ Recall that
+\begin_inset Formula 
+\[
+\det(T)=\sum_{\sigma}(-1)^{\text{sgn}(\sigma)}\prod_{i}t_{i,\sigma(i)}.
+\]
+
+\end_inset
+
+If 
+\begin_inset Formula $\det(T)\nequiv0$
+\end_inset
+
+, then there exists at least one 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ with
+\begin_inset Formula 
+\[
+\prod_{i}t_{i,\sigma(i)}\neq0.
+\]
+
+\end_inset
+
+What does 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+look like
+\begin_inset Quotes erd
+\end_inset
+
+? Well, for all 
+\begin_inset Formula $i$
+\end_inset
+
+, the edge 
+\begin_inset Formula $(i,\sigma(i))$
+\end_inset
+
+ exists in 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ And, the union of the edges 
+\begin_inset Formula $(i,\sigma(i))$
+\end_inset
+
+ forms a union of disjoint cycles because each 
+\begin_inset Formula $i$
+\end_inset
+
+ has one outgoing edge and one incoming edge because 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ is a bijection.
+ Finally, 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ has no self-loops (assuming 
+\begin_inset Formula $G$
+\end_inset
+
+ had no self-loops).
+\end_layout
+
+\begin_layout Standard
+Notice that each even-length cycle immediately gives a perfect matching
+ for those nodes.
+ We will show that if 
+\begin_inset Formula $\det(T)\nequiv0$
+\end_inset
+
+ then there is always one 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ in which all cycles are even.
+ This gives a perfect matching on 
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For each 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ with one or more odd cycle, define the leading odd cycle to be the one
+ with the smallest index of any node.
+ Say the leading odd cycle has indices 
+\begin_inset Formula $i_{1},i_{2},\dots,i_{2k+1}$
+\end_inset
+
+ for 
+\begin_inset Formula $k\geq1$
+\end_inset
+
+.
+ Define a permutation 
+\begin_inset Formula $\sigma\p$
+\end_inset
+
+ which reverses the edges in the leading odd cycles (
+\emph on
+i.e., 
+\emph default
+
+\begin_inset Formula $\sigma\p(i_{j})=\sigma^{-1}(i_{j})$
+\end_inset
+
+ for 
+\begin_inset Formula $j$
+\end_inset
+
+ in the cycle) and leaves everything else the same.
+ Then
+\begin_inset Formula 
+\begin{align*}
+\prod_{i}t_{i,\sigma\p(i)} & =\prod_{i\text{ in leading cycle}}t_{i,\sigma\p(i)}\cdot\prod_{\text{other }i}t_{i,\sigma\p(i)}\\
+ & =\prod_{i\text{ in leading cycle}}-t_{i,\sigma(i)}\cdot\prod_{\text{other }i}t_{i,\sigma(i)}\\
+ & =(-1)^{2k+1}\prod_{i}t_{i,\sigma(i)}\\
+ & =-\prod_{i}t_{i,\sigma(i)}.
+\end{align*}
+
+\end_inset
+
+So the term for 
+\begin_inset Formula $\sigma\p$
+\end_inset
+
+ should cancel the term for 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ in the determinant of 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ For that, we can verify that 
+\begin_inset Formula $\text{sgn}(\sigma)=\text{sgn}(\sigma\p)$
+\end_inset
+
+, so they do in fact cancel.
+\end_layout
+
+\begin_layout Standard
+For the cancellation to be valid, we need that the mapping 
+\begin_inset Formula $\sigma\mapsto\sigma\p$
+\end_inset
+
+ is a bijection (so each 
+\begin_inset Formula $\sigma\p$
+\end_inset
+
+ is only used to cancel one 
+\begin_inset Formula $\sigma$
+\end_inset
+
+).
+ Our choice to work on the leading odd cycle ensures that this is so.
+ 
+\end_layout
+
+\begin_layout Standard
+Thus, the contributions of all 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ with one or more odd cycles cancel out.
+ So if 
+\begin_inset Formula $\det(T)\nequiv0$
+\end_inset
+
+, there exists a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ with only even cycles.
+ This results in a perfect matching.
+\end_layout
+
+\begin_layout Section
+Finding a Perfect Matching
+\end_layout
+
+\begin_layout Subsection
+Setup
+\end_layout
+
+\begin_layout Standard
+Consider again the bipartite graph setting.
+ So far, we only used that 
+\begin_inset Formula $\det(B)\equiv0$
+\end_inset
+
+ iff 
+\begin_inset Formula $G$
+\end_inset
+
+ has no perfect matching.
+ Then, we applied Schwarz-Zippel.
+ That is, if we draw all 
+\begin_inset Formula $x_{ij}$
+\end_inset
+
+ uniformly from 
+\begin_inset Formula $\{1,\dots,2n\}$
+\end_inset
+
+, then 
+\begin_inset Formula $\det(B)\neq0$
+\end_inset
+
+ with probability 
+\begin_inset Formula $\geq1/2$
+\end_inset
+
+.
+ In this case, any set of size 
+\begin_inset Formula $2n$
+\end_inset
+
+ would have worked.
+ To find a perfect matching, we will draw from a more carefully chosen set.
+\end_layout
+
+\begin_layout Standard
+For each 
+\begin_inset Formula $i,j$
+\end_inset
+
+ we draw 
+\begin_inset Formula $c_{ij}$
+\end_inset
+
+ i.i.d.
+ uniformly from 
+\begin_inset Formula $\{1,\dots,2m\}$
+\end_inset
+
+ and set 
+\begin_inset Formula $x_{ij}=2^{c_{ij}}$
+\end_inset
+
+.
+ (That is, we are drawing from the first 
+\begin_inset Formula $2m$
+\end_inset
+
+ powers of 2).
+ Let's start by re-proving that this determines the existence of a perfect
+ matching.
+ Let 
+\begin_inset Formula $B_{C}\coloneqq$
+\end_inset
+
+ the matrix 
+\begin_inset Formula $B$
+\end_inset
+
+ with values 
+\begin_inset Formula $2^{c_{ij}}$
+\end_inset
+
+ substituted.
+ Then
+\begin_inset Formula 
+\begin{align*}
+\det(B_{C}) & =\sum_{\sigma}(-1)^{\text{sgn}(\sigma)}\prod_{i}x_{i,\sigma(i)}\\
+ & =\sum_{\sigma\text{ that are perfect matchings}}(-1)^{\text{sgn}(\sigma)}\prod_{i}2^{c_{i,\sigma(i)}}\\
+ & =\sum_{\sigma\text{ that are perfect matchings}}(-1)^{\text{sgn}(\sigma)}2^{\text{cost}(\sigma)}.
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\text{cost}(\sigma)=\sum_{i}c_{i,\sigma(i)}$
+\end_inset
+
+.
+ We interpret the 
+\begin_inset Formula $c_{ij}$
+\end_inset
+
+ as edge costs, so 
+\begin_inset Formula $\text{cost}(\sigma)$
+\end_inset
+
+ is the cost of a perfect matching.
+\end_layout
+
+\begin_layout Subsection
+Uniqueness
+\end_layout
+
+\begin_layout Standard
+Note that 
+\begin_inset Formula $\det(B_{C})\neq0$
+\end_inset
+
+ if there is a unique minimum-cost perfect matching (because then it would
+ not be canceled out in the sum).
+ We will show that this happens with probability at least 
+\begin_inset Formula $1/2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We call an edge 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ a witness of non-uniqueness if the minimum cost of a perfect matching that
+ must include 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ is the same as the minimum cost of a perfect matching that cannot include
+ 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+.
+ If there are no witnesses, then the minimum cost matching is unique.
+\end_layout
+
+\begin_layout Standard
+We will prove that each 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ is a witness with probability at most 
+\begin_inset Formula $1/2m$
+\end_inset
+
+, so by a union bound we have our result.
+ To do so, reveal the costs of all other edges first.
+ Let 
+\begin_inset Formula $\gamma^{-}$
+\end_inset
+
+ be the cost of a minimum cost perfect matching not including 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{\gamma}$
+\end_inset
+
+ the cost of a minimum cost perfect matching excluding both vertices 
+\begin_inset Formula $\{i,j\}$
+\end_inset
+
+.
+ These are independent of 
+\begin_inset Formula $c_{ij}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Conditioned on 
+\begin_inset Formula $\gamma^{-}$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{\gamma}$
+\end_inset
+
+, 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ is a witness iff 
+\begin_inset Formula $\gamma^{-}=\hat{\gamma}+c_{ij}$
+\end_inset
+
+ because the latter if the cost of the minimum cost matching forced to include
+ 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+.
+ The probability that 
+\begin_inset Formula $c_{ij}=\gamma^{-}-\hat{\gamma}$
+\end_inset
+
+ is at most 
+\begin_inset Formula $1/2m$
+\end_inset
+
+ because there is a unique choice of 
+\begin_inset Formula $c_{ij}$
+\end_inset
+
+ that makes this true (which may or may not be in 
+\begin_inset Formula $\{1,\dots,2m\}$
+\end_inset
+
+).
+ Because this holds conditioned on any 
+\begin_inset Formula $\gamma^{-},\hat{\gamma}$
+\end_inset
+
+, it always holds.
+ Thus 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ is a witness with probability 
+\begin_inset Formula $\leq1/2m$
+\end_inset
+
+ as desired.
+\end_layout
+
+\begin_layout Subsection
+Finding a Matching
+\end_layout
+
+\begin_layout Standard
+To find a perfect matching, assume that 
+\begin_inset Formula $c_{ij}$
+\end_inset
+
+ are such that the minimum cost perfect matching is unique.
+ We can assume this by repeating the draw of 
+\begin_inset Formula $c_{ij}$
+\end_inset
+
+ if necessary.
+ Let 
+\begin_inset Formula $\gamma^{*}$
+\end_inset
+
+ be the cost of the unique minimum cost matching 
+\begin_inset Formula $M^{*}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $(i,j)\in M^{*}$
+\end_inset
+
+, then 
+\begin_inset Formula $G\setminus\{i,j\}$
+\end_inset
+
+ has a unique minimum cost matching of cost 
+\begin_inset Formula $\gamma^{*}-c_{ij}$
+\end_inset
+
+; otherwise, two different minimum cost matchings for 
+\begin_inset Formula $G\setminus\{i,j\}$
+\end_inset
+
+ could be combined with 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ to give two different minimum cost matchings for 
+\begin_inset Formula $G$
+\end_inset
+
+, a contradiction.
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $(i,j)\notin M^{*}$
+\end_inset
+
+, then 
+\begin_inset Formula $G\setminus\{i,j\}$
+\end_inset
+
+ has no minimum cost matching of cost at most 
+\begin_inset Formula $\gamma^{*}-c_{ij}$
+\end_inset
+
+; otherwise, such a matching could be combined with 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ to give a perfect matching of cost at most 
+\begin_inset Formula $\gamma^{*}$
+\end_inset
+
+ for 
+\begin_inset Formula $G$
+\end_inset
+
+, contradicting optimality or uniqueness of 
+\begin_inset Formula $M^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In summary, 
+\begin_inset Formula $(i,j)\in M^{*}$
+\end_inset
+
+ iff 
+\begin_inset Formula $G\setminus\{i,j\}$
+\end_inset
+
+ has a minimum cost matching of cost 
+\begin_inset Formula $\gamma^{*}-c_{ij}$
+\end_inset
+
+.
+ To find 
+\begin_inset Formula $M^{*}$
+\end_inset
+
+, it is enough to find the costs of the minimum cost matchings in 
+\begin_inset Formula $G$
+\end_inset
+
+ and 
+\begin_inset Formula $G\setminus\{i,j\}$
+\end_inset
+
+ for all edges 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+How do we compute the cost 
+\begin_inset Formula $\gamma^{*}$
+\end_inset
+
+ of the minimum cost perfect matching (assuming uniqueness)? Well, 
+\begin_inset Formula $\gamma^{*}$
+\end_inset
+
+ is the smallest 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ such that 
+\begin_inset Formula $\det(B_{C})\equiv2^{\gamma}\text{ (mod }2^{\gamma+1})$
+\end_inset
+
+.
+ We could do this for all 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ and corresponding 
+\begin_inset Formula $G\setminus\{i,j\}$
+\end_inset
+
+.
+ However, this would be 
+\begin_inset Formula $m$
+\end_inset
+
+ determinant computations.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $B_{C}^{(i,j)}$
+\end_inset
+
+ be the matrix 
+\begin_inset Formula $B_{C}$
+\end_inset
+
+ with row 
+\begin_inset Formula $i$
+\end_inset
+
+ and column 
+\begin_inset Formula $j$
+\end_inset
+
+ removed.
+ We want to compute 
+\begin_inset Formula $\det(B_{C}^{(i,j)})$
+\end_inset
+
+ for all 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula $\gamma_{ij}^{*}$
+\end_inset
+
+ is the smallest 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ such that 
+\begin_inset Formula $\det(B_{C}^{(i,j)})\equiv2^{\gamma}\text{ (mod }2^{\gamma+1})$
+\end_inset
+
+.
+ Recall 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ is included in 
+\begin_inset Formula $M^{*}$
+\end_inset
+
+ iff 
+\begin_inset Formula $\gamma^{*}=\gamma_{ij}^{*}+c_{ij}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Cramer's Rule for the matrix inverse expresses 
+\begin_inset Formula $B=A^{-1}$
+\end_inset
+
+ as
+\begin_inset Formula 
+\[
+b_{ij}=\frac{1}{\det(A)}(-1)^{i+j}\det(A^{(i,j)}).
+\]
+
+\end_inset
+
+By computing 
+\begin_inset Formula $\det(B_{C})$
+\end_inset
+
+ first, then inverting 
+\begin_inset Formula $B_{C}$
+\end_inset
+
+, we can read off all of the 
+\begin_inset Formula $\det(B_{C}^{(i,j)})$
+\end_inset
+
+.
+ Thus, we can find a perfect matching in a bipartite graph with probability
+ at least 
+\begin_inset Formula $1/2$
+\end_inset
+
+ using only a single matrix inversion.
+\end_layout
+
+\end_body
+\end_document
