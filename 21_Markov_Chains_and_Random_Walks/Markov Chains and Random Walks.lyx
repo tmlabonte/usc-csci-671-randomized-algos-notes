@@ -1,0 +1,886 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathcal{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathscr{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\I}{\mathscr{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\intercal}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eps}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\d}{\delta}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ph}{\varphi}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\F}{\mathbb{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\N}{\mathbb{N}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\nequiv}{\not\equiv}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\perm}{\text{perm}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Markov Chains and Random Walks
+\end_layout
+
+\begin_layout Section
+Fundamental Theorem of Markov Chains
+\end_layout
+
+\begin_layout Standard
+We'll consider probability distributions 
+\begin_inset Formula $\boldsymbol{q}$
+\end_inset
+
+ where 
+\begin_inset Formula $q_{i}$
+\end_inset
+
+ is the probability of being in state 
+\begin_inset Formula $i$
+\end_inset
+
+ (row vectors).
+ We start with an initial distribution 
+\begin_inset Formula $\boldsymbol{q}_{0}$
+\end_inset
+
+.
+ The distribution one step later, starting from 
+\begin_inset Formula $\boldsymbol{q}$
+\end_inset
+
+, is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+q_{i}^{\prime} & =\sum_{j}q_{j}p_{ji}\\
+ & =\boldsymbol{q}{\bf P}.
+\end{align*}
+
+\end_inset
+
+So 
+\begin_inset Formula $\boldsymbol{q}_{1}=\boldsymbol{q}_{0}{\bf P}$
+\end_inset
+
+, 
+\begin_inset Formula $\boldsymbol{q}_{2}=\boldsymbol{q}_{0}{\bf P}^{2}$
+\end_inset
+
+, and therefore 
+\begin_inset Formula $\boldsymbol{q}_{t}=\boldsymbol{q}_{0}{\bf P}^{t}$
+\end_inset
+
+.
+ We write 
+\begin_inset Formula ${\bf P}_{i,j}^{(t)}$
+\end_inset
+
+ for the 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ entry of 
+\begin_inset Formula ${\bf P}^{t}$
+\end_inset
+
+ – the probability of transitioning from 
+\begin_inset Formula $i$
+\end_inset
+
+ to 
+\begin_inset Formula $j$
+\end_inset
+
+ in 
+\begin_inset Formula $t$
+\end_inset
+
+ steps.
+\end_layout
+
+\begin_layout Theorem
+[Fundamental Theorem of Markov Chains].
+
+\emph on
+ Let 
+\begin_inset Formula ${\bf P}$
+\end_inset
+
+ be a finite irreducible, aperiodic Markov chain.
+ Then,
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+All states are persistent.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula ${\bf P}$
+\end_inset
+
+ has a unique stationary distribution 
+\begin_inset Formula $\boldsymbol{\pi}$
+\end_inset
+
+, that is with 
+\begin_inset Formula $\boldsymbol{\pi}{\bf P}=\boldsymbol{\pi}$
+\end_inset
+
+.
+ Furthermore, 
+\begin_inset Formula 
+\[
+\boldsymbol{q}_{0}{\bf P}^{t}\rightarrow_{t\rightarrow\infty}\boldsymbol{\pi}
+\]
+
+\end_inset
+
+ for all distributions 
+\begin_inset Formula $\boldsymbol{q}_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+At stationarity, he expected time to return to 
+\begin_inset Formula $i$
+\end_inset
+
+ after leaving it is 
+\begin_inset Formula $\nicefrac{1}{\pi_{i}}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Lemma
+If 
+\begin_inset Formula $G$
+\end_inset
+
+ is undirected, connected, and aperiodic, then the stationary distribution
+ for a uniform random walk is 
+\begin_inset Formula $\pi_{i}=\nicefrac{\deg(i)}{2m}$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Plug in 
+\begin_inset Formula $\boldsymbol{\pi}$
+\end_inset
+
+ and verify that is stationary.
+ We have 
+\begin_inset Formula 
+\begin{align*}
+(\boldsymbol{\pi}{\bf P})_{i} & =\sum_{j}\pi_{j}{\bf P}_{ji}\\
+ & =\sum_{j}\frac{\deg(j)}{2m}\cdot\frac{1}{\deg(j)}\\
+ & =\sum_{j:\text{neighbor of }i}\frac{1}{2m}\\
+ & =\frac{\deg(i)}{2m}.
+\end{align*}
+
+\end_inset
+
+The proof also shows that, in each step, each edge is traversed in each
+ given direction with probability 
+\begin_inset Formula $\nicefrac{1}{2m}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+The 
+\series bold
+hitting time
+\series default
+ 
+\begin_inset Formula $h_{ij}$
+\end_inset
+
+ for a pair 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ is the expected number of steps, starting at 
+\begin_inset Formula $i$
+\end_inset
+
+, to reach 
+\begin_inset Formula $j$
+\end_inset
+
+ for the first time.
+ The 
+\series bold
+commute time
+\series default
+ 
+\begin_inset Formula $c_{ij}$
+\end_inset
+
+ for a pair 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ is 
+\begin_inset Formula $c_{ij}=h_{ij}+h_{ji}$
+\end_inset
+
+, the expected time to go back and forth.
+ The 
+\series bold
+cover time
+\series default
+ is the expected time to visit all states of the chain.
+\end_layout
+
+\begin_layout Lemma
+If 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ is an edge of an undirected graph 
+\begin_inset Formula $G$
+\end_inset
+
+ on which we perform a random walk, then 
+\begin_inset Formula $c_{ij}\leq2m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Consider the edge 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ in a fixed direction.
+ At stationarity, the 
+\begin_inset Formula $t^{th}$
+\end_inset
+
+ step traverses 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ in that direction with probability 
+\begin_inset Formula $\nicefrac{1}{2m}$
+\end_inset
+
+.
+ Consider the Markov chain whose states are the directed edges 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ – we have 
+\begin_inset Formula $2m$
+\end_inset
+
+ states now.
+ The probability of transitioning from 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ to 
+\begin_inset Formula $(j,k)$
+\end_inset
+
+ is 
+\begin_inset Formula $\nicefrac{1}{\deg(j)}$
+\end_inset
+
+.
+ The stationary distribution of this Markov chain is 
+\begin_inset Formula $\pi_{(i,j)}=\nicefrac{1}{2m}$
+\end_inset
+
+.
+ By the fundamental theorem, once we leave 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+, we return to 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ in expectation in 
+\begin_inset Formula $\nicefrac{1}{\pi_{(i,j)}}=2m$
+\end_inset
+
+ steps.
+\end_layout
+
+\begin_layout Proof
+Leaving the edge 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ means that we just traversed from 
+\begin_inset Formula $i$
+\end_inset
+
+ to 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ Returning to the edge 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ means to make it back to 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ So, this is a successful commute.
+ (Only an upper bound of 
+\begin_inset Formula $2m$
+\end_inset
+
+ because 
+\begin_inset Formula $i\rightarrow j$
+\end_inset
+
+ might not use the edge 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Theorem
+If 
+\begin_inset Formula $G$
+\end_inset
+
+ is undirected and connected, its cover time is at most 
+\begin_inset Formula $2m(n-1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Consider any spanning tree 
+\begin_inset Formula $T$
+\end_inset
+
+ of 
+\begin_inset Formula $G$
+\end_inset
+
+ and any DFS order on 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ For each edge 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ of 
+\begin_inset Formula $T$
+\end_inset
+
+, we need to commute along it once, 
+\emph on
+i.e.,
+\emph default
+ traverse it once in each direction.
+ So cover time is at most 
+\begin_inset Formula 
+\[
+\sum_{(i,j)\in T}c_{ij}\leq2m(n-1).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+An Algorithm for 2-SAT
+\end_layout
+
+\begin_layout Standard
+We are given a 2-SAT formula 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ (each clause is an OR of at most two literals), and we'd like to find a
+ satisfying assignment if one exists.
+ This is polytime solvable based on a reduction to Eulerian paths.
+\end_layout
+
+\begin_layout Standard
+We will use a simple local search algorithm: start with any assignment 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+.
+ While 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+ is not satisfying 
+\begin_inset Formula $\Phi$
+\end_inset
+
+, we choose any unsatisfied clause 
+\begin_inset Formula $c_{j}$
+\end_inset
+
+.
+ Pick one of the (at most) two literals of 
+\begin_inset Formula $c_{ij}$
+\end_inset
+
+ uniformly at random and flip it.
+ If no success after TBD steps, then declare unsatisfiable.
+\end_layout
+
+\begin_layout Standard
+For the analysis we will assume 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ is satisfiable.
+ Let 
+\begin_inset Formula $\boldsymbol{y}$
+\end_inset
+
+ be any satisfying assignment.
+ We would like to prove that our assignment becomes 
+\begin_inset Quotes eld
+\end_inset
+
+more similar
+\begin_inset Quotes erd
+\end_inset
+
+ to 
+\begin_inset Formula $\boldsymbol{y}$
+\end_inset
+
+ over time.
+ Measure similarity by the Hamming distance.
+ Let 
+\begin_inset Formula $\boldsymbol{x}_{t}$
+\end_inset
+
+ be the assignment of the algorithm after 
+\begin_inset Formula $t$
+\end_inset
+
+ steps.
+ The distance 
+\begin_inset Formula 
+\[
+z_{t}\coloneqq d_{H}(\boldsymbol{x}_{t},\boldsymbol{y})=\text{\# of }i\text{ with }(\boldsymbol{x}_{t})_{i}\neq\boldsymbol{y}_{i}.
+\]
+
+\end_inset
+
+Here, 
+\begin_inset Formula $z_{t}$
+\end_inset
+
+ is a random variable with 
+\begin_inset Formula $z_{t}\in\{0\dots,n\}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $z_{t}=0$
+\end_inset
+
+ then the algorithm terminates.
+ If 
+\begin_inset Formula $z_{t}\neq0$
+\end_inset
+
+, the algorithm might still terminate if it finds a satisfying assignment
+ other than 
+\begin_inset Formula $\boldsymbol{y}$
+\end_inset
+
+, but that only helps us.
+ If 
+\begin_inset Formula $z_{t}\neq0$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{x}_{t}$
+\end_inset
+
+ is not satisfying, then let 
+\begin_inset Formula $c_{t}$
+\end_inset
+
+ be an unsatisfied clause; the algorithm flips a variable in 
+\begin_inset Formula $c_{t}$
+\end_inset
+
+ uniformly at random.
+\end_layout
+
+\begin_layout Standard
+Because 
+\begin_inset Formula $\boldsymbol{y}$
+\end_inset
+
+ satisfies 
+\begin_inset Formula $c_{t}$
+\end_inset
+
+, it differs from 
+\begin_inset Formula $\boldsymbol{x}_{t}$
+\end_inset
+
+ in at least one variable.
+ If we flip such a variable, 
+\begin_inset Formula $\boldsymbol{z}_{t}$
+\end_inset
+
+ decreases by 
+\begin_inset Formula $1$
+\end_inset
+
+; otherwise, it increases by 1.
+ So
+\begin_inset Formula 
+\begin{align*}
+\Pr[z_{t+1}=z_{t}-1] & \geq\frac{1}{2}\\
+\Pr[z_{t+1}=z_{t}+1] & \leq\frac{1}{2}.
+\end{align*}
+
+\end_inset
+
+Therefore the time to hit 0 is upper bounded by the time for a uniform random
+ walk on 
+\begin_inset Formula $\{0,1,\dots,n\}$
+\end_inset
+
+ to hit 0, which is upper bounded by its cover time.
+ By Theorem 5, the cover time is at most 
+\begin_inset Formula $2n^{2}$
+\end_inset
+
+.
+ By Markov's Inequality, 
+\begin_inset Formula $z_{t}=0$
+\end_inset
+
+ with probability at least 
+\begin_inset Formula $\nicefrac{1}{2}$
+\end_inset
+
+ within 
+\begin_inset Formula $4n^{2}$
+\end_inset
+
+ steps.
+ For higher probability, we can repeat.
+ For 3-SAT, this is trickier because our probabilities are 
+\begin_inset Formula $\nicefrac{1}{3}$
+\end_inset
+
+ and 
+\begin_inset Formula $\nicefrac{2}{3}$
+\end_inset
+
+ instead of 
+\begin_inset Formula $\nicefrac{1}{2}$
+\end_inset
+
+, which removes the polynomial time guarantee.
+\end_layout
+
+\begin_layout Section
+Markov Chains for Sampling: Rapid Mixing
+\end_layout
+
+\begin_layout Standard
+The main application is to sample complex objects such as graph colorings,
+ points in high-dimensional polytopes, knapsack solutions, states of magnetic
+ spin systems, etc.
+ Our approach is to define a Markov chain on the objects.
+ We start in a given state, run for 
+\begin_inset Quotes eld
+\end_inset
+
+enough
+\begin_inset Quotes erd
+\end_inset
+
+ steps to be close to a stationary distribution, and output the current
+ object.
+ We will design the chain such that the stationary distribution is what
+ you want (usually uniform).
+ This is also called Markov Chain Monte Carlo (MCMC).
+\end_layout
+
+\begin_layout Standard
+Most early work was at IBM, in 
+\begin_inset Quotes eld
+\end_inset
+
+card shuffling
+\begin_inset Quotes erd
+\end_inset
+
+ – different chains for generating permutations.
+ To generate a uniformly random permutation, you should pick a uniformly
+ random element for the first position and repeat.
+ But sometimes, all we can do is swap two random positions, swap a random
+ position with an adjacent one, etc.
+ How many swaps do we need to get 
+\begin_inset Quotes eld
+\end_inset
+
+close
+\begin_inset Quotes erd
+\end_inset
+
+ to a uniform distribution?
+\end_layout
+
+\begin_layout Standard
+To talk about closeness to uniform distribution, we need a notion of distance
+ between distributions.
+ For now, we use the total variation distance (TVD):
+\begin_inset Formula 
+\[
+d_{TV}(\mu_{1},\mu_{2})\coloneqq\max_{A\subseteq\Omega}|\mu_{1}(A)-\mu_{2}(A)|.
+\]
+
+\end_inset
+
+That is, the largest absolute difference in probability mass between 
+\begin_inset Formula $\mu_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu_{2}$
+\end_inset
+
+ for any set 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ It's easy to show that 
+\begin_inset Formula 
+\begin{align*}
+d_{TV}(\mu_{1},\mu_{2}) & =\frac{1}{2}\|\mu_{1}-\mu_{2}\|_{1}\\
+ & =\frac{1}{2}\sum_{i}|\mu_{1}(i)-\mu_{2}(i)|.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

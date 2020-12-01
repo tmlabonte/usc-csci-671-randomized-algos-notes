@@ -1,0 +1,1113 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathcal{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathscr{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\I}{\mathscr{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\intercal}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eps}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\d}{\delta}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ph}{\varphi}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\F}{\mathbb{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\N}{\mathbb{N}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\nequiv}{\not\equiv}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\perm}{\text{perm}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pp}{^{\prime\prime}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+The Lovasz Local Lemma
+\end_layout
+
+\begin_layout Section
+Proof of the Lemma
+\end_layout
+
+\begin_layout Standard
+Recall we defined a 
+\series bold
+dependency graph
+\series default
+ 
+\begin_inset Formula $G$
+\end_inset
+
+ on events 
+\begin_inset Formula $(\E_{i})$
+\end_inset
+
+ as follows: Let 
+\begin_inset Formula 
+\[
+T_{j}\coloneqq\{\E_{i}\mid(\E_{j},\E_{i})\notin G\}.
+\]
+
+\end_inset
+
+Then 
+\begin_inset Formula $\E_{j}$
+\end_inset
+
+ is mutually independent of 
+\begin_inset Formula $T_{j}$
+\end_inset
+
+.
+ In other words, non-edges guarantee independence and edges capture possible
+ dependence.
+ Notice that the complete graph is a dependency graph which gives trivial
+ bounds; we want 
+\emph on
+sparse
+\emph default
+ dependency graphs.
+\end_layout
+
+\begin_layout Theorem
+[Lovasz Local Lemma].
+ 
+\emph on
+Let 
+\begin_inset Formula $G$
+\end_inset
+
+ be a dependency graph on 
+\begin_inset Formula $(\E_{i})$
+\end_inset
+
+.
+ Assume that there exists 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ with 
+\begin_inset Formula $i\in[n]$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+\Pr[\E_{i}]\leq x_{i}\prod_{(i,j)\in E}(1-x_{j})
+\]
+
+\end_inset
+
+for all 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Then
+\begin_inset Formula 
+\[
+\Pr[\bigcap_{i}\bar{\E_{i}}]\geq\prod_{i}(1-x_{i}).
+\]
+
+\end_inset
+
+Conceptually, the 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ are upper bounds on the probability of 
+\begin_inset Formula $\E_{i}$
+\end_inset
+
+ subject to some conditioning on limited independence.
+\end_layout
+
+\begin_layout Corollary
+
+\emph on
+Let 
+\begin_inset Formula $(\E_{i})$
+\end_inset
+
+ be events with 
+\begin_inset Formula $\Pr[\E_{i}]\leq p$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+, and each 
+\begin_inset Formula $\E_{i}$
+\end_inset
+
+ be mutually independent of all except at most 
+\begin_inset Formula $d$
+\end_inset
+
+ other events.
+ If
+\begin_inset Formula 
+\[
+p\leq\frac{1}{e(d+1)}
+\]
+
+\end_inset
+
+then 
+\begin_inset Formula $\Pr[\bigcap_{i}\bar{\E_{i}}]>0$
+\end_inset
+
+.
+ In contrast, if we were using the union bound, we would need 
+\begin_inset Formula $p\leq\nicefrac{1}{n}$
+\end_inset
+
+.
+ So we get a factor 
+\begin_inset Formula $d$
+\end_inset
+
+ instead of a factor 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+(of the corollary).
+ The 
+\begin_inset Formula $(\E_{i})$
+\end_inset
+
+ are events with 
+\begin_inset Formula $\Pr[\E_{i}]\leq p$
+\end_inset
+
+.
+ Set 
+\begin_inset Formula $x_{i}=\frac{1}{d+1}$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Then
+\begin_inset Formula 
+\begin{align*}
+x_{i}\prod_{(i,j)\in E}(1-x_{j}) & =\frac{1}{d+1}\prod_{(i,j)\in E}(1-\frac{1}{d+1})\\
+ & \ge\frac{1}{d+1}(1-\frac{1}{d+1})^{d}\\
+ & \geq\frac{1}{e(d+1)}\\
+ & \geq p\\
+ & \geq\Pr[\E_{i}].
+\end{align*}
+
+\end_inset
+
+So the 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ satisfy the hypothesis of the Lovasz Local Lemma, and we get
+\begin_inset Formula 
+\[
+\Pr[\bigcap_{i}\bar{\E_{i}}]\geq\prod(1-\frac{1}{d+1})>0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+(of the LLL).
+ We are interested in 
+\begin_inset Formula 
+\begin{align*}
+\Pr[\bigcap_{i}\bar{\E_{i}}] & =\Pr[\bar{\E_{1}}]\cdot\Pr[\bar{\E_{2}}\mid\bar{\E_{1}}]\cdot\Pr[\bar{\E_{2}}\mid\bar{\E_{1}}\cap\bar{\E_{2}}]\cdot\dots\cdot\Pr[\bar{\E_{n}}\mid\bigcap_{i<n}\bar{\E_{i}}]\\
+ & =\prod_{j=1}^{n}(1-\Pr[\E_{j}\mid\bigcap_{i<j}\bar{\E_{i}}]).
+\end{align*}
+
+\end_inset
+
+We will show that 
+\begin_inset Formula $\Pr[\E_{j}\mid\bigcap_{i\in S}\bar{\E_{i}}]\leq x_{j}$
+\end_inset
+
+ for all 
+\begin_inset Formula $j$
+\end_inset
+
+ and all sets 
+\begin_inset Formula $S$
+\end_inset
+
+ of indices.
+ Then, applying this with 
+\begin_inset Formula $S=\{i:i<j\}$
+\end_inset
+
+ we obtain
+\begin_inset Formula 
+\[
+\Pr[\bigcap_{j}\bar{\E_{j}}]\geq\prod_{j=1}^{n}(1-x_{j}).
+\]
+
+\end_inset
+
+We will prove this (general) inequality by induction on 
+\begin_inset Formula $|S|$
+\end_inset
+
+.
+ The base case is 
+\begin_inset Formula $|S|=0$
+\end_inset
+
+.
+ Here, we have 
+\begin_inset Formula $\Pr[\E_{j}]\leq x_{j}\prod_{(j,i)\in E}(1-x_{i})\leq x_{j}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+For the induction step, fix some 
+\begin_inset Formula $j$
+\end_inset
+
+ and write 
+\begin_inset Formula $S=S_{1}\cup S_{2}$
+\end_inset
+
+ where 
+\begin_inset Formula $S_{1}$
+\end_inset
+
+ are the neighbors of 
+\begin_inset Formula $j$
+\end_inset
+
+ in 
+\begin_inset Formula $G$
+\end_inset
+
+ and 
+\begin_inset Formula $S_{2}$
+\end_inset
+
+ are the non-neighbors.
+ Thus
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{align}
+\Pr[\E_{j}\mid\bigcap_{i\in S}\bar{\E_{i}}] & =\frac{\Pr[\E_{j}\cap\bigcap_{i\in S}\bar{\E_{i}}]}{\Pr[\bigcap_{i\in S}\bar{\E_{i}}]}\nonumber \\
+ & =\frac{\Pr[\E_{j}\cap\bigcap_{i\in S_{1}}\bar{\E_{i}}\cap\bigcap_{i\in S_{2}}\bar{\E_{i}}]}{\Pr[\bigcap_{i\in S_{1}}\bar{\E_{i}}\cap\bigcap_{i\in S_{2}}\bar{\E_{i}}]}\nonumber \\
+ & =\frac{\Pr[\E_{j}\cap\bigcap_{i\in S_{1}}\bar{\E_{i}}\mid\bigcap_{i\in S_{2}}\bar{\E_{i}}]\cdot\Pr[\bigcap_{i\in S_{2}}\bar{\E_{i}}]}{\Pr[\bigcap_{i\in S_{1}}\bar{\E_{i}}\mid\bigcap_{i\in S_{2}}\bar{\E_{i}}]\cdot\Pr[\bigcap_{i\in S_{2}}\bar{\E_{i}}]}\nonumber \\
+ & =\frac{\Pr[\E_{j}\cap\bigcap_{i\in S_{1}}\bar{\E_{i}}\mid\bigcap_{i\in S_{2}}\bar{\E_{i}}]}{\Pr[\bigcap_{i\in S_{1}}\bar{\E_{i}}\mid\bigcap_{i\in S_{2}}\bar{\E_{i}}]}.
+\end{align}
+
+\end_inset
+
+Bounding the numerator,
+\begin_inset Formula 
+\[
+\Pr[\E_{j}\cap\bigcap_{i\in S_{1}}\bar{\E_{i}}\mid\bigcap_{i\in S_{2}}\bar{\E_{i}}]\leq\Pr[\E_{j}\mid\bigcap_{i\in S_{2}}\bar{\E_{i}}]=\Pr[\E_{j}]
+\]
+
+\end_inset
+
+by independence of 
+\begin_inset Formula $\E_{j}$
+\end_inset
+
+ from non-neighbors.
+ And
+\begin_inset Formula 
+\[
+\Pr[\E_{j}]\leq x_{j}\prod_{i:(j,i)\in E}(1-x_{i}).
+\]
+
+\end_inset
+
+If 
+\begin_inset Formula $S_{1}=\emptyset$
+\end_inset
+
+ then the denominator is equal to 1.
+ Otherwise, write 
+\begin_inset Formula $S_{1}=\{k_{1},k_{2},\dots,k_{r}\}$
+\end_inset
+
+ for 
+\begin_inset Formula $r>0$
+\end_inset
+
+.
+ Then
+\begin_inset Formula 
+\[
+\Pr[\bigcap_{i\in S_{1}}\bar{\E_{i}}\mid\bigcap_{i\in S_{2}}\bar{\E_{i}}]=\prod_{\ell=1}^{r}\Pr[\bar{\E_{k_{\ell}}}\mid\bigcap_{i\in S_{2}}\bar{\E_{i}}\cap\bigcap_{p=1}^{\ell-1}\bar{\E_{k_{p}}].}
+\]
+
+\end_inset
+
+Applying the induction hypothesis to 
+\begin_inset Formula $S_{2}\cup\{k_{1},\dots,k_{\ell-1}\}$
+\end_inset
+
+, whose size is at most 
+\begin_inset Formula $|S|-1$
+\end_inset
+
+, this is at least
+\begin_inset Formula 
+\[
+\prod_{\ell=1}^{r}(1-x_{k_{\ell}}).
+\]
+
+\end_inset
+
+Because all 
+\begin_inset Formula $k_{\ell}$
+\end_inset
+
+ are neighbors of 
+\begin_inset Formula $j$
+\end_inset
+
+, this is at least
+\begin_inset Formula 
+\[
+\prod_{i:(j,i)\in E}(1-x_{i}).
+\]
+
+\end_inset
+
+Thus, fraction (1) is at most 
+\begin_inset Formula $x_{j}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Application to 
+\begin_inset Formula $k$
+\end_inset
+
+-SAT
+\end_layout
+
+\begin_layout Corollary
+(of the LLL).
+ 
+\emph on
+Let 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ be a 
+\begin_inset Formula $k$
+\end_inset
+
+-SAT formula such that each variable occurs in fewer than 
+\begin_inset Formula $\frac{2^{k}}{ek}=\Theta(\frac{2^{k}}{k})$
+\end_inset
+
+ clauses.
+ Then, 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ is satisfiable.
+\end_layout
+
+\begin_layout Proof
+Set each 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ to true 
+\emph on
+i.i.d.
+ 
+\emph default
+with probability 
+\begin_inset Formula $\nicefrac{1}{2}$
+\end_inset
+
+.
+ Each clause 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+ is satisfied with probability 
+\begin_inset Formula $1-2^{-k}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\E_{j}$
+\end_inset
+
+ be the bad event that 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+ is not satisfied.
+ So 
+\begin_inset Formula $\Pr[\E_{j}]\leq2^{-k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Note 
+\begin_inset Formula $\E_{j}$
+\end_inset
+
+ is mutually independent of all 
+\begin_inset Formula $\E_{i}$
+\end_inset
+
+ except possibly those with which 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+ shares one or more variables.
+ And, 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+ shares a variable with fewer than 
+\begin_inset Formula $k(\frac{2^{k}}{ek}-1)$
+\end_inset
+
+ other clauses.
+ This is at most 
+\begin_inset Formula $\frac{2^{k}}{e}-1$
+\end_inset
+
+.
+ So 
+\begin_inset Formula $d+1<\frac{2^{k}}{e}$
+\end_inset
+
+ in the dependency graph, and 
+\begin_inset Formula $p=2^{-k}\leq\frac{1}{e(d+1)}$
+\end_inset
+
+ as needed.
+\end_layout
+
+\begin_layout Proof
+Thus, 
+\begin_inset Formula $\Pr[\bigcap\bar{\E_{i}}]>0$
+\end_inset
+
+ by the corollary of the LLL.
+\end_layout
+
+\begin_layout Section
+Constructive LLL (Moser-Tardos)
+\end_layout
+
+\begin_layout Subsection
+Motivation
+\end_layout
+
+\begin_layout Standard
+Note that the corollary in the previous section is entirely non-constructive
+ – it doesn't tell you how to 
+\emph on
+find
+\emph default
+ the assignment efficiently.
+ Beck's algorithm does, but it needs stronger assumptions.
+ And, we would like a constructive version of the LLL beyond just 
+\begin_inset Formula $k$
+\end_inset
+
+-SAT.
+\end_layout
+
+\begin_layout Standard
+To make this meaningful, we need to find a point 
+\begin_inset Formula $\omega$
+\end_inset
+
+ in the sample space 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ such that 
+\begin_inset Formula $\omega\in\bigcap\bar{\E_{i}}$
+\end_inset
+
+.
+ To state this cleanly, we need some assumptions about the structure of
+ 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ and 
+\begin_inset Formula $\E_{j}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Assume there is a finite set 
+\begin_inset Formula $\P=\{P_{i}\}$
+\end_inset
+
+ of 
+\series bold
+independent
+\series default
+ random variables (not necessarily binary), and for each 
+\begin_inset Formula $i$
+\end_inset
+
+ there is an efficient procedure for sampling 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+.
+ We are explicitly given a bipartite graph between events 
+\begin_inset Formula $\E_{j}$
+\end_inset
+
+ and variables 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\E_{j}$
+\end_inset
+
+ is mutually independent of all variables it does not have an edge to.
+ Write 
+\begin_inset Formula $L(\E_{j})$
+\end_inset
+
+ for the 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ that 
+\begin_inset Formula $\E_{j}$
+\end_inset
+
+ has an edge to.
+ For the dependency graph, 
+\begin_inset Formula $(\E_{i},\E_{j})$
+\end_inset
+
+ exists only if 
+\begin_inset Formula $L(\E_{i})\cap L(\E_{j})\neq\emptyset$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The Moser-Tardos Algorithm is quite simple: For each 
+\begin_inset Formula $P\in\mathcal{P}$
+\end_inset
+
+, let 
+\begin_inset Formula $y_{P}$
+\end_inset
+
+ be a random draw of 
+\begin_inset Formula $P$
+\end_inset
+
+ (independent of all 
+\begin_inset Formula $y_{P\p}$
+\end_inset
+
+).
+ While there is some 
+\begin_inset Formula $\E_{j}$
+\end_inset
+
+ that is true under 
+\begin_inset Formula $\boldsymbol{y}$
+\end_inset
+
+, re-draw all 
+\begin_inset Formula $P\in L(\E_{j})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+(Moser-Tardos 2009).
+ 
+\emph on
+Assume that there exists 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ with 
+\begin_inset Formula 
+\[
+\Pr[\E_{i}]\leq x_{i}\prod_{(i,j)\in E}(1-x_{j})
+\]
+
+\end_inset
+
+for all 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Then this algorithm finds an assignment 
+\begin_inset Formula $\boldsymbol{y}$
+\end_inset
+
+ satisfying 
+\begin_inset Formula $\bigcap\bar{\E_{j}}$
+\end_inset
+
+ and uses at most 
+\begin_inset Formula 
+\[
+\sum_{j}\frac{x_{j}}{1-x_{j}}
+\]
+
+\end_inset
+
+ iterations in expectation.
+ More specifically, each 
+\begin_inset Formula $\E_{j}$
+\end_inset
+
+ is resampled at most 
+\begin_inset Formula $\frac{x_{j}}{1-x_{j}}$
+\end_inset
+
+ times in expectation.
+\end_layout
+
+\begin_layout Note
+The convergence is guaranteed by the non-constructive LLL because with some
+ probability we keep guessing correctly; the interesting part is the fast
+ convergence.
+\end_layout
+
+\begin_layout Note
+To gain some more intuition, consider the case where the dependency graph
+ is empty.
+ For event 
+\begin_inset Formula $\E_{j}$
+\end_inset
+
+, the number of resamples needed is geometrically distributed with parameter
+ 
+\begin_inset Formula $\Pr[\bar{\E_{j}}]$
+\end_inset
+
+.
+ So the expectation is
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{\Pr[\bar{\E_{j}}]}-1 & =\frac{1}{1-\Pr[\E_{j}]}-\frac{1-\Pr[\E_{j}]}{1-\Pr[\E_{j}]}\\
+ & =\frac{\Pr[\E_{j}]}{1-\Pr[\E_{j}]}.
+\end{align*}
+
+\end_inset
+
+In the empty graph we can set 
+\begin_inset Formula $x_{j}=\Pr[\E_{j}]$
+\end_inset
+
+, so the total number of resamples in expectation is at most 
+\begin_inset Formula $\frac{x_{j}}{1-x_{j}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Execution Logs and Witness Trees
+\end_layout
+
+\begin_layout Standard
+The 
+\series bold
+execution log
+\series default
+ 
+\begin_inset Formula $C$
+\end_inset
+
+ has 
+\begin_inset Formula $C(t)$
+\end_inset
+
+ the event that 
+\begin_inset Formula $\E_{j}$
+\end_inset
+
+ is resampled in step 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Resampling was necessary because 
+\begin_inset Formula $\E_{j}$
+\end_inset
+
+ was true under 
+\begin_inset Formula $\boldsymbol{y}_{t}$
+\end_inset
+
+.
+ In the independent case, this was because the previous time we sampled
+ 
+\begin_inset Formula $L(\E_{j})$
+\end_inset
+
+, we made 
+\begin_inset Formula $\E_{j}$
+\end_inset
+
+ true).
+ In the general case this is more subtle because resampling one or more
+ 
+\begin_inset Formula $\E_{i}$
+\end_inset
+
+ with 
+\begin_inset Formula $(j,i)\in E$
+\end_inset
+
+ may together have made 
+\begin_inset Formula $\E_{j}$
+\end_inset
+
+ true.
+\end_layout
+
+\begin_layout Standard
+We want a structure keeping track of the 
+\begin_inset Quotes eld
+\end_inset
+
+blame
+\begin_inset Quotes erd
+\end_inset
+
+ for resampling.
+ We define a 
+\series bold
+witness tree
+\series default
+ 
+\begin_inset Formula $T_{t}$
+\end_inset
+
+ for time 
+\begin_inset Formula $t$
+\end_inset
+
+ as follows: The root of 
+\begin_inset Formula $T_{t}$
+\end_inset
+
+ is labeled 
+\begin_inset Formula $\lambda(r)=\E_{j}$
+\end_inset
+
+.
+ We iterate through 
+\begin_inset Formula $t\p=t-1,t-2,\dots$
+\end_inset
+
+ and consider the event 
+\begin_inset Formula $\E_{i}=C(t\p)$
+\end_inset
+
+ that happened at 
+\begin_inset Formula $t\p$
+\end_inset
+
+ in 
+\begin_inset Formula $C$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In the first case, there is no edge 
+\begin_inset Formula $(i\p,i)\in E$
+\end_inset
+
+ for any 
+\begin_inset Formula $\E_{i\p}$
+\end_inset
+
+ that is (so far) a label in 
+\begin_inset Formula $T_{t}$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula $\E_{i}$
+\end_inset
+
+ cannot have caused any of the resampling in 
+\begin_inset Formula $T_{t}$
+\end_inset
+
+, so we skip 
+\begin_inset Formula $\E_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In the second case, there is a node 
+\begin_inset Formula $v\in T_{t}$
+\end_inset
+
+ with label 
+\begin_inset Formula $\lambda(v)=\E_{i\p}$
+\end_inset
+
+ such that 
+\begin_inset Formula $(i\p,i)\in E$
+\end_inset
+
+.
+ Choose the deepest such 
+\begin_inset Formula $v$
+\end_inset
+
+ (breaking ties arbitrarily), create a new node 
+\begin_inset Formula $u$
+\end_inset
+
+ with 
+\begin_inset Formula $\lambda(u)=\E_{i}$
+\end_inset
+
+, and make it a child of 
+\begin_inset Formula $v$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

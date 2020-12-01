@@ -1,0 +1,1075 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathcal{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathscr{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\I}{\mathscr{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\intercal}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eps}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\d}{\delta}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ph}{\varphi}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\F}{\mathbb{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\N}{\mathbb{N}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\nequiv}{\not\equiv}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\perm}{\text{perm}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Matching Extensions
+\end_layout
+
+\begin_layout Section
+Red-Blue Matchings
+\end_layout
+
+\begin_layout Standard
+We are given a bipartite graph 
+\begin_inset Formula $G$
+\end_inset
+
+ where each is either red or blue.
+ Does 
+\begin_inset Formula $G$
+\end_inset
+
+ have a perfect matching with exactly 
+\begin_inset Formula $k$
+\end_inset
+
+ red edges and 
+\begin_inset Formula $n-k$
+\end_inset
+
+ blue edges? Clearly, assigning cost 1 to red edges and 0 to blue edges
+ and computing a min/max-cost perfect matching does not tell us about intermedia
+te 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We extend the idea of randomly drawn edge costs from before.
+ For each 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ draw 
+\begin_inset Formula $c_{ij}$
+\end_inset
+
+ i.u.a.r.
+ from 
+\begin_inset Formula $\{1,\dots,2m\}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ is red, set 
+\begin_inset Formula $x_{ij}=y\cdot2^{c_{ij}}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ is blue, set 
+\begin_inset Formula $x_{ij}=2^{c_{ij}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Define 
+\begin_inset Formula $B$
+\end_inset
+
+ to be the matrix of all 
+\begin_inset Formula $x_{ij}$
+\end_inset
+
+.
+ We have
+\begin_inset Formula 
+\begin{align*}
+\perm(B) & =\sum_{\sigma\text{ permutations}}\prod_{i}x_{i,\sigma(i)}\\
+ & =\sum_{\sigma\text{ perfect matchings}}\prod_{i}x_{i,\sigma(i)}\\
+ & =\sum_{\sigma\text{ permutations}}\prod_{i}\begin{cases}
+y\cdot2^{c_{i,\sigma(i)}} & \text{red edges}\\
+2^{c_{i,\sigma(i)}} & \text{blue edges}
+\end{cases}\\
+ & =\sum_{\sigma\text{ perfect matchings}}y^{\text{red}(\sigma)}2^{\text{cost}(\sigma)}\\
+\det(B) & =\sum_{\sigma\text{ perfect matchings}}(-1)^{\text{sgn}(\sigma)}y^{\text{red}(\sigma)}2^{\text{cost}(\sigma)}
+\end{align*}
+
+\end_inset
+
+Combining terms to isolate each occurrence of 
+\begin_inset Formula $y$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+\perm(B) & =\sum_{j=0}^{n}y^{j}\sum_{\sigma\text{ perfect matching,red\ensuremath{(\sigma)=j}}}2^{\text{cost}(j)}\\
+ & =\sum_{j=0}^{n}y^{j}\alpha_{j}\\
+\det(B) & =\sum_{j=0}^{n}y^{j}\sum_{\sigma\text{ perfect matching,red\ensuremath{(\sigma)=j}}}(-1)^{\text{sgn}(\sigma)}2^{\text{cost}(j)}\\
+ & =\sum_{j=0}^{n}y^{j}\beta_{j}
+\end{align*}
+
+\end_inset
+
+A perfect matching with exactly 
+\begin_inset Formula $k$
+\end_inset
+
+ red edges exists iff 
+\begin_inset Formula $\alpha_{k}>0$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\beta_{j}\neq0$
+\end_inset
+
+ then 
+\begin_inset Formula $\alpha_{j}>0$
+\end_inset
+
+ for all 
+\begin_inset Formula $j$
+\end_inset
+
+ (and in particular, 
+\begin_inset Formula $j=k$
+\end_inset
+
+).
+ If 
+\begin_inset Formula $\alpha_{j}\neq0$
+\end_inset
+
+ then 
+\begin_inset Formula $\beta_{j}$
+\end_inset
+
+ may still be 0.
+ But if the min-cost matching among matchings with exactly 
+\begin_inset Formula $j$
+\end_inset
+
+ red edges is unique, then 
+\begin_inset Formula $\beta_{j}\ne0$
+\end_inset
+
+.
+ So, the proofs from last time are easily adapted to show:
+\end_layout
+
+\begin_layout Lemma
+The min-cost matching with exactly 
+\begin_inset Formula $j$
+\end_inset
+
+ red edges is unique with probability at least 
+\begin_inset Formula $1/2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Assume we are in this case (and repeat for higher probability).
+ It is sufficient to test if 
+\begin_inset Formula $\beta_{k}=0$
+\end_inset
+
+ (
+\emph on
+i.e., 
+\emph default
+compute 
+\begin_inset Formula $\beta_{k}$
+\end_inset
+
+).
+ Notice that 
+\begin_inset Formula $\det(B(y))\coloneqq p(y)$
+\end_inset
+
+ is a univariate polynomial in 
+\begin_inset Formula $y$
+\end_inset
+
+ of degree at most 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ We have
+\begin_inset Formula 
+\[
+p(y)=\sum_{j=0}^{n}\beta_{j}y^{j}.
+\]
+
+\end_inset
+
+If we plug in any 
+\begin_inset Formula $n+1$
+\end_inset
+
+ distinct values for 
+\begin_inset Formula $y$
+\end_inset
+
+ and evaluate 
+\begin_inset Formula $p(y)$
+\end_inset
+
+, we obtain a system of 
+\begin_inset Formula $n+1$
+\end_inset
+
+ linear equations for 
+\begin_inset Formula $n+1$
+\end_inset
+
+ variables 
+\begin_inset Formula $\beta_{0},\dots,\beta_{n}$
+\end_inset
+
+.
+ Thus, we can solve the system to get all 
+\begin_inset Formula $\beta_{j}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+String Comparisons and Pattern Matching
+\end_layout
+
+\begin_layout Subsection
+String Comparisons
+\end_layout
+
+\begin_layout Standard
+We have two strings (could be files, archives, etc) 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ of length 
+\begin_inset Formula $n$
+\end_inset
+
+ with 
+\begin_inset Formula $n$
+\end_inset
+
+ very large.
+ They are located in different places.
+ We would like to find out if 
+\begin_inset Formula $x=y$
+\end_inset
+
+ (with high enough probability) without communicating too much.
+\end_layout
+
+\begin_layout Standard
+The idea is to interpret 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ as 
+\begin_inset Formula $n$
+\end_inset
+
+-bit numbers.
+ We choose a random (small) prime 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ Send 
+\begin_inset Formula $p$
+\end_inset
+
+ and 
+\begin_inset Formula $x\mod p$
+\end_inset
+
+.
+ The recipient computes 
+\begin_inset Formula $y\mod p$
+\end_inset
+
+ and compares it to 
+\begin_inset Formula $x\mod p$
+\end_inset
+
+.
+ If they are unequal, then 
+\begin_inset Formula $x\neq y$
+\end_inset
+
+; otherwise, 
+\begin_inset Formula $x=y$
+\end_inset
+
+ with TBD probability.
+\end_layout
+
+\begin_layout Standard
+This goes wrong when 
+\begin_inset Formula $x\neq y$
+\end_inset
+
+ and 
+\begin_inset Formula $p=y\mod p$
+\end_inset
+
+.
+ Equivalently, 
+\begin_inset Formula $p\mid(x-y)$
+\end_inset
+
+.
+ How many distinct 
+\begin_inset Formula $p$
+\end_inset
+
+ can divide 
+\begin_inset Formula $x-y$
+\end_inset
+
+? Since 
+\begin_inset Formula $|x-y|\leq2^{n}$
+\end_inset
+
+ (because both are length 
+\begin_inset Formula $\leq n$
+\end_inset
+
+), 
+\begin_inset Formula $|x-y|$
+\end_inset
+
+ can have at most 
+\begin_inset Formula $n$
+\end_inset
+
+ distinct prime factors.
+ So, there are at most 
+\begin_inset Formula $n$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+bad
+\begin_inset Quotes erd
+\end_inset
+
+ choices.
+\end_layout
+
+\begin_layout Standard
+If we draw 
+\begin_inset Formula $p$
+\end_inset
+
+ uniformly from the first 
+\begin_inset Formula $n^{3}$
+\end_inset
+
+ prime numbers, we succeed with probability at least 
+\begin_inset Formula $1-n^{-2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+But how big could 
+\begin_inset Formula $p$
+\end_inset
+
+ get? Equivalently, how large is the 
+\begin_inset Formula $(n^{3})^{th}$
+\end_inset
+
+ prime? Well, how many primes are 
+\begin_inset Formula $\leq k$
+\end_inset
+
+? By the prime number theorem, it is about 
+\begin_inset Formula $k/\ln(k)$
+\end_inset
+
+.
+ So the 
+\begin_inset Formula $(n^{3})^{th}$
+\end_inset
+
+ prime is approximately 
+\begin_inset Formula $n^{3}\log n^{3}=\Theta(n^{3}\log n)$
+\end_inset
+
+.
+ (Whereas 
+\begin_inset Formula $|x-y|\leq2^{n}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+In particular, both 
+\begin_inset Formula $p$
+\end_inset
+
+ and 
+\begin_inset Formula $x\mod p\leq p$
+\end_inset
+
+ can be encoded in at most 
+\begin_inset Formula 
+\[
+\log(\Theta(n^{3}\log n))=\Theta(\log n)
+\]
+
+\end_inset
+
+bits.
+ This is exponentially better than sending 
+\begin_inset Formula $n$
+\end_inset
+
+ bits.
+ To boost the probability, we can pick several 
+\begin_inset Formula $p$
+\end_inset
+
+ independently.
+\end_layout
+
+\begin_layout Subsection
+Pattern Matching
+\end_layout
+
+\begin_layout Standard
+Given a long string 
+\begin_inset Formula $x$
+\end_inset
+
+ with 
+\begin_inset Formula $|x|=n$
+\end_inset
+
+ and shorter pattern 
+\begin_inset Formula $y$
+\end_inset
+
+ with 
+\begin_inset Formula $|y|=m$
+\end_inset
+
+, is there an occurrence of 
+\begin_inset Formula $y$
+\end_inset
+
+ in 
+\begin_inset Formula $x$
+\end_inset
+
+? Equivalently, if 
+\begin_inset Formula $x=x_{1},\dots,x_{n}$
+\end_inset
+
+, find if there is a 
+\begin_inset Formula $k$
+\end_inset
+
+ with 
+\begin_inset Formula $x_{k+1}=y_{i}$
+\end_inset
+
+ for 
+\begin_inset Formula $i=1,\dots,m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The naive algorithm is 
+\begin_inset Formula $\O(nm)$
+\end_inset
+
+ where we check each candidate 
+\begin_inset Formula $k$
+\end_inset
+
+ and compare all 
+\begin_inset Formula $m$
+\end_inset
+
+ characters.
+ Suffix tree and related algorithms give 
+\begin_inset Formula $\O(n+m)$
+\end_inset
+
+, but they are not very easy! We'll come up with a much simpler randomized
+ algorithm instead.
+\end_layout
+
+\begin_layout Standard
+Define 
+\begin_inset Formula $X(k)\coloneqq x_{k+1}x_{k+2}\dots x_{k+m}$
+\end_inset
+
+.
+ The naive randomized algorithm compares 
+\begin_inset Formula $X(k)$
+\end_inset
+
+ to 
+\begin_inset Formula $y$
+\end_inset
+
+ for all 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ We can use the previous technique to compute 
+\begin_inset Formula $X(k)\mod p$
+\end_inset
+
+ and compare to 
+\begin_inset Formula $y\mod p$
+\end_inset
+
+.
+ However, this takes 
+\begin_inset Formula $\Theta(m)$
+\end_inset
+
+ for each computation, so the total is still 
+\begin_inset Formula $\Theta(mn)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For binary strings, we can do this faster.
+ If we already have 
+\begin_inset Formula $X(k)$
+\end_inset
+
+, then computing 
+\begin_inset Formula $X(k+1)$
+\end_inset
+
+ should be faster.
+ Mod 
+\begin_inset Formula $p$
+\end_inset
+
+, we can subtract 
+\begin_inset Formula $x_{k}2^{m-1}$
+\end_inset
+
+ from 
+\begin_inset Formula $X(k)$
+\end_inset
+
+ to get rid of the first bit, then multiply by two to shift left by one
+ bit.
+ Then we add 
+\begin_inset Formula $x_{k+m}$
+\end_inset
+
+.
+ This is a constant number of operations mod 
+\begin_inset Formula $p$
+\end_inset
+
+, so this is 
+\begin_inset Formula $\Theta(\log p)$
+\end_inset
+
+ or 
+\begin_inset Formula $\Theta(1)$
+\end_inset
+
+ depending on the model.
+\end_layout
+
+\begin_layout Standard
+This leads to our algorithm: choose 
+\begin_inset Formula $p$
+\end_inset
+
+ randomly from a range TBD, compute 
+\begin_inset Formula $X(0)\mod p$
+\end_inset
+
+ and 
+\begin_inset Formula $y\mod p$
+\end_inset
+
+, then compare all 
+\begin_inset Formula $X(i)\mod p$
+\end_inset
+
+ to 
+\begin_inset Formula $y\mod p$
+\end_inset
+
+ using the efficient update for 
+\begin_inset Formula $X(i)$
+\end_inset
+
+.
+ If a match is ever indicated, check it in time 
+\begin_inset Formula $\Theta(m)$
+\end_inset
+
+.
+ If verified, return it; otherwise, start over.
+\end_layout
+
+\begin_layout Standard
+For the analysis, we want a union bound over 
+\begin_inset Formula $n$
+\end_inset
+
+ steps, so we need a false match probability of at most 
+\begin_inset Formula $1/n^{3}$
+\end_inset
+
+.
+ So, draw 
+\begin_inset Formula $p$
+\end_inset
+
+ from the first 
+\begin_inset Formula $n^{3}$
+\end_inset
+
+ primes.
+ Therefore, 
+\begin_inset Formula $\log(p)=\O(\log n).$
+\end_inset
+
+ This makes the running time 
+\begin_inset Formula $\Theta(n\log n+m)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Random Walks and Markov Chains
+\end_layout
+
+\begin_layout Standard
+Given an undirected graph, the random walk is at some node in each timestep.
+ It randomly chooses a neighbor to move to next, according to some distribution.
+ Usually, the distribution depends only on the current node, not on previous
+ positions.
+\end_layout
+
+\begin_layout Standard
+In the formal model, a Markov chain is characterized by a state space (in
+ this class, finite) 
+\begin_inset Formula $\{1,\dots,n\}$
+\end_inset
+
+ and transition probabilities 
+\begin_inset Formula $p_{ij}$
+\end_inset
+
+ from state 
+\begin_inset Formula $i$
+\end_inset
+
+ to state 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ We write 
+\begin_inset Formula $P=(p_{ij})_{i,j}$
+\end_inset
+
+ for the matrix.
+ 
+\begin_inset Formula $p_{ij}$
+\end_inset
+
+ is the probability of moving to 
+\begin_inset Formula $j$
+\end_inset
+
+ given that the walk is currently at 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula $\sum_{i}p_{ij}=1$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+, so 
+\begin_inset Formula $P$
+\end_inset
+
+ is stochastic.
+\end_layout
+
+\begin_layout Standard
+The Markov chain starts at time 
+\begin_inset Formula $0$
+\end_inset
+
+ in some state 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+, and at each discrete timestep 
+\begin_inset Formula $t$
+\end_inset
+
+ moves to 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+ according to the distribution 
+\begin_inset Formula $p_{x_{t-1},\dots}$
+\end_inset
+
+.
+ While continuous time versions exist (Brownian motion), we will not study
+ them in this class.
+\end_layout
+
+\begin_layout Standard
+The key Markovian property is
+\begin_inset Formula 
+\[
+\Pr[X_{t+1}=j\mid X_{0}=i_{0},X_{1}=t_{1},\dots,X_{t}=i_{t}]=\Pr[X_{t+1}=j\mid X_{t}=i_{t}].
+\]
+
+\end_inset
+
+That is, the earlier history does not matter.
+\end_layout
+
+\begin_layout Standard
+A random walk on a graph 
+\begin_inset Formula $G$
+\end_inset
+
+ is a Markov chain with 
+\begin_inset Formula 
+\[
+p_{ij}=\frac{1}{\text{out-degree of }i}.
+\]
+
+\end_inset
+
+That is, we choose a uniformly random edge.
+ Some natural questions to ask include
+\end_layout
+
+\begin_layout Enumerate
+What fraction of time is spent at each node?
+\end_layout
+
+\begin_layout Enumerate
+What is the probability of ever making it to 
+\begin_inset Formula $j$
+\end_inset
+
+ if you are currently at 
+\begin_inset Formula $i$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Enumerate
+How long in expectation does it take to get from 
+\begin_inset Formula $i$
+\end_inset
+
+ to 
+\begin_inset Formula $j$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Enumerate
+How long until all nodes have been visited at least once?
+\end_layout
+
+\begin_layout Standard
+A state 
+\begin_inset Formula $j$
+\end_inset
+
+ for which the probability under (2) is not equal to 1 is called transient
+ – otherwise, it is called persistent.
+ A state can be transient iff the chain can be trapped somewhere else.
+ These are difficult to deal with, so we want to define them away.
+\end_layout
+
+\begin_layout Definition
+A Markov chain is irreducible if the graph with edges 
+\begin_inset Formula $\{(i,j):p_{ij}>0\}$
+\end_inset
+
+ is strongly connected.
+\end_layout
+
+\begin_layout Standard
+Another undesirable behavior is oscillations, where we bounce back and forth
+ between nodes.
+ That is, the distribution of states is different at odd or even times 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ The periodicity of state 
+\begin_inset Formula $i$
+\end_inset
+
+ is the gcd of the lengths of all cycles including 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ State 
+\begin_inset Formula $i$
+\end_inset
+
+ is aperiodic iff its periodicity is 1, and periodic otherwise.
+ A Markov chain is aperiodic iff all of its states are aperiodic.
+\end_layout
+
+\end_body
+\end_document

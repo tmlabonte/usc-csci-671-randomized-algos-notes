@@ -1,0 +1,984 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathscr{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\I}{\mathscr{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\intercal}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eps}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\d}{\delta}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ph}{\varphi}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\F}{\mathbb{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\N}{\mathbb{N}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\nequiv}{\not\equiv}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\perm}{\text{perm}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Random Graph Colorings
+\end_layout
+
+\begin_layout Section
+Card Shuffling with Pairwise Transpositions
+\end_layout
+
+\begin_layout Standard
+Recall that we are trying to sample a complex object uniformly.
+ We can simulate the uniform distribution using Markov chains, and we can
+ analyze convergence speed using coupling.
+\end_layout
+
+\begin_layout Standard
+We start with an arbitrary permutation of 
+\begin_inset Formula $n$
+\end_inset
+
+ cards.
+ In each step, pick two positions 
+\begin_inset Formula $i_{1},i_{2}$
+\end_inset
+
+ i.i.d.
+ uniformly (allow 
+\begin_inset Formula $i_{1}=i_{2}$
+\end_inset
+
+) and swap the cards at 
+\begin_inset Formula $i_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $i_{2}$
+\end_inset
+
+.
+ Is this irreducible? Yes, by selection sort.
+ Is it aperiodic? Yes, 
+\begin_inset Formula $i_{1}=i_{2}$
+\end_inset
+
+ gives self-loops.
+ The stationary distribution is uniform because every node has degree 
+\begin_inset Formula $n^{2}$
+\end_inset
+
+ and it is undirected.
+\end_layout
+
+\begin_layout Standard
+How quickly does the distribution converge? Define a coupling.
+ Let 
+\begin_inset Formula $J_{t}$
+\end_inset
+
+ be the number of positions for which 
+\begin_inset Formula $X_{i}(t)=Y_{i}(t)$
+\end_inset
+
+, 
+\emph on
+i.e.,
+\emph default
+ card in position 
+\begin_inset Formula $i$
+\end_inset
+
+ in 
+\begin_inset Formula $X(t)$
+\end_inset
+
+ equals the card in position 
+\begin_inset Formula $i$
+\end_inset
+
+ of 
+\begin_inset Formula $Y(t)$
+\end_inset
+
+.
+ An alternative view of the chain is that we pick an index 
+\begin_inset Formula $i$
+\end_inset
+
+ and a card 
+\begin_inset Formula $c$
+\end_inset
+
+ i.i.d.
+ uniformly at random, then swaps the card at index 
+\begin_inset Formula $i$
+\end_inset
+
+ with card 
+\begin_inset Formula $c$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Our coupling is to pick the same 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $c$
+\end_inset
+
+ in both chains.
+ Does 
+\begin_inset Formula $J$
+\end_inset
+
+ ever increase with this coupling? No, at least one card is in the same
+ position afterwards, and if both involved cards were in the same position
+ nothing changes.
+ 
+\begin_inset Formula $J$
+\end_inset
+
+ decreases when both chains have different cards in position 
+\begin_inset Formula $i$
+\end_inset
+
+ and have card 
+\begin_inset Formula $c$
+\end_inset
+
+ in different positions.
+ The probability of this is at most the probability of choosing a disagreeing
+ position times the probability of choosing a disagreeing card:
+\begin_inset Formula 
+\begin{align*}
+\Pr[J_{t+1}\geq J_{t}+1] & \geq(1-\frac{J_{t}}{n})\cdot(1-\frac{J_{t}}{n})\\
+ & =(1-\frac{J_{t}}{n})^{2}\\
+\Pr[J_{t+1}=J_{t}] & \leq1-(1-\frac{J_{t}}{n})^{2}.
+\end{align*}
+
+\end_inset
+
+This chain is a lower bound on the progress of the coupling.
+ Initially, 
+\begin_inset Formula $J_{0}\geq0$
+\end_inset
+
+, and we are done when 
+\begin_inset Formula $J_{t}=n$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $T\p$
+\end_inset
+
+ be the first time 
+\begin_inset Formula $t$
+\end_inset
+
+ when 
+\begin_inset Formula $J_{t}=n$
+\end_inset
+
+ for the chain 
+\begin_inset Formula $J_{t+1}=J_{t}+1$
+\end_inset
+
+ w.p.
+ 
+\begin_inset Formula $(1-J_{t}/n)^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $J_{t+1}=J_{t}$
+\end_inset
+
+ otherwise.
+ We have
+\begin_inset Formula 
+\[
+\E[T\p]=\sum_{j=0}^{n-1}\E[T_{j}^{\prime}].
+\]
+
+\end_inset
+
+
+\begin_inset Formula $T_{j}^{\prime}$
+\end_inset
+
+ is the time to go from 
+\begin_inset Formula $j$
+\end_inset
+
+ to 
+\begin_inset Formula $j+1$
+\end_inset
+
+ and is distributed geometrically with parameter 
+\begin_inset Formula $(1-j/n)^{2}$
+\end_inset
+
+.
+ Thus
+\begin_inset Formula 
+\begin{align*}
+\E[T\p] & =\sum_{j=0}^{n-1}\frac{1}{(1-j/n)^{2}}\\
+ & =\sum_{j=0}^{n-1}\frac{n^{2}}{(n-j)^{2}}\\
+ & =\sum_{j=1}^{n}\frac{n^{2}}{j^{2}}\\
+ & =n^{2}\sum_{j=1}^{n}\frac{1}{j^{2}}\\
+ & \leq n^{2}\cdot\frac{\pi^{2}}{6}.
+\end{align*}
+
+\end_inset
+
+By Markov's Inequality, with probability at least 
+\begin_inset Formula $\nicefrac{3}{4}$
+\end_inset
+
+ the chains are coupled after 
+\begin_inset Formula $\frac{2\pi^{2}}{3}n^{2}$
+\end_inset
+
+ steps.
+ Thus the chain mixes in 
+\begin_inset Formula $\O(n^{2})$
+\end_inset
+
+ steps.
+ 
+\begin_inset Formula $\Omega(n\log n)$
+\end_inset
+
+ is needed for this chain; using different techniques one can show that
+ it mixes in 
+\begin_inset Formula $(n\log n)/2$
+\end_inset
+
+ steps.
+\end_layout
+
+\begin_layout Section
+Random Graph Colorings
+\end_layout
+
+\begin_layout Standard
+Given an undirected graph 
+\begin_inset Formula $G$
+\end_inset
+
+, a valid coloring assigns a color to each node such that no two neighbors
+ have the same color.
+ It is 
+\begin_inset Formula $\mathcal{NP}$
+\end_inset
+
+-hard to decide if 
+\begin_inset Formula $G$
+\end_inset
+
+ has a coloring using 
+\begin_inset Formula $k$
+\end_inset
+
+ colors for 
+\begin_inset Formula $k\geq3$
+\end_inset
+
+.
+ Our goal is to make 
+\begin_inset Formula $k$
+\end_inset
+
+ large enough so that a coloring exists and is easy to find.
+ We then sample nearly uniformly from all valid 
+\begin_inset Formula $k$
+\end_inset
+
+-colorings.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ be the max degree of 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $k\geq\Delta+1$
+\end_inset
+
+, then a coloring exists and is found by any greedy algorithm.
+ We would like to randomly sample colorings in this regime.
+\end_layout
+
+\begin_layout Standard
+This situation is often studied by physicists, in particular on regular
+ structures like lattices.
+ It is called Glauber Dynamics: In each round, pick a uniformly random node
+ and uniformly random color.
+ Try recoloring the node to that color.
+ If illegal, do nothing.
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $k$
+\end_inset
+
+ is large enough the Markov graph will be connected, and it is aperiodic
+ because it has self-loops.
+ The stationary distribution is uniform because the Markov graph is 
+\begin_inset Formula $nk$
+\end_inset
+
+-regular, beause we pick one vertex and one color.
+ How quickly does this chain mix? The conjecture is that this mixes rapidly
+ (
+\emph on
+i.e., 
+\emph default
+
+\begin_inset Formula $poly(n,k)$
+\end_inset
+
+ which is poly-log in the number of colorings) when 
+\begin_inset Formula $k\geq\Delta+2$
+\end_inset
+
+.
+ Here, we will prove rapid mixing for 
+\begin_inset Formula $k\geq2\Delta+1$
+\end_inset
+
+ via a coupling.
+\end_layout
+
+\begin_layout Standard
+The first idea for a coupling is to pick the same node 
+\begin_inset Formula $v$
+\end_inset
+
+ in both chains, then correlate the color choices.
+ We will keep track of the set 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ of nodes that have the same color in the two chains 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ after 
+\begin_inset Formula $t$
+\end_inset
+
+ steps.
+ Contrary to our earlier examples, we don't have monotone progress – sometimes
+ 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ will shrink.
+ We want to keep the probability of this small.
+\end_layout
+
+\begin_layout Standard
+If we pick the same color for 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ always, then it can happen frequently that the color is accepted in one
+ chain and rejected in the other.
+ This makes 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ smaller if 
+\begin_inset Formula $v$
+\end_inset
+
+ had the same color before.
+ Basically, we want to pick the colors in such a way that we make 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ smaller in only few cases.
+\end_layout
+
+\begin_layout Standard
+Formally, if 
+\begin_inset Formula $v\in S_{t}$
+\end_inset
+
+ we choose the same color 
+\begin_inset Formula $c$
+\end_inset
+
+ for that 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $v\in S_{t}$
+\end_inset
+
+, let 
+\begin_inset Formula $C_{X}$
+\end_inset
+
+ be the set of all colors of neighbors of 
+\begin_inset Formula $v$
+\end_inset
+
+ under 
+\begin_inset Formula $X$
+\end_inset
+
+ and similarly for 
+\begin_inset Formula $C_{Y}$
+\end_inset
+
+.
+ These are sets of illegal colors.
+ Let 
+\begin_inset Formula $B_{X}\coloneqq C_{X}\setminus C_{Y}$
+\end_inset
+
+ and similarly for 
+\begin_inset Formula $B_{Y}$
+\end_inset
+
+.
+ These are sets of colors illegal in exactly one chain (note 
+\begin_inset Formula $B_{X}\cap B_{Y}=\emptyset$
+\end_inset
+
+).
+ Without loss of generality 
+\begin_inset Formula $|B_{X}|\geq|B_{Y}|$
+\end_inset
+
+; let 
+\begin_inset Formula $B_{X}^{\prime}\subseteq B_{X}$
+\end_inset
+
+ be an arbitrary subset of 
+\begin_inset Formula $B_{X}$
+\end_inset
+
+ of size 
+\begin_inset Formula $|B_{X}^{\prime}|=|B_{Y}|$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\varphi:B_{X}^{\prime}\to B_{Y}$
+\end_inset
+
+ be an arbitrary bijection.
+ When we choose color 
+\begin_inset Formula $c$
+\end_inset
+
+ in 
+\begin_inset Formula $X$
+\end_inset
+
+, we choose 
+\begin_inset Formula $\varphi(c)$
+\end_inset
+
+ if 
+\begin_inset Formula $c\in B_{X}^{\prime}$
+\end_inset
+
+, 
+\begin_inset Formula $\varphi^{-1}(c)$
+\end_inset
+
+ if 
+\begin_inset Formula $c\in B_{Y}$
+\end_inset
+
+, and 
+\begin_inset Formula $c$
+\end_inset
+
+ otherwise in 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+ Importantly, the overall color mapping is a bijection so 
+\begin_inset Formula $Y$
+\end_inset
+
+ still chooses a uniformly random color as required.
+\end_layout
+
+\begin_layout Standard
+Now, we analyze how likely 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ is to grow vs.
+ shrink.
+ Let 
+\begin_inset Formula $m\p$
+\end_inset
+
+ be the number of edges between 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{S_{t}}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $v\notin S_{t}$
+\end_inset
+
+, either 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ stays the same or becomes one smaller.
+ When does 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ become smaller?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $c\in B_{X}^{\prime}$
+\end_inset
+
+ (
+\begin_inset Formula $\varphi(c)\in B_{Y}$
+\end_inset
+
+): rejected in both
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $c\in B_{Y}$
+\end_inset
+
+ (
+\begin_inset Formula $\varphi(c)\in B_{X}^{\prime}$
+\end_inset
+
+): both accepted and change to different colors
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $c\in B_{X}\setminus B_{X}^{\prime}$
+\end_inset
+
+ (
+\begin_inset Formula $\varphi(c)=c$
+\end_inset
+
+): rejected in 
+\begin_inset Formula $X$
+\end_inset
+
+ and accepted in 
+\begin_inset Formula $Y$
+\end_inset
+
+, ending in different colors
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $c\in C_{X}\cap C_{Y}$
+\end_inset
+
+ (
+\begin_inset Formula $\varphi(c)=c$
+\end_inset
+
+): rejected in both
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $c\notin C_{X}\cup C_{Y}$
+\end_inset
+
+ (
+\begin_inset Formula $\varphi(c)=c$
+\end_inset
+
+): accepted in both
+\end_layout
+
+\begin_layout Standard
+Things get worse iff 
+\begin_inset Formula $c\in B_{Y}\cup(B_{X}\setminus B_{X}^{\prime})$
+\end_inset
+
+.
+ The size of this set is
+\begin_inset Formula 
+\[
+|B_{Y}|+|B_{X}|-|B_{X}^{\prime}|=|B_{X}|.
+\]
+
+\end_inset
+
+Therefore the probability that things get worse (conditioned on picking
+ 
+\begin_inset Formula $v$
+\end_inset
+
+) is at most 
+\begin_inset Formula $|B_{X}|/k$
+\end_inset
+
+.
+ We know 
+\begin_inset Formula $|B_{X}|$
+\end_inset
+
+ is at most the number of neighbors of 
+\begin_inset Formula $v$
+\end_inset
+
+ that have different colors under 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+ Call this quantity 
+\begin_inset Formula $\delta_{v}^{\prime}$
+\end_inset
+
+.
+ The overall probability of making 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ smaller is at most
+\begin_inset Formula 
+\begin{align*}
+\sum_{v\in S_{t}}\Pr[\text{choose v}]\cdot\frac{|B_{X}(v)|}{k} & \leq\frac{1}{nk}\sum_{v\in S_{t}}\delta_{v}^{\prime}\\
+ & =\frac{m\p}{nk}.
+\end{align*}
+
+\end_inset
+
+If 
+\begin_inset Formula $v\notin S_{t}$
+\end_inset
+
+, we calculate the probability of increasing 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+.
+ Any color not in 
+\begin_inset Formula $C_{X}\cup C_{Y}$
+\end_inset
+
+ guarantees progress.
+ We can upperbound 
+\begin_inset Formula 
+\[
+|C_{X}\cup C_{Y}|\leq2\delta_{v}-\delta_{v}^{\prime}.
+\]
+
+\end_inset
+
+Thus the overall probability of making 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ larger is at least 
+\begin_inset Formula 
+\begin{align*}
+\sum_{v\notin S_{t}}\Pr[\text{choose }v]\cdot\big(1-\frac{|C_{X}\cup C_{Y}|}{k}\big) & \geq\frac{1}{nk}\sum_{v\notin S_{t}}(k-2\Delta+\delta_{v}^{\prime})\\
+ & =\frac{1}{nk}(k-2\Delta|\bar{S_{t}}|)+\frac{m\p}{nk}.
+\end{align*}
+
+\end_inset
+
+Finally,
+\begin_inset Formula 
+\[
+\E[|S_{t+1}|-|S_{t}|]\geq\frac{1}{nk}(k-2\Delta)|\bar{S_{t}|}+\frac{m\p}{nk}-\frac{m\p}{nk}
+\]
+
+\end_inset
+
+where the first two terms are from 
+\begin_inset Formula $v\notin S_{t}$
+\end_inset
+
+ and the last is from 
+\begin_inset Formula $v\in S_{t}$
+\end_inset
+
+.
+ This is equal to
+\begin_inset Formula 
+\[
+\frac{k-2\Delta}{nk}|\bar{S_{t}}|.
+\]
+
+\end_inset
+
+Thus
+\begin_inset Formula 
+\[
+\E[|\bar{S_{t+1}}|\mid S_{t}]\leq(1-\frac{k-2\Delta}{nk})|\bar{S_{t}}|.
+\]
+
+\end_inset
+
+Iterating expectations,
+\begin_inset Formula 
+\begin{align*}
+\E[|\bar{S_{t}}|] & \le(1-\frac{k-2\Delta}{nk})|\bar{S_{0}}|\\
+ & \leq(1-\frac{k-2\Delta}{nk})^{t}n\\
+ & \leq\exp(-t(k-2\Delta)/nk)n
+\end{align*}
+
+\end_inset
+
+We want to show that this is at most 
+\begin_inset Formula $1/4$
+\end_inset
+
+.
+ Solving for 
+\begin_inset Formula $t$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+t\geq\frac{kn}{k-2\Delta}\cdot\ln(4n)
+\]
+
+\end_inset
+
+ is sufficient.
+ Thus, our chain mixes rapidly (polylog in # of colorings).
+ A more complicated analysis shows rapid mixing when 
+\begin_inset Formula $k>(1+\varepsilon)\Delta$
+\end_inset
+
+ when 
+\begin_inset Formula $\Delta=\O(\log n)$
+\end_inset
+
+ and no cycle of length 10 or less.
+ 
+\end_layout
+
+\end_body
+\end_document

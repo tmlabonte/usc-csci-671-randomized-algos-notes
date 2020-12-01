@@ -1,0 +1,1213 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathcal{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathscr{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\I}{\mathscr{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\intercal}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eps}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\d}{\delta}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ph}{\varphi}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\F}{\mathbb{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\N}{\mathbb{N}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\nequiv}{\not\equiv}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\perm}{\text{perm}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pp}{^{\prime\prime}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Counting Perfect Matchings
+\end_layout
+
+\begin_layout Section
+Sampling Matchings from a Dense Bipartite Graph
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $G$
+\end_inset
+
+ be a bipartite graph.
+ Define 
+\begin_inset Formula $\mathcal{M}_{k}$
+\end_inset
+
+ as the set of all matchings of 
+\begin_inset Formula $G$
+\end_inset
+
+ with exactly 
+\begin_inset Formula $k$
+\end_inset
+
+ edges.
+ We want to compute 
+\begin_inset Formula $|\mathcal{M}_{n}|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In dense graphs, each 
+\begin_inset Formula $|\M_{i}|/|\M_{i-1}|$
+\end_inset
+
+ is bounded between 
+\begin_inset Formula $n^{-2}$
+\end_inset
+
+ and 
+\begin_inset Formula $n^{2}$
+\end_inset
+
+.
+ Last time we showed we can approximate this quantity by sampling from 
+\begin_inset Formula $\mathcal{M}_{n}\cup\mathcal{M}_{n-1}$
+\end_inset
+
+ with random walks.
+ Suppose we are at a matching 
+\begin_inset Formula $M$
+\end_inset
+
+.
+ We choose a uniformly random edge 
+\begin_inset Formula $e=(u,v)\in G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $M$
+\end_inset
+
+ is perfect and 
+\begin_inset Formula $e\in M$
+\end_inset
+
+, remove 
+\begin_inset Formula $e$
+\end_inset
+
+ from 
+\begin_inset Formula $M$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $M$
+\end_inset
+
+ is not perfect and both 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+ are unmatched, add 
+\begin_inset Formula $e$
+\end_inset
+
+ to 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $M$
+\end_inset
+
+ is not perfect and 
+\begin_inset Formula $u$
+\end_inset
+
+ is matched to some 
+\begin_inset Formula $w$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+ is unmatched, replace 
+\begin_inset Formula $(u,w)$
+\end_inset
+
+ with 
+\begin_inset Formula $(u,v)$
+\end_inset
+
+ – symmetrically if 
+\begin_inset Formula $v$
+\end_inset
+
+ is matched and 
+\begin_inset Formula $u$
+\end_inset
+
+ is unmatched.
+\end_layout
+
+\begin_layout Itemize
+Otherwise, do nothing.
+\end_layout
+
+\begin_layout Standard
+The Markov graph 
+\begin_inset Formula $H$
+\end_inset
+
+ is connected, undirected, and 
+\begin_inset Formula $m$
+\end_inset
+
+-regular, so the stationary distribution is uniform (as desired).
+ We will show it mixes rapidly using canonical paths.
+ We will route one unit of flow from each 
+\begin_inset Formula $M\in\M_{n}\cup\M_{n-1}$
+\end_inset
+
+ to each 
+\begin_inset Formula $M\p\in\M_{n}\cup\M_{n-1}$
+\end_inset
+
+ while minimizing the maximum number of paths using any edge 
+\begin_inset Formula $(L,L\p)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+In 
+\begin_inset Formula $H$
+\end_inset
+
+, each matching 
+\begin_inset Formula $M\in\M_{n-1}$
+\end_inset
+
+ is within at most two hops of some 
+\begin_inset Formula $M\p\in\M_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $u,v$
+\end_inset
+
+ be the unmatched vertices in 
+\begin_inset Formula $M$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $(u,v)\in E(G)$
+\end_inset
+
+, then by adding 
+\begin_inset Formula $(u,v)$
+\end_inset
+
+ we reach 
+\begin_inset Formula $M\p$
+\end_inset
+
+ in one hop.
+ Otherwise, we will show that we can perform one rotation and one addition
+ to reach 
+\begin_inset Formula $M\p$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $V\p$
+\end_inset
+
+ be the neighbors of 
+\begin_inset Formula $u$
+\end_inset
+
+ in 
+\begin_inset Formula $G$
+\end_inset
+
+ and 
+\begin_inset Formula $U\p$
+\end_inset
+
+ be the neighbors of 
+\begin_inset Formula $v$
+\end_inset
+
+ in 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ By density, 
+\begin_inset Formula $|U\p|,|V\p|\geq\nicefrac{n}{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Because all of 
+\begin_inset Formula $U\p$
+\end_inset
+
+ is matched in 
+\begin_inset Formula $M$
+\end_inset
+
+ and non are matched to 
+\begin_inset Formula $v$
+\end_inset
+
+, if there were no edge between 
+\begin_inset Formula $U\p$
+\end_inset
+
+ and 
+\begin_inset Formula $V\p$
+\end_inset
+
+ then 
+\begin_inset Formula $U\p$
+\end_inset
+
+ would be matched to 
+\begin_inset Formula $V\pp$
+\end_inset
+
+, which has size 
+\begin_inset Formula $\leq\nicefrac{n}{2}-1$
+\end_inset
+
+.
+ So there is an edge 
+\begin_inset Formula $(u\p,v\p)\in M$
+\end_inset
+
+ with 
+\begin_inset Formula $u\p\in U\p$
+\end_inset
+
+ and 
+\begin_inset Formula $v\p\in V\p$
+\end_inset
+
+.
+ The two-hop path is to rotate 
+\begin_inset Formula $(u\p,v\p)$
+\end_inset
+
+ to 
+\begin_inset Formula $(u,v\p)$
+\end_inset
+
+ and add 
+\begin_inset Formula $(u\p,v)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+It is not difficult to show using the lemma that for each 
+\begin_inset Formula $M\in\M_{n}$
+\end_inset
+
+, at most 
+\begin_inset Formula $n^{2}$
+\end_inset
+
+ total 
+\begin_inset Formula $M\p\in\M_{n-1}$
+\end_inset
+
+ are within two hops.
+ All such 
+\begin_inset Formula $M\p$
+\end_inset
+
+ must take at most two hops to an 
+\begin_inset Formula $M\in\M_{n}$
+\end_inset
+
+, so we can use the path from 
+\begin_inset Formula $M$
+\end_inset
+
+ to an 
+\begin_inset Formula $\hat{M}\in\M_{n}$
+\end_inset
+
+ near the destination, then at most two hops to 
+\begin_inset Formula $M\p\in\M_{n-1}$
+\end_inset
+
+.
+ The takeaway is that at a blowup of 
+\begin_inset Formula $n^{4}$
+\end_inset
+
+ in congestion, we can focus only on canonical paths between perfect matchings,
+ ignoring near-perfect matchings.
+\end_layout
+
+\begin_layout Standard
+We will define a canonical path in 
+\begin_inset Formula $H$
+\end_inset
+
+ from 
+\begin_inset Formula $M\in\M_{n}$
+\end_inset
+
+ to 
+\begin_inset Formula $M\p\in\M_{n}$
+\end_inset
+
+.
+ Define 
+\begin_inset Formula $\Gamma=M\oplus M\p$
+\end_inset
+
+ to be the symmetric difference.
+ 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ is a union of disjoint even length cycles, alternating edges from 
+\begin_inset Formula $M$
+\end_inset
+
+ and 
+\begin_inset Formula $M\p$
+\end_inset
+
+.
+ For each cycle 
+\begin_inset Formula $C_{i}$
+\end_inset
+
+, let 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ be the node with smallest index.
+ Sort the cycles by increasing 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For each cycle in this order,
+\end_layout
+
+\begin_layout Enumerate
+Remove 
+\begin_inset Formula $M$
+\end_inset
+
+ edge incident on 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Rotate edge to an edge 
+\begin_inset Formula $M\p$
+\end_inset
+
+ that leaves 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ still unmatched.
+\end_layout
+
+\begin_layout Enumerate
+After all rotations, add 
+\begin_inset Formula $M\p$
+\end_inset
+
+ edge incident on 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+What is the maximum congestion on any edge 
+\begin_inset Formula $(L,L\p)$
+\end_inset
+
+ using these paths? We want to show it is at most 
+\begin_inset Formula $N\cdot poly(n)$
+\end_inset
+
+ where 
+\begin_inset Formula $N=|\M_{n}\cup\M_{n-1}|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+If we focus only on 
+\begin_inset Formula $M,M\p\in\M_{n}$
+\end_inset
+
+, then the congestion of 
+\begin_inset Formula $(L,L\p)$
+\end_inset
+
+ is at most 
+\begin_inset Formula $N$
+\end_inset
+
+.
+ Then, the congestion overall is at most 
+\begin_inset Formula $\O(N\cdot n^{4})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+The key proof idea for the claim is to show that source/sink pairs 
+\begin_inset Formula $(M,M\p)$
+\end_inset
+
+ using 
+\begin_inset Formula $(L,L\p)$
+\end_inset
+
+ can be 
+\begin_inset Quotes eld
+\end_inset
+
+encoded
+\begin_inset Quotes erd
+\end_inset
+
+ in one matching 
+\begin_inset Formula $R\in\M_{n}\cup\M_{n-1}$
+\end_inset
+
+ so that 
+\begin_inset Formula $M,M\p$
+\end_inset
+
+ can be uniquely recovered from 
+\begin_inset Formula $L$
+\end_inset
+
+, 
+\begin_inset Formula $L\p$
+\end_inset
+
+, and 
+\begin_inset Formula $R$
+\end_inset
+
+.
+ Thus, at most 
+\begin_inset Formula $N$
+\end_inset
+
+ pairs use 
+\begin_inset Formula $(L,L\p)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Suppose in the path from 
+\begin_inset Formula $M$
+\end_inset
+
+ to 
+\begin_inset Formula $M\p$
+\end_inset
+
+, the edge 
+\begin_inset Formula $(L,L\p)$
+\end_inset
+
+ is used as part of fixing the cycle 
+\begin_inset Formula $C_{i}$
+\end_inset
+
+.
+ Then every 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+ for 
+\begin_inset Formula $j<i$
+\end_inset
+
+ has already been fixed, so we need to 
+\begin_inset Quotes eld
+\end_inset
+
+store
+\begin_inset Quotes erd
+\end_inset
+
+ the edges of 
+\begin_inset Formula $M$
+\end_inset
+
+ for those 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+.
+ And, every 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+ for 
+\begin_inset Formula $j>i$
+\end_inset
+
+ has not been fixed yet, so we need to store the edges of 
+\begin_inset Formula $M\p$
+\end_inset
+
+ for those 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+.
+ The rough idea that accomplishes both is to define 
+\begin_inset Formula $R=\Gamma\oplus(L\cup L\p)$
+\end_inset
+
+.
+ From 
+\begin_inset Formula $L$
+\end_inset
+
+, 
+\begin_inset Formula $L\p$
+\end_inset
+
+, and 
+\begin_inset Formula $R$
+\end_inset
+
+, we can reconstruct all cycles and figure out where in the 
+\begin_inset Quotes eld
+\end_inset
+
+unwinding sequence
+\begin_inset Quotes erd
+\end_inset
+
+ we are.
+\end_layout
+
+\begin_layout Standard
+However, a small problem is that rotations can cause 
+\begin_inset Formula $R$
+\end_inset
+
+ to not be a matching.
+ Instead we define 
+\begin_inset Formula $R=(\Gamma\oplus(L\cup L\p)\setminus\{e\}$
+\end_inset
+
+ for rotations involving 
+\begin_inset Formula $e\in G$
+\end_inset
+
+.
+ Thus, 
+\begin_inset Formula $R\in\M_{n-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+From 
+\begin_inset Formula $L$
+\end_inset
+
+ and 
+\begin_inset Formula $L\p$
+\end_inset
+
+ we can compute 
+\begin_inset Formula $L\cup L\p$
+\end_inset
+
+.
+ From 
+\begin_inset Formula $L\cup L\p$
+\end_inset
+
+ and 
+\begin_inset Formula $R$
+\end_inset
+
+ we can compute 
+\begin_inset Formula $(L\cup L\p)\oplus R=\Gamma\setminus\{e\}$
+\end_inset
+
+.
+ From this, we can infer 
+\begin_inset Formula $e$
+\end_inset
+
+ as the unique edge completing a cycle.
+ (This is for rotations only; for addition and deletion, there is no edge
+ 
+\begin_inset Formula $e$
+\end_inset
+
+ removed).
+ From 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+, we can compute the ordering of cycles 
+\begin_inset Formula $C_{1},\dots,C_{k}$
+\end_inset
+
+.
+ We can reconstruct from 
+\begin_inset Formula $L,L\p$
+\end_inset
+
+ wich cycle 
+\begin_inset Formula $C_{i}$
+\end_inset
+
+ is being rotated.
+ From this, we can recover all of 
+\begin_inset Formula $M,M\p$
+\end_inset
+
+ by computing which cycles have been fixed.
+ Thus the mapping from 
+\begin_inset Formula $(M,M\p)$
+\end_inset
+
+ is one-to-one.
+\end_layout
+
+\begin_layout Standard
+So from 
+\begin_inset Formula $L$
+\end_inset
+
+, 
+\begin_inset Formula $L\p$
+\end_inset
+
+, and 
+\begin_inset Formula $R$
+\end_inset
+
+, we can uniquely reconstruct an 
+\begin_inset Formula $(M,M\p)$
+\end_inset
+
+ using 
+\begin_inset Formula $(L,L\p)$
+\end_inset
+
+.
+ So the number of pairs 
+\begin_inset Formula $(M,M\p)$
+\end_inset
+
+ using 
+\begin_inset Formula $(L,L\p)$
+\end_inset
+
+ is at most the number of 
+\begin_inset Formula $R$
+\end_inset
+
+.
+ This is at most 
+\begin_inset Formula $N$
+\end_inset
+
+, so at most 
+\begin_inset Formula $N$
+\end_inset
+
+ pairs use 
+\begin_inset Formula $(L,L\p)$
+\end_inset
+
+.
+ This shows our random walk mixes rapidly, and in summary, gives an approximatio
+n algorithm to count the perfect matchings in a dense bipartite graph.
+\end_layout
+
+\begin_layout Section
+Lovasz Local Lemma
+\end_layout
+
+\begin_layout Standard
+The Lovasz Local Lemma is a tool for the probabilistic method (showing existence
+ of an object via nonzero probability that it is generated by a random procedure
+).
+ In the typical setting, we have a large number of 
+\begin_inset Quotes eld
+\end_inset
+
+bad
+\begin_inset Quotes erd
+\end_inset
+
+ events 
+\begin_inset Formula $\mathcal{E}_{i}$
+\end_inset
+
+ and we would like none of them to happen.
+ In extreme 1, the 
+\begin_inset Formula $\mathcal{E}_{i}$
+\end_inset
+
+ are independent, so
+\begin_inset Formula 
+\[
+\Pr[\bigcap\bar{\mathcal{E}_{i}}]=\prod(1-\Pr[\mathcal{E}_{i}])>0
+\]
+
+\end_inset
+
+so the 
+\begin_inset Quotes eld
+\end_inset
+
+good
+\begin_inset Quotes erd
+\end_inset
+
+ thing happens with positive probability.
+ In extreme 2, we know nothing about the dependence of the 
+\begin_inset Formula $\mathcal{E}_{i}$
+\end_inset
+
+.
+ In this case the union bound gives
+\begin_inset Formula 
+\[
+\Pr[\bigcap\bar{\mathcal{E}_{i}}]\geq1-\sum_{i}\Pr[\mathcal{E}_{i}].
+\]
+
+\end_inset
+
+Unless all 
+\begin_inset Formula $\Pr[\mathcal{E}_{i}]$
+\end_inset
+
+ are very small, this bound can be negative and thus trivial.
+ The Lovasz Local Lemma is a tool for proving that 
+\begin_inset Formula $\Pr[\bigcap\bar{\mathcal{E}_{i}}]>0$
+\end_inset
+
+ when the dependence among the 
+\begin_inset Formula $\mathcal{E}_{i}$
+\end_inset
+
+ is limited.
+ 
+\end_layout
+
+\begin_layout Standard
+We say that 
+\begin_inset Formula $\mathcal{E}_{j}$
+\end_inset
+
+ is mutually independent of a set 
+\begin_inset Formula $T$
+\end_inset
+
+ of events iff for all disjoint 
+\begin_inset Formula $S,S\p\subseteq T$
+\end_inset
+
+ (but not necessarily a partition) we have
+\begin_inset Formula 
+\[
+\Pr[\E_{j}\mid\bigcap_{i\in S}\E_{i}\cap\bigcap_{i\in S\p}\bar{\E_{i}}]=\Pr[\E_{j}].
+\]
+
+\end_inset
+
+Define a 
+\series bold
+dependency graph
+\series default
+ 
+\begin_inset Formula $G$
+\end_inset
+
+ on these 
+\begin_inset Formula $(\E_{i})$
+\end_inset
+
+ as follows: Let 
+\begin_inset Formula 
+\[
+T_{j}\coloneqq\{\E_{i}\mid(\E_{j},\E_{i})\notin G\}.
+\]
+
+\end_inset
+
+Then 
+\begin_inset Formula $\E_{j}$
+\end_inset
+
+ is mutually independent of 
+\begin_inset Formula $T_{j}$
+\end_inset
+
+.
+ In other words, non-edges guarantee independence and edges capture possible
+ dependence.
+ Notice that the complete graph is a dependency graph which gives trivial
+ bounds; we want 
+\emph on
+sparse
+\emph default
+ dependency graphs.
+\end_layout
+
+\begin_layout Theorem
+[Lovasz Local Lemma].
+ 
+\emph on
+Let 
+\begin_inset Formula $G$
+\end_inset
+
+ be a dependency graph on 
+\begin_inset Formula $(\E_{i})$
+\end_inset
+
+.
+ Assume that there exists 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ with 
+\begin_inset Formula $i\in[n]$
+\end_inset
+
+ with 
+\begin_inset Formula 
+\[
+\Pr[\E_{i}]\leq x_{i}\prod_{(i,j)\in E}(1-x_{j})
+\]
+
+\end_inset
+
+for all 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Then
+\begin_inset Formula 
+\[
+\Pr[\bigcap_{i}\bar{\E_{i}}]\geq\prod(1-x_{i}).
+\]
+
+\end_inset
+
+Conceptually, the 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ are upper bounds on the probability of 
+\begin_inset Formula $\E_{i}$
+\end_inset
+
+ subject to some conditioning on limited independence.
+\end_layout
+
+\begin_layout Corollary
+
+\emph on
+Let 
+\begin_inset Formula $(\E_{i})$
+\end_inset
+
+ be events with 
+\begin_inset Formula $\Pr[\E_{i}]\leq p$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+, and each 
+\begin_inset Formula $\E_{i}$
+\end_inset
+
+ be mutually independent of all except at most 
+\begin_inset Formula $d$
+\end_inset
+
+ other events.
+ If
+\begin_inset Formula 
+\[
+p\leq\frac{1}{e(d+1)}
+\]
+
+\end_inset
+
+then 
+\begin_inset Formula $\Pr[\bigcap_{i}\bar{\E_{i}}]>0$
+\end_inset
+
+.
+ In contrast, if we were using the union bound, we would need 
+\begin_inset Formula $p\leq\nicefrac{1}{n}$
+\end_inset
+
+.
+ So we get a factor 
+\begin_inset Formula $d$
+\end_inset
+
+ instead of a factor 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

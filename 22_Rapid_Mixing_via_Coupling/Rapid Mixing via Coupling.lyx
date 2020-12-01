@@ -1,0 +1,850 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathscr{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\I}{\mathscr{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\intercal}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eps}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\d}{\delta}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ph}{\varphi}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\F}{\mathbb{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\N}{\mathbb{N}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\nequiv}{\not\equiv}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\perm}{\text{perm}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Rapid Mixing via Coupling
+\end_layout
+
+\begin_layout Section
+Recap
+\end_layout
+
+\begin_layout Standard
+Recall the total variation distance between two distributions 
+\begin_inset Formula $\boldsymbol{\mu}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{\mu}_{2}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+d_{TV}(\boldsymbol{\mu}_{1},\boldsymbol{\mu}_{2})\coloneqq\max_{A\subseteq\Omega}|\boldsymbol{\mu}_{1}(A)-\boldsymbol{\mu}_{2}(A)|.
+\]
+
+\end_inset
+
+That is, the largest absolute difference in probability mass between 
+\begin_inset Formula $\boldsymbol{\mu}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{\mu}_{2}$
+\end_inset
+
+ for any set 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ It's easy to show that 
+\begin_inset Formula 
+\begin{align*}
+d_{TV}(\boldsymbol{\mu}_{1},\boldsymbol{\mu}_{2}) & =\frac{1}{2}\|\boldsymbol{\mu}_{1}-\boldsymbol{\mu}_{2}\|_{1}\\
+ & =\frac{1}{2}\sum_{i}|\boldsymbol{\mu}_{1}(i)-\boldsymbol{\mu}_{2}(i)|.
+\end{align*}
+
+\end_inset
+
+Let 
+\begin_inset Formula $\boldsymbol{\pi}$
+\end_inset
+
+ be the stationary distribution.
+ Let 
+\begin_inset Formula $\boldsymbol{\mu}_{i}^{t}$
+\end_inset
+
+ be the distribution of states after 
+\begin_inset Formula $t$
+\end_inset
+
+ steps, starting at 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ That is, 
+\begin_inset Formula $\boldsymbol{\mu}_{i}^{t}\coloneqq\boldsymbol{e}_{i}{\bf P}^{t}$
+\end_inset
+
+ where 
+\begin_inset Formula $\boldsymbol{e}_{i}$
+\end_inset
+
+ is the vector with 1 in coordinate 
+\begin_inset Formula $i$
+\end_inset
+
+ and 0 everywhere else.
+\end_layout
+
+\begin_layout Standard
+We will develop techniques for proving when 
+\begin_inset Formula 
+\[
+d_{TV}(\boldsymbol{\pi},\boldsymbol{\mu}_{i}^{t})\to0\text{ quickly.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Coupling
+\end_layout
+
+\begin_layout Standard
+At the heart of coupling arguments is the following:
+\end_layout
+
+\begin_layout Lemma
+If 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ are random variables (non-independent) with probability distributions 
+\begin_inset Formula $\boldsymbol{\mu}_{X}(x)=\Pr[X=x]$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{\mu}_{Y}(y)=\Pr[Y=y]$
+\end_inset
+
+ then
+\begin_inset Formula 
+\[
+d_{TV}(\boldsymbol{\mu}_{X},\boldsymbol{\mu}_{Y})\leq\Pr[X\neq Y].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Fix a set 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ Then
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{\mu}_{X}(A)-\boldsymbol{\mu}_{Y}(A) & =\Pr[X\in A]-\Pr[Y\in A]\\
+ & =\sum_{a\in A,y}\Pr[X=a,Y=y]-\sum_{a\in A,x}\Pr[X=x,Y=a]\\
+ & =\sum_{a\in A,y\notin A}\Pr[X=a,Y=y]-\sum_{a\in A,x\notin A}\Pr[X=x,y=a]\\
+ & \leq\sum_{a\in A,y\notin A}\Pr[X=a,Y=y]\\
+ & \leq\Pr[X\neq Y].
+\end{align*}
+
+\end_inset
+
+This holds for all 
+\begin_inset Formula $A$
+\end_inset
+
+, so 
+\begin_inset Formula 
+\[
+d_{TV}(\boldsymbol{\mu}_{X},\boldsymbol{\mu}_{Y})=\max_{A}|\boldsymbol{\mu}_{X}(A)-\boldsymbol{\mu}_{Y}(A)|\leq\Pr[X\neq Y].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can use this for an analysis technique called coupling.
+ We can generate two copies 
+\begin_inset Formula $(X_{t}),(Y_{t})$
+\end_inset
+
+ of the same Markov chain, usually correlating their random choices.
+ The pair 
+\begin_inset Formula $(X_{t},Y_{t})$
+\end_inset
+
+ is called a coupling of the chain.
+\end_layout
+
+\begin_layout Standard
+Importantly, each of 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ viewed in isolation must be a valid copy of the original chain, 
+\emph on
+i.e.,
+\emph default
+ have the correct transition probabilities.
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $(X(t),Y(t))$
+\end_inset
+
+ is itself a Markov chain (which is not necessary, but often the case),
+ the coupling is called Markovian.
+ Note that this would not be the case if we correlate using information
+ from the past.
+\end_layout
+
+\begin_layout Standard
+The coupling time (random variable) of 
+\begin_inset Formula $(X(t),Y(t))$
+\end_inset
+
+ is defined as
+\begin_inset Formula 
+\[
+T\coloneqq\min\{t\mid X_{n}=Y_{n}\text{ for all }n>t\}.
+\]
+
+\end_inset
+
+That is, the first time they align and continue to stay in the same state.
+ We will always couple chains so that once they are in the same state, they
+ stay in the same state forever.
+\end_layout
+
+\begin_layout Corollary
+If 
+\begin_inset Formula $\boldsymbol{\mu}_{X}^{t},\boldsymbol{\mu}_{Y}^{t}$
+\end_inset
+
+ are the distributions of 
+\begin_inset Formula $X(t),Y(t)$
+\end_inset
+
+ then
+\begin_inset Formula 
+\begin{align*}
+d_{TV}(\boldsymbol{\mu}_{X}^{t},\boldsymbol{\mu}_{Y}^{t}) & \leq\Pr[X(t)\neq Y(t)]\\
+ & =\Pr[T>t].
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will apply this lemma when 
+\begin_inset Formula $Y$
+\end_inset
+
+ is already in stationary distribution 
+\begin_inset Formula $\boldsymbol{\pi}$
+\end_inset
+
+, while 
+\begin_inset Formula $X$
+\end_inset
+
+ started from a worst-case state 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Define 
+\begin_inset Formula 
+\[
+d^{1}(t)\coloneqq\max_{i}d_{TV}(\boldsymbol{\mu}_{i}^{t},\boldsymbol{\pi}).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Formula $d^{1}$
+\end_inset
+
+ is non-increasing and 
+\begin_inset Formula $2d^{1}$
+\end_inset
+
+ is submultiplicative, i.e., 
+\begin_inset Formula $2d^{1}(t_{1}+t_{2})\leq2d^{1}(t_{1})\cdot2d^{1}(t_{2})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Triangle inequality.
+\end_layout
+
+\begin_layout Standard
+The implication is that once 
+\begin_inset Formula $d^{1}(t)\leq\nicefrac{1}{4}$
+\end_inset
+
+, we get exponential improvement in the distance.
+ So we focus primarily on how long it takes until 
+\begin_inset Formula $d^{1}(t)\leq\nicefrac{1}{4}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+The coupling time of 
+\begin_inset Formula $(X(t),Y(t))$
+\end_inset
+
+ is the smallest 
+\begin_inset Formula $t$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+\Pr[X(t)\neq Y(t)]\leq\frac{1}{4}.
+\]
+
+\end_inset
+
+Because after this, we get exponential improvement.
+\end_layout
+
+\begin_layout Standard
+Our analysis technique is to define a coupling by suitable correlations
+ such that after 
+\begin_inset Quotes eld
+\end_inset
+
+few
+\begin_inset Quotes erd
+\end_inset
+
+ steps, 
+\emph on
+i.e., 
+\emph default
+for small 
+\begin_inset Formula $t$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\Pr[X(t)\neq Y(t)]\leq\nicefrac{1}{4}.
+\]
+
+\end_inset
+
+A chain is called 
+\bar under
+rapidly mixing
+\bar default
+ if it converges in time polylogarithmic in the number of states.
+ To prove rapid mixing using coupling, show that for 
+\begin_inset Formula $t=\text{polylog}(n)$
+\end_inset
+
+, you have 
+\begin_inset Formula $\Pr[X(t)\neq Y(t)]\leq\nicefrac{1}{4}$
+\end_inset
+
+.
+ By Markov's inequality, up to a constant factor, it is sufficient to analyze
+ 
+\begin_inset Formula $\E[T]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+PageRank
+\end_layout
+
+\begin_layout Standard
+Given a directed graph 
+\begin_inset Formula $G$
+\end_inset
+
+ (web graph), perform the following Markov chain: with probability 
+\begin_inset Formula $\nicefrac{6}{7}$
+\end_inset
+
+ follow a uniformly random outgoing link from the current node; with probability
+ 
+\begin_inset Formula $\nicefrac{1}{7}$
+\end_inset
+
+ jump to a uniformly random node.
+ Notice this is no longer a random walk.
+ How quickly does this converge to its stationary distribution?
+\end_layout
+
+\begin_layout Standard
+Define a coupling 
+\begin_inset Formula $(X(t),Y(t))$
+\end_inset
+
+ of two copies of this chain, and prove that it couples 
+\begin_inset Quotes eld
+\end_inset
+
+quickly
+\begin_inset Quotes erd
+\end_inset
+
+.
+ First, we correlate the decision of whether to walk or jump.
+ If they jump, jump to the same node.
+ If they walk, choose independently unless they are at the same node, then
+ choose the same node.
+\end_layout
+
+\begin_layout Standard
+The coupling time is exactly the time of the first jump, so it is distributed
+ geometrically with success probability 
+\begin_inset Formula $\nicefrac{1}{7}$
+\end_inset
+
+.
+ In expectation the chain couples in 7 steps, so by Markov, after at most
+ 
+\begin_inset Formula $4\cdot7=28$
+\end_inset
+
+ steps, the probability of being coupled is 
+\begin_inset Formula $\geq\nicefrac{3}{4}$
+\end_inset
+
+.
+ A more careful analysis gives 9 steps w.p.
+ 
+\begin_inset Formula $\geq\nicefrac{3}{4}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Random Walk on a 
+\begin_inset Formula $d$
+\end_inset
+
+-dimensional Hypercube
+\end_layout
+
+\begin_layout Standard
+To avoid periodicity, we add a self-loop at each node with probability 
+\begin_inset Formula $\nicefrac{1}{2}$
+\end_inset
+
+ of taking it; otherwise, take one of the 
+\begin_inset Formula $d$
+\end_inset
+
+ edges uniformly at random.
+ What is the stationary distribution? It is uniform, because by considering
+ the 
+\begin_inset Quotes eld
+\end_inset
+
+staying put
+\begin_inset Quotes erd
+\end_inset
+
+ probability as 
+\begin_inset Formula $d$
+\end_inset
+
+ self-loops, the graph is 
+\begin_inset Formula $2d$
+\end_inset
+
+-regular and undirected which implies a uniform stationary distribution.
+\end_layout
+
+\begin_layout Note
+A general technique: if you want a uniform distribution, it is sufficient
+ to build a regular undirected graph for your random walk.
+\end_layout
+
+\begin_layout Standard
+How quickly does the distribution converge? We will find a coupling.
+ To help find a coupling, we view a step as deciding (1) whether to flip
+ a bit in the node's ID string, and (2) which bit to flip.
+ This is the same as choosing a uniformly random bit 
+\begin_inset Formula $i$
+\end_inset
+
+ and setting it to 0 or 1 uniformly at random.
+ Our coupling is for both chains to pick the same 
+\begin_inset Formula $i$
+\end_inset
+
+ and the same new value for bit 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+What does it take to couple 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+? Every index must be chosen at least once.
+ This is a coupon collector problem! So it takes 
+\begin_inset Formula $d\ln d$
+\end_inset
+
+ in expectation and 
+\begin_inset Formula $d\ln d+o(d)$
+\end_inset
+
+ w.h.p.
+ Thus, our Markov chain is rapidly mixing because 
+\begin_inset Formula $d\ln d$
+\end_inset
+
+ is polylogarithmic in 
+\begin_inset Formula $n$
+\end_inset
+
+ for 
+\begin_inset Formula $n=2^{d}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Card shuffling with pairwise transpositions
+\end_layout
+
+\begin_layout Standard
+We start with an arbitrary permutation of 
+\begin_inset Formula $n$
+\end_inset
+
+ cards.
+ In each step, pick two positions 
+\begin_inset Formula $i_{1},i_{2}$
+\end_inset
+
+ i.i.d.
+ uniformly (allow 
+\begin_inset Formula $i_{1}=i_{2}$
+\end_inset
+
+) and swap the cards at 
+\begin_inset Formula $i_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $i_{2}$
+\end_inset
+
+.
+ Is this irreducible? Yes, by selection sort.
+ Is it aperiodic? Yes, 
+\begin_inset Formula $i_{1}=i_{2}$
+\end_inset
+
+ gives self-loops.
+ The stationary distribution is uniform because every node has degree 
+\begin_inset Formula $n^{2}$
+\end_inset
+
+ and it is undirected.
+\end_layout
+
+\begin_layout Standard
+How quickly does the distribution converge? Define a coupling.
+ Let 
+\begin_inset Formula $J_{t}$
+\end_inset
+
+ be the number of positions for which 
+\begin_inset Formula $X_{i}(t)=Y_{i}(t)$
+\end_inset
+
+, 
+\emph on
+i.e.,
+\emph default
+ card in position 
+\begin_inset Formula $i$
+\end_inset
+
+ in 
+\begin_inset Formula $X(t)$
+\end_inset
+
+ equals the card in position 
+\begin_inset Formula $i$
+\end_inset
+
+ of 
+\begin_inset Formula $Y(t)$
+\end_inset
+
+.
+ An alternative view of the chain is that we pick an index 
+\begin_inset Formula $i$
+\end_inset
+
+ and a card 
+\begin_inset Formula $c$
+\end_inset
+
+ i.i.d.
+ uniformly at random, then swaps the card at index 
+\begin_inset Formula $i$
+\end_inset
+
+ with card 
+\begin_inset Formula $c$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Our coupling is to pick the same 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $c$
+\end_inset
+
+ in both chains.
+ Does 
+\begin_inset Formula $J$
+\end_inset
+
+ ever increase with this coupling? No, at least one card is in the same
+ position afterwards, and if both involved cards were in the same position
+ nothing changes.
+\end_layout
+
+\end_body
+\end_document

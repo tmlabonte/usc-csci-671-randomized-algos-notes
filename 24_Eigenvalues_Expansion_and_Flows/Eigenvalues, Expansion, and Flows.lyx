@@ -1,0 +1,1143 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+algolyx
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\M}{\mathcal{M}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\I}{\mathcal{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{\mathcal{X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\O}{\mathcal{O}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\P}{\mathcal{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\R}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\G}{\mathcal{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Z}{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\S}{\mathcal{S}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{^{\prime}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\A}{\mathscr{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\I}{\mathscr{I}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\T}{^{\intercal}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eps}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\varepsilon}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\d}{\delta}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ph}{\varphi}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\F}{\mathbb{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\N}{\mathbb{N}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\nequiv}{\not\equiv}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\perm}{\text{perm}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Eigenvalues, Expansion, and Flows
+\end_layout
+
+\begin_layout Section
+Characterizing Slow Mixing
+\end_layout
+
+\begin_layout Standard
+Which graphs would have very slow mixing? Intuitively, graphs with bad bottlenec
+ks.
+ One example is the 
+\begin_inset Quotes eld
+\end_inset
+
+barbell graph
+\begin_inset Quotes erd
+\end_inset
+
+: two complete graphs 
+\begin_inset Formula $K_{n}$
+\end_inset
+
+ attached by a single edge.
+ It is as 
+\begin_inset Quotes eld
+\end_inset
+
+close
+\begin_inset Quotes erd
+\end_inset
+
+ to disconnected as possible without actually being disconnected.
+ In general, if graphs have low 
+\begin_inset Quotes eld
+\end_inset
+
+expansion
+\begin_inset Quotes erd
+\end_inset
+
+ – that is, they have large cuts with few edges across – then these bottlenecks
+ will hurt mixing speed.
+ If expansion is high, the walks mix rapidly.
+\end_layout
+
+\begin_layout Standard
+To keep the analysis clean, we focus on undirected 
+\begin_inset Formula $d$
+\end_inset
+
+-regular graphs.
+ In most applications of this technique, we are building such graphs to
+ sample objects from a uniform stationary distribution.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula ${\bf A}$
+\end_inset
+
+ be the (symmetric) adjacency matrix of a graph 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula ${\bf P}=\frac{1}{d}{\bf A}$
+\end_inset
+
+ is the transition matrix of the walk.
+ Just in case 
+\begin_inset Formula ${\bf P}$
+\end_inset
+
+ is not aperiodic, look at 
+\begin_inset Formula 
+\[
+{\bf Q}=\frac{1}{2}{\bf P}+\frac{1}{2}{\bf I},
+\]
+
+\end_inset
+
+which gives a self-loop with probability 
+\begin_inset Formula $\nicefrac{1}{2}$
+\end_inset
+
+ to each node.
+ 
+\begin_inset Formula ${\bf Q}$
+\end_inset
+
+ is symmetric, and it has therefore 
+\begin_inset Formula $n$
+\end_inset
+
+ real eigenvalues 
+\begin_inset Formula $\lambda_{1}\geq\lambda_{2}\geq\dots\geq\lambda_{n}$
+\end_inset
+
+.
+ It is not difficult to show that 
+\begin_inset Formula $\lambda_{1}=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{n}\geq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+One of the main theorems of algebraic graph theory (not very difficult,
+ but skipped here) is that the number of connected components of 
+\begin_inset Formula $G$
+\end_inset
+
+ is the largest 
+\begin_inset Formula $i$
+\end_inset
+
+ with 
+\begin_inset Formula $\lambda_{i}=1$
+\end_inset
+
+.
+ By analogy, if 
+\begin_inset Formula $\lambda_{2}$
+\end_inset
+
+ is 
+\begin_inset Quotes eld
+\end_inset
+
+very close
+\begin_inset Quotes erd
+\end_inset
+
+ to 1, it means there are 
+\begin_inset Quotes eld
+\end_inset
+
+almost
+\begin_inset Quotes erd
+\end_inset
+
+ two components (and similarly for larger 
+\begin_inset Formula $i$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+So 
+\begin_inset Formula $\lambda_{1}-\lambda_{2}=1-\lambda_{2}$
+\end_inset
+
+ is a useful measure of connectivity.
+ It is called the 
+\series bold
+spectral gap
+\series default
+ of 
+\begin_inset Formula ${\bf Q}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Spectral Gaps and Mixing Speed
+\end_layout
+
+\begin_layout Standard
+The stationary distribution 
+\begin_inset Formula $\boldsymbol{\pi}$
+\end_inset
+
+ by definition satisfies 
+\begin_inset Formula $\boldsymbol{\pi}{\bf Q}=\boldsymbol{\pi}$
+\end_inset
+
+.
+ In linear algebra terms, 
+\begin_inset Formula $\boldsymbol{\pi}$
+\end_inset
+
+ is a left eigenvector of 
+\begin_inset Formula ${\bf Q}$
+\end_inset
+
+ with eigenvalue 
+\begin_inset Formula $1=\lambda_{1}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\boldsymbol{\mu}$
+\end_inset
+
+ be any starting distribution.
+ After 
+\begin_inset Formula $t$
+\end_inset
+
+ steps, the 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+-error is
+\begin_inset Formula 
+\[
+\|\boldsymbol{\mu}{\bf Q}^{t}-\boldsymbol{\pi}\|_{2}.
+\]
+
+\end_inset
+
+Because 
+\begin_inset Formula ${\bf Q}$
+\end_inset
+
+ is symmetric, it has an orthonormal basis of eigenvectors 
+\begin_inset Formula $\boldsymbol{\omega}_{1},\boldsymbol{\omega}_{2},\dots,\boldsymbol{\omega}_{n}$
+\end_inset
+
+ with 
+\begin_inset Formula $\boldsymbol{\omega}_{1}=\boldsymbol{\pi}$
+\end_inset
+
+.
+ These correspond to the eigenvalues 
+\begin_inset Formula $\lambda_{1},\lambda_{2},\dots,\lambda_{n}$
+\end_inset
+
+.
+ Write 
+\begin_inset Formula $\boldsymbol{\mu}$
+\end_inset
+
+ in the basis as 
+\begin_inset Formula 
+\[
+\boldsymbol{\mu}=\sum_{i=1}^{n}\alpha_{i}\boldsymbol{\omega}_{i}.
+\]
+
+\end_inset
+
+Then
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{\mu}{\bf Q}^{t} & =\big(\sum_{i=1}^{n}\alpha_{i}\boldsymbol{\omega}_{i}\big){\bf Q}^{t}\\
+ & =\sum_{i}\alpha_{i}(\boldsymbol{\omega}_{i}{\bf Q}^{t})\\
+ & =\sum_{i}\alpha_{i}\lambda_{i}^{t}\boldsymbol{\omega}_{i}.
+\end{align*}
+
+\end_inset
+
+Because 
+\begin_inset Formula $G$
+\end_inset
+
+ has a single connected component, 
+\begin_inset Formula $\lambda_{1}$
+\end_inset
+
+ is the only eigenvalue which equals 1.
+ So as 
+\begin_inset Formula $t\to\infty$
+\end_inset
+
+, this converges to
+\begin_inset Formula 
+\[
+\alpha_{1}\boldsymbol{\omega}_{1}=\alpha_{1}\boldsymbol{{\bf \pi}}.
+\]
+
+\end_inset
+
+Since 
+\begin_inset Formula $\boldsymbol{\mu}{\bf Q}^{t}$
+\end_inset
+
+ is known to converge to 
+\begin_inset Formula $\boldsymbol{\pi}$
+\end_inset
+
+, we have 
+\begin_inset Formula $\alpha_{1}=1$
+\end_inset
+
+.
+ Going back to the 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ error, we have
+\begin_inset Formula 
+\begin{align*}
+\|\boldsymbol{\mu}{\bf Q}^{t}-\boldsymbol{\pi}\|_{2} & =\|\sum_{i}\alpha_{i}\lambda_{i}^{t}\boldsymbol{\omega}_{i}-\boldsymbol{\pi}\|_{2}\\
+ & =\|\sum_{i=2}^{n}\alpha_{i}\lambda_{i}^{t}\boldsymbol{\omega}_{i}\|_{2}\\
+ & =\sqrt{\sum_{i=2}^{n}\alpha_{i}^{2}\lambda_{i}^{2t}}\\
+ & \leq\lambda_{2}^{t}\sqrt{\sum_{i=1}^{n}\alpha_{i}^{2}}\\
+ & \leq\lambda_{2}^{t}\|\boldsymbol{\mu}\|_{2}\\
+ & \leq\lambda_{2}^{t}\\
+ & =(1-(1-\lambda_{2}))^{t}\\
+ & \leq e^{-(1-\lambda_{2})t}.
+\end{align*}
+
+\end_inset
+
+So to get error 
+\begin_inset Formula $\delta$
+\end_inset
+
+, it suffices to have 
+\begin_inset Formula $t\geq\frac{\ln1/\delta}{1-\lambda_{2}}$
+\end_inset
+
+.
+ In particular, if the spectral gap 
+\begin_inset Formula $1-\lambda_{2}$
+\end_inset
+
+ is large enough – 
+\begin_inset Formula $\Omega(1)$
+\end_inset
+
+ or 
+\begin_inset Formula $\Omega(1/polylog(n))$
+\end_inset
+
+ – the walk mixes rapidly.
+ Thus, our goal is to bound the spectral gap.
+\end_layout
+
+\begin_layout Section
+Spectral Gaps and Expansion Measures
+\end_layout
+
+\begin_layout Standard
+For a cut 
+\begin_inset Formula $(S,\bar{S})$
+\end_inset
+
+, define the:
+\end_layout
+
+\begin_layout Itemize
+Edge expansion as
+\begin_inset Formula 
+\[
+\alpha(S)\coloneqq\frac{|e(S,\bar{S})|}{|S|}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vertex expansion as
+\begin_inset Formula 
+\[
+\frac{|\mathcal{N}(S)\setminus S|}{|S|}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Conductance as
+\begin_inset Formula 
+\[
+\frac{1}{\sum_{u\in S}\boldsymbol{\pi}_{u}}\sum_{e=(u,v),u\in S,v\notin S}\boldsymbol{\pi}_{u}p_{uv}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For undirected 
+\begin_inset Formula $d$
+\end_inset
+
+-regular graphs, all 
+\begin_inset Formula $\boldsymbol{\pi}_{u}=\nicefrac{1}{n}$
+\end_inset
+
+, so the conductance is
+\begin_inset Formula 
+\[
+\frac{1}{|S|}\sum_{e=(u,v),u\in S,v\notin S}\frac{1}{d}=\frac{e(S,\bar{S})}{d|S|}=\frac{\alpha(S)}{d}.
+\]
+
+\end_inset
+
+All of these in a sense are a measure of surface-to-volume ratio of 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ Define the edge expansion of a graph 
+\begin_inset Formula $G$
+\end_inset
+
+ as the worst expansion of any set:
+\begin_inset Formula 
+\[
+\alpha(G)\coloneqq\min_{S,|S|\leq\nicefrac{n}{2}}\alpha(S).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+[Cheeger's Inequality].
+ 
+\emph on
+Let 
+\begin_inset Formula $G$
+\end_inset
+
+ be a 
+\begin_inset Formula $d$
+\end_inset
+
+-regular undirected graph.
+ Then, 
+\begin_inset Formula 
+\[
+1-\frac{\alpha(G)}{d}\leq\lambda_{2}(G)\leq1-\frac{1}{4}\big(\frac{\alpha(G)}{d}\big)^{2}.
+\]
+
+\end_inset
+
+Rewritten to see the spectral gap,
+\begin_inset Formula 
+\[
+\frac{1}{4}\big(\frac{\alpha(G)}{d}\big)^{2}\leq1-\lambda_{2}(G)\leq\frac{\alpha(G)}{d}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+The proof is nontrivial, in particular the upper bound on 
+\begin_inset Formula $\lambda_{2}(G)$
+\end_inset
+
+.
+ The key idea is to interpret the eigenvector 
+\begin_inset Formula $\boldsymbol{\omega}_{2}$
+\end_inset
+
+ as embedding the nodes into a line and show that one of the 
+\begin_inset Quotes eld
+\end_inset
+
+line cuts
+\begin_inset Quotes erd
+\end_inset
+
+ must have corresponding expansion.
+\end_layout
+
+\begin_layout Standard
+In particular, if 
+\begin_inset Formula $\alpha(G)$
+\end_inset
+
+ is 
+\begin_inset Formula $\Omega(1)$
+\end_inset
+
+ or 
+\begin_inset Formula $\Omega(1/polylog(n))$
+\end_inset
+
+, then so is the spectral gap – so the random walk mixes rapidly.
+ Our new goal is to prove lower bounds on the expansion 
+\begin_inset Formula $\alpha(G)$
+\end_inset
+
+ for graphs we care about.
+\end_layout
+
+\begin_layout Section
+Expansion and Flows
+\end_layout
+
+\begin_layout Standard
+The intuition is that cuts with few edges are bottlenecks for flows.
+ In particular, if we can send a lot of flow, we cannot have small cuts.
+ Here, different types of flows correspond to different types of cuts.
+\end_layout
+
+\begin_layout Standard
+Specifically, we focus on all-to-all multicommodity flow.
+ Give each edge a capacity of 1 and find the largest 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ such that for each node pair 
+\begin_inset Formula $(s,t)$
+\end_inset
+
+ simultaneously, we can send 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ units of flow.
+ Denote this quantity by 
+\begin_inset Formula $\Psi^{*}(G)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Equivalently, find the smallest congestion 
+\begin_inset Formula $c(G)$
+\end_inset
+
+ such that we can route one unit of flow for each pair 
+\begin_inset Formula $(s,t)$
+\end_inset
+
+ simultaneously with congestion no more than 
+\begin_inset Formula $c(G)$
+\end_inset
+
+ on any edge.
+ Then 
+\begin_inset Formula $\Psi^{*}(G)=1/c(G)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+One more related expansion measure:
+\begin_inset Formula 
+\[
+\sigma(G)=\min_{S}\frac{|e(S,\bar{S})|}{|S|\cdot|\bar{S}|}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+[Leighton & Rao].
+
+\emph on
+ 
+\begin_inset Formula 
+\[
+\Psi^{*}(G)\leq\sigma(G)\leq\Psi^{*}(G)\cdot\O(\log n).
+\]
+
+\end_inset
+
+For any set 
+\begin_inset Formula $S$
+\end_inset
+
+ with 
+\begin_inset Formula $|S|\leq\nicefrac{n}{2}$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\alpha(S)=\sigma(S)\cdot|\bar{S}|
+\]
+
+\end_inset
+
+lies between 
+\begin_inset Formula $\frac{n}{2}\sigma(S)$
+\end_inset
+
+ and 
+\begin_inset Formula $n\sigma(S)$
+\end_inset
+
+.
+ Thus,
+\begin_inset Formula 
+\[
+\frac{n}{2}\sigma(G)\leq\alpha(G)\leq n\sigma(G).
+\]
+
+\end_inset
+
+So
+\begin_inset Formula 
+\[
+\frac{n}{2}\Psi^{*}(G)\leq\alpha(G)\leq\O(n\log n)\Psi^{*}(G).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If we can prove a lower bound of 
+\begin_inset Formula $\frac{1}{n\cdot polylog(n)}$
+\end_inset
+
+ on 
+\begin_inset Formula $\Psi^{*}(G)$
+\end_inset
+
+, we get a 
+\begin_inset Formula $\frac{1}{polylog(n)}$
+\end_inset
+
+ lower bound on 
+\begin_inset Formula $\alpha(G)$
+\end_inset
+
+ and thus on the spectral gap (which means our chain mixes rapidly).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+
+\emph on
+If it is possible in 
+\begin_inset Formula $G$
+\end_inset
+
+ to route one unit of flow simultaneously for each node pair 
+\begin_inset Formula $(s,t)$
+\end_inset
+
+ such that the congestion of each edge 
+\begin_inset Formula $e$
+\end_inset
+
+ is at most 
+\begin_inset Formula $\O(n\cdot polylog(n))$
+\end_inset
+
+, then the random walk on 
+\begin_inset Formula $G$
+\end_inset
+
+ mixes in time 
+\begin_inset Formula $\O(d^{2}polylog(n))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+This is called the 
+\series bold
+canonical flows
+\series default
+ technique, and is most often applied by having the flow for each pair 
+\begin_inset Formula $(s,t)$
+\end_inset
+
+ along a single path.
+ Then it is called the 
+\series bold
+canonical paths 
+\series default
+technique.
+ In general, analysis using canonical flows often loses several log factors
+ compared to the best possible (but that doesn't matter if you just want
+ to prove rapid mixing).
+\end_layout
+
+\begin_layout Section
+Application: Sampling Matchings in Dense Bipartite Graphs
+\end_layout
+
+\begin_layout Standard
+Given a bipartite graph 
+\begin_inset Formula $G$
+\end_inset
+
+, count the number of perfect matchings in 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ Equivalently, compute 
+\begin_inset Formula $\perm(A(G))$
+\end_inset
+
+.
+ This is 
+\begin_inset Formula $\#P$
+\end_inset
+
+-complete (even though finding a perfect matching is polytime).
+ We will count them approximately using sampling.
+ Define 
+\begin_inset Formula $\mathcal{M}_{k}$
+\end_inset
+
+ as the set of all matchings of 
+\begin_inset Formula $G$
+\end_inset
+
+ with exactly 
+\begin_inset Formula $k$
+\end_inset
+
+ edges.
+ We want to compute 
+\begin_inset Formula $|\mathcal{M}_{n}|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Write 
+\begin_inset Formula 
+\[
+|\mathcal{M}_{n}|=\frac{|\mathcal{M}_{n}|}{|\mathcal{M}_{n-1}|}\dots\frac{|\mathcal{M}_{2}|}{|\mathcal{M}_{1}|}|\mathcal{M}_{1}|.
+\]
+
+\end_inset
+
+Clearly 
+\begin_inset Formula $|\mathcal{M}_{1}|=m$
+\end_inset
+
+.
+ Our goal is to estimate all of these ratios sufficiently accurately, so
+ that even multiplying them leads to an error of at most 
+\begin_inset Formula $1\pm\e$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Why estimate the ratios instead? Any 
+\begin_inset Formula $|\mathcal{M}_{i}|$
+\end_inset
+
+ could be very large or very small, so estimating its size by sampling is
+ error-prone.
+ We will show that each ratio is bounded between 
+\begin_inset Formula $n^{-2}$
+\end_inset
+
+ and 
+\begin_inset Formula $n^{2}$
+\end_inset
+
+ for dense graphs.
+ (A graph is considered dense if each node has degree at least 
+\begin_inset Formula $\nicefrac{n}{2}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+To estimate the ratio 
+\begin_inset Formula $|\mathcal{M}_{i}|/|\mathcal{M}_{i-1}|$
+\end_inset
+
+, we sample nearly uniformly from the union of the two and count the fraction
+ of samples that are from 
+\begin_inset Formula $\mathcal{M}_{i}$
+\end_inset
+
+.
+ Because the sizes are similar enough, this gives a 
+\begin_inset Formula $1\pm\e$
+\end_inset
+
+ approximation of the ratio.
+\end_layout
+
+\begin_layout Standard
+Our new problem is to sample nearly uniformly from 
+\begin_inset Formula $\mathcal{M}_{k}\cup\mathcal{M}_{k-1}$
+\end_inset
+
+.
+ This can be reduced fairly easily to sampling from 
+\begin_inset Formula $\mathcal{M}_{n}\cup\mathcal{M}_{n-1}$
+\end_inset
+
+ (by adding a bunch of new nodes).
+ We want to sample perfect or near-perfect matchings using random walks.
+\end_layout
+
+\begin_layout Standard
+We define a suitable random walk on 
+\begin_inset Formula $\M_{n}\cup\M_{n-1}$
+\end_inset
+
+.
+ Suppose we are at a matching 
+\begin_inset Formula $M$
+\end_inset
+
+.
+ We choose a uniformly random edge 
+\begin_inset Formula $e=(u,v)\in G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $M$
+\end_inset
+
+ is perfect and 
+\begin_inset Formula $e\in M$
+\end_inset
+
+, remove 
+\begin_inset Formula $e$
+\end_inset
+
+ from 
+\begin_inset Formula $M$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $M$
+\end_inset
+
+ is not perfect and both 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+ are unmatched, add 
+\begin_inset Formula $e$
+\end_inset
+
+ to 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $M$
+\end_inset
+
+ is not perfect and 
+\begin_inset Formula $u$
+\end_inset
+
+ is matched to some 
+\begin_inset Formula $w$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+ is unmatched, replace 
+\begin_inset Formula $(u,w)$
+\end_inset
+
+ with 
+\begin_inset Formula $(u,v)$
+\end_inset
+
+ – symmetrically if 
+\begin_inset Formula $v$
+\end_inset
+
+ is matched and 
+\begin_inset Formula $u$
+\end_inset
+
+ is unmatched.
+\end_layout
+
+\begin_layout Itemize
+Otherwise, do nothing.
+\end_layout
+
+\begin_layout Standard
+Is the Markov graph undirected? Yes, addition and removal go both ways,
+ and edge rotation can be undone.
+ Is the Markov graph regular? Yes, each matching 
+\begin_inset Formula $M$
+\end_inset
+
+ has degree 
+\begin_inset Formula $m$
+\end_inset
+
+ (one edge for each possible edge pick, including self-loops).
+ Once we show connectedness, we will have shown the stationary distribution
+ is uniform.
+\end_layout
+
+\end_body
+\end_document
